@@ -10,11 +10,6 @@
   align-items: center;
   width: 50%;
   height: 50%;
-  background-image: radial-gradient(
-    ellipse 50% 42% at 50% 50%,
-    #000080,
-    transparent
-  );
   transform: translate(-50%, -50%);
   letter-spacing: 2;
   left: 50%;
