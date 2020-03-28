@@ -1522,6 +1522,13 @@ h3 {
  
 }
 
+.myimg{
+  width:140px;
+  height:140px;
+  object-fit:cover;
+  border-radius:50%;
+}
+
 /* line 10, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_features.scss */
 .features_area .about_image img {
   width: auto;
