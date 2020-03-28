@@ -2622,6 +2622,22 @@ h3 {
   text-transform: capitalize;
 }
 
+.btns {
+  background-color: DodgerBlue;
+	border-radius: 28px;
+	font-family: "Alata", sans-serif;
+  border: none;
+  color: white;
+  padding: 12px 30px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/* Darker background on mouse-over */
+.btns:hover {
+  background-color: RoyalBlue;
+}
+
 /* line 52, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_bradcam.scss */
 .bradcam_area p a {
   color: #fff;
