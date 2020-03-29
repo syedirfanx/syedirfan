@@ -424,7 +424,7 @@ h3 {
   border: 1px solid #fff;
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
-  border-radius: 0px;
+  border-radius: 28px;
   text-align: center;
   color: #fff !important;
   text-transform: capitalize;
@@ -438,6 +438,7 @@ h3 {
 /* line 46, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_btn.scss */
 .boxed-btn3:hover {
   border: 1px solid #fff;
+  border-radius: 28px;
   color: #0181F5 !important;
   background: #fff;
 }
@@ -445,6 +446,7 @@ h3 {
 /* line 52, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_btn.scss */
 .boxed-btn3:focus {
   outline: none;
+  border-radius: 28px;
 }
 
 /* line 55, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_btn.scss */
