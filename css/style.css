@@ -3631,18 +3631,28 @@ h3 {
 
 /* line 54, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_create_blog.scss */
 .creative_blog_area .creative_blog_active {
-  margin-top: 100px;
+  margin-top: 50px;
+  
 }
 
 /* line 59, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_create_blog.scss */
 .creative_blog_area .single_blog .thumb img {
-  width: 100%;
+  width: 95%;
+  height: 95%;
+  border-radius: 18px;
+  
 }
 
 /* line 63, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_create_blog.scss */
 .creative_blog_area .single_blog .blog_content {
   padding-top: 35px;
-  padding-bottom: 91px;
+  padding-bottom: 50px;
+  width: 95%;
+  height: 95%;
+  
+  
+  
+
 }
 
 @media (max-width: 767px) {
@@ -3660,6 +3670,7 @@ h3 {
   font-size: 14px;
   font-weight: 400;
   display: block;
+  
 }
 
 /* line 78, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_create_blog.scss */
@@ -3669,6 +3680,7 @@ h3 {
   color: #fff;
   margin-top: 13px;
   margin-bottom: 29px;
+  
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
@@ -5457,6 +5469,7 @@ h6 {
   position: absolute;
   left: 0;
   top: 0;
+  
   width: 100%;
   height: 100%;
   background: #000;
@@ -5529,12 +5542,14 @@ h6 {
   /* line 24, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_blog.scss */
   .single-blog {
     margin-bottom: 30px;
+	
   }
 }
 
 /* line 112, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_blog.scss */
 .single-blog .single-blog-content {
   padding: 30px;
+  
 }
 
 /* line 116, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_blog.scss */
@@ -5554,6 +5569,7 @@ h6 {
   /* line 112, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_blog.scss */
   .single-blog .single-blog-content {
     padding: 15px;
+	
   }
 }
 
@@ -5947,6 +5963,15 @@ h6 {
   margin-bottom: 8px;
 }
 
+.blog_details h5 {
+  font-size: 16px;
+  font-weight: 0;
+  margin-bottom: 0px;
+  line-height: 2.5;
+   text-align: justify;
+}
+
+
 @media (min-width: 768px) {
   /* line 549, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_blog.scss */
   .blog_details h2 {
@@ -5996,6 +6021,7 @@ h6 {
 /* line 596, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_blog.scss */
 .blog_item_img {
   position: relative;
+  
 }
 
 /* line 599, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_blog.scss */
@@ -6016,6 +6042,7 @@ h6 {
     bottom: -20px;
     left: 40px;
     padding: 13px 30px;
+	
   }
 }
 
