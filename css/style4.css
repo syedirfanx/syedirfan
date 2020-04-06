@@ -339,7 +339,7 @@
   text-align: left;
   margin: 2px 0 8px 0;
   flex: 1 1 auto;
-  font-family: "Alata", sans-serif;
+  font-family: Franklin Gothic Medium,Franklin Gothic,ITC Franklin Gothic,Arial,sans-serif;
   overflow: hidden;
   -webkit-mask-image: linear-gradient(black 80%, transparent 100%);
   color: #a6aad1;
@@ -357,7 +357,7 @@
   font-size: 16px;
   color: white;
   flex: 1 1 auto;
-  font-family: "Alata", sans-serif;
+  font-family: Franklin Gothic Medium,Franklin Gothic,ITC Franklin Gothic,Arial,sans-serif;
   padding-bottom: 5px;
   margin-bottom: 5px;
   text-align: left;
@@ -536,14 +536,14 @@
 }
 .card h1 {
   font-size: 20px;
-  font-family: "Alata", sans-serif;
+  font-family: Franklin Gothic Medium,Franklin Gothic,ITC Franklin Gothic,Arial,sans-serif;
   font-weight: normal;
   font-style: normal;
   margin: 0;
   color: white;
 }
 .card p {
-	font-family: "Alata", sans-serif;
+	font-family: Franklin Gothic Medium,Franklin Gothic,ITC Franklin Gothic,Arial,sans-serif;
   font-weight: normal;
   font-style: normal;
   -webkit-box-flex: 1;

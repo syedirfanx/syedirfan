@@ -10,7 +10,7 @@
 
 
 body {
-  font-family: "Alata", sans-serif;
+  font-family: Franklin Gothic Medium,Franklin Gothic,ITC Franklin Gothic,Arial,sans-serif;
   font-weight: normal;
   font-style: normal;
 }
@@ -63,9 +63,11 @@ button {
 
 /* line 39, ../../Arafath/CL/December/230. Portfolio/HTML/scss/theme-default.scss */
 h1, h2, h3, h4, h5 {
-  font-family: "Alata", sans-serif;
+  font-family: Franklin Gothic Medium,Franklin Gothic,ITC Franklin Gothic,Arial,sans-serif;
   color: #191d34;
 }
+
+
 
 /* line 43, ../../Arafath/CL/December/230. Portfolio/HTML/scss/theme-default.scss */
 h1 a,
@@ -95,7 +97,7 @@ p {
   line-height: 28px;
   color: #7A838B;
   margin-bottom: 13px;
-  font-family: "Roboto", sans-serif;
+  font-family: Franklin Gothic Medium,Franklin Gothic,ITC Franklin Gothic,Arial,sans-serif;
 }
 
 /* line 68, ../../Arafath/CL/December/230. Portfolio/HTML/scss/theme-default.scss */
@@ -382,7 +384,7 @@ h3 {
   color: #131313;
   display: inline-block;
   padding: 14px 44px;
-  font-family: "Alata", sans-serif;
+  font-family: Franklin Gothic Medium,Franklin Gothic,ITC Franklin Gothic,Arial,sans-serif;
   font-size: 14px;
   font-weight: 400;
   border: 0;
@@ -417,7 +419,7 @@ h3 {
   color: #fff;
   display: inline-block;
   padding: 14px 38px;
-  font-family: "Alata", sans-serif;
+  font-family: Franklin Gothic Medium,Franklin Gothic,ITC Franklin Gothic,Arial,sans-serif;
   font-size: 14px;
   font-weight: 500;
   border: 0;
@@ -461,7 +463,7 @@ h3 {
   color: #fff;
   display: inline-block;
   padding: 14px 27px;
-  font-family: "Alata", sans-serif;
+  font-family: Franklin Gothic Medium,Franklin Gothic,ITC Franklin Gothic,Arial,sans-serif;
   font-size: 16px;
   font-weight: 500;
   border: 0;
@@ -500,7 +502,7 @@ h3 {
   color: #fff;
   display: inline-block;
   padding: 13px 27px;
-  font-family: "Alata", sans-serif;
+  font-family: Franklin Gothic Medium,Franklin Gothic,ITC Franklin Gothic,Arial,sans-serif;
   font-size: 14px;
   font-weight: 400;
   border: 0;
@@ -546,7 +548,7 @@ h3 {
   color: #615CFD !important;
   display: inline-block;
   padding: 14px 31px;
-  font-family: "Alata", sans-serif;
+  font-family: Franklin Gothic Medium,Franklin Gothic,ITC Franklin Gothic,Arial,sans-serif;
   font-size: 14px;
   font-weight: 400;
   border: 0;
@@ -587,7 +589,7 @@ h3 {
   color: #fff;
   display: inline-block;
   padding: 18px 24px;
-  font-family: "Alata", sans-serif;
+  font-family: Franklin Gothic Medium,Franklin Gothic,ITC Franklin Gothic,Arial,sans-serif;
   font-size: 14px;
   font-weight: 400;
   border: 0;
@@ -1045,7 +1047,7 @@ h3 {
   font-weight: 400;
   display: inline-block;
   padding: 0px 0px 0px 0px;
-  font-family: "Alata", sans-serif;
+  font-family: Franklin Gothic Medium,Franklin Gothic,ITC Franklin Gothic,Arial,sans-serif;
   position: relative;
   text-transform: capitalize;
 }
@@ -1350,7 +1352,7 @@ h3 {
 /* line 21, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_slider.scss */
 .slider_area .single_slider .slider_text h3 {
   color: #FFF;
-  font-family: "Alata", sans-serif;
+  font-family: Franklin Gothic Medium,Franklin Gothic,ITC Franklin Gothic,Arial,sans-serif;
   font-size: 40px;
   font-weight: 400;
   line-height: 55px;
@@ -1390,7 +1392,7 @@ h3 {
   z-index: 1;
   display: block;
   margin-bottom: 22px;
-  font-family: "Alata", sans-serif;
+  font-family: Franklin Gothic Medium,Franklin Gothic,ITC Franklin Gothic,Arial,sans-serif;
 }
 
 @media (min-width: 992px) and (max-width: 1200px) {
@@ -2122,7 +2124,7 @@ h3 {
 /* line 18, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_gallery.scss */
 .portfolio_area .more_works a {
   font-size: 20px;
-  font-family: "Alata", sans-serif;
+  font-family: Franklin Gothic Medium,Franklin Gothic,ITC Franklin Gothic,Arial,sans-serif;
   color: #fff;
   font-weight: 400;
 }
@@ -2308,7 +2310,7 @@ h3 {
   font-size: 14px;
   color: #B3D9FC;
   font-weight: 400;
-  font-family: "Alata", sans-serif;
+  font-family: Franklin Gothic Medium,Franklin Gothic,ITC Franklin Gothic,Arial,sans-serif;
   margin-bottom: 13px;
   position: relative;
   left: 10%;
@@ -2331,7 +2333,7 @@ h3 {
   font-size: 30px;
   color: #fff;
   font-weight: 400;
-  font-family: "Alata", sans-serif;
+  font-family: Franklin Gothic Medium,Franklin Gothic,ITC Franklin Gothic,Arial,sans-serif;
   line-height: 1;
   position: relative;
   left: 15%;
@@ -2426,7 +2428,7 @@ h3 {
   color: #fff;
   text-transform: capitalize;
   margin-bottom: 40px;
-  font-family: "Alata", sans-serif;
+  font-family: Franklin Gothic Medium,Franklin Gothic,ITC Franklin Gothic,Arial,sans-serif;
 }
 
 @media (max-width: 767px) {
@@ -2490,7 +2492,7 @@ h3 {
 .footer .footer_top .footer_widget ul li a {
   color: #AAB1B7;
   font-weight: 400;
-  font-family: "Roboto", sans-serif;
+  font-family: Franklin Gothic Medium,Franklin Gothic,ITC Franklin Gothic,Arial,sans-serif;
 }
 
 /* line 67, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_footer.scss */
@@ -2619,7 +2621,7 @@ h3 {
   font-weight: 400;
   margin-bottom: 0;
   text-transform: capitalize;
-  font-family: "Alata", sans-serif;
+  font-family: Franklin Gothic Medium,Franklin Gothic,ITC Franklin Gothic,Arial,sans-serif;
 }
 
 @media (max-width: 767px) {
@@ -2640,7 +2642,7 @@ h3 {
 .btns {
   background-color: DodgerBlue;
 	border-radius: 28px;
-	font-family: "Alata", sans-serif;
+	font-family: Franklin Gothic Medium,Franklin Gothic,ITC Franklin Gothic,Arial,sans-serif;
   border: none;
   color: white;
   padding: 12px 30px;
@@ -2754,7 +2756,7 @@ h3 {
   cursor: pointer;
   display: block;
   float: left;
-  font-family: "Alata", sans-serif;
+  font-family: Franklin Gothic Medium,Franklin Gothic,ITC Franklin Gothic,Arial,sans-serif;
   font-weight: normal;
   width: 100% !important;
   /* height: 42px; */
@@ -3679,7 +3681,7 @@ h3 {
 /* line 71, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_create_blog.scss */
 .creative_blog_area .single_blog .blog_content span {
   color: #0181F5;
-  font-family: "Roboto", sans-serif;
+  font-family: Franklin Gothic Medium,Franklin Gothic,ITC Franklin Gothic,Arial,sans-serif;
   font-size: 14px;
   font-weight: 400;
   display: block;
@@ -3753,7 +3755,7 @@ h3 {
   font-size: 12px;
   color: #828793;
   font-weight: 400;
-  font-family: "Roboto", sans-serif;
+  font-family: Franklin Gothic Medium,Franklin Gothic,ITC Franklin Gothic,Arial,sans-serif;
   margin-bottom: 0;
 }
 
@@ -3803,7 +3805,7 @@ h3 {
   font-size: 12px;
   color: #828793;
   font-weight: 400;
-  font-family: "Roboto", sans-serif;
+ font-family: Franklin Gothic Medium,Franklin Gothic,ITC Franklin Gothic,Arial,sans-serif;
   display: block;
   margin-bottom: 6px;
 }
@@ -3918,14 +3920,14 @@ h3 {
   margin-bottom: 0;
   font-size: 18px;
   color: #040E27;
-  font-family: "Roboto", sans-serif;
+ font-family: Franklin Gothic Medium,Franklin Gothic,ITC Franklin Gothic,Arial,sans-serif;
   margin-bottom: 2px;
 }
 
 /* line 21, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_team.scss */
 .creative_people .single_people .people_info p {
   color: #818692;
-  font-family: "Roboto", sans-serif;
+ font-family: Franklin Gothic Medium,Franklin Gothic,ITC Franklin Gothic,Arial,sans-serif;
   font-size: 12px;
   margin-bottom: 0;
 }
