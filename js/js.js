@@ -1,4 +1,4 @@
-let max_particles = 1200;
+let max_particles = 1000;
 let particles = [];
 let frequency = 20;
 let init_num = max_particles;
@@ -9,12 +9,10 @@ let tela = data[0];
 let canvas = data[1];
 
 // Enable repopolate
-setTimeout(
-function () {
+setTimeout(function () {
+	
   time_to_recreate = true;
-}.bind(this),
-max_time);
-
+}.bind(this), max_time);
 
 // Popolate particles
 popolate(max_particles);
@@ -25,12 +23,8 @@ class FishEgg {
     this.progress = 0;
     this.canvas = canvas;
     // Set position
-    this.x =
-    $(window).width() / 2 + (Math.random() * 300 - Math.random() * 300);
-    this.y =
-    $(window).height() / 2 + (
-    Math.random() * $(window).height() / 4 -
-    Math.random() * $(window).height() / 4);
+    this.x = $(window).width() / 2 + (Math.random() * 300 - Math.random() * 300);
+    this.y = $(window).height() / 2 + (Math.random() * $(window).height() / 4 - Math.random() * $(window).height() / 4);
     // Get viewport size
     this.w = $(window).width();
     this.h = $(window).height();
@@ -41,18 +35,9 @@ class FishEgg {
     this.color = "rgba(255,255,255,1)";
     // Setting
     this.fish_egg = {
-      offset1:
-      Math.random() > 0.5 ?
-      0.5 + Math.random() * 3 :
-      0.5 + Math.random() * -3,
-      offset2:
-      Math.random() > 0.5 ?
-      0.5 + Math.random() * 3 :
-      0.5 + Math.random() * -3,
-      offset3:
-      Math.random() > 0.5 ?
-      0.5 + Math.random() * 3 :
-      0.5 + Math.random() * -3,
+      offset1: Math.random() > 0.5 ? 0.5 + Math.random() * 3 : 0.5 + Math.random() * -3,
+      offset2: Math.random() > 0.5 ? 0.5 + Math.random() * 3 : 0.5 + Math.random() * -3,
+      offset3: Math.random() > 0.5 ? 0.5 + Math.random() * 3 : 0.5 + Math.random() * -3,
       radius1: 0.5 + Math.random() * 5,
       radius2: 0.5 + Math.random() * 5,
       radius3: 0.5 + Math.random() * 5 };
@@ -72,24 +57,9 @@ class FishEgg {
   }
 
   createEyes() {
-    this.createCircle(
-    this.x + this.fish_egg.offset2,
-    this.y + this.fish_egg.offset2,
-    this.fish_egg.radius2 + 4,
-    "rgba(241, 242, 244, 0.06)");
-
-    this.createCircle(
-    this.x + this.fish_egg.offset3,
-    this.y + this.fish_egg.offset3,
-    this.fish_egg.radius3 + 2,
-    "rgba(255, 204, 67, 0.08)");
-
-    this.createCircle(
-    this.x + Math.random(this.progress / 350) * this.fish_egg.offset1,
-    this.y + Math.random(this.progress / 350) * this.fish_egg.offset1,
-    this.fish_egg.radius1,
-    "rgba(152, 19, 4, 0.19)");
-
+    this.createCircle(this.x + this.fish_egg.offset2, this.y + this.fish_egg.offset2, this.fish_egg.radius2 + 4, "rgba(241, 242, 244, 0.06)");
+    this.createCircle(this.x + this.fish_egg.offset3, this.y + this.fish_egg.offset3, this.fish_egg.radius3 + 2, "rgba(255, 204, 67, 0.08)");
+    this.createCircle(this.x + Math.random(this.progress / 350) * this.fish_egg.offset1, this.y + Math.random(this.progress / 350) * this.fish_egg.offset1, this.fish_egg.radius1, "rgba(152, 19, 4, 0.19)");
   }
 
   render() {
@@ -97,17 +67,10 @@ class FishEgg {
     this.createEyes();
 
     this.canvas.beginPath();
-    let c = "130, 151, 180";
-    let rad = this.canvas.createRadialGradient(
-    this.x,
-    this.y,
-    this.radius,
-    this.x,
-    this.y,
-    1);
-
-    rad.addColorStop(0, "rgba(" + c + ",0.09)");
-    rad.addColorStop(0.9, "rgba(" + c + ",0)");
+    let c = '130, 151, 180';
+    let rad = this.canvas.createRadialGradient(this.x, this.y, this.radius, this.x, this.y, 1);
+    rad.addColorStop(0, 'rgba(' + c + ',0.09)');
+    rad.addColorStop(0.9, 'rgba(' + c + ',0)');
     this.canvas.lineWidth = Math.random() * 2.2;
     this.canvas.fillStyle = rad;
     this.canvas.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
@@ -118,14 +81,10 @@ class FishEgg {
   }
 
   move() {
-    this.x +=
-    Math.sin(this.progress / this.variantx1) *
-    Math.cos(this.progress / this.variantx2) /
-    8;
-    this.y +=
-    Math.sin(this.progress / this.varianty1) *
-    Math.cos(this.progress / this.varianty2) /
-    8;
+    this.x += Math.sin(this.progress / this.variantx1) * Math.cos(this.progress / this.variantx2) / 8;
+    this.y += Math.sin(this.progress / this.varianty1) * Math.cos(this.progress / this.varianty2) / 8;
+
+
 
     if (this.x < 0 || this.x > this.w - this.radius) {
       return false;
@@ -147,10 +106,8 @@ class FishLarva {
     this.canvas = canvas;
     this.speed = 0.5 + random * 1.3;
 
-    this.x =
-    $(window).width() / 2 + (Math.random() * 200 - Math.random() * 200);
-    this.y =
-    $(window).height() / 2 + (Math.random() * 200 - Math.random() * 200);
+    this.x = $(window).width() / 2 + (Math.random() * 200 - Math.random() * 200);
+    this.y = $(window).height() / 2 + (Math.random() * 200 - Math.random() * 200);
 
     this.s = 0.8 + Math.random() * 0.6;
     this.a = 0;
@@ -194,6 +151,7 @@ class FishLarva {
   }}
 
 
+
 class FishLarvaEgg {
   constructor(canvas, progress) {
     const random = Math.random();
@@ -201,10 +159,8 @@ class FishLarvaEgg {
     this.canvas = canvas;
     this.speed = 0.5 + random * 0.2;
 
-    this.x =
-    $(window).width() / 2 + (Math.random() * 200 - Math.random() * 200);
-    this.y =
-    $(window).height() / 2 + (Math.random() * 200 - Math.random() * 200);
+    this.x = $(window).width() / 2 + (Math.random() * 200 - Math.random() * 200);
+    this.y = $(window).height() / 2 + (Math.random() * 200 - Math.random() * 200);
 
     this.s = Math.random() * 1;
     this.a = 0;
@@ -253,12 +209,8 @@ class Paramecium {
     this.progress = 0;
     this.canvas = canvas;
     // Set position
-    this.x =
-    $(window).width() / 2 + (Math.random() * 300 - Math.random() * 300);
-    this.y =
-    $(window).height() / 2 + (
-    Math.random() * $(window).height() / 4 -
-    Math.random() * $(window).height() / 4);
+    this.x = $(window).width() / 2 + (Math.random() * 300 - Math.random() * 300);
+    this.y = $(window).height() / 2 + (Math.random() * $(window).height() / 4 - Math.random() * $(window).height() / 4);
     // Get viewport size
     this.w = $(window).width();
     this.h = $(window).height();
@@ -275,7 +227,7 @@ class Paramecium {
   }
 
   createOval(x, y, w, h) {
-    var kappa = 0.5522848,
+    var kappa = .5522848,
     ox = w / 2 * kappa, // control point offset horizontal
     oy = h / 2 * kappa, // control point offset vertical
     xe = x + w, // x-end
@@ -313,14 +265,8 @@ class Paramecium {
   }
 
   move() {
-    this.x +=
-    Math.sin(this.progress / this.variantx1) *
-    Math.cos(this.progress / this.variantx2) /
-    4;
-    this.y +=
-    Math.sin(this.progress / this.varianty1) *
-    Math.cos(this.progress / this.varianty2) /
-    4;
+    this.x += Math.sin(this.progress / this.variantx1) * Math.cos(this.progress / this.variantx2) / 4;
+    this.y += Math.sin(this.progress / this.varianty1) * Math.cos(this.progress / this.varianty2) / 4;
 
     if (this.x < 0 || this.x > this.w - this.radius) {
       return false;
@@ -339,11 +285,11 @@ class Paramecium {
       * Function to create canvas
       */
 function createCanvas() {
-  let tela = document.createElement("canvas");
-  tela.width = $(window).width();
-  tela.height = $(window).height();
+  let tela = document.createElement('canvas');
+  tela.width = $(document).innerWidth();
+  tela.height = $(document).innerHeight();
   $("body").append(tela);
-  let canvas = tela.getContext("2d");
+  let canvas = tela.getContext('2d');
   return [tela, canvas];
 }
 
@@ -361,10 +307,10 @@ function popolate(num) {
         // Set type of planktom
         let type = new FishLarva(canvas);
         if (!time_to_recreate) {
-          if (random > 0.97) type = new FishEgg(canvas);
-          if (random < 0.1 && random > 0) type = new Paramecium(canvas);
+          if (random > .97) type = new FishEgg(canvas);
+          if (random < .1 && random > 0) type = new Paramecium(canvas);
         }
-        if (random > 0.1 && random < 0.8) type = new FishLarvaEgg(canvas);
+        if (random > .1 && random < .8) type = new FishLarvaEgg(canvas);
 
         // if(random < .1) this.type  = "bryozoan"
         // ------------------------------------
@@ -373,7 +319,6 @@ function popolate(num) {
       };
     }(i),
     frequency * i);
-
   }
   return particles.length;
 }
@@ -382,14 +327,7 @@ function popolate(num) {
    * Function to clear layer canvas
    */
 function clear() {
-  let grd = canvas.createRadialGradient(
-  tela.width / 2,
-  tela.height / 2,
-  0,
-  tela.width / 2,
-  tela.height / 2,
-  tela.width);
-
+  let grd = canvas.createRadialGradient(tela.width / 2, tela.height / 2, 0, tela.width / 2, tela.height / 2, tela.width);
   grd.addColorStop(0, "rgba(25,25,54,0.12)");
   grd.addColorStop(1, "rgba(0,0,20,0.01)");
   // Fill with gradient
@@ -402,14 +340,10 @@ function clear() {
    */
 function update() {
   clear();
-  particles = particles.filter(function (p) {
-    return p.move();
-  });
+  particles = particles.filter(function (p) {return p.move();});
   // Recreate particles
   if (time_to_recreate) {
-    if (particles.length < init_num) {
-      popolate(1);
-    }
+    if (particles.length < init_num) {popolate(1);}
   }
   requestAnimationFrame(update.bind(this));
 }

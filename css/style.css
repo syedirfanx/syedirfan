@@ -500,16 +500,18 @@ h3 {
 /* line 91, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_btn.scss */
 .boxed-btn3-white {
   color: #fff;
+ 
   display: inline-block;
-  padding: 13px 27px;
+  padding: 5px 20px;
   font-family: Franklin Gothic Medium,Franklin Gothic,ITC Franklin Gothic,Arial,sans-serif;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 400;
+  text-align: center;
   border: 0;
   border: 1px solid #fff;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
-  border-radius: 5px;
+  border-radius: 20px;
   text-align: center;
   color: #fff !important;
   text-transform: capitalize;
@@ -523,7 +525,7 @@ h3 {
 
 /* line 108, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_btn.scss */
 .boxed-btn3-white:hover {
-  background: #28AE61;
+  background: black;
   color: #fff !important;
   border: 1px solid transparent;
 }
