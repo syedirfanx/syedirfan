@@ -1,351 +1,172 @@
-let max_particles = 1000;
-let particles = [];
-let frequency = 20;
-let init_num = max_particles;
-let max_time = frequency * max_particles;
-let time_to_recreate = false;
-const data = createCanvas();
-let tela = data[0];
-let canvas = data[1];
+ (function () {
+      var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame || function (callback) {
+              window.setTimeout(callback, 1000 / 60);
+          };
+      window.requestAnimationFrame = requestAnimationFrame;
+  })();
 
-// Enable repopolate
-setTimeout(function () {
-	
-  time_to_recreate = true;
-}.bind(this), max_time);
+  // Terrain stuff.
+  var background = document.getElementById("bgCanvas"),
+      bgCtx = background.getContext("2d"),
+      width = window.innerWidth,
+      height = document.body.offsetHeight;
 
-// Popolate particles
-popolate(max_particles);
+  (height < 400) ? height = 400 : height;
 
-class FishEgg {
-  constructor(canvas) {
-    const random = Math.random();
-    this.progress = 0;
-    this.canvas = canvas;
-    // Set position
-    this.x = $(window).width() / 2 + (Math.random() * 300 - Math.random() * 300);
-    this.y = $(window).height() / 2 + (Math.random() * $(window).height() / 4 - Math.random() * $(window).height() / 4);
-    // Get viewport size
-    this.w = $(window).width();
-    this.h = $(window).height();
+  background.width = width;
+  background.height = height;
 
-    // Dimension
-    this.radius = 12 + Math.random() * 6;
-    // Color
-    this.color = "rgba(255,255,255,1)";
-    // Setting
-    this.fish_egg = {
-      offset1: Math.random() > 0.5 ? 0.5 + Math.random() * 3 : 0.5 + Math.random() * -3,
-      offset2: Math.random() > 0.5 ? 0.5 + Math.random() * 3 : 0.5 + Math.random() * -3,
-      offset3: Math.random() > 0.5 ? 0.5 + Math.random() * 3 : 0.5 + Math.random() * -3,
-      radius1: 0.5 + Math.random() * 5,
-      radius2: 0.5 + Math.random() * 5,
-      radius3: 0.5 + Math.random() * 5 };
+  function Terrain(options) {
+      options = options || {};
+      this.terrain = document.createElement("canvas");
+      this.terCtx = this.terrain.getContext("2d");
+      this.scrollDelay = options.scrollDelay || 90;
+      this.lastScroll = new Date().getTime();
 
-    this.variantx1 = Math.random() * 100;
-    this.variantx2 = Math.random() * 100;
-    this.varianty1 = Math.random() * 100;
-    this.varianty2 = Math.random() * 100;
+      this.terrain.width = width;
+      this.terrain.height = height;
+      this.fillStyle = options.fillStyle || "#191D4C";
+      this.mHeight = options.mHeight || height;
+
+      // generate
+      this.points = [];
+
+      var displacement = options.displacement || 140,
+          power = Math.pow(2, Math.ceil(Math.log(width) / (Math.log(2))));
+
+      // set the start height and end height for the terrain
+      this.points[0] = this.mHeight;//(this.mHeight - (Math.random() * this.mHeight / 2)) - displacement;
+      this.points[power] = this.points[0];
+
+      // create the rest of the points
+      for (var i = 1; i < power; i *= 2) {
+          for (var j = (power / i) / 2; j < power; j += power / i) {
+              this.points[j] = ((this.points[j - (power / i) / 2] + this.points[j + (power / i) / 2]) / 2) + Math.floor(Math.random() * -displacement + displacement);
+          }
+          displacement *= 0.6;
+      }
+
+      document.body.appendChild(this.terrain);
   }
 
-  createCircle(x, y, r, c) {
-    this.canvas.beginPath();
-    this.canvas.fillStyle = c;
-    this.canvas.arc(x, y, r, 0, Math.PI * 2, false);
-    this.canvas.fill();
-    this.canvas.closePath();
+  Terrain.prototype.update = function () {
+      // draw the terrain
+      this.terCtx.clearRect(0, 0, width, height);
+      this.terCtx.fillStyle = this.fillStyle;
+      
+      if (new Date().getTime() > this.lastScroll + this.scrollDelay) {
+          this.lastScroll = new Date().getTime();
+          this.points.push(this.points.shift());
+      }
+
+      this.terCtx.beginPath();
+      for (var i = 0; i <= width; i++) {
+          if (i === 0) {
+              this.terCtx.moveTo(0, this.points[0]);
+          } else if (this.points[i] !== undefined) {
+              this.terCtx.lineTo(i, this.points[i]);
+          }
+      }
+
+      this.terCtx.lineTo(width, this.terrain.height);
+      this.terCtx.lineTo(0, this.terrain.height);
+      this.terCtx.lineTo(0, this.points[0]);
+      this.terCtx.fill();
   }
 
-  createEyes() {
-    this.createCircle(this.x + this.fish_egg.offset2, this.y + this.fish_egg.offset2, this.fish_egg.radius2 + 4, "rgba(241, 242, 244, 0.06)");
-    this.createCircle(this.x + this.fish_egg.offset3, this.y + this.fish_egg.offset3, this.fish_egg.radius3 + 2, "rgba(255, 204, 67, 0.08)");
-    this.createCircle(this.x + Math.random(this.progress / 350) * this.fish_egg.offset1, this.y + Math.random(this.progress / 350) * this.fish_egg.offset1, this.fish_egg.radius1, "rgba(152, 19, 4, 0.19)");
+
+  // Second canvas used for the stars
+  bgCtx.fillStyle = '#05004c';
+  bgCtx.fillRect(0, 0, width, height);
+
+  // stars
+  function Star(options) {
+      this.size = Math.random() * 2;
+      this.speed = Math.random() * .05;
+      this.x = options.x;
+      this.y = options.y;
   }
 
-  render() {
-    // Create inside parts
-    this.createEyes();
-
-    this.canvas.beginPath();
-    let c = '130, 151, 180';
-    let rad = this.canvas.createRadialGradient(this.x, this.y, this.radius, this.x, this.y, 1);
-    rad.addColorStop(0, 'rgba(' + c + ',0.09)');
-    rad.addColorStop(0.9, 'rgba(' + c + ',0)');
-    this.canvas.lineWidth = Math.random() * 2.2;
-    this.canvas.fillStyle = rad;
-    this.canvas.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-    this.canvas.fill();
-    this.canvas.strokeStyle = "rgba(255, 255, 217, 0.05)";
-    this.canvas.stroke();
-    this.canvas.closePath();
+  Star.prototype.reset = function () {
+      this.size = Math.random() * 2;
+      this.speed = Math.random() * .05;
+      this.x = width;
+      this.y = Math.random() * height;
   }
 
-  move() {
-    this.x += Math.sin(this.progress / this.variantx1) * Math.cos(this.progress / this.variantx2) / 8;
-    this.y += Math.sin(this.progress / this.varianty1) * Math.cos(this.progress / this.varianty2) / 8;
-
-
-
-    if (this.x < 0 || this.x > this.w - this.radius) {
-      return false;
-    }
-
-    if (this.y < 0 || this.y > this.h - this.radius) {
-      return false;
-    }
-    this.render();
-    this.progress++;
-    return true;
-  }}
-
-
-class FishLarva {
-  constructor(canvas, progress) {
-    const random = Math.random();
-    this.progress = 0;
-    this.canvas = canvas;
-    this.speed = 0.5 + random * 1.3;
-
-    this.x = $(window).width() / 2 + (Math.random() * 200 - Math.random() * 200);
-    this.y = $(window).height() / 2 + (Math.random() * 200 - Math.random() * 200);
-
-    this.s = 0.8 + Math.random() * 0.6;
-    this.a = 0;
-
-    this.w = $(window).width();
-    this.h = $(window).height();
-    this.radius = random * 1.3;
-    this.color = "#f69a34";
-
-    this.variantx1 = Math.random() * 1000;
-    this.variantx2 = Math.random() * 1000;
-    this.varianty1 = Math.random() * 1000;
-    this.varianty2 = Math.random() * 1000;
+  Star.prototype.update = function () {
+      this.x -= this.speed;
+      if (this.x < 0) {
+          this.reset();
+      } else {
+          bgCtx.fillRect(this.x, this.y, this.size, this.size);
+      }
   }
 
-  render() {
-    this.canvas.beginPath();
-    this.canvas.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
-    this.canvas.lineWidth = 2;
-    this.canvas.fillStyle = this.color;
-    this.canvas.fill();
-    this.canvas.closePath();
+  function ShootingStar() {
+      this.reset();
   }
 
-  move() {
-    // this.x += (Math.sin(this.progress/this.variantx1)*Math.cos(this.progress/this.variantx2))/this.speed;
-    // this.y += (Math.sin(this.progress/this.varianty1)*Math.cos(this.progress/this.varianty2))/this.speed;
-    this.x += Math.cos(this.a) * this.s;
-    this.y += Math.sin(this.a) * this.s;
-    this.a += Math.random() * 0.8 - 0.4;
-    if (this.x < 0 || this.x > this.w - this.radius) {
-      return false;
-    }
-
-    if (this.y < 0 || this.y > this.h - this.radius) {
-      return false;
-    }
-    this.render();
-    this.progress++;
-    return true;
-  }}
-
-
-
-class FishLarvaEgg {
-  constructor(canvas, progress) {
-    const random = Math.random();
-    this.progress = 0;
-    this.canvas = canvas;
-    this.speed = 0.5 + random * 0.2;
-
-    this.x = $(window).width() / 2 + (Math.random() * 200 - Math.random() * 200);
-    this.y = $(window).height() / 2 + (Math.random() * 200 - Math.random() * 200);
-
-    this.s = Math.random() * 1;
-    this.a = 0;
-
-    this.w = $(window).width();
-    this.h = $(window).height();
-    this.radius = random * 0.8;
-    this.color = random > 0.8 ? "#82a0c4" : "#2E4765";
-
-    this.variantx1 = Math.random() * 100;
-    this.variantx2 = Math.random() * 100;
-    this.varianty1 = Math.random() * 100;
-    this.varianty2 = Math.random() * 100;
+  ShootingStar.prototype.reset = function () {
+      this.x = Math.random() * width;
+      this.y = 0;
+      this.len = (Math.random() * 80) + 10;
+      this.speed = (Math.random() * 10) + 6;
+      this.size = (Math.random() * 1) + 0.1;
+      // this is used so the shooting stars arent constant
+      this.waitTime = new Date().getTime() + (Math.random() * 3000) + 500;
+      this.active = false;
   }
 
-  render() {
-    this.canvas.beginPath();
-    this.canvas.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
-    this.canvas.lineWidth = 2;
-    this.canvas.fillStyle = this.color;
-    this.canvas.fill();
-    this.canvas.closePath();
+  ShootingStar.prototype.update = function () {
+      if (this.active) {
+          this.x -= this.speed;
+          this.y += this.speed;
+          if (this.x < 0 || this.y >= height) {
+              this.reset();
+          } else {
+              bgCtx.lineWidth = this.size;
+              bgCtx.beginPath();
+              bgCtx.moveTo(this.x, this.y);
+              bgCtx.lineTo(this.x + this.len, this.y - this.len);
+              bgCtx.stroke();
+          }
+      } else {
+          if (this.waitTime < new Date().getTime()) {
+              this.active = true;
+          }
+      }
   }
 
-  move() {
-    this.x += Math.cos(this.a) * this.s;
-    this.y += Math.sin(this.a) * this.s;
-    this.a += Math.random() * 0.8 - 0.4;
+  var entities = [];
 
-    if (this.x < 0 || this.x > this.w - this.radius) {
-      return false;
-    }
-
-    if (this.y < 0 || this.y > this.h - this.radius) {
-      return false;
-    }
-    this.render();
-    this.progress++;
-    return true;
-  }}
-
-
-class Paramecium {
-  constructor(canvas) {
-    const random = Math.random();
-    this.progress = 0;
-    this.canvas = canvas;
-    // Set position
-    this.x = $(window).width() / 2 + (Math.random() * 300 - Math.random() * 300);
-    this.y = $(window).height() / 2 + (Math.random() * $(window).height() / 4 - Math.random() * $(window).height() / 4);
-    // Get viewport size
-    this.w = $(window).width();
-    this.h = $(window).height();
-    this.rotation = random * 180 * Math.PI / 180;
-    // Dimension
-    this.radius = 12 + Math.random() * 6;
-    // Color
-    this.color = "rgba(255,255,255,1)";
-    // Setting
-    this.variantx1 = Math.random() * 100;
-    this.variantx2 = Math.random() * 100;
-    this.varianty1 = Math.random() * 100;
-    this.varianty2 = Math.random() * 100;
+  // init the stars
+  for (var i = 0; i < height; i++) {
+      entities.push(new Star({
+          x: Math.random() * width,
+          y: Math.random() * height
+      }));
   }
 
-  createOval(x, y, w, h) {
-    var kappa = .5522848,
-    ox = w / 2 * kappa, // control point offset horizontal
-    oy = h / 2 * kappa, // control point offset vertical
-    xe = x + w, // x-end
-    ye = y + h, // y-end
-    xm = x + w / 2, // x-middle
-    ym = y + h / 2; // y-middle
+  // Add 2 shooting stars that just cycle.
+  entities.push(new ShootingStar());
+  entities.push(new ShootingStar());
+entities.push(new Terrain({mHeight : (height/2)-120}));
+entities.push(new Terrain({displacement : 120, scrollDelay : 50, fillStyle : "rgb(17,20,40)", mHeight : (height/2)-60}));
+  entities.push(new Terrain({displacement : 100, scrollDelay : 20, fillStyle : "rgb(10,10,5)", mHeight : height/2}));
 
-    this.canvas.save();
+  //animate background
+  function animate() {
+      bgCtx.fillStyle = '#110E19';
+      bgCtx.fillRect(0, 0, width, height);
+      bgCtx.fillStyle = '#ffffff';
+      bgCtx.strokeStyle = '#ffffff';
 
-    this.canvas.translate(this.w / 2, this.h / 2);
+      var entLen = entities.length;
 
-    // Rotate 1 degree
-    this.canvas.rotate(this.rotation);
-
-    // Move registration point back to the top left corner of canvas
-    this.canvas.translate(-this.w / 2, -this.h / 2);
-
-    this.canvas.beginPath();
-    this.canvas.moveTo(x, ym);
-    this.canvas.quadraticCurveTo(x, y, xm, y);
-    this.canvas.quadraticCurveTo(xe, y, xe, ym);
-    this.canvas.quadraticCurveTo(xe, ye, xm, ye);
-    this.canvas.quadraticCurveTo(x, ye, x, ym);
-
-    this.canvas.strokeStyle = 1;
-    this.canvas.fillStyle = "rgba(255,255,255,0.01)";
-    this.canvas.fill();
-    this.canvas.stroke();
-    this.canvas.restore();
+      while (entLen--) {
+          entities[entLen].update();
+      }
+      requestAnimationFrame(animate);
   }
-
-  render() {
-    // Create inside parts
-    this.createOval(this.x, this.y, 12, 4);
-  }
-
-  move() {
-    this.x += Math.sin(this.progress / this.variantx1) * Math.cos(this.progress / this.variantx2) / 4;
-    this.y += Math.sin(this.progress / this.varianty1) * Math.cos(this.progress / this.varianty2) / 4;
-
-    if (this.x < 0 || this.x > this.w - this.radius) {
-      return false;
-    }
-
-    if (this.y < 0 || this.y > this.h - this.radius) {
-      return false;
-    }
-    this.render();
-    this.progress++;
-    return true;
-  }}
-
-
-/*
-      * Function to create canvas
-      */
-function createCanvas() {
-  let tela = document.createElement('canvas');
-  tela.width = $(document).innerWidth();
-  tela.height = $(document).innerHeight();
-  $("body").append(tela);
-  let canvas = tela.getContext('2d');
-  return [tela, canvas];
-}
-
-/*
-   * Function to clear layer canvas
-   * @num:number number of particles
-   */
-function popolate(num) {
-  for (var i = 0; i < num; i++) {
-    setTimeout(
-    function (x) {
-      return function () {
-        let random = Math.random();
-        // ------------------------------------
-        // Set type of planktom
-        let type = new FishLarva(canvas);
-        if (!time_to_recreate) {
-          if (random > .97) type = new FishEgg(canvas);
-          if (random < .1 && random > 0) type = new Paramecium(canvas);
-        }
-        if (random > .1 && random < .8) type = new FishLarvaEgg(canvas);
-
-        // if(random < .1) this.type  = "bryozoan"
-        // ------------------------------------
-        // Add particle
-        particles.push(type);
-      };
-    }(i),
-    frequency * i);
-  }
-  return particles.length;
-}
-
-/*
-   * Function to clear layer canvas
-   */
-function clear() {
-  let grd = canvas.createRadialGradient(tela.width / 2, tela.height / 2, 0, tela.width / 2, tela.height / 2, tela.width);
-  grd.addColorStop(0, "rgba(25,25,54,0.12)");
-  grd.addColorStop(1, "rgba(0,0,20,0.01)");
-  // Fill with gradient
-  canvas.fillStyle = grd;
-  canvas.fillRect(0, 0, tela.width, tela.height);
-}
-
-/*
-   * Function to update particles in canvas
-   */
-function update() {
-  clear();
-  particles = particles.filter(function (p) {return p.move();});
-  // Recreate particles
-  if (time_to_recreate) {
-    if (particles.length < init_num) {popolate(1);}
-  }
-  requestAnimationFrame(update.bind(this));
-}
-// Update canvas
-update();
+  animate();
