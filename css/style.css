@@ -1332,7 +1332,7 @@ h3 {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  background: #040E27;
+  
 }
 
 @media (max-width: 767px) {
@@ -1499,14 +1499,14 @@ h3 {
   .slider_area .single_slider .slider_text h3 {
     font-size: 20px;
     letter-spacing: 3px;
-    line-height: 55px;
+    line-height: 35px;
   }
 }
 
 /* line 44, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_slider.scss */
 .slider_area .single_slider .slider_text span {
   font-size: 23px;
- 
+  padding: 7px;
   color: #0181F5;
   position: relative;
   z-index: 1;
