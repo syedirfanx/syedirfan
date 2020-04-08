@@ -1472,7 +1472,7 @@ h3 {
 
 /* line 21, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_slider.scss */
 .slider_area .single_slider .slider_text h3 {
-  color: #bfbfbf;
+  color: white;
   font-family: Franklin Gothic Medium,Franklin Gothic,ITC Franklin Gothic,Arial,sans-serif;
   font-size: 20px;
   font-weight: 0;
@@ -1512,7 +1512,7 @@ h3 {
   position: relative;
   z-index: 1;
   display: block;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   font-family: Franklin Gothic Medium,Franklin Gothic,ITC Franklin Gothic,Arial,sans-serif;
 }
 
