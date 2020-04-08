@@ -122,3 +122,81 @@
 
 
 
+
+
+
+
+
+
+
+
+
+.card2 {
+  background: white;
+  text-decoration: none;
+  border-radius: 0;
+  color: #040e27;
+
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  min-height: 20%;
+  position: relative;
+  top: 0;
+  -webkit-transition: all 0.1s ease-in;
+  transition: all 0.1s ease-in;
+}
+.card2:hover {
+  top: -2px;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+}
+.card2 article {
+  padding: 20px;
+  -webkit-box-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
+}
+.card2 h1 {
+  font-size: 20px;
+  font-family: Franklin Gothic Medium,Franklin Gothic,ITC Franklin Gothic,Arial,sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  margin: 0;
+  color: black;
+}
+.card2 p {
+	font-family: Franklin Gothic Medium,Franklin Gothic,ITC Franklin Gothic,Arial,sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  -webkit-box-flex: 1;
+          flex: 1;
+  line-height: 1.4;
+}
+.card2 span {
+  font-size: 12px;
+  font-weight: bold;
+  color: black;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 2em 0 0 0;
+}
+.card2 .thumb {
+  padding-bottom: 60%;
+  background-size: cover;
+  background-position: center center;
+  border-radius:0;
+}
+
+
+
+
+
+

@@ -3689,6 +3689,67 @@ h3 {
   margin-bottom: 0;
 }
 
+
+
+
+
+
+
+.creative_blog_area2 {
+  position: relative;
+  padding-top: 200px;
+  overflow: hidden;
+  z-index: 2;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  /* line 1, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_create_blog.scss */
+  .creative_blog_area2 {
+    padding-top: 100px;
+  }
+}
+
+@media (max-width: 767px) {
+  /* line 1, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_create_blog.scss */
+  .creative_blog_area2 {
+    padding-top: 100px;
+  }
+}
+
+/* line 12, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_create_blog.scss */
+.creative_blog_area2::before {
+  position: absolute;
+  background: white;
+  height: 50%;
+  width: 100%;
+  content: '';
+  bottom: 0;
+  z-index: -2;
+}
+
+/* line 21, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_create_blog.scss */
+.creative_blog_area2::after {
+  position: absolute;
+  background: white;
+  height: 50%;
+  width: 100%;
+  content: '';
+  top: 0;
+  z-index: -2;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* line 1, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_create_blog.scss */
 .creative_blog_area {
   position: relative;
