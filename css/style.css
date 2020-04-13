@@ -1483,7 +1483,7 @@ h3 {
 @media (max-width: 767px) {
   /* line 21, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_slider.scss */
   .slider_area .single_slider .slider_text h3 {
-    font-size: 20px;
+    font-size: 15px;
     line-height: 35px;
   }
 }
@@ -1491,7 +1491,7 @@ h3 {
 @media (min-width: 768px) and (max-width: 991px) {
   /* line 21, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_slider.scss */
   .slider_area .single_slider .slider_text h3 {
-    font-size: 20px;
+    font-size: 15px;
     line-height: 35px;
   }
 }
@@ -1499,7 +1499,7 @@ h3 {
 @media (min-width: 992px) and (max-width: 1200px) {
   /* line 21, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_slider.scss */
   .slider_area .single_slider .slider_text h3 {
-    font-size: 20px;
+    font-size: 15px;
     letter-spacing: 3px;
     line-height: 35px;
   }
@@ -1523,14 +1523,14 @@ h3 {
 @media (min-width: 992px) and (max-width: 1200px) {
   /* line 44, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_slider.scss */
   .slider_area .single_slider .slider_text span {
-    font-size: 23px;
+    font-size: 10px;
   }
 }
 
 @media (max-width: 767px) {
   /* line 44, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_slider.scss */
   .slider_area .single_slider .slider_text span {
-    font-size: 23px;
+    font-size: 10px;
   }
 }
 
