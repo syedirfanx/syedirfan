@@ -38,7 +38,7 @@
   height: 100%;
   border-radius: 50%;
   mix-blend-mode: screen;
-  background-image: radial-gradient(#99ffff, #99ffff 10%, rgba(153, 255, 255, 0) 56%);
+  background-image: radial-gradient(#ffffff, #ffffff 10%, rgba(153, 255, 255, 0) 56%);
   -webkit-animation: fadein-frames 200ms infinite, scale-frames 2s infinite;
           animation: fadein-frames 200ms infinite, scale-frames 2s infinite;
 }
@@ -63,7 +63,7 @@
   100% {
     opacity: 1;
   }
-}
+}/*
 @-webkit-keyframes scale-frames {
   0% {
     -webkit-transform: scale3d(0.4, 0.4, 1);
@@ -91,7 +91,7 @@
     -webkit-transform: scale3d(0.4, 0.4, 1);
             transform: scale3d(0.4, 0.4, 1);
   }
-}
+}*/
 .circle-container:nth-child(1) {
   width: 4px;
   height: 4px;
