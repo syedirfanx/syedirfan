@@ -549,6 +549,62 @@ h3 {
   width: 220px;
 }
 
+
+
+
+
+.boxed-btn3-white2 {
+  color: #fff;
+
+  display: inline-block;
+  padding: 2px 20px;
+  font-family: Franklin Gothic Medium,Franklin Gothic,ITC Franklin Gothic,Arial,sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  text-align: center;
+  border: 0;
+  border: 1px solid #fff;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  text-align: center;
+  color: #fff !important;
+  text-transform: capitalize;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+  cursor: pointer;
+  letter-spacing: 0;
+}
+
+/* line 108, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_btn.scss */
+.boxed-btn3-white2:hover {
+  background: black;
+  color: #fff !important;
+  border: 1px solid transparent;
+}
+
+/* line 113, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_btn.scss */
+.boxed-btn3-white2 i {
+  margin-right: 2px;
+}
+
+/* line 116, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_btn.scss */
+.boxed-btn3-white2:focus {
+  outline: none;
+}
+
+/* line 119, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_btn.scss */
+.boxed-btn3-white2.large-width {
+  width: 220px;
+}
+
+
+
+
+
+
 /* line 124, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_btn.scss */
 .boxed-btn3-green-2 {
   color: #615CFD !important;
@@ -1372,7 +1428,7 @@ h3 {
   font-weight: bold;
   font-style: italic;
   line-height: 35px;
-  padding-top:50px;
+  padding-top:35px;
   padding-bottom: 10px;
 }
 
@@ -1475,7 +1531,7 @@ h3 {
 .slider_area .single_slider .slider_text h3 {
   color: white;
   font-family: Franklin Gothic Medium,Franklin Gothic,ITC Franklin Gothic,Arial,sans-serif;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 0;
   line-height: 35px;
 }
@@ -1651,7 +1707,7 @@ h3 {
  
 }
 .circular--sq {
-  border-radius: 10%;
+  border-radius: 50%;
   margin-left: auto;
   margin-right: auto;
   height:20%;
@@ -2178,7 +2234,7 @@ h3 {
 
 /* line 72, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_about.scss */
 .about_wrap_area .about_heading h3 {
-  font-size: 50px;
+  font-size: 40px;
   font-weight: 400;
   color: #040E27;
 }
