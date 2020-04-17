@@ -1540,7 +1540,8 @@ h3 {
   /* line 21, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_slider.scss */
   .slider_area .single_slider .slider_text h3 {
     font-size: 15px;
-    line-height: 35px;
+    line-height: 20px;
+	padding-bottom:5px;
   }
 }
 
