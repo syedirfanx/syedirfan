@@ -42,6 +42,7 @@
   -webkit-animation: fadein-frames 200ms infinite, scale-frames 2s infinite;
           animation: fadein-frames 200ms infinite, scale-frames 2s infinite;
 }
+/*
 @-webkit-keyframes fade-frames {
   0% {
     opacity: 1;
@@ -63,7 +64,7 @@
   100% {
     opacity: 1;
   }
-}/*
+}
 @-webkit-keyframes scale-frames {
   0% {
     -webkit-transform: scale3d(0.4, 0.4, 1);
@@ -91,7 +92,7 @@
     -webkit-transform: scale3d(0.4, 0.4, 1);
             transform: scale3d(0.4, 0.4, 1);
   }
-}*/
+}
 .circle-container:nth-child(1) {
   width: 4px;
   height: 4px;
@@ -6892,7 +6893,7 @@
   -webkit-animation-delay: 1069ms;
           animation-delay: 1069ms;
 }
-
+*/
 .message {
   position: absolute;
   right: 20px;
