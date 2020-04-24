@@ -6932,10 +6932,12 @@
   position: relative;
 }
 
+/*
 img {
   display: block;
   object-fit: cover;
 }
+*/
 
 .wrapper {
   max-width: 1440px;

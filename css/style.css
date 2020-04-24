@@ -3279,6 +3279,7 @@ h3 {
   padding-top: 200px;
   padding-bottom: 170px;
   position: relative;
+  text-align: center;
 }
 
 @media (max-width: 767px) {
@@ -3286,6 +3287,7 @@ h3 {
   .service_area {
     padding-bottom: 30px;
     padding-top: 60px;
+	text-align: center;
   }
 }
 
@@ -3294,6 +3296,7 @@ h3 {
   .service_area {
     padding-bottom: 50px;
     padding-top: 100px;
+	text-align: center;
   }
 }
 
@@ -3304,6 +3307,7 @@ h3 {
   -o-transition: 0.3s;
   transition: 0.3s;
   margin-bottom: 30px;
+  
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
@@ -3329,9 +3333,15 @@ h3 {
   }
 }
 
+
+
+
+
 /* line 32, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_service.scss */
 .service_area .single_service p {
   margin-bottom: 0;
+  font-size: 15px;
+
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
