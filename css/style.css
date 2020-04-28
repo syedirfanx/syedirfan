@@ -7405,7 +7405,37 @@ h6 {
   .blur {
     ;
     -webkit-backdrop-filter: blur(2em);
-    backdrop-filter: blur(2em);
+    backdrop-filter: blur(.5em);
   }
 }
 
+
+
+
+
+
+
+
+.blur2 {
+  /
+  
+   width: 100%;
+   position: relative; /* child absolute */
+  margin: 0 -9999rem;
+  /* add back section padding value */
+  padding: .25rem 9999rem;
+ 
+  
+
+  
+}
+
+
+
+@supports ((-webkit-backdrop-filter: blur(2em)) or (backdrop-filter: blur(2em))) {
+  .blur2 {
+    ;
+    -webkit-backdrop-filter: blur(2em);
+    backdrop-filter: blur(2em);
+  }
+}
