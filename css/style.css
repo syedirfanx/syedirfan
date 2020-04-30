@@ -1695,7 +1695,7 @@ h3 {
   }
 }
 .circular--square {
- border-radius:500px;
+ border-radius:00px;
   
  
 }
@@ -2139,12 +2139,15 @@ h3 {
   }
 }
 
+.about_area .about_info h2 {font-family:'Quicksand';}
+
 /* line 23, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_about.scss */
 .about_area .about_info h3 {
   font-size: 50px;
   font-weight: 400;
   line-height: 62px;
   margin-bottom: 30px;
+  font-family:'Quicksand';
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
@@ -2178,9 +2181,67 @@ h3 {
     display: none;
   }
 }
+
+
+
+
+
+
+
+
+.about_area .about_info h5 {
+  font-size: 15px;
+  font-weight: 0;
+  line-height: 20px;
+  margin-bottom: 10px;
+  font-family:'Quicksand';
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  /* line 23, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_about.scss */
+  .about_area .about_info h5 {
+    font-size: 15px;
+    line-height: 20px;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 767px) {
+  /* line 23, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_about.scss */
+  .about_area .about_info h5 {
+    font-size: 15px;
+    line-height: 20px;
+    margin-bottom: 10px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  /* line 38, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_about.scss */
+  .about_area .about_info h5 br {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  /* line 38, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_about.scss */
+  .about_area .about_info h5 br {
+    display: none;
+  }
+}
+
+
+
+
+
+
+
+
+
+
 
 /* line 47, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_about.scss */
 .about_area .about_info p {
+	font-family:'Quicksand';
   font-size: 16px;
   line-height: 28px;
   margin-top: 10px;
@@ -3312,6 +3373,7 @@ h3 {
 /* line 22, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_service.scss */
 .service_area .single_service h3 {
   font-size: 26px;
+  font-family: 'Quicksand', sans-serif;
   font-weight: 400;
   color: #040E27;
   margin-top: 37px;
@@ -3332,7 +3394,9 @@ h3 {
 /* line 32, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_service.scss */
 .service_area .single_service p {
   margin-bottom: 0;
-  font-size: 15px;
+  font-size: 14px;
+  font-family: 'Quicksand';
+  font-weight: 0;
 
 }
 
