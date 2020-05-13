@@ -471,9 +471,10 @@ h3 {
   font-size: 12px;
   font-weight: 100%;
   border: 0;
+  
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
-  border-radius: 0px;
+  border-radius: 0.3rem;
   text-align: center;
   color: #fff !important;
   text-transform: capitalize;
@@ -487,7 +488,7 @@ h3 {
 
 /* line 78, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_btn.scss */
 .boxed-btn4:hover {
-  background: #615CFD;
+  background: #4842f5;
   color: #fff !important;
 }
 
@@ -7550,17 +7551,7 @@ img {
   max-width: 100%;
   vertical-align: middle;
 }
-.btn {
-  background-color: white;
-  border: 1px solid #cccccc;
-  color: #696969;
-  padding: 0.5rem;
-  text-transform: lowercase;
-}
-.btn--block {
-  display: block;
-  width: 100%;
-}
+
 .cards {
   display: -webkit-box;
   display: flex;
@@ -7585,9 +7576,9 @@ img {
   }
 }
 .card {
-  background-color: white;
-  border-radius: 0.25rem;
-  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+  
+  border-radius: 0.30rem;
+  
   display: -webkit-box;
   display: flex;
   -webkit-box-orient: vertical;
@@ -7635,10 +7626,10 @@ img {
 }
 
 .card__title {
-  color: #696969;
+  color: black;
   font-family: 'Quicksand', sans-serif;
-  font-size: 1.25rem;
-  font-weight: 300;
+  font-size: 1.1rem;
+  font-weight: bold;
   letter-spacing: 0;
   
 }
