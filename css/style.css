@@ -7514,8 +7514,8 @@ h6 {
 .console-container {
  
   font-family: monospace; 
-  font-size:1.5em;
-  text-align:center;
+  font-size:0.9em;
+  text-align:left;
   height:100%;
   width:100%;
   display:block;
@@ -7523,7 +7523,7 @@ h6 {
   color:white;
   top:0;
   bottom:100px;
-  left:15px;
+  left:10px;
   right:0;
   margin:auto;
 }
