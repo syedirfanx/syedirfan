@@ -43,10 +43,10 @@
 }
 
 .card {
-  background: #040e27;
+  background: #0a2147;
   text-decoration: none;
   border-radius: 0;
-  color: #040e27;
+  color: #0a2147;
 
   display: -webkit-box;
   display: flex;
@@ -135,7 +135,7 @@
   background: white;
   text-decoration: none;
   border-radius: 0;
-  color: #040e27;
+  color: #0a2147;
 
   display: -webkit-box;
   display: flex;
