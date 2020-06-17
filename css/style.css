@@ -7470,7 +7470,7 @@ h6 {
   .blur {
     ;
     -webkit-backdrop-filter: blur(2em);
-    backdrop-filter: blur(0em);
+    backdrop-filter: blur(2em);
   }
 }
 
@@ -7514,8 +7514,9 @@ h6 {
 .console-container {
  
   font-family: monospace; 
-  font-size:1.8em;
-  text-align:center;
+  font-size:1em;
+  text-align:left;
+  font-style: bold;
   height:100%;
   width:100%;
   display:block;
@@ -7523,7 +7524,7 @@ h6 {
   color:white;
   top:0;
   bottom:100px;
-  left:0;
+  left:8px;
   right:0;
   margin:auto;
 }
