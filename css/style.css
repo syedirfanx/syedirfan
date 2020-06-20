@@ -7534,6 +7534,26 @@ h6 {
   right:0;
   margin:auto;
 }
+
+.console-container2 {
+ 
+  font-family: monospace; 
+  font-size:1.5em;
+  text-align:left;
+  font-style: bold;
+  height:100%;
+  width:100%;
+  display:block;
+  position:absolute;
+  color: white;
+  top:0;
+  bottom:150px;
+  left:80px;
+  right:0;
+  margin:auto;
+}
+
+
 .console-underscore {
    display:inline-block;
   position:relative;
