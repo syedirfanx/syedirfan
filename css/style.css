@@ -1743,7 +1743,7 @@ h3 {
 .social-icons {
   padding: 0;
   list-style: none;
-  margin: 2em;
+  margin: 1em;
 }
 .social-icons li {
   display: inline-block;
@@ -1754,8 +1754,8 @@ h3 {
 .social-icons i {
   color: #fff;
   position: absolute;
-  top: 17px;
-  left: 17px;
+  top: 15px;
+  left: 15px;
   transition: all 265ms ease-out;
 }
 .social-icons a {
@@ -1766,8 +1766,8 @@ h3 {
   -ms-transform: scale(1);
   -webkit-transform: scale(1);
   content: " ";
-  width: 60px;
-  height: 60px;
+  width: 55px;
+  height: 55px;
   border-radius: 100%;
   display: block;
   background: linear-gradient(45deg, #00b5f5, #002a8f);
