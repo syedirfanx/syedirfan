@@ -7666,8 +7666,8 @@ img {
   display: flex;
   flex-wrap: wrap;
   list-style: none;
-  margin: 40px;
-  padding: 0px;;
+  margin: 0px;
+  padding: 15px;;
 }
 .cards__item {
   display: -webkit-box;
