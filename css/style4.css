@@ -1,25 +1,6 @@
 @charset "UTF-8";
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .band {
-	
   width: 100%;
   max-width: 1240px;
   margin: 0 auto;
@@ -27,18 +8,15 @@
   grid-template-columns: 1fr;
   grid-template-rows: auto;
   grid-gap: 10px;
- 
 }
 @media (min-width: 30em) {
   .band {
     grid-template-columns: 1fr 1fr;
-	
   }
 }
 @media (min-width: 60em) {
   .band {
     grid-template-columns: repeat(4, 1fr);
-	
   }
 }
 
@@ -52,7 +30,7 @@
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-          flex-direction: column;
+  flex-direction: column;
   min-height: 20%;
   position: relative;
   top: 0;
@@ -66,29 +44,29 @@
 .card article {
   padding: 20px;
   -webkit-box-flex: 1;
-          flex: 1;
+  flex: 1;
   display: -webkit-box;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-          flex-direction: column;
+  flex-direction: column;
   -webkit-box-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
 }
 .card h1 {
   font-size: 20px;
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: normal;
   font-style: normal;
   margin: 0;
   color: white;
 }
 .card p {
-	font-family: 'Quicksand', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: normal;
   font-style: normal;
   -webkit-box-flex: 1;
-          flex: 1;
+  flex: 1;
   line-height: 1.4;
 }
 .card span {
@@ -103,7 +81,7 @@
   padding-bottom: 60%;
   background-size: cover;
   background-position: center center;
-  border-radius:0;
+  border-radius: 0;
 }
 
 @media (min-width: 60em) {
@@ -115,22 +93,6 @@
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .card2 {
   background: white;
   text-decoration: none;
@@ -141,7 +103,7 @@
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-          flex-direction: column;
+  flex-direction: column;
   min-height: 20%;
   position: relative;
   top: 0;
@@ -155,29 +117,29 @@
 .card2 article {
   padding: 20px;
   -webkit-box-flex: 1;
-          flex: 1;
+  flex: 1;
   display: -webkit-box;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-          flex-direction: column;
+  flex-direction: column;
   -webkit-box-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
 }
 .card2 h1 {
   font-size: 20px;
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: normal;
   font-style: normal;
   margin: 0;
   color: black;
 }
 .card2 p {
-font-family: 'Quicksand', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: normal;
   font-style: normal;
   -webkit-box-flex: 1;
-          flex: 1;
+  flex: 1;
   line-height: 1.4;
 }
 .card2 span {
@@ -192,11 +154,5 @@ font-family: 'Quicksand', sans-serif;
   padding-bottom: 60%;
   background-size: cover;
   background-position: center center;
-  border-radius:0;
+  border-radius: 0;
 }
-
-
-
-
-
-
