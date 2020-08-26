@@ -7698,9 +7698,9 @@ img {
 }
 
 .timeline-event-copy {
-  padding: 2em;
+  padding: 0.7em;
   position: relative;
-  top: -1.875em;
+  top: -0.7em;
   left: 4em;
   width: 90%;
 }
