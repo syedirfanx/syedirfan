@@ -1660,14 +1660,11 @@ h3 {
   }
 }
 .circular--square {
-  border-radius: 50%;
+  border-radius: 2%;
   margin-left: auto;
   margin-right: auto;
   height: 20%;
   width: 20%;
-  box-shadow: 0px 0px 32px 10px rgba(99, 99, 148, 0.46);
-  -moz-box-shadow: 0px 0px 32px 10px rgba(99, 99, 148, 0.46);
-  -webkit-box-shadow: 0px 0px 32px 10px rgba(99, 99, 148, 0.46);
 }
 .circular--sq {
   border-radius: 50%;
@@ -2205,7 +2202,7 @@ h3 {
 }
 
 .about_area .about_info h4 {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 0;
   line-height: 27px;
   margin-bottom: 10px;
@@ -2215,7 +2212,7 @@ h3 {
 @media (min-width: 768px) and (max-width: 991px) {
   /* line 23, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_about.scss */
   .about_area .about_info h4 {
-    font-size: 18px;
+    font-size: 16px;
     line-height: 27px;
     margin-bottom: 10px;
   }
@@ -2224,7 +2221,7 @@ h3 {
 @media (max-width: 767px) {
   /* line 23, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_about.scss */
   .about_area .about_info h4 {
-    font-size: 18px;
+    font-size: 16px;
     line-height: 27px;
     margin-bottom: 10px;
   }
@@ -3429,6 +3426,30 @@ h3 {
   /* line 22, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_service.scss */
   .service_area .single_service h3 {
     font-size: 22px;
+  }
+}
+
+.service_area h3 {
+  font-size: 50px;
+  font-weight: 400;
+  color: #0a2147;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+@media (max-width: 767px) {
+  /* line 33, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_create_blog.scss */
+  .service_area h3 {
+    font-size: 30px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  /* line 22, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_service.scss */
+  .service_area h3 {
+    font-size: 30px;
   }
 }
 
