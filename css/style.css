@@ -7673,3 +7673,16 @@ img {
   line-height: 1.5;
   margin-bottom: 1.25rem;
 }
+.fa-kaggle:before {
+  font-family: roboto;
+  color: #ffffff;
+  font-size: 1em;
+  content: "k";
+}
+
+.fa-dev:before {
+  font-family: roboto;
+
+  font-size: 0.49em;
+  content: "DEV";
+}
