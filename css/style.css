@@ -7488,7 +7488,7 @@ h6 {
 /*# sourceMappingURL=style.css.map */
 
 .blur {
-  /width: 100%;
+  width: 100%;
   position: relative; /* child absolute */
   margin: 0 -9999rem;
   /* add back section padding value */
@@ -7505,7 +7505,7 @@ h6 {
 }
 
 .blur2 {
-  /width: 100%;
+  width: 100%;
   position: relative; /* child absolute */
   margin: 0 -9999rem;
   /* add back section padding value */
@@ -7681,8 +7681,8 @@ img {
 }
 
 .fa-dev:before {
-  font-family: roboto;
-
-  font-size: 0.49em;
+  font-family: "Domine";
+  text-align: center;
+  font-size: 0.415em;
   content: "DEV";
 }
