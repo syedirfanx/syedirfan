@@ -7681,8 +7681,9 @@ img {
 }
 
 .fa-dev:before {
-  font-family: "Domine";
+  font-family: "roboto";
   text-align: center;
-  font-size: 0.415em;
+  font-size: 0.48em;
   content: "DEV";
+  font-weight: bold;
 }
