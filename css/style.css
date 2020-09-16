@@ -4997,7 +4997,7 @@ h6 {
 /* line 455, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_elements.scss */
 .unordered-list li {
   position: relative;
-  padding-left: 30px;
+  padding-left: 20px;
   line-height: 1.82em !important;
 }
 
@@ -5005,11 +5005,11 @@ h6 {
 .unordered-list li:before {
   content: "";
   position: absolute;
-  width: 14px;
-  height: 14px;
-  border: 3px solid #ff5e13;
+  width: 10px;
+  height: 10px;
+  border: 2px solid #0a2147;
   background: #fff;
-  top: 4px;
+  top: 6.5px;
   left: 0;
   border-radius: 50%;
 }
