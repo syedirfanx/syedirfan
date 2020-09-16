@@ -5014,6 +5014,25 @@ h6 {
   border-radius: 50%;
 }
 
+.unordered-list1 li {
+  position: relative;
+  padding-left: 20px;
+  line-height: 1.82em !important;
+}
+
+/* line 459, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_elements.scss */
+.unordered-list1 li:before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: 2px solid #0a2147;
+  background: #fff;
+  top: 9px;
+  left: 0;
+  border-radius: 50%;
+}
+
 /* line 473, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_elements.scss */
 .ordered-list {
   margin-left: 30px;
