@@ -1696,7 +1696,7 @@ h3 {
   display: inline-block;
   margin: 0.15em;
   position: relative;
-  font-size: 1.75em;
+  font-size: 1.65em;
 }
 .social-icons i {
   color: #fff;
@@ -7692,7 +7692,7 @@ img {
   line-height: 1.5;
   margin-bottom: 1.25rem;
 }
-.fa-kaggle:before {
+.fab-kaggle:before {
   font-family: roboto;
   color: #ffffff;
   font-size: 1em;
