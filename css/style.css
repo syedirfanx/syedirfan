@@ -7552,10 +7552,10 @@ h6 {
   opacity: 0;
 }
 .console-container {
-  font-family: "Open sans";
+  font-family: "Lucida Sans";
   font-size: 2em;
   text-align: left;
-  font-style: bold;
+  font-style: normal;
   height: 100%;
   width: 100%;
   display: block;
