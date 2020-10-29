@@ -7456,6 +7456,10 @@ h6 {
   margin-right: 14px;
 }
 
+.wrapperz {
+  padding: 30px 0;
+}
+
 @media (max-width: 576px) {
   /* line 150, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_blog_part.scss */
   .blog_part .single-home-blog .card ul li {

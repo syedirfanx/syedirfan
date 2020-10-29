@@ -1,152 +1,87 @@
-
-@import 'varriable.scss';
-@import 'mixins.scss';
-@import 'extend';
-@import 'responsive.scss';
-@import 'theme-default.scss';
-@import 'btn';
-@import 'section_title';
-@import 'slick-nav.scss';
-
-
+@import "varriable.scss";
+@import "mixins.scss";
+@import "extend";
+@import "responsive.scss";
+@import "theme-default.scss";
+@import "btn";
+@import "section_title";
+@import "slick-nav.scss";
 
 // header
-@import 'header';
+@import "header";
 
 // slider
-@import 'slider';
+@import "slider";
 
 // about
-@import 'features';
+@import "features";
 
 // counter
-@import 'counter';
+@import "counter";
 // counter
-@import 'about';
+@import "about";
 
 // gallery
-@import '_gallery';
+@import "_gallery";
 
 // about
-@import 'footer';
+@import "footer";
 
-@import 'bradcam';
+@import "bradcam";
 
-@import 'department';
+@import "department";
 
-@import 'tesmonial';
+@import "tesmonial";
 
-@import 'discuss';
+@import "discuss";
 
-@import 'service';
+@import "service";
 
-@import 'video';
+@import "video";
 
-@import 'portfolio';
+@import "portfolio";
 
-@import 'experts';
+@import "experts";
 
-@import 'emergency_contact';
+@import "emergency_contact";
 
-@import 'prising';
+@import "prising";
 
+@import "_create_blog";
 
-@import '_create_blog';
+@import "portfolio_details";
 
-
-@import 'portfolio_details';
-
-
-@import 'team';
-
+@import "team";
 
 // other pages default
 
 // contact
-@import 'contact';
+@import "contact";
 
 // elements
-@import 'elements.scss';
+@import "elements.scss";
 
 // blog
-@import 'blog';
-
+@import "blog";
 
 // blog part
-@import 'blog_part';
+@import "blog_part";
 
-@import url('https://fonts.googleapis.com/css?family=Montserrat:200,300,400,600')
-.more-pens
-  position: fixed
-  left: 20px
-  bottom: 20px
-  z-index: 10
-  font-family: "Montserrat"
-  font-size: 12px
-
-a.white-mode, a.white-mode:link, a.white-mode:visited, a.white-mode:active
-  font-family: "Montserrat"
-  font-size: 12px
-  text-decoration: none
-  background: #212121
-  padding: 4px 8px
-  color: #f7f7f7
-  &:hover
-    background: #edf3f8
-    color: #212121
-
-body
-  margin: 0
-  padding: 0
-  overflow: hidden
-  width: 100%
-  height: 100%
-  background: #000000
-
-
-.title
-  z-index: 10
-  position: absolute
-  left: 50%
-  top: 50%
-  transform: translateX(-50%) translateY(-50%)
-  font-family: "Montserrat"
-  text-align: center
-  width: 100%
-  h1
-    position: relative
-    color: #EEEEEE
-    font-weight: 600
-    font-size: 60px
-    padding: 0
-    margin: 0
-    line-height: 1
-    text-shadow: 0 0 30px #000155
-
-    span
-      font-weight: 600
-      padding: 0
-      margin: 0
-      color: #BBB
-
-  h3
-    font-weight: 200
-    font-size: 20px
-    padding: 0
-    margin: 0
-    line-height: 1
-    color: #EEEEEE
-    letter-spacing: 2px
-    text-shadow: 0 0 30px #000155
-
-
-.codepen-promotion:active, .codepen-promotion:hover, .codepen-promotion:link, .codepen-promotion:visited
-  position: absolute
-  display: block
-  width: 200px
-  z-index: 111
-  right: 40px
-  bottom: 40px
-  
-.codepen-promotion__image
-  width: 100%
+@import url("https://fonts.googleapis.com/css?family=Montserrat:200,300,400,600")
+    .more-pens position: fixed left: 20px bottom: 20px z-index: 10 font-family:
+    "Montserrat" font-size: 12px a.white-mode,
+  a.white-mode: link, a.white-mode: visited,
+  a.white-mode: active font-family: "Montserrat" font-size: 12px text-decoration:
+    none background: #212121 padding: 4px 8px color: #f7f7f7 &: hover background:
+    #edf3f8 color: #212121 body margin: 0 padding: 0 overflow: hidden width:
+    100% height: 100% background: #000000 .title z-index: 10 position: absolute
+    left: 50% top: 50% transform: translateX(-50%) translateY(-50%) font-family:
+    "Montserrat" text-align: center width: 100% h1 position: relative color:
+    #eeeeee font-weight: 600 font-size: 60px padding: 0 margin: 0 line-height: 1
+    text-shadow: 0 0 30px #000155 span font-weight: 600 padding: 0 margin: 0
+    color: #bbb h3 font-weight: 200 font-size: 20px padding: 0 margin: 0
+    line-height: 1 color: #eeeeee letter-spacing: 2px text-shadow: 0 0 30px
+    #000155 .codepen-promotion: active,
+  .codepen-promotion: hover, .codepen-promotion: link,
+  .codepen-promotion: visited position: absolute display: block width: 200px
+    z-index: 111 right: 40px bottom: 40px .codepen-promotion__image width: 100%;
