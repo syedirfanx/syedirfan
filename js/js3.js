@@ -1,43 +1,32 @@
-var player;
-var lastButton = '';
-const youtube = 'youTubeIframe';
-const titleInsert = '.js-title-insert';
-const btnPlay = '.js-play';
-const btnPause = '.js-pause';
-const modalId = '#modalVideo';
-const videoQuality = 'hd720';
+// Wrap every letter in a span
+var textWrapper = document.querySelector('.ml11 .letters');
+textWrapper.innerHTML = textWrapper.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>");
 
-function onYouTubePlayerAPIReady() {
-  player = new YT.Player(youtube, {
-    controls: 2,
-    iv_load_policy: 3,
-    rel: 0,
-    events: {
-      onReady: onPlayerReady
-    }
+anime.timeline({loop: true})
+  .add({
+    targets: '.ml11 .line',
+    scaleY: [0,1],
+    opacity: [0.5,1],
+    easing: "easeOutExpo",
+    duration: 700
+  })
+  .add({
+    targets: '.ml11 .line',
+    translateX: [0, document.querySelector('.ml11 .letters').getBoundingClientRect().width + 10],
+    easing: "easeOutExpo",
+    duration: 700,
+    delay: 100
+  }).add({
+    targets: '.ml11 .letter',
+    opacity: [0,1],
+    easing: "easeOutExpo",
+    duration: 600,
+    offset: '-=775',
+    delay: (el, i) => 34 * (i+1)
+  }).add({
+    targets: '.ml11',
+    opacity: 0,
+    duration: 1000,
+    easing: "easeOutExpo",
+    delay: 1000
   });
-}
-
-function onPlayerReady(event) {
-  'use strict';
-  $(btnPlay).on('click', function() {
-    var videoId = $(this).attr('data-src');
-    
-    if (lastButton == videoId) {
-      $(titleInsert).text($(this).attr('data-title'));
-      player.playVideo(videoId, 0, videoQuality);
-    } else {
-      $(titleInsert).text($(this).attr('data-title'));
-      player.loadVideoById(videoId, 0, videoQuality);
-      lastButton = videoId;
-    }
-  });
-  
-  $(btnPause).on('click', function() {
-    player.pauseVideo();
-  });
-  
-  $(modalId).on('click', function() {
-    player.pauseVideo();
-  });
-}

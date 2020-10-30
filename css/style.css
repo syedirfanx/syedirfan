@@ -5,6 +5,7 @@
 /* small mobile :320px. */
 /* Large Mobile :480px. */
 /* 1. Theme default css */
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@600&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Alata|Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap");
 /* line 5, ../../Arafath/CL/December/230. Portfolio/HTML/scss/theme-default.scss */
 html,
@@ -7555,8 +7556,9 @@ h6 {
 .hidden {
   opacity: 0;
 }
+
 .console-container {
-  font-family: "Trebuchet MS";
+  font-family: "Source Code Pro", monospace;
   font-size: 2em;
   text-align: left;
   font-style: normal;
@@ -7791,4 +7793,37 @@ details[open] .control-icon-close {
 
 details[open] .control-icon-expand {
   display: none;
+}
+
+.ml11 {
+  font-weight: 700;
+  font-size: 3.5em;
+}
+
+.ml11 .text-wrapper {
+  position: relative;
+  display: inline-block;
+  padding-top: 0.1em;
+  padding-right: 0.05em;
+  padding-bottom: 0.15em;
+}
+
+.ml11 .line {
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  height: 100%;
+  width: 3px;
+  background-color: #fff;
+  transform-origin: 0 50%;
+}
+
+.ml11 .line1 {
+  top: 0;
+  left: 0;
+}
+
+.ml11 .letter {
+  display: inline-block;
+  line-height: 1em;
 }
