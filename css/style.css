@@ -7924,12 +7924,7 @@ Responsive Stuff
     min-width: 0;
     font-size: 13px;
   }
-  .timeline h3 {
-    font-size: 16px;
-  }
-  .timeline p {
-    padding-top: 20px;
-  }
+
   section.lab h3.card-title {
     padding: 5px;
     font-size: 16px;
@@ -7948,12 +7943,7 @@ Responsive Stuff
   .timeline .event:nth-child(5)::before {
     top: 38px;
   }
-  .timeline h3 {
-    font-size: 16px;
-  }
-  .timeline p {
-    padding-top: 20px;
-  }
+  
 }
 /*——————————————
 others
