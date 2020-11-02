@@ -4,6 +4,7 @@ consoleText(
     "This is Syed Irfan.",
     "Welcome to my personal website.",
     "I compose spells for computers.",
+    "I am an Astronomy lover 🌌",
     "I love watching movies.",
   ],
   "text",
@@ -32,7 +33,7 @@ function consoleText(words, id, colors) {
         target.setAttribute("style", "color:" + colors[0]);
         letterCount += x;
         waiting = false;
-      }, 1000);
+      }, 250);
     } else if (letterCount === words[0].length + 1 && waiting === false) {
       waiting = true;
       window.setTimeout(function () {
