@@ -3,7 +3,7 @@ consoleText(
   [
     "This is Syed Irfan 👨‍💻",
     "Welcome to my personal website ✨",
-    "I compose spells for computers 🧙",
+    "I compose spells for computers 🧙‍♂️",
     "I am an Astrophile 🌌",
     "I love watching movies 🎥",
   ],
