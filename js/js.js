@@ -1,11 +1,11 @@
 // function([string1, string2],target id,[color1,color2])
 consoleText(
   [
-    "This is Syed Irfan.",
-    "Welcome to my personal website.",
-    "I compose spells for computers.",
-    "I am an Astronomy lover 🌌",
-    "I love watching movies.",
+    "This is Syed Irfan 🙇",
+    "Welcome to my personal website ✨",
+    "I compose spells for computers 🧙",
+    "I am an Astrophile 🌌",
+    "I love watching movies 🎥",
   ],
   "text",
   ["white"]
