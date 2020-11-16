@@ -8338,3 +8338,16 @@ iframe#youtube {
   transform: translate(0%, 0%);
   -webkit-transform: translate(0%, 0%);
 }
+.comment-responsive {
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+  height: 0;
+}
+.comment-responsive iframe {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
