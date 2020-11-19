@@ -1,35 +1,36 @@
-popup = {
-  init: function(){
-    $('figure').click(function(){
-      popup.open($(this));
-    });
-    
-    $(document).on('click', '.popup img', function(){
-      return false;
-    }).on('click', '.popup', function(){
-      popup.close();
-    })
-  },
-  open: function($figure) {
-    $('.gallery').addClass('pop');
-    $popup = $('<div class="popup" />').appendTo($('body'));
-    $fig = $figure.clone().appendTo($('.popup'));
-    $bg = $('<div class="bg" />').appendTo($('.popup'));
-    $close = $('<div class="close"><svg><use xlink:href="#close"></use></svg></div>').appendTo($fig);
-    $shadow = $('<div class="shadow" />').appendTo($fig);
-    src = $('img', $fig).attr('src');
-    $shadow.css({backgroundImage: 'url(' + src + ')'});
-    $bg.css({backgroundImage: 'url(' + src + ')'});
-    setTimeout(function(){
-      $('.popup').addClass('pop');
-    }, 10);
-  },
-  close: function(){
-    $('.gallery, .popup').removeClass('pop');
-    setTimeout(function(){
-      $('.popup').remove()
-    }, 100);
-  }
-}
+var min_w = 300;
+var vid_w_orig;
+var vid_h_orig;
 
-popup.init()
+$(function () {
+  vid_w_orig = parseInt($("video").attr("width"));
+  vid_h_orig = parseInt($("video").attr("height"));
+
+  $(window).resize(function () {
+    fitVideo();
+  });
+  $(window).trigger("resize");
+});
+
+function fitVideo() {
+  $("#video-viewport").width($(".fullsize-video-bg").width());
+  $("#video-viewport").height($(".fullsize-video-bg").height());
+
+  var scale_h = $(".fullsize-video-bg").width() / vid_w_orig;
+  var scale_v = $(".fullsize-video-bg").height() / vid_h_orig;
+  var scale = scale_h > scale_v ? scale_h : scale_v;
+
+  if (scale * vid_w_orig < min_w) {
+    scale = min_w / vid_w_orig;
+  }
+
+  $("video").width(scale * vid_w_orig);
+  $("video").height(scale * vid_h_orig);
+
+  $("#video-viewport").scrollLeft(
+    ($("video").width() - $(".fullsize-video-bg").width()) / 2
+  );
+  $("#video-viewport").scrollTop(
+    ($("video").height() - $(".fullsize-video-bg").height()) / 2
+  );
+}
