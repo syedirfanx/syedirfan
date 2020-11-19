@@ -1,7 +1,7 @@
 // function([string1, string2],target id,[color1,color2])
 consoleText(
   [
-    "This is Syed Irfan 👨‍💻",
+    "This is Syed Irfan",
     "Welcome to my personal website ✨",
     "I compose spells for computers 🧙‍♂️",
     "I am an Astrophile 🌌",
