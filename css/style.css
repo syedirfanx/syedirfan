@@ -8410,3 +8410,50 @@ video {
   vertical-align: middle;
   padding: 0 2em;
 }
+.ugb-video-popup {
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 600px;
+}
+.ugb-video-popup .ugb-video-preview,
+.ugb-video-popup a,
+.ugb-video-popup .ugb-play-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.ugb-video-popup .ugb-video-preview {
+  background-size: cover;
+  background-position: center;
+  opacity: 0.4;
+  transition: all 0.3s ease-in-out;
+  z-index: 1;
+  object-fit: fill;
+  width: 100%;
+}
+.ugb-video-popup:hover .ugb-video-preview {
+  opacity: 0.5;
+}
+.ugb-video-popup .ugb-video-wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+}
+.ugb-video-popup a {
+  z-index: 3;
+  box-shadow: none !important;
+  background: transparent !important;
+  display: block !important;
+}
+.ugb-video-popup .ugb-play-button {
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ugb-video-popup svg {
+  fill: #fff !important;
+}
