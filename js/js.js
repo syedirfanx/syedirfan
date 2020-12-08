@@ -6,6 +6,7 @@ consoleText(
     "I compose spells for computers 🧙‍♂️",
     "I am an Astrophile 🌌",
     "I love watching movies 🎥",
+    "The video game I can play for hours is EA Sports FIFA 🎮"
   ],
   "text",
   ["white"]
