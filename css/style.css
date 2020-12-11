@@ -8443,3 +8443,11 @@ blockquote cite {
 blockquote cite:before {
   content: "\2014 \2009";
 }
+.image5 {
+  -webkit-transition: all 0.7s ease;
+  transition: all 0.7s ease;
+}
+.image5:hover {
+  -webkit-transform: scale(1.25);
+  transform: scale(1.25);
+}
