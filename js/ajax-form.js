@@ -1,27 +1,50 @@
 
-"use strict";
 
-!function () {
-	var t = window.driftt = window.drift = window.driftt || [];
-	if (!t.init) {
-		if (t.invoked) return void (window.console && console.error && console.error("Drift snippet included twice."));
-		t.invoked = !0, t.methods = ["identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on"],
-			t.factory = function (e) {
-				return function () {
-					var n = Array.prototype.slice.call(arguments);
-					return n.unshift(e), t.push(n), t;
-				};
-			}, t.methods.forEach(function (e) {
-				t[e] = t.factory(e);
-			}), t.load = function (t) {
-				var e = 3e5, n = Math.ceil(new Date() / e) * e, o = document.createElement("script");
-				o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + n + "/" + t + ".js";
-				var i = document.getElementsByTagName("script")[0];
-				i.parentNode.insertBefore(o, i);
-			};
-	}
-}();
-drift.SNIPPET_VERSION = '0.3.1';
-drift.load('ftxakd7tttnp');
+$(function() {
 
+	// Get the form.
+	var form = $('#contact-form');
 
+	// Get the messages div.
+	var formMessages = $('.ajax-response');
+
+	// Set up an event listener for the contact form.
+	$(form).submit(function(e) {
+		// Stop the browser from submitting the form.
+		e.preventDefault();
+
+		// Serialize the form data.
+		var formData = $(form).serialize();
+
+		// Submit the form using AJAX.
+		$.ajax({
+			type: 'POST',
+			url: $(form).attr('action'),
+			data: formData
+		})
+		.done(function(response) {
+			// Make sure that the formMessages div has the 'success' class.
+			$(formMessages).removeClass('error');
+			$(formMessages).addClass('success');
+
+			// Set the message text.
+			$(formMessages).text(response);
+
+			// Clear the form.
+			$('#contact-form input,#contact-form textarea').val('');
+		})
+		.fail(function(data) {
+			// Make sure that the formMessages div has the 'error' class.
+			$(formMessages).removeClass('success');
+			$(formMessages).addClass('error');
+
+			// Set the message text.
+			if (data.responseText !== '') {
+				$(formMessages).text(data.responseText);
+			} else {
+				$(formMessages).text('Oops! An error occured and your message could not be sent.');
+			}
+		});
+	});
+
+});
