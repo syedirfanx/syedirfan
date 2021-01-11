@@ -8537,16 +8537,6 @@ blockquote cite:before {
   filter: sepia(100%) hue-rotate(190deg) saturate(100%);
 }
 
-img {
-  border: solid 2px;
-  border-bottom-color: #ffe;
-  border-left-color: #eed;
-  border-right-color: #eed;
-  border-top-color: #ccb;
-  max-height: 100%;
-  max-width: 100%;
-}
-
 .frame {
   background-color: #ddc;
   border: solid 5vmin #eee;
@@ -8583,4 +8573,10 @@ img {
   position: absolute;
   right: -2.5vmin;
   top: -2.5vmin;
+}
+.single-gallery-image span {
+  font-size: 23px;
+  color: white;
+  padding: 1px;
+  text-shadow: 0 0 3px #ff0000, 0 0 5px #0000ff;
 }
