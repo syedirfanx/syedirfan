@@ -8532,3 +8532,7 @@ blockquote cite:before {
   justify-content: center;
   align-items: center;
 }
+
+.contents img {
+  filter: grayscale(50%);
+}
