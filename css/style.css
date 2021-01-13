@@ -5,6 +5,9 @@
 /* small mobile :320px. */
 /* Large Mobile :480px. */
 /* 1. Theme default css */
+@import url("https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:wght@300&display=swap");
+@import url("https://allfont.net/allfont.css?fonts=good-times");
 @import url("https://fonts.googleapis.com/css?family=Alata|Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap");
 /* line 5, ../../Arafath/CL/December/230. Portfolio/HTML/scss/theme-default.scss */
 html,
@@ -15,7 +18,7 @@ body {
 }
 
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Fraunces", serif;
   font-weight: normal;
   font-style: normal;
 }
@@ -72,7 +75,7 @@ h2,
 h3,
 h4,
 h5 {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Fraunces", serif;
   color: #191d34;
 }
 
@@ -104,7 +107,7 @@ p {
   line-height: 28px;
   color: #7a838b;
   margin-bottom: 13px;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Fraunces", serif;
 }
 
 /* line 68, ../../Arafath/CL/December/230. Portfolio/HTML/scss/theme-default.scss */
@@ -409,7 +412,7 @@ h3 {
   color: #131313;
   display: inline-block;
   padding: 14px 44px;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Fraunces", serif;
   font-size: 14px;
   font-weight: 400;
   border: 0;
@@ -444,7 +447,7 @@ h3 {
   color: #fff;
   display: inline-block;
   padding: 14px 38px;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Fraunces", serif;
   font-size: 14px;
   font-weight: 500;
   border: 0;
@@ -488,7 +491,7 @@ h3 {
   color: #fff;
   display: inline-block;
   padding: 5px 10px;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Fraunces", serif;
   font-size: 12px;
   font-weight: 100%;
   border: 0;
@@ -529,7 +532,7 @@ h3 {
 
   display: inline-block;
   padding: 5px 20px;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Fraunces", serif;
   font-size: 15px;
   font-weight: 400;
   text-align: center;
@@ -576,7 +579,7 @@ h3 {
 
   display: inline-block;
   padding: 2px 20px;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Fraunces", serif;
   font-size: 15px;
   font-weight: 400;
   text-align: center;
@@ -623,7 +626,7 @@ h3 {
   color: #615cfd !important;
   display: inline-block;
   padding: 14px 31px;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Fraunces", serif;
   font-size: 14px;
   font-weight: 400;
   border: 0;
@@ -664,7 +667,7 @@ h3 {
   color: #fff;
   display: inline-block;
   padding: 18px 24px;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Fraunces", serif;
   font-size: 14px;
   font-weight: 400;
   border: 0;
@@ -1122,7 +1125,7 @@ h3 {
   font-weight: 400;
   display: inline-block;
   padding: 0px 0px 0px 0px;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Fraunces", serif;
   position: relative;
   text-transform: capitalize;
 }
@@ -1461,7 +1464,7 @@ h3 {
 
 .slider_area .single_slider .slider_text h2 {
   color: #fff;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Fraunces", serif;
   font-size: 25px;
   font-weight: 0px;
   line-height: 35px;
@@ -1495,7 +1498,7 @@ h3 {
 /* line 21, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_slider.scss */
 .slider_area .single_slider .slider_text h3 {
   color: white;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Fraunces", serif;
   font-size: 16px;
   font-weight: 0;
   line-height: 35px;
@@ -1569,7 +1572,7 @@ h3 {
   -webkit-text-stroke: 1px #1e273d;
   -webkit-text-fill-color: transparent;
   font-weight: 800;
-  font-family: "Poppins", sans-serif;
+  font-family: "Cinzel Decorative", cursive;
 }
 
 @media (min-width: 992px) and (max-width: 1200px) {
@@ -2157,7 +2160,7 @@ h3 {
 }
 
 .about_area .about_info h2 {
-  font-family: "Open Sans";
+  font-family: "Fraunces", serif;
 }
 
 /* line 23, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_about.scss */
@@ -2166,7 +2169,7 @@ h3 {
   font-weight: 400;
   line-height: 62px;
   margin-bottom: 30px;
-  font-family: "Open Sans";
+  font-family: "Fraunces", serif;
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
@@ -2206,7 +2209,7 @@ h3 {
   font-weight: 0;
   line-height: 27px;
   margin-bottom: 10px;
-  font-family: "Open Sans";
+  font-family: "Fraunces", serif;
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
@@ -2246,7 +2249,7 @@ h3 {
   font-weight: 0;
   line-height: 20px;
   margin-bottom: 10px;
-  font-family: "Open Sans";
+  font-family: "Fraunces", serif;
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
@@ -2283,7 +2286,7 @@ h3 {
 
 /* line 47, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_about.scss */
 .about_area .about_info p {
-  font-family: "Open Sans";
+  font-family: "Fraunces", serif;
   font-size: 16px;
   line-height: 28px;
   margin-top: 10px;
@@ -2406,7 +2409,7 @@ h3 {
 /* line 18, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_gallery.scss */
 .portfolio_area .more_works a {
   font-size: 20px;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Fraunces", serif;
   color: #fff;
   font-weight: 400;
 }
@@ -2592,7 +2595,7 @@ h3 {
   font-size: 14px;
   color: #b3d9fc;
   font-weight: 400;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Fraunces", serif;
   margin-bottom: 13px;
   position: relative;
   left: 10%;
@@ -2615,7 +2618,7 @@ h3 {
   font-size: 30px;
   color: #fff;
   font-weight: 400;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Cinzel Decorative", cursive;
   line-height: 1;
   position: relative;
   left: 15%;
@@ -2711,7 +2714,7 @@ h3 {
   color: #fff;
   text-transform: capitalize;
   margin-bottom: 40px;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Fraunces", serif;
 }
 
 @media (max-width: 767px) {
@@ -2775,7 +2778,7 @@ h3 {
 .footer .footer_top .footer_widget ul li a {
   color: #aab1b7;
   font-weight: 400;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Fraunces", serif;
 }
 
 /* line 67, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_footer.scss */
@@ -2904,7 +2907,7 @@ h3 {
   font-weight: 400;
   margin-bottom: 0;
   text-transform: capitalize;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Cinzel Decorative", cursive;
 }
 
 @media (max-width: 767px) {
@@ -2925,7 +2928,7 @@ h3 {
 .btns {
   background-color: #ac63b9;
   border-radius: 28px;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Fraunces", serif;
   border: none;
   color: white;
   padding: 12px 30px;
@@ -3039,7 +3042,7 @@ h3 {
   cursor: pointer;
   display: block;
   float: left;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Fraunces", serif;
   font-weight: normal;
   width: 100% !important;
   /* height: 42px; */
@@ -3415,7 +3418,7 @@ h3 {
 /* line 22, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_service.scss */
 .service_area .single_service h3 {
   font-size: 26px;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Fraunces", serif;
   font-weight: 400;
   color: #0a2147;
   margin-top: 37px;
@@ -3457,7 +3460,7 @@ h3 {
 .service_area .single_service p {
   margin-bottom: 0;
   font-size: 14px;
-  font-family: "Open Sans";
+  font-family: "Fraunces", serif;
   font-weight: 0;
 }
 
@@ -3967,6 +3970,7 @@ h3 {
 
 /* line 33, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_create_blog.scss */
 .creative_blog_area .blog_title h3 {
+  font-family: "Cinzel Decorative", cursive;
   font-size: 50px;
   font-weight: 400;
   color: #fff;
@@ -3976,6 +3980,7 @@ h3 {
 @media (max-width: 767px) {
   /* line 33, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_create_blog.scss */
   .creative_blog_area .blog_title h3 {
+    font-family: "Cinzel Decorative", cursive;
     font-size: 30px;
     margin-bottom: 20px;
     text-align: center;
@@ -3985,6 +3990,7 @@ h3 {
 @media (min-width: 768px) and (max-width: 991px) {
   /* line 33, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_create_blog.scss */
   .creative_blog_area .blog_title h3 {
+    font-family: "Cinzel Decorative", cursive;
     font-size: 30px;
   }
 }
@@ -4032,7 +4038,7 @@ h3 {
 /* line 71, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_create_blog.scss */
 .creative_blog_area .single_blog .blog_content span {
   color: #0b468d;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Fraunces", serif;
   font-size: 14px;
   font-weight: 400;
   display: block;
@@ -4104,7 +4110,7 @@ h3 {
   font-size: 12px;
   color: #828793;
   font-weight: 400;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Fraunces", serif;
   margin-bottom: 0;
 }
 
@@ -4154,7 +4160,7 @@ h3 {
   font-size: 12px;
   color: #828793;
   font-weight: 400;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Fraunces", serif;
   display: block;
   margin-bottom: 6px;
 }
@@ -4273,14 +4279,14 @@ h3 {
   margin-bottom: 0;
   font-size: 18px;
   color: #0a2147;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Fraunces", serif;
   margin-bottom: 2px;
 }
 
 /* line 21, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_team.scss */
 .creative_people .single_people .people_info p {
   color: #818692;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Fraunces", serif;
   font-size: 12px;
   margin-bottom: 0;
 }
@@ -7684,13 +7690,13 @@ img {
 
 .card__title {
   color: black;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Fraunces", serif;
   font-size: 1.1rem;
   font-weight: bold;
   letter-spacing: 0;
 }
 .card__text {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Fraunces", serif;
   -webkit-box-flex: 1;
   flex: 1 1 auto;
   font-size: 0.875rem;
