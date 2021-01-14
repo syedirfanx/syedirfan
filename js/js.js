@@ -2,11 +2,11 @@
 consoleText(
   [
     "This is Syed Irfan",
-    "Welcome to my personal website ✨",
-    "I compose spells for computers 🧙‍♂️",
-    "I am an Astrophile 🌌",
-    "I love watching movies 🎥",
-    "The video game I can play for hours is EA Sports FIFA 🎮"
+    "Welcome to my personal website",
+    "I compose spells for computers",
+    "I am an Astrophile",
+    "I love watching movies",
+    "I can play EA Sports FIFA for hours"
   ],
   "text",
   ["white"]
