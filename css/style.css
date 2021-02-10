@@ -8453,8 +8453,9 @@ blockquote cite:before {
   transition: all 0.7s ease;
 }
 .image5:hover {
-  -webkit-transform: scale(1.25);
-  transform: scale(1.25);
+  -moz-box-shadow: 0 0 10px #ccc;
+  -webkit-box-shadow: 0 0 10px #ccc;
+  box-shadow: 0 0 10px rgb(179, 177, 177);
 }
 
 .loader {
