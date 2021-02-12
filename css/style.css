@@ -1433,7 +1433,7 @@ h3 {
   font-weight: bold;
   font-style: italic;
   line-height: 35px;
-  padding-top: 20px;
+  padding-top: 10px;
   padding-bottom: 10px;
 }
 
@@ -8479,7 +8479,57 @@ video {
 
 .fullsize-video-bg:before {
   content: "";
-  background: #031636;
+  background: #0a2147;
+  background: -moz-linear-gradient(
+    -45deg,
+    #0a2147 0%,
+    #0a2147 50%,
+    #102a57 50%,
+    #102a57 50%,
+    #102a57 100%
+  );
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right bottom,
+    color-stop(0%, #0a2147),
+    color-stop(50%, #0a2147),
+    color-stop(50%, #102a57),
+    color-stop(50%, #102a57),
+    color-stop(100%, #102a57)
+  );
+  background: -webkit-linear-gradient(
+    -45deg,
+    #0a2147 0%,
+    #0a2147 50%,
+    #102a57 50%,
+    #102a57 50%,
+    #102a57 100%
+  );
+  background: -o-linear-gradient(
+    -45deg,
+    #0a2147 0%,
+    #0a2147 50%,
+    #102a57 50%,
+    #102a57 50%,
+    #102a57 100%
+  );
+  background: -ms-linear-gradient(
+    -45deg,
+    #0a2147 0%,
+    #0a2147 50%,
+    #102a57 50%,
+    #102a57 50%,
+    #102a57 100%
+  );
+  background: linear-gradient(
+    135deg,
+    #0a2147 0%,
+    #0a2147 50%,
+    #102a57 50%,
+    #102a57 50%,
+    #102a57 100%
+  );
   position: absolute;
   top: 0;
   left: 0;

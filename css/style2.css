@@ -4,10 +4,7 @@ body {
   font-style: normal;
 }
 
-
-
 .container {
-  
   top: 40%;
   left: 50%;
 }
@@ -16,10 +13,10 @@ body {
   color: white;
   position: relative;
   text-align: center;
-font-family: "Michroma", Michroma; 
-font-style: italic;
+  font-family: "Michroma", Michroma;
+  font-style: italic;
   font-size: 7vw;
-  // margin: 70px 200px;
+  margin: 70px 200px;
   animation: glitch 3.5s 3.5s infinite;
 }
 
@@ -28,10 +25,11 @@ font-style: italic;
   position: relative;
   left: -2px;
   text-shadow: -5px 0 magenta;
- text-align: center;
+  text-align: center;
   overflow: hidden;
   top: 0;
-  animation: noise-1 3s linear infinite alternate-reverse, glitch 3s 3.9s infinite;
+  animation: noise-1 3s linear infinite alternate-reverse,
+    glitch 3s 3.9s infinite;
 }
 
 .glitch::after {
@@ -47,10 +45,10 @@ font-style: italic;
 }
 
 @keyframes glitch {
-  1%{
+  1% {
     transform: rotateX(10deg) skewX(90deg);
   }
-  2%{
+  2% {
     transform: rotateX(0deg) skewX(0deg);
   }
 }
@@ -94,13 +92,12 @@ font-style: italic;
   background: repeating-linear-gradient(
     to bottom,
     transparent 0%,
-    rgba(255, 255, 255, 0.05) .5%,
+    rgba(255, 255, 255, 0.05) 0.5%,
     transparent 1%
   );
 
   animation: fudge 7s ease-in-out alternate infinite;
 }
-
 
 @keyframes fudge {
   from {
@@ -129,16 +126,15 @@ font-style: italic;
   letter-spacing: 1em;
   text-align: center;
   position: relative;
-  
+
   animation: glitch-2 5s 5.02s infinite;
 }
 
 @keyframes glitch-2 {
-  1%{
+  1% {
     transform: rotateX(10deg) skewX(70deg);
   }
-  2%{
+  2% {
     transform: rotateX(0deg) skewX(0deg);
   }
 }
-
