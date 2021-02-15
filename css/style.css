@@ -5149,9 +5149,9 @@ h6 {
   transition: all 0.3s ease;
 }
 .single-gallery-image:hover {
-  -moz-box-shadow: 0 0 10px rgb(25, 76, 158);
-  -webkit-box-shadow: 0 0 10px rgb(148, 20, 110);
-  box-shadow: 0 0 10px rgb(108, 31, 195);
+  -moz-box-shadow: 0 0 30px rgba(42, 108, 214, 0.781);
+  -webkit-box-shadow: 0 0 30px rgba(61, 50, 209, 0.733);
+  box-shadow: 0 0 30px rgba(44, 61, 211, 0.719);
 }
 
 /* line 449, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_elements.scss */
@@ -8659,13 +8659,13 @@ blockquote cite:before {
   content: "\2014 \2009";
 }
 .image5 {
-  -webkit-transition: all 0.7s ease;
-  transition: all 0.7s ease;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
 }
 .image5:hover {
-  -moz-box-shadow: 0 0 10px #ccc;
-  -webkit-box-shadow: 0 0 10px #ccc;
-  box-shadow: 0 0 10px rgb(179, 177, 177);
+  -moz-box-shadow: 0 0 30px #ccc;
+  -webkit-box-shadow: 0 0 30px #ccc;
+  box-shadow: 0 0 30px rgb(98, 110, 214);
 }
 
 .loader {
