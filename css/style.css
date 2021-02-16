@@ -2255,6 +2255,46 @@ h3 {
   }
 }
 
+.about_area .about_info h1 {
+  font-size: 35px;
+  font-weight: 400;
+  line-height: 2px;
+  margin-bottom: 30px;
+  font-family: "Ubuntu", sans-serif;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  /* line 23, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_about.scss */
+  .about_area .about_info h1 {
+    font-size: 25px;
+    line-height: 2px;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  /* line 23, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_about.scss */
+  .about_area .about_info h1 {
+    font-size: 25px;
+    line-height: 2px;
+    margin-bottom: 20px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  /* line 38, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_about.scss */
+  .about_area .about_info h1 br {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  /* line 38, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_about.scss */
+  .about_area .about_info h1 br {
+    display: none;
+  }
+}
+
 .about_area .about_info h4 {
   font-size: 16px;
   font-weight: 0;
