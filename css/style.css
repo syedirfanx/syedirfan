@@ -9000,15 +9000,15 @@ blockquote cite:before {
   animation: 14s slideshow-contrast -5s infinite;
 }
 .slideshow--contrast .slide1 {
-  background-image: linear-gradient(to bottom, rgba(200, 200, 75, 0.25) 0, rgba(200, 75, 75, 0.5) 100%), url("https://syedirfanx.me/img/gallery/59.jpg");
+  background-image: linear-gradient(to bottom, rgba(75, 87, 200, 0.178) 0, rgba(190, 75, 200, 0.274) 100%), url("https://syedirfanx.me/img/gallery/59.jpg");
   animation: 20s slides-set-1 -0.2s infinite;
 }
 .slideshow--contrast .slide2 {
-  background-image: linear-gradient(to bottom, rgba(200, 200, 75, 0.25) 0, rgba(200, 75, 75, 0.5) 100%), url("https://syedirfanx.me/img/gallery/61.jpg");
+  background-image: linear-gradient(to bottom, rgba(77, 75, 200, 0.192) 0, rgba(181, 75, 200, 0.267) 100%), url("https://syedirfanx.me/img/gallery/61.jpg");
   animation: 20s slides-set-2 -0.2s infinite;
 }
 .slideshow--contrast .slide3 {
-  background-image: linear-gradient(to bottom, rgba(200, 200, 75, 0.25) 0, rgba(200, 75, 75, 0.5) 100%), url("https://syedirfanx.me/img/gallery/60.jpg");
+  background-image: linear-gradient(to bottom, rgba(77, 75, 200, 0.192) 0, rgba(190, 75, 200, 0.281) 100%), url("https://syedirfanx.me/img/gallery/60.jpg");
   animation: 20s slides-set-3 -0.2s infinite;
 }
 .slideshow--contrast--after {
