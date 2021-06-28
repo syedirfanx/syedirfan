@@ -8957,7 +8957,7 @@ blockquote cite:before {
   animation: 20s slides-set-2 -0.1s infinite;
 }
 .slideshow--hero .slide3 {
-  background-image: url("https://syedirfanx.me/img/gallery/60.jpg");
+  background-image: url("https://syedirfanx.me/img/gallery/62.jpg");
   animation: 20s slides-set-3 -0.1s infinite;
 }
 @media (min-width: 600px) {
@@ -9008,7 +9008,7 @@ blockquote cite:before {
   animation: 20s slides-set-2 -0.2s infinite;
 }
 .slideshow--contrast .slide3 {
-  background-image: linear-gradient(to bottom, rgba(77, 75, 200, 0.192) 0, rgba(190, 75, 200, 0.281) 100%), url("https://syedirfanx.me/img/gallery/60.jpg");
+  background-image: linear-gradient(to bottom, rgba(77, 75, 200, 0.192) 0, rgba(190, 75, 200, 0.281) 100%), url("https://syedirfanx.me/img/gallery/62.jpg");
   animation: 20s slides-set-3 -0.2s infinite;
 }
 .slideshow--contrast--after {
