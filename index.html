@@ -132,23 +132,137 @@
             <source src="img/videoplayback.mp4" type="video/mp4" />
         </video>
 
-        <div class="slider_area">
-
-            <div class="single_slider  d-flex align-items-center slider_bg_1">
-
-                <!--<div class="outline_text d-none d-lg-block">
-								Syed Irfan
-						</div> -->
-                <div class="container">
-
-
-
-                    <div class='console-container'>>> Hello World !
-                        <hr><span id='text'></span>
-                        <div class='console-underscore' id='console'>&#95;</div>
+        <!-- 
+Please note, that you can apply .m--global-blending-active to .fnc-slider 
+to enable blend-mode for all background-images or apply .m--blend-bg-active
+to some specific slides (.fnc-slide). It's disabled by default in this demo,
+because it requires specific images, where more than 50% of bg is transparent or monotone
+-->
+        <div class="demo-cont">
+            <!-- slider start -->
+            <div class="fnc-slider example-slider">
+                <div class="fnc-slider__slides">
+                    <!-- slide start -->
+                    <div class="fnc-slide m--blend-green m--active-slide">
+                        <div class="fnc-slide__inner">
+                            <div class="fnc-slide__mask">
+                                <div class="fnc-slide__mask-inner"></div>
+                            </div>
+                            <div class="fnc-slide__content">
+                                <h2 class="fnc-slide__heading">
+                                    <div class="fnc-slide__heading-line">
+                                        <span>Data Science</span>
+                                    </div>
+                                    <div class="fnc-slide__heading-line">
+                                        <span>& Analytics</span>
+                                    </div>
+                                </h2>
+                                
+                                    <h5 class="fnc-slide__heading" style="color:white;">
+                                        <span>Love to work on building models and making data driven decisions to provide buisness insights.</span>
+                                        
+                                         </h5>
+                            </div>
+                        </div>
                     </div>
-
-
+                    <!-- slide end -->
+                    <!-- slide start -->
+                    <div class="fnc-slide m--blend-dark">
+                        <div class="fnc-slide__inner">
+                            <div class="fnc-slide__mask">
+                                <div class="fnc-slide__mask-inner"></div>
+                            </div>
+                            <div class="fnc-slide__content">
+                                <h2 class="fnc-slide__heading">
+                                    <div class="fnc-slide__heading-line">
+                                        <span>Machine</span>
+                                    </div>
+                                    <div class="fnc-slide__heading-line">
+                                        <span>Learning</span>
+                                    </div>
+                                </h2>
+                                <h5 class="fnc-slide__heading" style="color:white;">
+                                    <span>Implement statistical machine learning solutions, enthusiast about cutting-edge technology and solve real world problems.</span>
+                                    
+                                     </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- slide end -->
+                    <!-- slide start -->
+                    <div class="fnc-slide m--blend-red">
+                        <div class="fnc-slide__inner">
+                            <div class="fnc-slide__mask">
+                                <div class="fnc-slide__mask-inner"></div>
+                            </div>
+                            <div class="fnc-slide__content">
+                                <h2 class="fnc-slide__heading">
+                                    <div class="fnc-slide__heading-line">
+                                        <span>Flutter</span>
+                                    </div>
+                                    <div class="fnc-slide__heading-line">
+                                        <span>Development</span>
+                                    </div>
+                                </h2>
+                                <h5 class="fnc-slide__heading" style="color:white;">
+                                    <span>Create and implement the source code of new flutter applications.
+                                     </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- slide end -->
+                    <!-- slide start -->
+                    
+                    <!-- slide end -->
+                </div>
+                <nav class="fnc-nav">
+                    <div class="fnc-nav__bgs">
+                        <div class="fnc-nav__bg m--navbg-green m--active-nav-bg"></div>
+                        <div class="fnc-nav__bg m--navbg-dark"></div>
+                        <div class="fnc-nav__bg m--navbg-red"></div>
+                        <div class="fnc-nav__bg m--navbg-blue"></div>
+                    </div>
+                    <div class="fnc-nav__controls">
+                        <button class="fnc-nav__control">
+                            Data Science & Analytics
+                            <span class="fnc-nav__control-progress"></span>
+                        </button>
+                        <button class="fnc-nav__control">
+                            Machine Learning
+                            <span class="fnc-nav__control-progress"></span>
+                        </button>
+                        <button class="fnc-nav__control">
+                            Flutter Development
+                            <span class="fnc-nav__control-progress"></span>
+                        </button>
+                    </div>
+                </nav>
+            </div>
+            <!-- slider end -->
+            <div class="demo-cont__credits">
+                <div class="demo-cont__credits-close"></div>
+                <h2 class="demo-cont__credits-heading">Made by</h2>
+                <img src="F:\syedirfan\img\website cover.jpg" alt=""
+                    class="demo-cont__credits-img" />
+                <h3 class="demo-cont__credits-name">Nikolay Talanov</h3>
+                <a href="https://codepen.io/suez/" target="_blank" class="demo-cont__credits-link">My codepen</a>
+                <a href="https://twitter.com/NikolayTalanov" target="_blank" class="demo-cont__credits-link">My
+                    twitter</a>
+                <h2 class="demo-cont__credits-heading">Based on</h2>
+                <a href="https://dribbble.com/shots/2375246-Fashion-Butique-slider-animation" target="_blank"
+                    class="demo-cont__credits-link">Concept by Kreativa Studio</a>
+                <h4 class="demo-cont__credits-blend">Global Blend Mode</h4>
+                <div class="colorful-switch">
+                    <input type="checkbox" class="colorful-switch__checkbox js-activate-global-blending"
+                        id="colorful-switch-cb" />
+                    <label class="colorful-switch__label" for="colorful-switch-cb">
+                        <span class="colorful-switch__bg"></span>
+                        <span class="colorful-switch__dot"></span>
+                        <span class="colorful-switch__on">
+                            <span class="colorful-switch__on__inner"></span>
+                        </span>
+                        <span class="colorful-switch__off"></span>
+                    </label>
                 </div>
             </div>
         </div>
@@ -636,6 +750,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="js/js.js"></script>
     <script src="js/js2.js"></script>
+    <script src="js/js6.js"></script>
     <script src="js/navbar.js"></script>
     <script src="js/vendor/modernizr-3.5.0.min.js"></script>
     <script src="js/vendor/jquery-1.12.4.min.js"></script>
