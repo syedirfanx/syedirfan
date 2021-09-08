@@ -9454,7 +9454,7 @@ blockquote cite:before {
   vertical-align: top;
   width: 100px;
   height: 50px;
-  font-size: 14px;
+  font-size: 12px;
   color: #fff;
   text-transform: uppercase;
   background: transparent;
@@ -9627,7 +9627,7 @@ body {
 .example-slider .fnc-slide__heading,
 .example-slider .fnc-slide__action-btn,
 .example-slider .fnc-nav__control {
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 /* COLORFUL SWITCH STYLES 
