@@ -76,11 +76,18 @@ h1 a,
 h2 a,
 h3 a,
 h4 a,
-h5 a,
 h6 a {
   color: #191d34;
 }
 
+h5 a {
+
+  color:rgba(255, 255, 255, 0.700);
+}
+h5 a:hover {
+  text-decoration: underline;
+  color:rgb(255, 255, 255);
+}
 /* line 52, ../../Arafath/CL/December/230. Portfolio/HTML/scss/theme-default.scss */
 ul {
   margin: 0px;
@@ -1727,11 +1734,12 @@ h3 {
 }
 
 .circular_image {
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
   border-radius: 50%;
   overflow: hidden;
-  background-color: blue;
+  background-color: rgb(255, 255, 255);
+  
   /* commented for demo
   float: left;
   margin-left: 125px;
@@ -1743,7 +1751,14 @@ h3 {
   vertical-align:middle;
 }
 .circular_image img{
+  
   width:100%;
+}
+div.polaroid {
+  width: 250px;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px 0 rgba(17, 0, 255, 0.404), 0 6px 20px 0 rgba(0, 39, 49, 0.404);
+  text-align: center;
 }
 
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css);
@@ -8905,7 +8920,7 @@ blockquote cite:before {
   color: white;
   padding: 10px;
   text-shadow: 0 0 3px #ff0000, 0 0 5px #0011ff;
-  font-family: sans-serif;
+  font-family: 'Kanit', sans-serif;
   line-height: 1.5;
   max-width: 100%;
 }
