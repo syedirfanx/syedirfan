@@ -2576,23 +2576,23 @@ div.polaroid {
 
 /* line 46, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_gallery.scss */
 .portfolio_area .single_gallery::before {
-  width: 351px;
-  height: 351px;
+  width: 353px;
+  height: 353px;
   background: #0b468d;
   content: "";
   position: absolute;
-  left: 0;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
+  /* left: 0; */
+  /* -webkit-border-radius: 50%;
+  -moz-border-radius: 50%; */
   border-radius: 50%;
-  left: -26%;
+  left: -16%;
   bottom: -30%;
   z-index: 1;
-  opacity: 0;
-  -webkit-transition: 0.3s;
+  /* opacity: 0; */
+  /* -webkit-transition: 0.3s;
   -moz-transition: 0.3s;
-  -o-transition: 0.3s;
-  transition: 0.3s;
+  -o-transition: 0.3s; */
+  transition: 0.2s;
 }
 
 @media (max-width: 767px) {
@@ -2716,13 +2716,13 @@ div.polaroid {
   font-weight: 400;
   font-family: 'Kanit', sans-serif;
   margin-bottom: 13px;
-  position: relative;
+  /* position: relative;
   left: 10%;
   opacity: 0;
   -webkit-transition: 0.3s;
   -moz-transition: 0.3s;
   -o-transition: 0.3s;
-  transition: 0.3s;
+  transition: 0.3s; */
 }
 
 @media (max-width: 767px) {
@@ -2739,13 +2739,13 @@ div.polaroid {
   font-weight: 400;
   font-family: 'Kanit', sans-serif;
   line-height: 1;
-  position: relative;
+  /* position: relative;
   left: 15%;
   opacity: 0;
   -webkit-transition: 0.4s;
   -moz-transition: 0.4s;
   -o-transition: 0.4s;
-  transition: 0.4s;
+  transition: 0.4s; */
 }
 
 @media (max-width: 767px) {
