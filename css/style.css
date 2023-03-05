@@ -3107,6 +3107,73 @@ div.polaroid {
   background-image: url(../img/banner/bradcam_4.png);
 }
 
+.bradcam_area2 {
+  box-shadow: 0px 3px 16px 0px rgba(0, 0, 0, 0.1);
+  background-size: cover;
+  background-position: bottom;
+  padding: 50px 0 50px 0;
+  background-repeat: no-repeat;
+  position: relative;
+  z-index: 0;
+  /* width: 100%;
+  top: -70px;
+  left: 0;
+  right: 0; */
+
+
+  background: #0a2147;
+  background: -moz-linear-gradient(
+    -45deg,
+    #0a2147 0%,
+    #0a2147 20%,
+    #0d2650 20%,
+    #0d2650 20%,
+    #0d2650 100%
+  );
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right bottom,
+    color-stop(0%, #0a2147),
+    color-stop(20%, #0a2147),
+    color-stop(20%, #0d2650),
+    color-stop(20%, #0d2650),
+    color-stop(100%, #0d2650)
+  );
+  background: -webkit-linear-gradient(
+    -45deg,
+    #0a2147 0%,
+    #0a2147 20%,
+    #0d2650 20%,
+    #0d2650 20%,
+    #0d2650 100%
+  );
+  background: -o-linear-gradient(
+    -45deg,
+    #0a2147 0%,
+    #0a2147 20%,
+    #0d2650 20%,
+    #0d2650 20%,
+    #0d2650 100%
+  );
+  background: -ms-linear-gradient(
+    -45deg,
+    #0a2147 0%,
+    #0a2147 20%,
+    #0d2650 20%,
+    #0d2650 20%,
+    #0d2650 100%
+  );
+  background: linear-gradient(
+    135deg,
+    #0a2147 0%,
+    #0a2147 20%,
+    #0d2650 20%,
+    #0d2650 20%,
+    #0d2650 100%
+  );
+}
+
 /* line 13, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_bradcam.scss */
 .bradcam_area {
   background-size: cover;
@@ -9056,11 +9123,15 @@ blockquote cite:before {
   background-image: url("https://syedirfan.netlify.app/img/gallery/60.jpg");
   animation: 20s slides-set-3 -0.1s infinite;
 }
+.slideshow--hero .slide4 {
+  background-image: url("https://syedirfan.netlify.app/img/gallery/74.jpg");
+  animation: 20s slides-set-3 -0.1s infinite;
+}
 @media (min-width: 600px) {
   .slideshow--hero {
     left: 50%;
     top: 0;
-    width: 67%;
+    width: 50%;
     height: 100%;
     transform: translateX(-50%) skewX(-10deg);
   }
@@ -9107,6 +9178,10 @@ blockquote cite:before {
   background-image: linear-gradient(to bottom, rgba(77, 75, 200, 0.192) 0, rgba(190, 75, 200, 0.281) 100%), url("https://syedirfan.netlify.app/img/gallery/60.jpg");
   animation: 20s slides-set-3 -0.2s infinite;
 }
+.slideshow--contrast .slide4 {
+  background-image: linear-gradient(to bottom, rgba(77, 75, 200, 0.192) 0, rgba(190, 75, 200, 0.281) 100%), url("https://syedirfan.netlify.app/img/gallery/74.jpg");
+  animation: 20s slides-set-3 -0.2s infinite;
+}
 .slideshow--contrast--after {
   top: auto;
   bottom: 0;
@@ -9125,6 +9200,9 @@ blockquote cite:before {
 }
 .slideshow--contrast--after .slide3 {
   animation: 20s slides-set-3 infinite;
+}
+.slideshow--contrast--after .slide4 {
+  animation: 20s slides-set-4 infinite;
 }
 @media (min-width: 600px) {
   .slideshow--contrast {
@@ -9234,6 +9312,29 @@ blockquote cite:before {
   }
 }
 @keyframes slides-set-3 {
+  0% {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+  64% {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+  67% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  97% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes slides-set-4 {
   0% {
     opacity: 0;
     transform: scale(1.05);
