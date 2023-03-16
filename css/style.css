@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap"); 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Signika+Negative&display=swap');
 /* line 5, ../../Arafath/CL/December/230. Portfolio/HTML/scss/theme-default.scss */
 html,
 body {
@@ -10,7 +11,7 @@ body {
 }
 
 body {
-  font-family: 'Kanit', sans-serif;
+font-family: 'Signika Negative', sans-serif;
   font-weight: normal;
   font-style: normal;
 }
@@ -67,7 +68,7 @@ h2,
 h3,
 h4,
 h5 {
-  font-family: 'Kanit', sans-serif;
+font-family: 'Signika Negative', sans-serif;
   color: #191d34;
 }
 
@@ -108,7 +109,7 @@ p {
   line-height: 28px;
   color: #5b5e62;
   margin-bottom: 13px;
-  font-family: 'Kanit', sans-serif;
+font-family: 'Signika Negative', sans-serif;
 }
 
 /* line 68, ../../Arafath/CL/December/230. Portfolio/HTML/scss/theme-default.scss */
@@ -413,7 +414,7 @@ h3 {
   color: #131313;
   display: inline-block;
   padding: 14px 44px;
-  font-family: 'Kanit', sans-serif;
+font-family: 'Signika Negative', sans-serif;
   font-size: 14px;
   font-weight: 400;
   border: 0;
@@ -448,7 +449,7 @@ h3 {
   color: #fff;
   display: inline-block;
   padding: 14px 38px;
-  font-family: 'Kanit', sans-serif;
+font-family: 'Signika Negative', sans-serif;
   font-size: 14px;
   font-weight: 500;
   border: 0;
@@ -492,7 +493,7 @@ h3 {
   color: #fff;
   display: inline-block;
   padding: 5px 10px;
-  font-family: 'Kanit', sans-serif;
+font-family: 'Signika Negative', sans-serif;
   font-size: 12px;
   font-weight: 100%;
   border: 0;
@@ -533,7 +534,7 @@ h3 {
 
   display: inline-block;
   padding: 5px 20px;
-  font-family: 'Kanit', sans-serif;
+font-family: 'Signika Negative', sans-serif;
   font-size: 15px;
   font-weight: 400;
   text-align: center;
@@ -580,7 +581,7 @@ h3 {
 
   display: inline-block;
   padding: 2px 20px;
-  font-family: 'Kanit', sans-serif;
+font-family: 'Signika Negative', sans-serif;
   font-size: 15px;
   font-weight: 400;
   text-align: center;
@@ -627,7 +628,7 @@ h3 {
   color: #615cfd !important;
   display: inline-block;
   padding: 14px 31px;
-  font-family: 'Kanit', sans-serif;
+font-family: 'Signika Negative', sans-serif;
   font-size: 14px;
   font-weight: 400;
   border: 0;
@@ -668,7 +669,7 @@ h3 {
   color: #fff;
   display: inline-block;
   padding: 18px 24px;
-  font-family: 'Kanit', sans-serif;
+font-family: 'Signika Negative', sans-serif;
   font-size: 14px;
   font-weight: 400;
   border: 0;
@@ -1126,7 +1127,7 @@ h3 {
   font-weight: 400;
   display: inline-block;
   padding: 0px 0px 0px 0px;
-  font-family: 'Kanit', sans-serif;
+font-family: 'Signika Negative', sans-serif;
   position: relative;
   text-transform: capitalize;
 }
@@ -1515,7 +1516,7 @@ h3 {
 
 .slider_area .single_slider .slider_text h2 {
   color: #fff;
-  font-family: 'Kanit', sans-serif;
+font-family: 'Signika Negative', sans-serif;
   font-size: 25px;
   font-weight: 0px;
   line-height: 35px;
@@ -1549,7 +1550,7 @@ h3 {
 /* line 21, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_slider.scss */
 .slider_area .single_slider .slider_text h3 {
   color: white;
-  font-family: 'Kanit', sans-serif;
+font-family: 'Signika Negative', sans-serif;
   font-size: 16px;
   font-weight: 0;
   line-height: 35px;
@@ -1734,9 +1735,9 @@ h3 {
 }
 
 .circular_image {
-  /* width: 250px;
-  height: 250px; */
-  border-radius: 2%;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
   overflow: hidden;
   background-color: rgb(255, 255, 255);
   
@@ -2237,8 +2238,10 @@ div.polaroid {
   }
 }
 
+
+
 .about_area .about_info h2 {
-  font-family: 'Kanit', sans-serif;
+font-family: 'Signika Negative', sans-serif;
 }
 
 /* line 23, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_about.scss */
@@ -2247,7 +2250,7 @@ div.polaroid {
   font-weight: 400;
   line-height: 62px;
   margin-bottom: 30px;
-  font-family: 'Kanit', sans-serif;
+font-family: 'Signika Negative', sans-serif;
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
@@ -2287,7 +2290,7 @@ div.polaroid {
   font-weight: 400;
   line-height: 2px;
   margin-bottom: 30px;
-  font-family: 'Kanit', sans-serif;
+font-family: 'Signika Negative', sans-serif;
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
@@ -2327,7 +2330,7 @@ div.polaroid {
   font-weight: 0;
   line-height: 27px;
   margin-bottom: 10px;
-  font-family: 'Kanit', sans-serif;
+font-family: 'Signika Negative', sans-serif;
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
@@ -2367,7 +2370,7 @@ div.polaroid {
   font-weight: 0;
   line-height: 20px;
   margin-bottom: 10px;
-  font-family: 'Kanit', sans-serif;
+font-family: 'Signika Negative', sans-serif;
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
@@ -2404,7 +2407,7 @@ div.polaroid {
 
 /* line 47, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_about.scss */
 .about_area .about_info p {
-  font-family: 'Kanit', sans-serif;
+font-family: 'Signika Negative', sans-serif;
   font-size: 16px;
   line-height: 28px;
   margin-top: 10px;
@@ -2527,7 +2530,7 @@ div.polaroid {
 /* line 18, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_gallery.scss */
 .portfolio_area .more_works a {
   font-size: 20px;
-  font-family: 'Kanit', sans-serif;
+font-family: 'Signika Negative', sans-serif;
   color: #fff;
   font-weight: 400;
 }
@@ -2714,7 +2717,7 @@ div.polaroid {
   font-size: 14px;
   color: #b3d9fc;
   font-weight: 400;
-  font-family: 'Kanit', sans-serif;
+font-family: 'Signika Negative', sans-serif;
   margin-bottom: 13px;
   /* position: relative;
   left: 10%;
@@ -2737,7 +2740,7 @@ div.polaroid {
   font-size: 30px;
   color: #fff;
   font-weight: 400;
-  font-family: 'Kanit', sans-serif;
+font-family: 'Signika Negative', sans-serif;
   line-height: 1;
   /* position: relative;
   left: 15%;
@@ -2939,7 +2942,7 @@ div.polaroid {
   color: #fff;
   text-transform: capitalize;
   margin-bottom: 40px;
-  font-family: 'Kanit', sans-serif;
+font-family: 'Signika Negative', sans-serif;
 }
 
 @media (max-width: 767px) {
@@ -3003,7 +3006,7 @@ div.polaroid {
 .footer .footer_top .footer_widget ul li a {
   color: #aab1b7;
   font-weight: 400;
-  font-family: 'Kanit', sans-serif;
+font-family: 'Signika Negative', sans-serif;
 }
 
 /* line 67, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_footer.scss */
@@ -3249,7 +3252,7 @@ div.polaroid {
   font-weight: 400;
   margin-bottom: 0;
   text-transform: capitalize;
-  font-family: 'Kanit', sans-serif;
+font-family: 'Signika Negative', sans-serif;
 }
 
 @media (max-width: 767px) {
@@ -3270,7 +3273,7 @@ div.polaroid {
 .btns {
   background-color: #ac63b9;
   border-radius: 28px;
-  font-family: 'Kanit', sans-serif;
+font-family: 'Signika Negative', sans-serif;
   border: none;
   color: white;
   padding: 12px 30px;
@@ -3384,7 +3387,7 @@ div.polaroid {
   cursor: pointer;
   display: block;
   float: left;
-  font-family: 'Kanit', sans-serif;
+font-family: 'Signika Negative', sans-serif;
   font-weight: normal;
   width: 100% !important;
   /* height: 42px; */
@@ -3760,7 +3763,7 @@ div.polaroid {
 /* line 22, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_service.scss */
 .service_area .single_service h3 {
   font-size: 26px;
-  font-family: 'Kanit', sans-serif;
+font-family: 'Signika Negative', sans-serif;
   font-weight: 400;
   color: #0a2147;
   margin-top: 37px;
@@ -3802,7 +3805,7 @@ div.polaroid {
 .service_area .single_service p {
   margin-bottom: 0;
   font-size: 14px;
-  font-family: 'Kanit', sans-serif;
+font-family: 'Signika Negative', sans-serif;
   font-weight: 0;
 }
 
@@ -4312,7 +4315,7 @@ div.polaroid {
 
 /* line 33, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_create_blog.scss */
 .creative_blog_area .blog_title h3 {
-  font-family: 'Kanit', sans-serif;
+font-family: 'Signika Negative', sans-serif;
   font-size: 50px;
   font-weight: 400;
   color: #fff;
@@ -4322,7 +4325,7 @@ div.polaroid {
 @media (max-width: 767px) {
   /* line 33, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_create_blog.scss */
   .creative_blog_area .blog_title h3 {
-    font-family: 'Kanit', sans-serif;
+  font-family: 'Signika Negative', sans-serif;
     font-size: 30px;
     margin-bottom: 20px;
     text-align: center;
@@ -4332,7 +4335,7 @@ div.polaroid {
 @media (min-width: 768px) and (max-width: 991px) {
   /* line 33, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_create_blog.scss */
   .creative_blog_area .blog_title h3 {
-    font-family: 'Kanit', sans-serif;
+  font-family: 'Signika Negative', sans-serif;
     font-size: 30px;
   }
 }
@@ -4380,7 +4383,7 @@ div.polaroid {
 /* line 71, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_create_blog.scss */
 .creative_blog_area .single_blog .blog_content span {
   color: #0b468d;
-  font-family: 'Kanit', sans-serif;
+font-family: 'Signika Negative', sans-serif;
   font-size: 14px;
   font-weight: 400;
   display: block;
@@ -4452,7 +4455,7 @@ div.polaroid {
   font-size: 12px;
   color: #828793;
   font-weight: 400;
-  font-family: 'Kanit', sans-serif;
+font-family: 'Signika Negative', sans-serif;
   margin-bottom: 0;
 }
 
@@ -4502,7 +4505,7 @@ div.polaroid {
   font-size: 12px;
   color: #828793;
   font-weight: 400;
-  font-family: 'Kanit', sans-serif;
+font-family: 'Signika Negative', sans-serif;
   display: block;
   margin-bottom: 6px;
 }
@@ -4621,14 +4624,14 @@ div.polaroid {
   margin-bottom: 0;
   font-size: 18px;
   color: #0a2147;
-  font-family: 'Kanit', sans-serif;
+font-family: 'Signika Negative', sans-serif;
   margin-bottom: 2px;
 }
 
 /* line 21, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_team.scss */
 .creative_people .single_people .people_info p {
   color: #818692;
-  font-family: 'Kanit', sans-serif;
+font-family: 'Signika Negative', sans-serif;
   font-size: 12px;
   margin-bottom: 0;
 }
@@ -7912,7 +7915,7 @@ h6 {
   opacity: 0;
 }
 .console-container {
-  font-family: 'Ubuntu';
+font-family: 'Signika Negative', sans-serif;
   font-size: 2em;
   text-align: left;
   font-style: normal;
@@ -8040,13 +8043,13 @@ img {
 
 .card__title {
   color: black;
-  font-family: 'Kanit', sans-serif;
+font-family: 'Signika Negative', sans-serif;
   font-size: 1.1rem;
   font-weight: bold;
   letter-spacing: 0;
 }
 .card__text {
-  font-family: 'Kanit', sans-serif;
+font-family: 'Signika Negative', sans-serif;
   -webkit-box-flex: 1;
   flex: 1 1 auto;
   font-size: 0.875rem;
@@ -8444,7 +8447,7 @@ main .column.right {
 .content h1,
 .content h2,
 .content p {
-  font-family: 'Kanit', sans-serif;
+font-family: 'Signika Negative', sans-serif;
   font-size: 1em;
   font-weight: 300;
   line-height: 1.5em;
@@ -8987,7 +8990,7 @@ blockquote cite:before {
   font-size: 15px;
   color: white;
   padding: 8px;
-  font-family: 'Kanit', sans-serif;
+font-family: 'Signika Negative', sans-serif;
   line-height: 1;
   max-width: 100%;
 }
@@ -9822,7 +9825,7 @@ body {
 .example-slider .fnc-slide__heading,
 .example-slider .fnc-slide__action-btn,
 .example-slider .fnc-nav__control {
-  font-family: 'Kanit', sans-serif;
+font-family: 'Signika Negative', sans-serif;
 }
 
 /* COLORFUL SWITCH STYLES 
@@ -9981,4 +9984,326 @@ body {
 .colorful-switch__checkbox:checked ~ .colorful-switch__label .colorful-switch__off:after {
   transition-timing-function: ease;
   transform: rotate(-45deg) scaleX(0) translateZ(0);
+}
+
+.night {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform: rotateZ(45deg);
+}
+
+.shooting_star {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 2px;
+  background: linear-gradient(-45deg, #5f91ff, rgba(0, 0, 255, 0));
+  border-radius: 999px;
+  filter: drop-shadow(0 0 6px #699bff);
+  -webkit-animation: tail 3000ms ease-in-out infinite, shooting 3000ms ease-in-out infinite;
+          animation: tail 3000ms ease-in-out infinite, shooting 3000ms ease-in-out infinite;
+}
+.shooting_star::before {
+  content: "";
+  position: absolute;
+  top: calc(50% - 1px);
+  right: 0;
+  height: 2px;
+  background: linear-gradient(-45deg, rgba(0, 0, 255, 0), #5f91ff, rgba(0, 0, 255, 0));
+  transform: translateX(50%) rotateZ(45deg);
+  border-radius: 100%;
+  -webkit-animation: shining 3000ms ease-in-out infinite;
+          animation: shining 3000ms ease-in-out infinite;
+}
+.shooting_star::after {
+  content: "";
+  position: absolute;
+  top: calc(50% - 1px);
+  right: 0;
+  height: 2px;
+  background: linear-gradient(-45deg, rgba(0, 0, 255, 0), #5f91ff, rgba(0, 0, 255, 0));
+  transform: translateX(50%) rotateZ(45deg);
+  border-radius: 100%;
+  -webkit-animation: shining 3000ms ease-in-out infinite;
+          animation: shining 3000ms ease-in-out infinite;
+  transform: translateX(50%) rotateZ(-45deg);
+}
+.shooting_star:nth-child(1) {
+  top: calc(50% - 199px);
+  left: calc(50% - 168px);
+  -webkit-animation-delay: 621ms;
+          animation-delay: 621ms;
+}
+.shooting_star:nth-child(1)::before, .shooting_star:nth-child(1)::after {
+  -webkit-animation-delay: 621ms;
+          animation-delay: 621ms;
+}
+.shooting_star:nth-child(2) {
+  top: calc(50% - -199px);
+  left: calc(50% - 215px);
+  -webkit-animation-delay: 2346ms;
+          animation-delay: 2346ms;
+}
+.shooting_star:nth-child(2)::before, .shooting_star:nth-child(2)::after {
+  -webkit-animation-delay: 2346ms;
+          animation-delay: 2346ms;
+}
+.shooting_star:nth-child(3) {
+  top: calc(50% - 166px);
+  left: calc(50% - 289px);
+  -webkit-animation-delay: 8398ms;
+          animation-delay: 8398ms;
+}
+.shooting_star:nth-child(3)::before, .shooting_star:nth-child(3)::after {
+  -webkit-animation-delay: 8398ms;
+          animation-delay: 8398ms;
+}
+.shooting_star:nth-child(4) {
+  top: calc(50% - 80px);
+  left: calc(50% - 299px);
+  -webkit-animation-delay: 697ms;
+          animation-delay: 697ms;
+}
+.shooting_star:nth-child(4)::before, .shooting_star:nth-child(4)::after {
+  -webkit-animation-delay: 697ms;
+          animation-delay: 697ms;
+}
+.shooting_star:nth-child(5) {
+  top: calc(50% - 25px);
+  left: calc(50% - 78px);
+  -webkit-animation-delay: 2988ms;
+          animation-delay: 2988ms;
+}
+.shooting_star:nth-child(5)::before, .shooting_star:nth-child(5)::after {
+  -webkit-animation-delay: 2988ms;
+          animation-delay: 2988ms;
+}
+.shooting_star:nth-child(6) {
+  top: calc(50% - -180px);
+  left: calc(50% - 288px);
+  -webkit-animation-delay: 1377ms;
+          animation-delay: 1377ms;
+}
+.shooting_star:nth-child(6)::before, .shooting_star:nth-child(6)::after {
+  -webkit-animation-delay: 1377ms;
+          animation-delay: 1377ms;
+}
+.shooting_star:nth-child(7) {
+  top: calc(50% - 158px);
+  left: calc(50% - 254px);
+  -webkit-animation-delay: 9849ms;
+          animation-delay: 9849ms;
+}
+.shooting_star:nth-child(7)::before, .shooting_star:nth-child(7)::after {
+  -webkit-animation-delay: 9849ms;
+          animation-delay: 9849ms;
+}
+.shooting_star:nth-child(8) {
+  top: calc(50% - -39px);
+  left: calc(50% - 228px);
+  -webkit-animation-delay: 5324ms;
+          animation-delay: 5324ms;
+}
+.shooting_star:nth-child(8)::before, .shooting_star:nth-child(8)::after {
+  -webkit-animation-delay: 5324ms;
+          animation-delay: 5324ms;
+}
+.shooting_star:nth-child(9) {
+  top: calc(50% - -185px);
+  left: calc(50% - 24px);
+  -webkit-animation-delay: 5320ms;
+          animation-delay: 5320ms;
+}
+.shooting_star:nth-child(9)::before, .shooting_star:nth-child(9)::after {
+  -webkit-animation-delay: 5320ms;
+          animation-delay: 5320ms;
+}
+.shooting_star:nth-child(10) {
+  top: calc(50% - -136px);
+  left: calc(50% - 261px);
+  -webkit-animation-delay: 6223ms;
+          animation-delay: 6223ms;
+}
+.shooting_star:nth-child(10)::before, .shooting_star:nth-child(10)::after {
+  -webkit-animation-delay: 6223ms;
+          animation-delay: 6223ms;
+}
+.shooting_star:nth-child(11) {
+  top: calc(50% - 136px);
+  left: calc(50% - 133px);
+  -webkit-animation-delay: 3456ms;
+          animation-delay: 3456ms;
+}
+.shooting_star:nth-child(11)::before, .shooting_star:nth-child(11)::after {
+  -webkit-animation-delay: 3456ms;
+          animation-delay: 3456ms;
+}
+.shooting_star:nth-child(12) {
+  top: calc(50% - 199px);
+  left: calc(50% - 169px);
+  -webkit-animation-delay: 5647ms;
+          animation-delay: 5647ms;
+}
+.shooting_star:nth-child(12)::before, .shooting_star:nth-child(12)::after {
+  -webkit-animation-delay: 5647ms;
+          animation-delay: 5647ms;
+}
+.shooting_star:nth-child(13) {
+  top: calc(50% - 19px);
+  left: calc(50% - 74px);
+  -webkit-animation-delay: 4306ms;
+          animation-delay: 4306ms;
+}
+.shooting_star:nth-child(13)::before, .shooting_star:nth-child(13)::after {
+  -webkit-animation-delay: 4306ms;
+          animation-delay: 4306ms;
+}
+.shooting_star:nth-child(14) {
+  top: calc(50% - 70px);
+  left: calc(50% - 181px);
+  -webkit-animation-delay: 7292ms;
+          animation-delay: 7292ms;
+}
+.shooting_star:nth-child(14)::before, .shooting_star:nth-child(14)::after {
+  -webkit-animation-delay: 7292ms;
+          animation-delay: 7292ms;
+}
+.shooting_star:nth-child(15) {
+  top: calc(50% - -139px);
+  left: calc(50% - 269px);
+  -webkit-animation-delay: 798ms;
+          animation-delay: 798ms;
+}
+.shooting_star:nth-child(15)::before, .shooting_star:nth-child(15)::after {
+  -webkit-animation-delay: 798ms;
+          animation-delay: 798ms;
+}
+.shooting_star:nth-child(16) {
+  top: calc(50% - -17px);
+  left: calc(50% - 115px);
+  -webkit-animation-delay: 6311ms;
+          animation-delay: 6311ms;
+}
+.shooting_star:nth-child(16)::before, .shooting_star:nth-child(16)::after {
+  -webkit-animation-delay: 6311ms;
+          animation-delay: 6311ms;
+}
+.shooting_star:nth-child(17) {
+  top: calc(50% - -143px);
+  left: calc(50% - 259px);
+  -webkit-animation-delay: 1423ms;
+          animation-delay: 1423ms;
+}
+.shooting_star:nth-child(17)::before, .shooting_star:nth-child(17)::after {
+  -webkit-animation-delay: 1423ms;
+          animation-delay: 1423ms;
+}
+.shooting_star:nth-child(18) {
+  top: calc(50% - -151px);
+  left: calc(50% - 220px);
+  -webkit-animation-delay: 8763ms;
+          animation-delay: 8763ms;
+}
+.shooting_star:nth-child(18)::before, .shooting_star:nth-child(18)::after {
+  -webkit-animation-delay: 8763ms;
+          animation-delay: 8763ms;
+}
+.shooting_star:nth-child(19) {
+  top: calc(50% - 139px);
+  left: calc(50% - 206px);
+  -webkit-animation-delay: 9148ms;
+          animation-delay: 9148ms;
+}
+.shooting_star:nth-child(19)::before, .shooting_star:nth-child(19)::after {
+  -webkit-animation-delay: 9148ms;
+          animation-delay: 9148ms;
+}
+.shooting_star:nth-child(20) {
+  top: calc(50% - 113px);
+  left: calc(50% - 242px);
+  -webkit-animation-delay: 570ms;
+          animation-delay: 570ms;
+}
+.shooting_star:nth-child(20)::before, .shooting_star:nth-child(20)::after {
+  -webkit-animation-delay: 570ms;
+          animation-delay: 570ms;
+}
+
+@-webkit-keyframes tail {
+  0% {
+    width: 0;
+  }
+  30% {
+    width: 100px;
+  }
+  100% {
+    width: 0;
+  }
+}
+
+@keyframes tail {
+  0% {
+    width: 0;
+  }
+  30% {
+    width: 100px;
+  }
+  100% {
+    width: 0;
+  }
+}
+@-webkit-keyframes shining {
+  0% {
+    width: 0;
+  }
+  50% {
+    width: 30px;
+  }
+  100% {
+    width: 0;
+  }
+}
+@keyframes shining {
+  0% {
+    width: 0;
+  }
+  50% {
+    width: 30px;
+  }
+  100% {
+    width: 0;
+  }
+}
+@-webkit-keyframes shooting {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(300px);
+  }
+}
+@keyframes shooting {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(300px);
+  }
+}
+@-webkit-keyframes sky {
+  0% {
+    transform: rotate(45deg);
+  }
+  100% {
+    transform: rotate(405deg);
+  }
+}
+@keyframes sky {
+  0% {
+    transform: rotate(45deg);
+  }
+  100% {
+    transform: rotate(405deg);
+  }
 }
