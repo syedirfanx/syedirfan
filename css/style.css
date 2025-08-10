@@ -9130,7 +9130,7 @@ font-family: 'Signika Negative', sans-serif;
   animation: 20s slides-set-3 -0.1s infinite;
 }
 .slideshow--hero .slide4 {
-  background-image: url("https://syedirfan.netlify.app/img/gallery/74.jpg");
+  background-image: url("https://syedirfan.netlify.app/img/gallery/80.jpg");
   animation: 20s slides-set-3 -0.1s infinite;
 }
 @media (min-width: 600px) {
@@ -9185,7 +9185,7 @@ font-family: 'Signika Negative', sans-serif;
   animation: 20s slides-set-3 -0.2s infinite;
 }
 .slideshow--contrast .slide4 {
-  background-image: linear-gradient(to bottom, rgba(77, 75, 200, 0.192) 0, rgba(190, 75, 200, 0.281) 100%), url("https://syedirfan.netlify.app/img/gallery/74.jpg");
+  background-image: linear-gradient(to bottom, rgba(77, 75, 200, 0.192) 0, rgba(190, 75, 200, 0.281) 100%), url("https://syedirfan.netlify.app/img/gallery/80.jpg");
   animation: 20s slides-set-3 -0.2s infinite;
 }
 .slideshow--contrast--after {
