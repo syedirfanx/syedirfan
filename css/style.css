@@ -16,6 +16,9 @@ font-family: 'Signika Negative', sans-serif;
   font-style: normal;
 }
 
+
+
+
 /* line 12, ../../Arafath/CL/December/230. Portfolio/HTML/scss/theme-default.scss */
 .img {
   max-width: 100%;
@@ -1735,8 +1738,8 @@ font-family: 'Signika Negative', sans-serif;
 }
 
 .circular_image {
-  width: 250px;
-  height: 250px;
+  width: 230px;
+  height: 230px;
   border-radius: 50%;
   overflow: hidden;
   background-color: rgb(255, 255, 255);
