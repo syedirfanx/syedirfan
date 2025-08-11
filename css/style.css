@@ -1622,12 +1622,39 @@ font-family: 'Signika Negative', sans-serif;
   text-align: center;
   top: 16.57%;
   font-size: 215px;
-  text-transform: uppercase;
   z-index: 1;
-  -webkit-text-stroke: 1px #1e273d;
-  -webkit-text-fill-color: transparent;
-  font-weight: 800;
-  font-family: "Arial";
+
+  font-family: "Cinzel", serif; /* Stranger Things–like font */
+  font-weight: 700;
+  letter-spacing: 2px; /* Gives a cinematic title spacing */
+
+
+}
+
+.tech-badges span {
+    display: inline-block;
+    background: #e5e7eb;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin: 5px 5px 0 0;
+    font-weight: 500;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background: #2563eb;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: #1d4ed8;
 }
 
 @media (min-width: 992px) and (max-width: 1200px) {
