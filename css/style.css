@@ -110,7 +110,7 @@ p {
   font-size: 16px;
   font-weight: 100;
   line-height: 28px;
-  color: #5b5e62;
+  color: #000000;
   margin-bottom: 13px;
 font-family: 'Signika Negative', sans-serif;
 }
@@ -474,8 +474,8 @@ font-family: 'Signika Negative', sans-serif;
 .boxed-btn3:hover {
   border: 1px solid #fff;
   border-radius: 28px;
-  color: #ac63b9 !important;
-  background: #fff;
+  color: #fff !important;
+  background: #c370d2;
 }
 
 /* line 52, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_btn.scss */
