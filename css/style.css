@@ -492,7 +492,7 @@ font-family: 'Signika Negative', sans-serif;
 /* line 59, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_btn.scss */
 .boxed-btn4 {
   /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#0b468d+0,5db2ff+100 */
-  background: #615cfd;
+  background: #ac63b9;
   color: #fff;
   display: inline-block;
   padding: 5px 10px;
@@ -517,7 +517,7 @@ font-family: 'Signika Negative', sans-serif;
 
 /* line 78, ../../Arafath/CL/December/230. Portfolio/HTML/scss/_btn.scss */
 .boxed-btn4:hover {
-  background: #4842f5;
+  background: #d18add;
   color: #fff !important;
 }
 
@@ -8213,7 +8213,7 @@ h1.header {
 /* Timeline */
 
 .timeline {
-  border-left: 8px solid #0a2147;
+  border-left: 8px solid #ac63b9;
   border-bottom-right-radius: 2px;
   border-top-right-radius: 2px;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
