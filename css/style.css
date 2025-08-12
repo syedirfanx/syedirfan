@@ -16,8 +16,22 @@ font-family: 'Signika Negative', sans-serif;
   font-style: normal;
 }
 
+.inline-box-link {
+  padding: 2px 6px;
+  border: 1.5px solid #ac63b9;
+  border-radius: 4px;
+  color: #ac63b9;
+  text-decoration: none;
+  font-weight: 600;
 
+  font-size: 0.9em;
+  transition: background-color 0.2s ease;
+}
 
+.inline-box-link:hover {
+  background-color: #ac63b9;
+  color: white;
+}
 
 /* line 12, ../../Arafath/CL/December/230. Portfolio/HTML/scss/theme-default.scss */
 .img {
