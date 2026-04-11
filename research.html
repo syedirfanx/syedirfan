@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Research | Syed Irfan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              mono: ['JetBrains Mono', 'monospace'],
+            },
+            colors: {
+              zinc: {
+                950: '#09090b',
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body class="min-h-screen flex flex-col selection:bg-zinc-800 selection:text-white">
+    <!-- Galaxy & Tech Background -->
+    <div class="nebula"></div>
+    <div class="tech-grid"></div>
+    <canvas id="stars-canvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
+
+    <!-- Header -->
+    <header class="border-b border-zinc-800/50 bg-black/50 backdrop-blur-md z-50 sticky top-0">
+      <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <a href="index.html" class="tracking-tighter text-2xl live-name uppercase flex items-baseline gap-2">
+            <span class="font-black">SYED</span>
+            <span class="font-black">IRFAN</span>
+          </a>
+        </div>
+        
+        <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-zinc-400">
+          <a href="index.html" class="hover:text-white transition-colors">Home</a>
+          <a href="person.html" class="hover:text-white transition-colors">The Person</a>
+          
+          <!-- Background Dropdown -->
+          <div class="relative group py-4">
+            <button class="flex items-center gap-1 text-white transition-colors">
+              Background
+              <i data-lucide="chevron-down" class="w-3 h-3"></i>
+            </button>
+            <div class="absolute top-full left-0 w-48 bg-zinc-900 border border-zinc-800 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top scale-95 group-hover:scale-100 z-50 p-2">
+              <a href="academic.html" class="block px-4 py-2 rounded-lg hover:bg-zinc-800 hover:text-white transition-colors text-xs">Academic</a>
+              <a href="experience.html" class="block px-4 py-2 rounded-lg hover:bg-zinc-800 hover:text-white transition-colors text-xs">Experience</a>
+              <a href="research.html" class="block px-4 py-2 rounded-lg bg-zinc-800 text-white transition-colors text-xs">Research</a>
+            </div>
+          </div>
+
+          <a href="favorites.html" class="hover:text-white transition-colors">Favorites</a>
+          <a href="contact.html" class="hover:text-white transition-colors">Contact</a>
+        </nav>
+
+        <div class="flex items-center gap-3">
+          <a href="https://github.com/syedirfanx" target="_blank" class="text-zinc-400 hover:text-white transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col max-w-7xl mx-auto w-full px-4 pt-20 pb-24 relative z-10">
+      <div class="fade-in space-y-16">
+        <div class="space-y-4">
+          <h1 class="text-4xl md:text-6xl font-bold tracking-tighter">Research & <span class="text-zinc-500">Projects</span>.</h1>
+          <p class="text-zinc-400 text-lg leading-relaxed max-w-3xl">
+            A comprehensive collection of my <span class="text-white">academic research</span>, <span class="text-white">industrial implementations</span>, and <span class="text-white">personal innovations</span> in AI and Computer Science.
+          </p>
+        </div>
+
+        <!-- Professional Search & Filter Toolbar -->
+        <div class="flex flex-col md:flex-row gap-3 p-2 bg-zinc-900/50 border border-zinc-800 rounded-2xl items-stretch md:items-center">
+          <!-- Search Input -->
+          <div class="relative flex-1">
+            <input 
+              type="text" 
+              id="project-search" 
+              placeholder="Search projects, tech, or categories..." 
+              class="w-full bg-zinc-950/50 border border-zinc-800/50 rounded-xl pl-10 pr-4 py-2.5 text-sm focus:outline-none focus:border-zinc-600 focus:bg-zinc-950 transition-all text-zinc-300 placeholder:text-zinc-600"
+            >
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-600"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          </div>
+          
+          <div class="flex gap-2">
+            <!-- Category Dropdown -->
+            <div class="relative group" id="category-dropdown">
+              <button onclick="toggleDropdown('category-menu')" class="flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold border border-zinc-800 bg-zinc-950/50 text-zinc-400 hover:border-zinc-600 hover:text-white transition-all min-w-[140px] justify-between">
+                <span id="category-label">Category: All</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-zinc-600"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div id="category-menu" class="hidden absolute right-0 mt-2 w-48 bg-zinc-950 border border-zinc-800 rounded-xl shadow-2xl z-50 overflow-hidden py-1">
+                <button onclick="selectCategory('all', 'All')" class="w-full text-left px-4 py-2 text-xs text-zinc-400 hover:bg-zinc-900 hover:text-white transition-colors">All Categories</button>
+                <button onclick="selectCategory('Conference Paper', 'Publications')" class="w-full text-left px-4 py-2 text-xs text-zinc-400 hover:bg-zinc-900 hover:text-white transition-colors">Publications</button>
+                <button onclick="selectCategory('Industrial Project', 'Industrial')" class="w-full text-left px-4 py-2 text-xs text-zinc-400 hover:bg-zinc-900 hover:text-white transition-colors">Industrial</button>
+                <button onclick="selectCategory('Academic Project', 'Academic')" class="w-full text-left px-4 py-2 text-xs text-zinc-400 hover:bg-zinc-900 hover:text-white transition-colors">Academic</button>
+                <button onclick="selectCategory('Personal Innovation', 'Personal')" class="w-full text-left px-4 py-2 text-xs text-zinc-400 hover:bg-zinc-900 hover:text-white transition-colors">Personal</button>
+              </div>
+            </div>
+
+            <!-- Stack Dropdown -->
+            <div class="relative group" id="stack-dropdown">
+              <button onclick="toggleDropdown('stack-menu')" class="flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold border border-zinc-800 bg-zinc-950/50 text-zinc-400 hover:border-zinc-600 hover:text-white transition-all min-w-[140px] justify-between">
+                <span id="stack-label">Stack: All</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-zinc-600"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div id="stack-menu" class="hidden absolute right-0 mt-2 w-48 bg-zinc-950 border border-zinc-800 rounded-xl shadow-2xl z-50 overflow-hidden py-1">
+                <button onclick="selectStack('all', 'All')" class="w-full text-left px-4 py-2 text-xs text-zinc-400 hover:bg-zinc-900 hover:text-white transition-colors">All Stacks</button>
+                <button onclick="selectStack('Machine Learning', 'AI/ML')" class="w-full text-left px-4 py-2 text-xs text-zinc-400 hover:bg-zinc-900 hover:text-white transition-colors">AI/ML</button>
+                <button onclick="selectStack('Web Development', 'Web Dev')" class="w-full text-left px-4 py-2 text-xs text-zinc-400 hover:bg-zinc-900 hover:text-white transition-colors">Web Dev</button>
+                <button onclick="selectStack('Blockchain', 'Blockchain')" class="w-full text-left px-4 py-2 text-xs text-zinc-400 hover:bg-zinc-900 hover:text-white transition-colors">Blockchain</button>
+                <button onclick="selectStack('Data Science', 'Data Science')" class="w-full text-left px-4 py-2 text-xs text-zinc-400 hover:bg-zinc-900 hover:text-white transition-colors">Data Science</button>
+                <button onclick="selectStack('IoT', 'IoT')" class="w-full text-left px-4 py-2 text-xs text-zinc-400 hover:bg-zinc-900 hover:text-white transition-colors">IoT</button>
+                <button onclick="selectStack('Python', 'Python')" class="w-full text-left px-4 py-2 text-xs text-zinc-400 hover:bg-zinc-900 hover:text-white transition-colors">Python</button>
+              </div>
+            </div>
+
+            <!-- Reset Button (Hidden by default) -->
+            <button id="reset-filters-btn" onclick="resetFilters()" class="hidden items-center justify-center w-10 h-10 rounded-xl border border-zinc-800 bg-zinc-950/50 text-zinc-600 hover:text-white hover:border-zinc-600 transition-all" title="Clear Filters">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Projects Container -->
+        <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Projects will be dynamically rendered here -->
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-zinc-800/50 bg-black/50 backdrop-blur-md py-12 mt-auto relative z-10">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
+          <!-- Brand & Bio -->
+          <div class="col-span-1 md:col-span-2 space-y-6">
+            <div class="flex items-center gap-3">
+              <span class="tracking-tighter text-xl live-name uppercase flex items-baseline gap-2">
+                <span class="font-black">SYED</span>
+                <span class="font-black">IRFAN</span>
+              </span>
+            </div>
+            <p class="text-zinc-500 text-sm leading-relaxed max-w-xs">
+              Specializing in AI-powered solutions, machine learning, and autonomous agentic workflows. Building the future of intelligent systems.
+            </p>
+            <div class="flex items-center gap-4">
+              <a href="https://github.com/syedirfanx" target="_blank" class="text-zinc-500 hover:text-white transition-colors">
+                <i data-lucide="github" class="w-5 h-5"></i>
+              </a>
+              <a href="#" target="_blank" class="text-zinc-500 hover:text-white transition-colors">
+                <i data-lucide="linkedin" class="w-5 h-5"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="space-y-6">
+            <h4 class="text-xs font-mono text-white uppercase tracking-widest">Navigation</h4>
+            <ul class="space-y-3 text-sm text-zinc-500">
+              <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
+              <li><a href="person.html" class="hover:text-white transition-colors">The Person</a></li>
+              <li><a href="favorites.html" class="hover:text-white transition-colors">Favorites</a></li>
+              <li><a href="contact.html" class="hover:text-white transition-colors">Contact</a></li>
+            </ul>
+          </div>
+
+          <!-- Contact Info -->
+          <div class="space-y-6">
+            <h4 class="text-xs font-mono text-white uppercase tracking-widest">Get in Touch</h4>
+            <ul class="space-y-3 text-sm text-zinc-500">
+              <li class="flex items-center gap-2">
+                <i data-lucide="mail" class="w-4 h-4"></i>
+                <a href="mailto:syedirfaanx@outlook.com" class="hover:text-white transition-colors">syedirfaanx@outlook.com</a>
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="map-pin" class="w-4 h-4"></i>
+                <span>Dhaka, Bangladesh</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pt-12 mt-12 border-t border-zinc-800/30 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p class="text-[10px] font-mono text-zinc-600 uppercase tracking-widest">
+            &copy; 2026 Syed Irfan. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Project Modal -->
+    <div id="project-modal" class="fixed inset-0 z-[100] hidden">
+      <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeProjectModal()"></div>
+      <div class="absolute inset-0 flex items-center justify-center p-4 pointer-events-none">
+        <div class="bg-zinc-950 border border-zinc-800 w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden pointer-events-auto transform transition-all scale-95 opacity-0 duration-300" id="modal-content">
+          <div class="p-8 space-y-6">
+            <div class="flex justify-between items-start">
+              <div id="modal-category" class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest"></div>
+              <button onclick="closeProjectModal()" class="text-zinc-500 hover:text-white transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              </button>
+            </div>
+            
+            <div class="space-y-2">
+              <h2 id="modal-title" class="text-3xl font-bold tracking-tighter"></h2>
+              <p id="modal-overview" class="text-zinc-400 leading-relaxed"></p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4">
+              <div class="space-y-4">
+                <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500">Collaborators</h4>
+                <div id="modal-collaborators" class="text-sm text-zinc-300 space-y-1"></div>
+              </div>
+              <div class="space-y-4">
+                <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500">Links</h4>
+                <div class="flex flex-col gap-2">
+                  <a id="modal-github" href="#" target="_blank" class="flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                    GitHub Repository
+                  </a>
+                  <a id="modal-document" href="#" target="_blank" class="flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                    Documentation
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div id="modal-tags" class="flex flex-wrap gap-2 pt-6"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

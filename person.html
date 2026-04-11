@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Syed Irfan | AI Solutions</title>
+    <title>The Person | Syed Irfan</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,25 +35,19 @@
     <div class="tech-grid"></div>
     <canvas id="stars-canvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
 
-    <!-- Background Ambient Glows -->
-    <div class="fixed inset-0 pointer-events-none z-0">
-      <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-zinc-900/20 rounded-full blur-[120px]"></div>
-      <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-zinc-900/20 rounded-full blur-[120px]"></div>
-    </div>
-
     <!-- Header -->
     <header class="border-b border-zinc-800/50 bg-black/50 backdrop-blur-md z-50 sticky top-0">
       <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
         <div class="flex items-center gap-3">
-          <span class="tracking-tighter text-2xl live-name uppercase flex items-baseline gap-2">
+          <a href="index.html" class="tracking-tighter text-2xl live-name uppercase flex items-baseline gap-2">
             <span class="font-black">SYED</span>
             <span class="font-black">IRFAN</span>
-          </span>
+          </a>
         </div>
         
         <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-zinc-400">
-          <a href="index.html" class="text-white transition-colors">Home</a>
-          <a href="person.html" class="hover:text-white transition-colors">The Person</a>
+          <a href="index.html" class="hover:text-white transition-colors">Home</a>
+          <a href="person.html" class="text-white transition-colors">The Person</a>
           
           <!-- Background Dropdown -->
           <div class="relative group py-4">
@@ -81,64 +75,82 @@
     </header>
 
     <!-- Main Content -->
-    <main class="flex-1 flex flex-col max-w-7xl mx-auto w-full px-4 pt-12 pb-24 relative z-10">
+    <main class="flex-1 flex flex-col max-w-4xl mx-auto w-full px-4 pt-20 pb-24 relative z-10">
       <div class="fade-in space-y-16">
         <!-- Hero Section -->
-        <section class="flex flex-col space-y-12">
-          <div class="flex-1 space-y-6">
-            <div class="space-y-4">
-              <h1 class="text-5xl md:text-7xl font-bold tracking-tighter leading-tight">
-                Crafting <span class="text-zinc-500">AI-Powered</span> Solutions<br />
-                for a Smarter Future.
-              </h1>
-              <p class="text-zinc-400 text-lg md:text-xl max-w-2xl leading-relaxed">
-                Hello World! I’m Syed Irfan — an AI-focused developer specializing in machine learning, LLM systems, and scalable applications.
-              </p>
-            </div>
+        <div class="space-y-6">
+          <h1 class="text-4xl md:text-6xl font-bold tracking-tighter">The <span class="text-zinc-500">Person</span> Behind the Code.</h1>
+          <div class="space-y-4 text-zinc-400 text-lg leading-relaxed max-w-3xl">
+            <p>
+              My journey as a computer science professional began in the vibrant city of <span class="text-zinc-300">Chittagong, Bangladesh</span>. It's a path defined by a relentless curiosity about how the world works—a drive that eventually took me from the tech hubs of Dhaka to the historic streets of <span class="text-zinc-300">London</span>.
+            </p>
+            <p>
+              Through this international transition, I've developed a unique perspective on how technology can bridge cultures and solve everyday problems. I don't just build apps; I turn big ideas into real-world solutions that impact lives, whether it's teaching computers to see or helping businesses make smarter, AI-driven decisions.
+            </p>
+          </div>
+        </div>
 
-            <!-- Tech Stack / Core Focus -->
-            <div class="pt-8 space-y-4">
-              <p class="text-xs font-mono text-zinc-500 uppercase tracking-widest">Core Tech Stack</p>
-              <div class="flex flex-wrap gap-6 text-zinc-400">
-                <div class="flex items-center gap-2 group cursor-default">
-                  <i data-lucide="code-2" class="w-5 h-5 group-hover:text-white transition-colors"></i>
-                  <span class="text-sm group-hover:text-white transition-colors">Python</span>
-                </div>
-                <div class="flex items-center gap-2 group cursor-default">
-                  <i data-lucide="bar-chart-3" class="w-5 h-5 group-hover:text-white transition-colors"></i>
-                  <span class="text-sm group-hover:text-white transition-colors">Data Science</span>
-                </div>
-                <div class="flex items-center gap-2 group cursor-default">
-                  <i data-lucide="sparkles" class="w-5 h-5 group-hover:text-white transition-colors"></i>
-                  <span class="text-sm group-hover:text-white transition-colors">LLMs</span>
-                </div>
-                <div class="flex items-center gap-2 group cursor-default">
-                  <i data-lucide="cpu" class="w-5 h-5 group-hover:text-white transition-colors"></i>
-                  <span class="text-sm group-hover:text-white transition-colors">AI Engineering</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Current Focus Section -->
-            <div class="pt-10 space-y-4 max-w-xl">
-              <div class="flex items-center gap-3">
-                <span class="relative flex h-2 w-2">
-                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                  <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                </span>
-                <p class="text-xs font-mono text-zinc-500 uppercase tracking-widest">Current Focus</p>
+        <!-- Detailed Sections -->
+        <div class="grid grid-cols-1 gap-8">
+          <!-- Philosophy & Research -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="grok-card p-8 rounded-2xl space-y-4">
+              <div class="flex items-center gap-3 text-zinc-300">
+                <i data-lucide="heart" class="w-5 h-5"></i>
+                <h3 class="text-xl font-semibold">My Philosophy</h3>
               </div>
               <p class="text-zinc-400 leading-relaxed">
-                Mastering <span class="text-white">Agentic AI</span> and workflow automation using <span class="text-white">n8n</span> and <span class="text-white">Zapier</span>. 
-                Currently building autonomous systems that bridge the gap between complex AI reasoning and production-ready business workflows.
+                I believe that technology should be an extension of human capability. My work focuses on creating AI systems that are not just powerful, but also intuitive, accessible, and designed to enhance human well-being. I aim to improve the world through the power of technology.
+              </p>
+            </div>
+            <div class="grok-card p-8 rounded-2xl space-y-4">
+              <div class="flex items-center gap-3 text-zinc-300">
+                <i data-lucide="search" class="w-5 h-5"></i>
+                <h3 class="text-xl font-semibold">Research Interest</h3>
+              </div>
+              <p class="text-zinc-400 leading-relaxed">
+                I’m fascinated by how artificial intelligence can learn from both images and text, helping computers understand and create like humans do. I explore ways that smart algorithms can work together to solve complex problems, and how AI can open new doors for creativity.
               </p>
             </div>
           </div>
-        </section>
 
+          <!-- Drive & Behind the Scenes -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="grok-card p-8 rounded-2xl space-y-4">
+              <div class="flex items-center gap-3 text-zinc-300">
+                <i data-lucide="zap" class="w-5 h-5"></i>
+                <h3 class="text-xl font-semibold">What Drives Me</h3>
+              </div>
+              <p class="text-zinc-400 leading-relaxed">
+                I’m driven by curiosity and a passion for turning ideas into technology that makes a difference. I enjoy blending data science with software engineering to build solutions that are both powerful and practical. Whether it’s creating apps or training AI models, I aim to enhance human well-being.
+              </p>
+            </div>
+            <div class="grok-card p-8 rounded-2xl space-y-6">
+              <div class="flex items-center gap-3 text-zinc-300">
+                <i data-lucide="clapperboard" class="w-5 h-5"></i>
+                <h3 class="text-xl font-semibold">Behind the Scenes</h3>
+              </div>
+              <div class="space-y-4 text-zinc-400 leading-relaxed">
+                <p>
+                  Beyond AI, I explore the mysteries of psychology, neuroscience, and the cosmos. I'm also an active movie buff reviewing films on IMDb and a music lover curating Spotify playlists for every mood.
+                </p>
+                <div class="pt-4 flex flex-wrap gap-6 border-t border-zinc-800/50">
+                  <a href="#" class="flex items-center gap-2 text-sm text-zinc-500 hover:text-white transition-colors group">
+                    <i data-lucide="film" class="w-4 h-4 group-hover:scale-110 transition-transform"></i>
+                    <span>IMDb Profile</span>
+                  </a>
+                  <a href="#" class="flex items-center gap-2 text-sm text-zinc-500 hover:text-white transition-colors group">
+                    <i data-lucide="music" class="w-4 h-4 group-hover:scale-110 transition-transform"></i>
+                    <span>Spotify Playlists</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
-    
+
     <!-- Footer -->
     <footer class="border-t border-zinc-800/50 bg-black/50 backdrop-blur-md py-12 mt-auto relative z-10">
       <div class="max-w-7xl mx-auto px-4">
@@ -168,7 +180,7 @@
           <div class="space-y-6">
             <h4 class="text-xs font-mono text-white uppercase tracking-widest">Navigation</h4>
             <ul class="space-y-3 text-sm text-zinc-500">
-              <li><a href="person.html" class="hover:text-white transition-colors">The Person</a></li>
+              <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
               <li><a href="favorites.html" class="hover:text-white transition-colors">Favorites</a></li>
               <li><a href="research.html" class="hover:text-white transition-colors">Research & Projects</a></li>
               <li><a href="contact.html" class="hover:text-white transition-colors">Contact</a></li>
@@ -202,4 +214,3 @@
     <script src="script.js"></script>
   </body>
 </html>
-
