@@ -23,6 +23,12 @@ document.addEventListener('DOMContentLoaded', () => {
   } catch (e) {
     console.error('Stars init failed:', e);
   }
+
+  try {
+    initWishes();
+  } catch (e) {
+    console.error('Wishes init failed:', e);
+  }
 });
 
 // Mobile Menu Logic
@@ -90,7 +96,13 @@ function initPageLoader() {
   document.querySelectorAll('a').forEach(link => {
     // Only for internal links
     const href = link.getAttribute('href');
-    if (href && !href.startsWith('http') && !href.startsWith('#') && !link.getAttribute('target')) {
+    if (href && 
+        !href.startsWith('http') && 
+        !href.startsWith('#') && 
+        !href.startsWith('mailto:') && 
+        !href.startsWith('tel:') && 
+        !link.getAttribute('target') &&
+        !link.hasAttribute('download')) {
       link.addEventListener('click', (e) => {
         const targetHref = link.href;
         
@@ -191,8 +203,8 @@ function initStars() {
 // Project Modal Logic
 const projectsData = {
   'disease-classification': {
-    title: 'Rice Leaf Disease Detection Using Machine Learning Techniques',
-    category: 'Conference Paper',
+    title: 'Rice Leaf Disease Detection using Machine Learning Techniques',
+    category: 'Publication and conference paper',
     overview: 'This research co-authored a conference paper presenting findings on rice leaf disease detection. We utilized machine learning algorithms to achieve a testing accuracy of 97.92%. The study involved rigorous evaluation using TPR, FPR, Precision, and AUC metrics to ensure the model\'s reliability in an agricultural context.',
     collaborators: ['Syed Irfan', 'Research Team at North South University'],
     github: 'https://github.com/syedirfanx',
@@ -200,8 +212,8 @@ const projectsData = {
     tags: ['Machine Learning', 'Agriculture AI', 'Data Analysis']
   },
   'swarm-intelligence': {
-    title: 'Feature Selection using Swarm Intelligence',
-    category: 'Thesis Research',
+    title: 'Feature Selection using Swarm Intelligence Techniques',
+    category: 'MSc Thesis',
     overview: 'My thesis research focuses on decentralized optimization algorithms to enhance feature selection in high-dimensional datasets. By mimicking the collective behavior of social insects, we aim to improve model accuracy while significantly reducing computational overhead.',
     collaborators: ['Syed Irfan', 'Academic Supervisors'],
     github: 'https://github.com/syedirfanx',
@@ -209,8 +221,8 @@ const projectsData = {
     tags: ['Optimization', 'Swarm Intelligence', 'Python', 'Feature Selection']
   },
   'starpals-ai': {
-    title: 'StarPals AI',
-    category: 'Industrial Project',
+    title: 'StarPals AI: Revolutionizing Talent Casting with Artificial Intelligence',
+    category: 'Personal Innovation',
     overview: 'StarPals AI is a cutting-edge film casting platform. It utilizes Generative AI, Natural Language Processing, and Multi-Modal Learning to facilitate actor profiling, lookalike detection, and precise role-matching for the entertainment industry.',
     collaborators: ['Syed Irfan (Lead Developer)', 'StarPals Team'],
     github: 'https://github.com/syedirfanx',
@@ -218,7 +230,7 @@ const projectsData = {
     tags: ['Gen AI', 'NLP', 'Multi-Modal', 'Python']
   },
   'face-mask-detector': {
-    title: 'Face Mask Detector',
+    title: 'Face Mask Detection & Warning Systems',
     category: 'Industrial Project',
     overview: 'Developed a real-time face mask detection system using Convolutional Neural Networks (CNN). The model achieved 95% accuracy and was designed for deployment in public spaces to assist with safety compliance monitoring.',
     collaborators: ['Syed Irfan'],
@@ -227,22 +239,13 @@ const projectsData = {
     tags: ['Computer Vision', 'CNN', 'TensorFlow', 'Real-time']
   },
   'id-card-ocr': {
-    title: 'ID Card OCR System',
+    title: 'NID Card OCR System (Bangla & English)',
     category: 'Industrial Project',
     overview: 'An advanced OCR pipeline designed to extract both Bangla and English text from National ID cards. The system processes images to output structured JSON data, facilitating automated data entry for financial and governmental services.',
     collaborators: ['Syed Irfan'],
     github: 'https://github.com/syedirfanx',
     document: '#',
     tags: ['OCR', 'NLP', 'Bangla OCR', 'Python']
-  },
-  'rice-leaf-disease': {
-    title: 'Rice Leaf Disease Detection',
-    category: 'Academic Project',
-    overview: 'A deep learning project aimed at supporting agriculture. Using CNNs, the system identifies various rice leaf diseases from images, providing early diagnosis to help farmers mitigate crop loss.',
-    collaborators: ['Syed Irfan', 'University Project Team'],
-    github: 'https://github.com/syedirfanx',
-    document: '#',
-    tags: ['Deep Learning', 'Agriculture AI', 'CNN']
   },
   'flight-booking': {
     title: 'Flight Booking System',
@@ -254,7 +257,7 @@ const projectsData = {
     tags: ['Full Stack', 'Database Design', 'Backend']
   },
   'crowdfunding': {
-    title: 'Secure Crowdfunding (Blockchain)',
+    title: 'Secure Crowdfunding using BlockChain Technology',
     category: 'Academic Project',
     overview: 'A decentralized crowdfunding platform built on the Ethereum blockchain. It uses smart contracts to ensure that funds are only released when specific project milestones are met, providing maximum security for donors.',
     collaborators: ['Syed Irfan'],
@@ -263,7 +266,7 @@ const projectsData = {
     tags: ['Blockchain', 'Ethereum', 'Solidity', 'Smart Contracts']
   },
   'bank-transaction': {
-    title: 'Bank Transaction Monitor',
+    title: 'Bank Transaction Monitoring using BlockChain Technology',
     category: 'Academic Project',
     overview: 'A distributed ledger system designed for real-time monitoring and auditing of financial transactions. It leverages blockchain technology to prevent fraud and ensure data integrity in banking operations.',
     collaborators: ['Syed Irfan'],
@@ -283,11 +286,11 @@ const projectsData = {
   'traffic-monitor': {
     title: 'Traffic Monitor App',
     category: 'Academic Project',
-    overview: 'A computer vision application that analyzes real-time traffic camera feeds. It detects vehicles, estimates flow rates, and identifies congestion points to assist in urban traffic management.',
+    overview: 'A computer vision-based Android mobile application developed in Java. It analyzes real-time traffic camera feeds to detect vehicles, estimate flow rates, and identify congestion points for urban traffic management.',
     collaborators: ['Syed Irfan'],
     github: 'https://github.com/syedirfanx',
     document: '#',
-    tags: ['CV', 'Traffic Management', 'Real-time']
+    tags: ['CV', 'Mobile App', 'Android', 'Java']
   },
   'machine-overheat': {
     title: 'Machine Overheat Detection',
@@ -300,12 +303,12 @@ const projectsData = {
   },
   'study-theatre': {
     title: 'Study Theatre',
-    category: 'Academic Project',
-    overview: 'A web-based collaborative platform for students. It allows for organized resource sharing, group study scheduling, and real-time collaboration on academic projects.',
-    collaborators: ['Syed Irfan', 'Web Dev Team'],
+    category: 'Industrial Project',
+    overview: 'A collaborative mobile application for students built with Flutter. It facilitates organized resource sharing, group study scheduling, and real-time academic collaboration.',
+    collaborators: ['Syed Irfan', 'Mobile Dev Team'],
     github: 'https://github.com/syedirfanx',
     document: '#',
-    tags: ['Web Development', 'Collaboration', 'Education Tech']
+    tags: ['Mobile App Dev', 'Flutter', 'Collaboration', 'Education Tech']
   },
   'digital-logic': {
     title: 'Digital Logic Design',
@@ -326,8 +329,8 @@ const projectsData = {
     tags: ['Game Dev', 'JavaScript', 'UI/UX']
   },
   'synthetic-face': {
-    title: 'Synthetic Face Generation',
-    category: 'Personal Innovation',
+    title: 'Synthetic Face Generation using GAN',
+    category: 'Academic Project',
     overview: 'An exploration into Generative Adversarial Networks (GANs). This project focuses on training models to generate high-fidelity, non-existent human faces with controllable attributes like age and expression.',
     collaborators: ['Syed Irfan'],
     github: 'https://github.com/syedirfanx',
@@ -335,8 +338,8 @@ const projectsData = {
     tags: ['GANs', 'Deep Learning', 'Generative AI']
   },
   'valentines-data': {
-    title: 'Consumer Data Analysis',
-    category: 'Personal Innovation',
+    title: 'Valentine\'s Day Consumer Data Analysis',
+    category: 'Personal Project',
     overview: 'A data science project that analyzes consumer spending habits during the Valentine\'s season. It uses sentiment analysis and trend forecasting to identify market patterns and consumer behavior.',
     collaborators: ['Syed Irfan'],
     github: 'https://github.com/syedirfanx',
@@ -345,21 +348,39 @@ const projectsData = {
   },
   'file-organizer': {
     title: 'Auto File Organizer',
-    category: 'Personal Innovation',
+    category: 'Personal Project',
     overview: 'A Python-based utility that automatically categorizes and moves files based on their extensions and content. It includes real-time directory monitoring and detailed logging of all file operations.',
     collaborators: ['Syed Irfan'],
     github: 'https://github.com/syedirfanx',
     document: '#',
     tags: ['Automation', 'Python', 'Productivity']
   },
+  'bangla-newspaper-summarizer': {
+    title: 'Bangla Newspaper Image Summarizer',
+    category: 'Personal Project',
+    overview: 'An AI-powered tool that processes images of Bangla newspapers using OCR to extract text and generate concise summaries. It helps users quickly digest news from physical or digital newspaper clippings.',
+    collaborators: ['Syed Irfan'],
+    github: 'https://github.com/syedirfanx',
+    document: '#',
+    tags: ['OCR', 'NLP', 'Bangla AI', 'Summarization']
+  },
   'news-aggregator': {
     title: 'News Aggregator Service',
-    category: 'Personal Innovation',
+    category: 'Industrial Project',
     overview: 'A personalized news service that scrapes multiple sources, categorizes articles using NLP, and provides concise summaries using the LexRank algorithm.',
     collaborators: ['Syed Irfan'],
     github: 'https://github.com/syedirfanx',
     document: '#',
     tags: ['NLP', 'Web Scraping', 'Summarization']
+  },
+  'shell-lubricants': {
+    title: 'Shell Lubricants E-commerce App',
+    category: 'Industrial Project',
+    overview: 'A robust e-commerce mobile application developed for Shell Lubricants using Flutter. The app features a streamlined product catalog, secure checkout, and real-time order tracking tailored for industrial and consumer lubricant sales.',
+    collaborators: ['Syed Irfan', 'Development Team'],
+    github: 'https://github.com/syedirfanx',
+    document: '#',
+    tags: ['Mobile App Dev', 'Flutter', 'E-commerce', 'Industrial']
   },
   'greenwich': {
     title: 'Master of Science (MSc) in Data Science',
@@ -457,14 +478,16 @@ function renderProjects() {
 
     // Category Filter
     const matchesCategory = currentCategory === 'all' || 
-                           (currentCategory === 'Conference Paper' && (project.category === 'Conference Paper' || project.category === 'Thesis Research')) ||
+                           (currentCategory === 'Conference Paper' && (project.category === 'Conference Paper' || project.category === 'Publication and conference paper')) ||
+                           (currentCategory === 'Academic Project' && (project.category === 'Academic Project' || project.category === 'Thesis Research' || project.category === 'MSc Thesis')) ||
+                           (currentCategory === 'Personal Innovation' && (project.category === 'Personal Innovation' || project.category === 'Personal Project')) ||
                            project.category === currentCategory;
     
     // Stack Filter
     const matchesStack = currentStack === 'all' || 
                         tags.some(tag => tag.toLowerCase().includes(currentStack.toLowerCase())) ||
-                        (currentStack === 'Machine Learning' && tags.some(tag => ['AI', 'ML', 'Deep Learning', 'CNN', 'GANs'].some(t => tag.includes(t)))) ||
-                        (currentStack === 'Web Development' && tags.some(tag => ['Web', 'Full Stack', 'Backend'].some(t => tag.includes(t))));
+                        (currentStack === 'AI/ML/Data Science' && tags.some(tag => ['AI', 'ML', 'Deep Learning', 'CNN', 'GANs', 'Data Science', 'Machine Learning', 'Sentiment Analysis'].some(t => tag.includes(t)))) ||
+                        (currentStack === 'Web/Mobile App Dev' && tags.some(tag => ['Web', 'Full Stack', 'Backend', 'Mobile', 'Flutter', 'Android', 'iOS'].some(t => tag.includes(t))));
 
     // Search Filter (Advanced: includes category)
     const searchContent = `${project.title} ${project.overview} ${project.category} ${tags.join(' ')}`.toLowerCase();
@@ -691,4 +714,91 @@ function closeProjectModal() {
     modal.classList.add('hidden');
     document.body.style.overflow = 'auto';
   }, 300);
+}
+
+// Wishes Spot Logic
+async function initWishes() {
+  const wishesSpot = document.getElementById('wishes-spot');
+  const wishTitle = document.getElementById('wish-title');
+  const wishMessage = document.getElementById('wish-message');
+  const cycleContainer = document.getElementById('wish-cycle-container');
+  
+  if (!wishesSpot || !wishTitle || !wishMessage || !cycleContainer) return;
+
+  const now = new Date();
+  const month = now.getMonth() + 1;
+  const day = now.getDate();
+  const dayOfWeek = now.getDay();
+
+  const startCycling = (title, message) => {
+    wishTitle.textContent = title;
+    wishMessage.textContent = message;
+    wishesSpot.classList.remove('hidden');
+
+    // Calculate the width needed for the longest text to ensure responsiveness
+    setTimeout(() => {
+      const titleWidth = wishTitle.scrollWidth;
+      const messageWidth = wishMessage.scrollWidth;
+      // Add a small buffer for safety
+      const maxWidth = Math.max(titleWidth, messageWidth) + 4;
+      cycleContainer.parentElement.style.width = `${maxWidth}px`;
+    }, 50);
+
+    let isTitle = true;
+    setInterval(() => {
+      isTitle = !isTitle;
+      cycleContainer.style.transform = isTitle ? 'translateY(0)' : 'translateY(-36px)';
+    }, 3000);
+
+    if (typeof lucide !== 'undefined') {
+      lucide.createIcons();
+    }
+  };
+
+  // 1. Check Fixed National/International Days
+  const fixedDays = [
+    { month: 2, day: 21, title: "Happy International Mother Language Day", message: "Remembering the Language Martyrs." },
+    { month: 3, day: 26, title: "Happy Independence Day", message: "Celebrating freedom and unity 🇧🇩" },
+    { month: 4, day: 14, title: "শুভ নববর্ষ!🍎", message: "সবাইকে বাংলা নববর্ষের শুভেচ্ছা।" },
+    { month: 12, day: 16, title: "Happy Victory Day", message: "May the red and green flag always fly high with pride. 🇧🇩" }
+  ];
+
+  const todayFixed = fixedDays.find(d => d.month === month && d.day === day);
+  if (todayFixed) {
+    startCycling(todayFixed.title, todayFixed.message);
+    return;
+  }
+
+  // 2. Check for Eid (Automatic via Aladhan API)
+  try {
+    const formattedDate = `${day}-${month}-${now.getFullYear()}`;
+    const response = await fetch(`https://api.aladhan.com/v1/gToH?date=${formattedDate}`);
+    const data = await response.json();
+    
+    if (data.code === 200) {
+      const hijri = data.data.hijri;
+      const hDay = parseInt(hijri.day);
+      const hMonth = hijri.month.number;
+
+      if (hMonth === 10 && (hDay === 1 || hDay === 2 || hDay === 3)) {
+        startCycling("Eid Mubarak", "Wishing you a blessed Eid. ✨");
+        return;
+      }
+      
+      if (hMonth === 12 && (hDay === 10 || hDay === 11 || hDay === 12)) {
+        startCycling("Eid Mubarak", "Wishing you a blessed Eid. ✨");
+        return;
+      }
+    }
+  } catch (error) {
+    console.error("Failed to fetch Hijri date:", error);
+  }
+
+  // 3. Check for Jummah (Friday)
+  if (dayOfWeek === 5) {
+    startCycling("Jummah Mubarak", "Have a blessed Friday. ✨");
+    return;
+  }
+
+  wishesSpot.classList.add('hidden');
 }

@@ -95,6 +95,22 @@
     <!-- Main Content -->
     <main class="flex-1 flex flex-col max-w-7xl mx-auto w-full px-4 pt-12 pb-24 relative z-10">
       <div class="fade-in space-y-16">
+        
+        <!-- Wishes Spot -->
+        <div id="wishes-spot" class="hidden">
+          <div class="inline-flex items-center gap-3 px-4 rounded-full bg-zinc-900/50 border border-zinc-800/50 backdrop-blur-sm overflow-hidden h-9 max-w-[calc(100vw-2rem)]">
+            <div class="flex-shrink-0">
+              <i data-lucide="sparkles" class="w-3 h-3 text-zinc-400 animate-pulse"></i>
+            </div>
+            <div class="relative h-9 overflow-hidden transition-[width] duration-500">
+              <div id="wish-cycle-container" class="flex flex-col transition-transform duration-700 ease-in-out">
+                <span id="wish-title" class="text-[10px] font-mono text-zinc-100 uppercase tracking-widest h-9 flex items-center whitespace-nowrap"></span>
+                <span id="wish-message" class="text-xs font-medium text-zinc-400 h-9 flex items-center whitespace-nowrap"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- Hero Section -->
         <section class="flex flex-col space-y-12">
           <div class="flex-1 space-y-6">
@@ -171,9 +187,9 @@
             <!-- Project 1 -->
             <div onclick="openProjectModal('starpals-ai')" class="grok-card p-8 rounded-2xl flex flex-col group hover:border-zinc-700 transition-all cursor-pointer">
               <div class="flex justify-between items-start mb-6">
-                <span class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">Industrial</span>
+                <span class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">Personal Innovation</span>
               </div>
-              <h3 class="text-xl font-bold mb-3">StarPals AI</h3>
+              <h3 class="text-xl font-bold mb-3">StarPals AI: Revolutionizing Talent Casting with Artificial Intelligence</h3>
               <div class="flex items-center gap-1.5 text-[10px] font-bold text-zinc-600 group-hover:text-zinc-400 transition-colors mb-6 uppercase tracking-widest">
                 <span>See details</span>
                 <i data-lucide="chevron-right" class="w-2.5 h-2.5"></i>
@@ -185,27 +201,11 @@
             </div>
 
             <!-- Project 2 -->
-            <div onclick="openProjectModal('disease-classification')" class="grok-card p-8 rounded-2xl flex flex-col group hover:border-zinc-700 transition-all cursor-pointer">
-              <div class="flex justify-between items-start mb-6">
-                <span class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">Conference Paper</span>
-              </div>
-              <h3 class="text-xl font-bold mb-3">Rice Leaf Disease Detection</h3>
-              <div class="flex items-center gap-1.5 text-[10px] font-bold text-zinc-600 group-hover:text-zinc-400 transition-colors mb-6 uppercase tracking-widest">
-                <span>See details</span>
-                <i data-lucide="chevron-right" class="w-2.5 h-2.5"></i>
-              </div>
-              <div class="mt-auto flex flex-wrap gap-2">
-                <span class="px-3 py-1 rounded-full bg-zinc-800/50 text-zinc-400 text-[10px] uppercase tracking-widest border border-zinc-800">ML</span>
-                <span class="px-3 py-1 rounded-full bg-zinc-800/50 text-zinc-400 text-[10px] uppercase tracking-widest border border-zinc-800">Agriculture</span>
-              </div>
-            </div>
-
-            <!-- Project 3 -->
             <div onclick="openProjectModal('swarm-intelligence')" class="grok-card p-8 rounded-2xl flex flex-col group hover:border-zinc-700 transition-all cursor-pointer">
               <div class="flex justify-between items-start mb-6">
-                <span class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">Thesis Research</span>
+                <span class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">MSc Thesis</span>
               </div>
-              <h3 class="text-xl font-bold mb-3">Swarm Intelligence</h3>
+              <h3 class="text-xl font-bold mb-3">Feature Selection using Swarm Intelligence Techniques</h3>
               <div class="flex items-center gap-1.5 text-[10px] font-bold text-zinc-600 group-hover:text-zinc-400 transition-colors mb-6 uppercase tracking-widest">
                 <span>See details</span>
                 <i data-lucide="chevron-right" class="w-2.5 h-2.5"></i>
@@ -213,6 +213,22 @@
               <div class="mt-auto flex flex-wrap gap-2">
                 <span class="px-3 py-1 rounded-full bg-zinc-800/50 text-zinc-400 text-[10px] uppercase tracking-widest border border-zinc-800">Optimization</span>
                 <span class="px-3 py-1 rounded-full bg-zinc-800/50 text-zinc-400 text-[10px] uppercase tracking-widest border border-zinc-800">Python</span>
+              </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div onclick="openProjectModal('bank-transaction')" class="grok-card p-8 rounded-2xl flex flex-col group hover:border-zinc-700 transition-all cursor-pointer">
+              <div class="flex justify-between items-start mb-6">
+                <span class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">Academic Project</span>
+              </div>
+              <h3 class="text-xl font-bold mb-3">Bank Transaction Monitoring using BlockChain Technology</h3>
+              <div class="flex items-center gap-1.5 text-[10px] font-bold text-zinc-600 group-hover:text-zinc-400 transition-colors mb-6 uppercase tracking-widest">
+                <span>See details</span>
+                <i data-lucide="chevron-right" class="w-2.5 h-2.5"></i>
+              </div>
+              <div class="mt-auto flex flex-wrap gap-2">
+                <span class="px-3 py-1 rounded-full bg-zinc-800/50 text-zinc-400 text-[10px] uppercase tracking-widest border border-zinc-800">Blockchain</span>
+                <span class="px-3 py-1 rounded-full bg-zinc-800/50 text-zinc-400 text-[10px] uppercase tracking-widest border border-zinc-800">FinTech</span>
               </div>
             </div>
           </div>
