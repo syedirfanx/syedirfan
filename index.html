@@ -64,7 +64,7 @@
             <div class="absolute top-full left-0 w-48 bg-zinc-900 border border-zinc-800 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top scale-95 group-hover:scale-100 z-50 p-2">
               <a href="academic.html" class="block px-4 py-2 rounded-lg hover:bg-zinc-800 hover:text-white transition-colors text-xs">Academic</a>
               <a href="experience.html" class="block px-4 py-2 rounded-lg hover:bg-zinc-800 hover:text-white transition-colors text-xs">Experience</a>
-              <a href="research.html" class="block px-4 py-2 rounded-lg hover:bg-zinc-800 hover:text-white transition-colors text-xs">Research</a>
+              <a href="research.html" class="block px-4 py-2 rounded-lg hover:bg-zinc-800 hover:text-white transition-colors text-xs">Research & Projects</a>
             </div>
           </div>
 
@@ -95,7 +95,7 @@
                 for a Smarter Future.
               </h1>
               <p class="text-zinc-400 text-lg md:text-xl leading-relaxed">
-                Hello World! I’m Syed Irfan — an AI-focused developer specializing in machine learning, LLM systems, and scalable applications.
+                Hello World! I’m Syed Irfan, an AI-focused developer specializing in machine learning, LLMs, and scalable applications.
               </p>
             </div>
 
@@ -160,7 +160,7 @@
           
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <!-- Project 1 -->
-            <a href="research.html" class="grok-card p-8 rounded-2xl flex flex-col group hover:border-zinc-700 transition-all">
+            <div onclick="openProjectModal('starpals-ai')" class="grok-card p-8 rounded-2xl flex flex-col group hover:border-zinc-700 transition-all cursor-pointer">
               <div class="flex justify-between items-start mb-6">
                 <span class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">Industrial</span>
               </div>
@@ -173,10 +173,10 @@
                 <span class="px-3 py-1 rounded-full bg-zinc-800/50 text-zinc-400 text-[10px] uppercase tracking-widest border border-zinc-800">Gen AI</span>
                 <span class="px-3 py-1 rounded-full bg-zinc-800/50 text-zinc-400 text-[10px] uppercase tracking-widest border border-zinc-800">NLP</span>
               </div>
-            </a>
+            </div>
 
             <!-- Project 2 -->
-            <a href="research.html" class="grok-card p-8 rounded-2xl flex flex-col group hover:border-zinc-700 transition-all">
+            <div onclick="openProjectModal('disease-classification')" class="grok-card p-8 rounded-2xl flex flex-col group hover:border-zinc-700 transition-all cursor-pointer">
               <div class="flex justify-between items-start mb-6">
                 <span class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">Conference Paper</span>
               </div>
@@ -189,10 +189,10 @@
                 <span class="px-3 py-1 rounded-full bg-zinc-800/50 text-zinc-400 text-[10px] uppercase tracking-widest border border-zinc-800">ML</span>
                 <span class="px-3 py-1 rounded-full bg-zinc-800/50 text-zinc-400 text-[10px] uppercase tracking-widest border border-zinc-800">Agriculture</span>
               </div>
-            </a>
+            </div>
 
             <!-- Project 3 -->
-            <a href="research.html" class="grok-card p-8 rounded-2xl flex flex-col group hover:border-zinc-700 transition-all">
+            <div onclick="openProjectModal('swarm-intelligence')" class="grok-card p-8 rounded-2xl flex flex-col group hover:border-zinc-700 transition-all cursor-pointer">
               <div class="flex justify-between items-start mb-6">
                 <span class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">Thesis Research</span>
               </div>
@@ -205,7 +205,7 @@
                 <span class="px-3 py-1 rounded-full bg-zinc-800/50 text-zinc-400 text-[10px] uppercase tracking-widest border border-zinc-800">Optimization</span>
                 <span class="px-3 py-1 rounded-full bg-zinc-800/50 text-zinc-400 text-[10px] uppercase tracking-widest border border-zinc-800">Python</span>
               </div>
-            </a>
+            </div>
           </div>
         </section>
 
@@ -216,7 +216,7 @@
             <div class="relative z-10 space-y-4">
               <h2 class="text-3xl md:text-5xl font-bold tracking-tighter">Let's build something <span class="text-zinc-500">intelligent</span> together.</h2>
               <p class="text-zinc-400 max-w-xl mx-auto">
-                Whether you have a project in mind or just want to discuss the future of AI, my inbox is always open.
+                Whether you have a project in mind or just want to discuss the future of AI, feel free to reach out.
               </p>
             </div>
             <div class="relative z-10 flex flex-col md:flex-row items-center justify-center gap-4">
@@ -293,6 +293,50 @@
       </div>
     </footer>
 
+    <!-- Project Modal -->
+    <div id="project-modal" class="fixed inset-0 z-[100] hidden overflow-y-auto">
+      <div class="fixed inset-0 bg-black/80 backdrop-blur-sm" onclick="closeProjectModal()"></div>
+      <div class="relative min-h-screen flex items-center justify-center p-4 pointer-events-none">
+        <div class="bg-zinc-950 border border-zinc-800 w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden pointer-events-auto transform transition-all scale-95 opacity-0 duration-300 my-8" id="modal-content">
+          <div class="p-8 space-y-6">
+            <div class="flex justify-between items-start">
+              <div id="modal-category" class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest"></div>
+              <button onclick="closeProjectModal()" class="text-zinc-500 hover:text-white transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              </button>
+            </div>
+            
+            <div class="space-y-2">
+              <h2 id="modal-title" class="text-3xl font-bold tracking-tighter"></h2>
+              <div id="modal-overview" class="text-zinc-400 leading-relaxed"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4">
+              <div class="space-y-4">
+                <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500">Collaborators</h4>
+                <div id="modal-collaborators" class="text-sm text-zinc-300 space-y-1"></div>
+              </div>
+              <div class="space-y-4">
+                <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500">Links</h4>
+                <div class="flex flex-col gap-2">
+                  <a id="modal-github" href="#" target="_blank" class="flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                    GitHub Repository
+                  </a>
+                  <a id="modal-document" href="#" target="_blank" class="flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                    Documentation
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div id="modal-tags" class="flex flex-wrap gap-2 pt-6"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Mobile Menu Overlay -->
     <div id="mobile-menu" class="fixed inset-0 bg-black z-[100] hidden flex flex-col p-6">
       <div class="flex items-center justify-between mb-12">
@@ -313,7 +357,7 @@
           <div class="flex flex-col gap-4 pl-4 border-l border-zinc-900">
             <a href="academic.html" class="text-zinc-500 hover:text-white">Academic</a>
             <a href="experience.html" class="text-zinc-500 hover:text-white">Experience</a>
-            <a href="research.html" class="text-zinc-500 hover:text-white">Research</a>
+            <a href="research.html" class="text-zinc-500 hover:text-white">Research & Projects</a>
           </div>
         </div>
         <a href="favorites.html" class="text-zinc-500 hover:text-white">Favorites</a>

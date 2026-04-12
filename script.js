@@ -320,14 +320,13 @@ const projectsData = {
     tags: ['NLP', 'Web Scraping', 'Summarization']
   },
   'greenwich': {
-    title: 'University of Greenwich',
+    title: 'Master of Science (MSc) in Data Science',
     category: 'Academic Background',
     tags: [],
     overview: `
       <div class="space-y-6">
         <div>
-          <h4 class="text-white font-bold text-lg">Master of Science (MSc) in Data Science</h4>
-          <p class="text-zinc-500 text-sm font-mono uppercase tracking-widest mt-1">Specialized Trail: Financial Technology (FinTech)</p>
+          <p class="text-zinc-500 text-sm font-mono uppercase tracking-widest mt-1">University of Greenwich • London, UK</p>
         </div>
         <div>
           <p class="text-zinc-400 text-sm leading-relaxed">A comprehensive program focusing on advanced data analysis, machine learning, and their applications in the financial sector.</p>
@@ -354,14 +353,13 @@ const projectsData = {
     `
   },
   'nsu': {
-    title: 'North South University',
+    title: 'Bachelor of Science (BSc) in Computer Science & Engineering',
     category: 'Academic Background',
     tags: [],
     overview: `
       <div class="space-y-6">
         <div>
-          <h4 class="text-white font-bold text-lg">Bachelor of Science (BSc) in Computer Science & Engineering</h4>
-          <p class="text-zinc-500 text-sm font-mono uppercase tracking-widest mt-1">Specialized Trail: Artificial Intelligence (AI)</p>
+          <p class="text-zinc-500 text-sm font-mono uppercase tracking-widest mt-1">North South University • Dhaka, Bangladesh</p>
         </div>
         <div>
           <p class="text-zinc-400 text-sm leading-relaxed">Specialized in Artificial Intelligence, focusing on neural networks, pattern recognition, and software engineering.</p>
