@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 /* Grok-style UI Styles */
 body {
   background-color: #000;
@@ -114,4 +118,80 @@ body {
 @keyframes ticker {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
+}
+
+/* Galaxy Loader */
+#page-loader {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.6s;
+}
+
+#page-loader.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loader-visual {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin-bottom: 2rem;
+}
+
+.loader-ring {
+  position: absolute;
+  inset: 0;
+  border: 1px solid transparent;
+  border-top-color: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  animation: rotate 3s linear infinite;
+}
+
+.loader-ring:nth-child(2) {
+  inset: 15px;
+  border-top-color: rgba(255, 255, 255, 0.2);
+  animation-duration: 2s;
+  animation-direction: reverse;
+}
+
+.loader-ring:nth-child(3) {
+  inset: 30px;
+  border-top-color: rgba(255, 255, 255, 0.1);
+  animation-duration: 1.5s;
+}
+
+.loader-core {
+  position: absolute;
+  inset: 45px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.8), 0 0 60px rgba(255, 255, 255, 0.4);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.loader-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.4em;
+  color: #52525b;
+  text-transform: uppercase;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(0.9); opacity: 0.5; }
 }

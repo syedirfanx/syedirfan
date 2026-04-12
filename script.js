@@ -1,5 +1,8 @@
 // Initialize everything
 document.addEventListener('DOMContentLoaded', () => {
+  // Initialize loader first
+  initPageLoader();
+
   // Mobile menu should be initialized first as it's critical for navigation
   try {
     initMobileMenu();
@@ -62,6 +65,45 @@ function initMobileMenu() {
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
       closeMenu();
+    }
+  });
+}
+
+// Page Loader Logic
+function initPageLoader() {
+  const loader = document.getElementById('page-loader');
+  if (!loader) return;
+
+  // Hide loader on initial load
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      loader.classList.add('hidden');
+    }, 500);
+  });
+
+  // Fallback if window load doesn't fire or takes too long
+  setTimeout(() => {
+    loader.classList.add('hidden');
+  }, 2500);
+
+  // Show loader on link clicks
+  document.querySelectorAll('a').forEach(link => {
+    // Only for internal links
+    const href = link.getAttribute('href');
+    if (href && !href.startsWith('http') && !href.startsWith('#') && !link.getAttribute('target')) {
+      link.addEventListener('click', (e) => {
+        const targetHref = link.href;
+        
+        // Don't show loader if it's the same page
+        if (targetHref === window.location.href) return;
+
+        e.preventDefault();
+        loader.classList.remove('hidden');
+        
+        setTimeout(() => {
+          window.location.href = targetHref;
+        }, 400);
+      });
     }
   });
 }
