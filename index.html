@@ -73,9 +73,12 @@
         </nav>
 
         <div class="flex items-center gap-3">
-          <a href="https://github.com/syedirfanx" target="_blank" class="text-zinc-400 hover:text-white transition-colors">
+          <a href="https://github.com/syedirfanx" target="_blank" class="hidden md:block text-zinc-400 hover:text-white transition-colors">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
           </a>
+          <button id="mobile-menu-btn" class="md:hidden p-3 -mr-2 text-zinc-400 hover:text-white transition-colors cursor-pointer">
+            <i data-lucide="menu" class="w-6 h-6"></i>
+          </button>
         </div>
       </div>
     </header>
@@ -91,47 +94,138 @@
                 Crafting <span class="text-zinc-500">AI-Powered</span> Solutions<br />
                 for a Smarter Future.
               </h1>
-              <p class="text-zinc-400 text-lg md:text-xl max-w-2xl leading-relaxed">
+              <p class="text-zinc-400 text-lg md:text-xl leading-relaxed">
                 Hello World! I’m Syed Irfan — an AI-focused developer specializing in machine learning, LLM systems, and scalable applications.
               </p>
             </div>
 
-            <!-- Tech Stack / Core Focus -->
-            <div class="pt-8 space-y-4">
-              <p class="text-xs font-mono text-zinc-500 uppercase tracking-widest">Core Tech Stack</p>
-              <div class="flex flex-wrap gap-6 text-zinc-400">
-                <div class="flex items-center gap-2 group cursor-default">
-                  <i data-lucide="code-2" class="w-5 h-5 group-hover:text-white transition-colors"></i>
-                  <span class="text-sm group-hover:text-white transition-colors">Python</span>
-                </div>
-                <div class="flex items-center gap-2 group cursor-default">
-                  <i data-lucide="bar-chart-3" class="w-5 h-5 group-hover:text-white transition-colors"></i>
-                  <span class="text-sm group-hover:text-white transition-colors">Data Science</span>
-                </div>
-                <div class="flex items-center gap-2 group cursor-default">
-                  <i data-lucide="sparkles" class="w-5 h-5 group-hover:text-white transition-colors"></i>
-                  <span class="text-sm group-hover:text-white transition-colors">LLMs</span>
-                </div>
-                <div class="flex items-center gap-2 group cursor-default">
-                  <i data-lucide="cpu" class="w-5 h-5 group-hover:text-white transition-colors"></i>
-                  <span class="text-sm group-hover:text-white transition-colors">AI Engineering</span>
-                </div>
-              </div>
-            </div>
-
             <!-- Current Focus Section -->
-            <div class="pt-10 space-y-4 max-w-xl">
-              <div class="flex items-center gap-3">
-                <span class="relative flex h-2 w-2">
-                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                  <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                </span>
-                <p class="text-xs font-mono text-zinc-500 uppercase tracking-widest">Current Focus</p>
+        <section class="pt-10 space-y-4">
+          <div class="flex items-center gap-3">
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            <p class="text-xs font-mono text-zinc-500 uppercase tracking-widest">Current Focus</p>
+          </div>
+          <p class="text-zinc-400 leading-relaxed">
+            Mastering <span class="text-white">Agentic AI</span> and workflow automation using <span class="text-white">n8n</span> and <span class="text-white">Zapier</span>. 
+            Currently building autonomous systems that bridge the gap between complex AI reasoning and production-ready business workflows.
+          </p>
+        </section>
+
+        <!-- Expertise Section -->
+        <section class="space-y-8 pt-12">
+          <div class="space-y-2">
+            <h2 class="text-2xl font-bold tracking-tighter uppercase">Expertise</h2>
+            <div class="h-1 w-12 bg-zinc-800"></div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="grok-card p-6 rounded-2xl border border-zinc-800/50 space-y-4 hover:border-zinc-700 transition-all">
+              <div class="w-10 h-10 rounded-xl bg-zinc-900 flex items-center justify-center text-white">
+                <i data-lucide="code-2" class="w-5 h-5"></i>
               </div>
-              <p class="text-zinc-400 leading-relaxed">
-                Mastering <span class="text-white">Agentic AI</span> and workflow automation using <span class="text-white">n8n</span> and <span class="text-white">Zapier</span>. 
-                Currently building autonomous systems that bridge the gap between complex AI reasoning and production-ready business workflows.
+              <h3 class="font-bold text-lg">Python</h3>
+              <p class="text-zinc-500 text-sm leading-relaxed">Architecting robust backends and complex algorithms with a focus on high-performance computing and clean code.</p>
+            </div>
+            <div class="grok-card p-6 rounded-2xl border border-zinc-800/50 space-y-4 hover:border-zinc-700 transition-all">
+              <div class="w-10 h-10 rounded-xl bg-zinc-900 flex items-center justify-center text-white">
+                <i data-lucide="database" class="w-5 h-5"></i>
+              </div>
+              <h3 class="font-bold text-lg">Data Science</h3>
+              <p class="text-zinc-500 text-sm leading-relaxed">Extracting actionable insights from complex datasets using advanced statistical modeling and visualization.</p>
+            </div>
+            <div class="grok-card p-6 rounded-2xl border border-zinc-800/50 space-y-4 hover:border-zinc-700 transition-all">
+              <div class="w-10 h-10 rounded-xl bg-zinc-900 flex items-center justify-center text-white">
+                <i data-lucide="brain-circuit" class="w-5 h-5"></i>
+              </div>
+              <h3 class="font-bold text-lg">AI Engineering</h3>
+              <p class="text-zinc-500 text-sm leading-relaxed">Developing autonomous agents, RAG systems, and fine-tuning LLMs for specialized industrial use cases.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Featured Projects Section -->
+        <section class="space-y-8 pt-12">
+          <div class="flex items-end justify-between">
+            <div class="space-y-2">
+              <h2 class="text-2xl font-bold tracking-tighter uppercase">Featured Projects</h2>
+              <div class="h-1 w-12 bg-zinc-800"></div>
+            </div>
+            <a href="research.html" class="text-xs font-mono text-zinc-500 hover:text-white transition-colors uppercase tracking-widest flex items-center gap-2 group">
+              View All Research
+              <i data-lucide="arrow-right" class="w-3 h-3 group-hover:translate-x-1 transition-transform"></i>
+            </a>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Project 1 -->
+            <a href="research.html" class="grok-card p-8 rounded-2xl flex flex-col group hover:border-zinc-700 transition-all">
+              <div class="flex justify-between items-start mb-6">
+                <span class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">Industrial</span>
+              </div>
+              <h3 class="text-xl font-bold mb-3">StarPals AI</h3>
+              <div class="flex items-center gap-1.5 text-[10px] font-bold text-zinc-600 group-hover:text-zinc-400 transition-colors mb-6 uppercase tracking-widest">
+                <span>See details</span>
+                <i data-lucide="chevron-right" class="w-2.5 h-2.5"></i>
+              </div>
+              <div class="mt-auto flex flex-wrap gap-2">
+                <span class="px-3 py-1 rounded-full bg-zinc-800/50 text-zinc-400 text-[10px] uppercase tracking-widest border border-zinc-800">Gen AI</span>
+                <span class="px-3 py-1 rounded-full bg-zinc-800/50 text-zinc-400 text-[10px] uppercase tracking-widest border border-zinc-800">NLP</span>
+              </div>
+            </a>
+
+            <!-- Project 2 -->
+            <a href="research.html" class="grok-card p-8 rounded-2xl flex flex-col group hover:border-zinc-700 transition-all">
+              <div class="flex justify-between items-start mb-6">
+                <span class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">Conference Paper</span>
+              </div>
+              <h3 class="text-xl font-bold mb-3">Rice Leaf Disease Detection</h3>
+              <div class="flex items-center gap-1.5 text-[10px] font-bold text-zinc-600 group-hover:text-zinc-400 transition-colors mb-6 uppercase tracking-widest">
+                <span>See details</span>
+                <i data-lucide="chevron-right" class="w-2.5 h-2.5"></i>
+              </div>
+              <div class="mt-auto flex flex-wrap gap-2">
+                <span class="px-3 py-1 rounded-full bg-zinc-800/50 text-zinc-400 text-[10px] uppercase tracking-widest border border-zinc-800">ML</span>
+                <span class="px-3 py-1 rounded-full bg-zinc-800/50 text-zinc-400 text-[10px] uppercase tracking-widest border border-zinc-800">Agriculture</span>
+              </div>
+            </a>
+
+            <!-- Project 3 -->
+            <a href="research.html" class="grok-card p-8 rounded-2xl flex flex-col group hover:border-zinc-700 transition-all">
+              <div class="flex justify-between items-start mb-6">
+                <span class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">Thesis Research</span>
+              </div>
+              <h3 class="text-xl font-bold mb-3">Swarm Intelligence</h3>
+              <div class="flex items-center gap-1.5 text-[10px] font-bold text-zinc-600 group-hover:text-zinc-400 transition-colors mb-6 uppercase tracking-widest">
+                <span>See details</span>
+                <i data-lucide="chevron-right" class="w-2.5 h-2.5"></i>
+              </div>
+              <div class="mt-auto flex flex-wrap gap-2">
+                <span class="px-3 py-1 rounded-full bg-zinc-800/50 text-zinc-400 text-[10px] uppercase tracking-widest border border-zinc-800">Optimization</span>
+                <span class="px-3 py-1 rounded-full bg-zinc-800/50 text-zinc-400 text-[10px] uppercase tracking-widest border border-zinc-800">Python</span>
+              </div>
+            </a>
+          </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="pt-24 pb-12">
+          <div class="p-12 rounded-3xl bg-zinc-900/30 border border-zinc-800/50 text-center space-y-8 relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-zinc-950/50 pointer-events-none"></div>
+            <div class="relative z-10 space-y-4">
+              <h2 class="text-3xl md:text-5xl font-bold tracking-tighter">Let's build something <span class="text-zinc-500">intelligent</span> together.</h2>
+              <p class="text-zinc-400 max-w-xl mx-auto">
+                Whether you have a project in mind or just want to discuss the future of AI, my inbox is always open.
               </p>
+            </div>
+            <div class="relative z-10 flex flex-col md:flex-row items-center justify-center gap-4">
+              <a href="contact.html" class="px-8 py-4 bg-white text-black rounded-full font-bold hover:bg-zinc-200 transition-all w-full md:w-auto">
+                Get in Touch
+              </a>
+              <a href="research.html" class="px-8 py-4 bg-zinc-900 border border-zinc-800 text-white rounded-full font-bold hover:bg-zinc-800 transition-all w-full md:w-auto">
+                View Portfolio
+              </a>
             </div>
           </div>
         </section>
@@ -198,6 +292,43 @@
         </div>
       </div>
     </footer>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-black z-[100] hidden flex flex-col p-6">
+      <div class="flex items-center justify-between mb-12">
+        <span class="tracking-tighter text-2xl uppercase flex items-baseline gap-2">
+          <span class="font-black">SYED</span>
+          <span class="font-black">IRFAN</span>
+        </span>
+        <button id="mobile-menu-close" class="p-3 text-zinc-400 hover:text-white transition-colors cursor-pointer">
+          <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+      </div>
+      
+      <nav class="flex flex-col gap-8 text-lg font-bold tracking-tighter">
+        <a href="index.html" class="text-white">Home</a>
+        <a href="person.html" class="text-zinc-500 hover:text-white">The Person</a>
+        <div class="space-y-4">
+          <p class="text-xs font-mono text-zinc-700 uppercase tracking-widest">Background</p>
+          <div class="flex flex-col gap-4 pl-4 border-l border-zinc-900">
+            <a href="academic.html" class="text-zinc-500 hover:text-white">Academic</a>
+            <a href="experience.html" class="text-zinc-500 hover:text-white">Experience</a>
+            <a href="research.html" class="text-zinc-500 hover:text-white">Research</a>
+          </div>
+        </div>
+        <a href="favorites.html" class="text-zinc-500 hover:text-white">Favorites</a>
+        <a href="contact.html" class="text-zinc-500 hover:text-white">Contact</a>
+      </nav>
+
+      <div class="mt-auto pt-12 border-t border-zinc-900 flex items-center gap-6">
+        <a href="https://github.com/syedirfanx" target="_blank" class="text-zinc-500 hover:text-white transition-colors">
+          <i data-lucide="github" class="w-6 h-6"></i>
+        </a>
+        <a href="#" target="_blank" class="text-zinc-500 hover:text-white transition-colors">
+          <i data-lucide="linkedin" class="w-6 h-6"></i>
+        </a>
+      </div>
+    </div>
 
     <script src="script.js"></script>
   </body>

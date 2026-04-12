@@ -1,8 +1,70 @@
-// Initialize Lucide icons and stars
+// Initialize everything
 document.addEventListener('DOMContentLoaded', () => {
-  lucide.createIcons();
-  initStars();
+  // Mobile menu should be initialized first as it's critical for navigation
+  try {
+    initMobileMenu();
+  } catch (e) {
+    console.error('Mobile menu init failed:', e);
+  }
+
+  try {
+    if (typeof lucide !== 'undefined') {
+      lucide.createIcons();
+    }
+  } catch (e) {
+    console.error('Lucide icons init failed:', e);
+  }
+
+  try {
+    initStars();
+  } catch (e) {
+    console.error('Stars init failed:', e);
+  }
 });
+
+// Mobile Menu Logic
+function initMobileMenu() {
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const menuCloseBtn = document.getElementById('mobile-menu-close');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  if (!menuBtn || !mobileMenu) {
+    console.warn('Mobile menu elements not found');
+    return;
+  }
+
+  const openMenu = (e) => {
+    if (e) e.preventDefault();
+    mobileMenu.classList.remove('hidden');
+    mobileMenu.style.display = 'flex'; // Force display flex
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeMenu = () => {
+    mobileMenu.classList.add('hidden');
+    mobileMenu.style.display = 'none'; // Force display none
+    document.body.style.overflow = 'auto';
+  };
+
+  menuBtn.addEventListener('click', openMenu);
+
+  if (menuCloseBtn) {
+    menuCloseBtn.addEventListener('click', closeMenu);
+  }
+
+  // Close menu on link click
+  const menuLinks = mobileMenu.querySelectorAll('a');
+  menuLinks.forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  // Close on escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
+      closeMenu();
+    }
+  });
+}
 
 // Star Background Animation
 function initStars() {
@@ -87,13 +149,13 @@ function initStars() {
 // Project Modal Logic
 const projectsData = {
   'disease-classification': {
-    title: 'Disease Classification using Decision Tree (J48)',
+    title: 'Rice Leaf Disease Detection Using Machine Learning Techniques',
     category: 'Conference Paper',
-    overview: 'This research co-authored a conference paper presenting findings on disease classification. We utilized the J48 decision tree algorithm to achieve a testing accuracy of 97.92%. The study involved rigorous evaluation using TPR, FPR, Precision, and AUC metrics to ensure the model\'s reliability in a healthcare context.',
+    overview: 'This research co-authored a conference paper presenting findings on rice leaf disease detection. We utilized machine learning algorithms to achieve a testing accuracy of 97.92%. The study involved rigorous evaluation using TPR, FPR, Precision, and AUC metrics to ensure the model\'s reliability in an agricultural context.',
     collaborators: ['Syed Irfan', 'Research Team at North South University'],
     github: 'https://github.com/syedirfanx',
     document: '#',
-    tags: ['Machine Learning', 'Healthcare AI', 'J48', 'Data Analysis']
+    tags: ['Machine Learning', 'Agriculture AI', 'Data Analysis']
   },
   'swarm-intelligence': {
     title: 'Feature Selection using Swarm Intelligence',
@@ -391,9 +453,10 @@ function renderProjects() {
         <span class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">${project.category}</span>
       </div>
       <h3 class="text-xl font-bold mb-3">${project.title}</h3>
-      <p class="text-zinc-500 text-sm mb-6 leading-relaxed line-clamp-3">
-        ${project.overview}
-      </p>
+      <div class="flex items-center gap-1.5 text-[10px] font-bold text-zinc-600 group-hover:text-zinc-400 transition-colors mb-6 uppercase tracking-widest">
+        <span>See details</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+      </div>
       <div class="mt-auto flex flex-wrap gap-2">
         ${project.tags.slice(0, 2).map(tag => `
           <span class="px-3 py-1 rounded-full bg-zinc-800/50 text-zinc-400 text-[10px] uppercase tracking-widest border border-zinc-800">${tag}</span>

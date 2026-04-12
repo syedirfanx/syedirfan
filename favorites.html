@@ -67,9 +67,12 @@
         </nav>
 
         <div class="flex items-center gap-3">
-          <a href="https://github.com/syedirfanx" target="_blank" class="text-zinc-400 hover:text-white transition-colors">
+          <a href="https://github.com/syedirfanx" target="_blank" class="hidden md:block text-zinc-400 hover:text-white transition-colors">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
           </a>
+          <button id="mobile-menu-btn" class="md:hidden p-3 -mr-2 text-zinc-400 hover:text-white transition-colors cursor-pointer">
+            <i data-lucide="menu" class="w-6 h-6"></i>
+          </button>
         </div>
       </div>
     </header>
@@ -141,6 +144,14 @@
                   <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
                   Dark
                 </li>
+                <li class="flex items-center gap-3">
+                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
+                  13 Reasons Why (Season 1)
+                </li>
+                <li class="flex items-center gap-3">
+                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
+                  Chernobyl
+                </li>
               </ul>
             </div>
           </div>
@@ -162,6 +173,18 @@
                 <li class="flex items-center gap-3">
                   <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
                   FIFA 20
+                </li>
+                <li class="flex items-center gap-3">
+                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
+                  PUBG
+                </li>
+                <li class="flex items-center gap-3">
+                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
+                  Need for Speed
+                </li>
+                <li class="flex items-center gap-3">
+                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
+                  PES
                 </li>
               </ul>
             </div>
@@ -201,10 +224,10 @@
             </div>
           </div>
 
-          <!-- Favorite Food -->
+          <!-- Food -->
           <div class="grok-card p-8 rounded-3xl space-y-6 group hover:border-zinc-700 transition-all">
             <div class="flex items-center justify-between">
-              <h3 class="text-2xl font-bold">Favorite Food</h3>
+              <h3 class="text-2xl font-bold">Food</h3>
               <div class="p-3 rounded-2xl bg-zinc-900 border border-zinc-800 text-zinc-400 group-hover:text-white transition-colors">
                 <i data-lucide="utensils" class="w-6 h-6"></i>
               </div>
@@ -223,37 +246,49 @@
                   <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
                   Mac and Cheese
                 </li>
+                <li class="flex items-center gap-3">
+                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
+                  Butter Chicken
+                </li>
+                <li class="flex items-center gap-3">
+                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
+                  Fish and chips
+                </li>
               </ul>
             </div>
           </div>
 
           <!-- Travel -->
-          <div class="grok-card p-8 rounded-3xl space-y-6 group hover:border-zinc-700 transition-all md:col-span-2 lg:col-span-1">
+          <div class="grok-card p-8 rounded-3xl space-y-6 group hover:border-zinc-700 transition-all">
             <div class="flex items-center justify-between">
               <h3 class="text-2xl font-bold">Places I've Visited</h3>
               <div class="p-3 rounded-2xl bg-zinc-900 border border-zinc-800 text-zinc-400 group-hover:text-white transition-colors">
                 <i data-lucide="map" class="w-6 h-6"></i>
               </div>
             </div>
-            <div class="space-y-6">
-              <div class="grid grid-cols-1 gap-4">
-                <div class="p-4 rounded-2xl bg-zinc-900/50 border border-zinc-800/50 hover:border-zinc-700 transition-all">
-                  <h4 class="font-bold text-white mb-1 text-sm">Changi Village, Singapore</h4>
-                  <p class="text-[10px] text-zinc-500">A peaceful coastal escape.</p>
-                </div>
-                <div class="p-4 rounded-2xl bg-zinc-900/50 border border-zinc-800/50 hover:border-zinc-700 transition-all">
-                  <h4 class="font-bold text-white mb-1 text-sm">Agra, Uttar Pradesh</h4>
-                  <p class="text-[10px] text-zinc-500">Home to the majestic Taj Mahal.</p>
-                </div>
-                <div class="p-4 rounded-2xl bg-zinc-900/50 border border-zinc-800/50 hover:border-zinc-700 transition-all">
-                  <h4 class="font-bold text-white mb-1 text-sm">London, United Kingdom</h4>
-                  <p class="text-[10px] text-zinc-500">A global hub of history and culture.</p>
-                </div>
-                <div class="p-4 rounded-2xl bg-zinc-900/50 border border-zinc-800/50 hover:border-zinc-700 transition-all">
-                  <h4 class="font-bold text-white mb-1 text-sm">Swansea, United Kingdom</h4>
-                  <p class="text-[10px] text-zinc-500">Beautiful coastal city in Wales.</p>
-                </div>
-              </div>
+            <div class="space-y-4">
+              <ul class="space-y-3 text-zinc-400 text-sm">
+                <li class="flex items-center gap-3">
+                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
+                  Changi Village, Singapore
+                </li>
+                <li class="flex items-center gap-3">
+                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
+                  Agra, Uttar Pradesh
+                </li>
+                <li class="flex items-center gap-3">
+                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
+                  London, United Kingdom
+                </li>
+                <li class="flex items-center gap-3">
+                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
+                  Swansea, United Kingdom
+                </li>
+                <li class="flex items-center gap-3">
+                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
+                  Istanbul, Turkey
+                </li>
+              </ul>
             </div>
           </div>
 
@@ -282,6 +317,78 @@
                 <li class="flex items-center gap-3">
                   <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
                   Exploring New Tech
+                </li>
+                <li class="flex items-center gap-3">
+                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
+                  Gardening
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Interests -->
+          <div class="grok-card p-8 rounded-3xl space-y-6 group hover:border-zinc-700 transition-all">
+            <div class="flex items-center justify-between">
+              <h3 class="text-2xl font-bold">Interests</h3>
+              <div class="p-3 rounded-2xl bg-zinc-900 border border-zinc-800 text-zinc-400 group-hover:text-white transition-colors">
+                <i data-lucide="sparkles" class="w-6 h-6"></i>
+              </div>
+            </div>
+            <div class="space-y-4">
+              <ul class="space-y-3 text-zinc-400 text-sm">
+                <li class="flex items-center gap-3">
+                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
+                  Human Psychology
+                </li>
+                <li class="flex items-center gap-3">
+                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
+                  Stars & Galaxies
+                </li>
+                <li class="flex items-center gap-3">
+                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
+                  Space-Time
+                </li>
+                <li class="flex items-center gap-3">
+                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
+                  Black Holes
+                </li>
+                <li class="flex items-center gap-3">
+                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
+                  Mysterious Phenomena
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Books & Learning -->
+          <div class="grok-card p-8 rounded-3xl space-y-6 group hover:border-zinc-700 transition-all">
+            <div class="flex items-center justify-between">
+              <h3 class="text-2xl font-bold">Books & Learning</h3>
+              <div class="p-3 rounded-2xl bg-zinc-900 border border-zinc-800 text-zinc-400 group-hover:text-white transition-colors">
+                <i data-lucide="book-open" class="w-6 h-6"></i>
+              </div>
+            </div>
+            <div class="space-y-4">
+              <ul class="space-y-3 text-zinc-400 text-sm">
+                <li class="flex items-center gap-3">
+                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
+                  Atomic Habits
+                </li>
+                <li class="flex items-center gap-3">
+                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
+                  Emotional Intelligence
+                </li>
+                <li class="flex items-center gap-3">
+                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
+                  Who Moved My Cheese?
+                </li>
+                <li class="flex items-center gap-3">
+                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
+                  Black Holes: The Key to Understanding the Universe
+                </li>
+                <li class="flex items-center gap-3">
+                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
+                  AI Superpowers
                 </li>
               </ul>
             </div>
@@ -349,6 +456,43 @@
         </div>
       </div>
     </footer>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-black z-[100] hidden flex flex-col p-6">
+      <div class="flex items-center justify-between mb-12">
+        <span class="tracking-tighter text-2xl uppercase flex items-baseline gap-2">
+          <span class="font-black">SYED</span>
+          <span class="font-black">IRFAN</span>
+        </span>
+        <button id="mobile-menu-close" class="p-3 text-zinc-400 hover:text-white transition-colors cursor-pointer">
+          <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+      </div>
+      
+      <nav class="flex flex-col gap-8 text-lg font-bold tracking-tighter">
+        <a href="index.html" class="text-zinc-500 hover:text-white">Home</a>
+        <a href="person.html" class="text-zinc-500 hover:text-white">The Person</a>
+        <div class="space-y-4">
+          <p class="text-xs font-mono text-zinc-700 uppercase tracking-widest">Background</p>
+          <div class="flex flex-col gap-4 pl-4 border-l border-zinc-900">
+            <a href="academic.html" class="text-zinc-500 hover:text-white">Academic</a>
+            <a href="experience.html" class="text-zinc-500 hover:text-white">Experience</a>
+            <a href="research.html" class="text-zinc-500 hover:text-white">Research</a>
+          </div>
+        </div>
+        <a href="favorites.html" class="text-white">Favorites</a>
+        <a href="contact.html" class="text-zinc-500 hover:text-white">Contact</a>
+      </nav>
+
+      <div class="mt-auto pt-12 border-t border-zinc-900 flex items-center gap-6">
+        <a href="https://github.com/syedirfanx" target="_blank" class="text-zinc-500 hover:text-white transition-colors">
+          <i data-lucide="github" class="w-6 h-6"></i>
+        </a>
+        <a href="#" target="_blank" class="text-zinc-500 hover:text-white transition-colors">
+          <i data-lucide="linkedin" class="w-6 h-6"></i>
+        </a>
+      </div>
+    </div>
 
     <script src="script.js"></script>
   </body>

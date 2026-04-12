@@ -84,3 +84,34 @@ body {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+/* News Ticker Animation */
+.ticker-wrap {
+  width: 100%;
+  overflow: hidden;
+  background-color: rgba(220, 38, 38, 0.1);
+  border-bottom: 1px solid rgba(220, 38, 38, 0.2);
+  padding: 10px 0;
+  z-index: 40;
+}
+
+.ticker {
+  display: inline-block;
+  white-space: nowrap;
+  animation: ticker 30s linear infinite;
+}
+
+.ticker__item {
+  display: inline-block;
+  padding: 0 1rem;
+  color: #ef4444;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
