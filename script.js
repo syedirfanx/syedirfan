@@ -259,7 +259,8 @@ const projectsData = {
   },
   'greenwich': {
     title: 'University of Greenwich',
-    category: '',
+    category: 'Academic Background',
+    tags: [],
     overview: `
       <div class="space-y-6">
         <div>
@@ -292,7 +293,8 @@ const projectsData = {
   },
   'nsu': {
     title: 'North South University',
-    category: '',
+    category: 'Academic Background',
+    tags: [],
     overview: `
       <div class="space-y-6">
         <div>
@@ -346,6 +348,11 @@ function renderProjects() {
   grid.innerHTML = '';
 
   const filteredProjects = Object.entries(projectsData).filter(([id, project]) => {
+    // Skip academic background items in the research grid
+    if (id === 'greenwich' || id === 'nsu') return false;
+
+    const tags = project.tags || [];
+
     // Category Filter
     const matchesCategory = currentCategory === 'all' || 
                            (currentCategory === 'Conference Paper' && (project.category === 'Conference Paper' || project.category === 'Thesis Research')) ||
@@ -353,12 +360,12 @@ function renderProjects() {
     
     // Stack Filter
     const matchesStack = currentStack === 'all' || 
-                        project.tags.some(tag => tag.toLowerCase().includes(currentStack.toLowerCase())) ||
-                        (currentStack === 'Machine Learning' && project.tags.some(tag => ['AI', 'ML', 'Deep Learning', 'CNN', 'GANs'].some(t => tag.includes(t)))) ||
-                        (currentStack === 'Web Development' && project.tags.some(tag => ['Web', 'Full Stack', 'Backend'].some(t => tag.includes(t))));
+                        tags.some(tag => tag.toLowerCase().includes(currentStack.toLowerCase())) ||
+                        (currentStack === 'Machine Learning' && tags.some(tag => ['AI', 'ML', 'Deep Learning', 'CNN', 'GANs'].some(t => tag.includes(t)))) ||
+                        (currentStack === 'Web Development' && tags.some(tag => ['Web', 'Full Stack', 'Backend'].some(t => tag.includes(t))));
 
     // Search Filter (Advanced: includes category)
-    const searchContent = `${project.title} ${project.overview} ${project.category} ${project.tags.join(' ')}`.toLowerCase();
+    const searchContent = `${project.title} ${project.overview} ${project.category} ${tags.join(' ')}`.toLowerCase();
     const matchesSearch = searchContent.includes(searchQuery.toLowerCase());
 
     return matchesCategory && matchesStack && matchesSearch;
