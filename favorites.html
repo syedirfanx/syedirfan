@@ -49,7 +49,7 @@
 
     <!-- Header -->
     <header class="border-b border-zinc-800/50 bg-black/50 backdrop-blur-md z-50 sticky top-0">
-      <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 h-16 flex items-center justify-between">
         <div class="flex items-center gap-3">
           <a href="index.html" class="tracking-tighter text-2xl live-name uppercase flex items-baseline gap-2">
             <span class="font-black">SYED</span>
@@ -87,7 +87,7 @@
     </header>
 
     <!-- Main Content -->
-    <main class="flex-1 flex flex-col max-w-7xl mx-auto w-full px-4 pt-20 pb-24 relative z-10">
+    <main class="flex-1 flex flex-col max-w-7xl mx-auto w-full px-6 md:px-12 lg:px-16 pt-20 pb-24 relative z-10">
       <div class="fade-in space-y-20">
         <!-- Hero Section -->
         <div class="max-w-3xl space-y-6">
@@ -303,21 +303,21 @@
             </div>
 
             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 relative z-10 flex-1">
-              <div class="rounded-2xl overflow-hidden aspect-[3/4]">
-                <img src="pictures/IMG20250102175550.jpg" alt="Gallery Preview 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" referrerPolicy="no-referrer">
+              <div class="rounded-2xl overflow-hidden aspect-[3/4] bg-zinc-900 skeleton">
+                <img src="pictures/IMG20250102175550.jpg" alt="Gallery Preview 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-0 transition-opacity duration-300" loading="lazy" onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('skeleton')" referrerPolicy="no-referrer">
               </div>
-              <div class="rounded-2xl overflow-hidden aspect-[3/4]">
-                <img src="pictures/IMG20220401160123.jpg" alt="Gallery Preview 2" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" referrerPolicy="no-referrer">
+              <div class="rounded-2xl overflow-hidden aspect-[3/4] bg-zinc-900 skeleton">
+                <img src="pictures/IMG20220401160123.jpg" alt="Gallery Preview 2" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-0 transition-opacity duration-300" loading="lazy" onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('skeleton')" referrerPolicy="no-referrer">
               </div>
-              <div class="rounded-2xl overflow-hidden aspect-[3/4]">
-                <img src="pictures/9c150393-428e-433d-a2a2-87eb7267d379.jpg" alt="Gallery Preview 3" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" referrerPolicy="no-referrer">
+              <div class="rounded-2xl overflow-hidden aspect-[3/4] bg-zinc-900 skeleton">
+                <img src="pictures/9c150393-428e-433d-a2a2-87eb7267d379.jpg" alt="Gallery Preview 3" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-0 transition-opacity duration-300" loading="lazy" onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('skeleton')" referrerPolicy="no-referrer">
               </div>
-              <div class="rounded-2xl overflow-hidden aspect-[3/4] hidden md:block">
-                <img src="pictures/37c11e17-a0ae-44f3-8b23-326a8793fcf9.jpg" alt="Gallery Preview 4" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" referrerPolicy="no-referrer">
+              <div class="rounded-2xl overflow-hidden aspect-[3/4] bg-zinc-900 skeleton hidden md:block">
+                <img src="pictures/37c11e17-a0ae-44f3-8b23-326a8793fcf9.jpg" alt="Gallery Preview 4" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-0 transition-opacity duration-300" loading="lazy" onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('skeleton')" referrerPolicy="no-referrer">
               </div>
-              <div class="rounded-2xl overflow-hidden aspect-[3/4] relative">
-                <img src="pictures/1ad9725b-0604-437f-a886-815632e78192.jpg" alt="Gallery Preview 5" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" referrerPolicy="no-referrer">
-                <div class="absolute inset-0 bg-black/60 flex items-center justify-center">
+              <div class="rounded-2xl overflow-hidden aspect-[3/4] bg-zinc-900 skeleton relative">
+                <img src="pictures/1ad9725b-0604-437f-a886-815632e78192.jpg" alt="Gallery Preview 5" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-0 transition-opacity duration-300" loading="lazy" onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('skeleton')" referrerPolicy="no-referrer">
+                <div class="absolute inset-0 bg-black/60 flex items-center justify-center z-10">
                   <span class="text-white font-bold text-xl">+5</span>
                 </div>
               </div>
@@ -330,7 +330,7 @@
 
     <!-- Footer -->
     <footer class="border-t border-zinc-800/50 bg-black/50 backdrop-blur-md py-12 mt-auto relative z-10">
-      <div class="max-w-7xl mx-auto px-4">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
           <!-- Brand & Bio -->
           <div class="col-span-1 md:col-span-2 space-y-6">
@@ -436,25 +436,32 @@
         </button>
 
         <!-- Image Container -->
-        <div class="w-full max-w-md aspect-[3/4] rounded-3xl overflow-hidden bg-zinc-900 border border-zinc-800 shadow-2xl relative group">
-          <img id="modalImage" src="" alt="Gallery Image" class="w-full h-full object-cover" referrerPolicy="no-referrer">
-          
-          <!-- Navigation Buttons (Inside Container for better mobile visibility) -->
-          <button onclick="prevImage()" class="absolute left-2 top-1/2 -translate-y-1/2 z-20 text-white/50 hover:text-white transition-colors p-2 bg-black/20 backdrop-blur-sm rounded-full md:bg-transparent md:backdrop-blur-none md:-left-12">
-            <i data-lucide="chevron-left" class="w-8 h-8 md:w-10 md:h-10"></i>
-          </button>
-          <button onclick="nextImage()" class="absolute right-2 top-1/2 -translate-y-1/2 z-20 text-white/50 hover:text-white transition-colors p-2 bg-black/20 backdrop-blur-sm rounded-full md:bg-transparent md:backdrop-blur-none md:-right-12">
-            <i data-lucide="chevron-right" class="w-8 h-8 md:w-10 md:h-10"></i>
-          </button>
-          
-          <!-- Caption Overlay -->
-          <div class="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
-            <h4 id="modalTitle" class="text-2xl font-bold text-white mb-2"></h4>
-            <p id="modalCaption" class="text-zinc-400 text-sm max-w-2xl"></p>
-            <div class="mt-4 flex items-center gap-4">
-              <span id="imageCounter" class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest"></span>
+        <div class="relative group w-full max-w-md">
+          <div class="aspect-[3/4] rounded-3xl overflow-hidden bg-zinc-900 border border-zinc-800 shadow-2xl relative">
+            <!-- Loading Spinner -->
+            <div id="modalLoader" class="absolute inset-0 flex items-center justify-center bg-zinc-900 z-10">
+              <div class="loading-spinner"></div>
+            </div>
+            
+            <img id="modalImage" src="" alt="Gallery Image" class="w-full h-full object-cover opacity-0 transition-opacity duration-500" referrerPolicy="no-referrer" onload="onImageLoad()">
+            
+            <!-- Caption Overlay -->
+            <div class="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-20">
+              <h4 id="modalTitle" class="text-2xl font-bold text-white mb-2"></h4>
+              <p id="modalCaption" class="text-zinc-400 text-sm max-w-2xl"></p>
+              <div class="mt-4 flex items-center gap-4">
+                <span id="imageCounter" class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest"></span>
+              </div>
             </div>
           </div>
+
+          <!-- Navigation Buttons -->
+          <button onclick="prevImage()" class="absolute left-2 top-1/2 -translate-y-1/2 z-30 text-white/50 hover:text-white transition-colors p-2 bg-black/20 backdrop-blur-sm rounded-full md:bg-transparent md:backdrop-blur-none md:-left-16">
+            <i data-lucide="chevron-left" class="w-8 h-8 md:w-12 md:h-12"></i>
+          </button>
+          <button onclick="nextImage()" class="absolute right-2 top-1/2 -translate-y-1/2 z-30 text-white/50 hover:text-white transition-colors p-2 bg-black/20 backdrop-blur-sm rounded-full md:bg-transparent md:backdrop-blur-none md:-right-16">
+            <i data-lucide="chevron-right" class="w-8 h-8 md:w-12 md:h-12"></i>
+          </button>
         </div>
       </div>
     </div>
@@ -521,11 +528,24 @@
         updateModal();
         document.getElementById('galleryModal').classList.remove('hidden');
         document.body.style.overflow = 'hidden'; // Prevent scrolling
+        
+        // Push state for back button support
+        if (!history.state || history.state.modal !== 'gallery') {
+          history.pushState({ modal: 'gallery' }, '');
+        }
       }
 
-      function closeGallery() {
-        document.getElementById('galleryModal').classList.add('hidden');
+      function closeGallery(fromPopState = false) {
+        const modal = document.getElementById('galleryModal');
+        if (!modal || modal.classList.contains('hidden')) return;
+        
+        modal.classList.add('hidden');
         document.body.style.overflow = 'auto'; // Restore scrolling
+        
+        // If closed via UI (not back button), and state exists, go back
+        if (!fromPopState && history.state && history.state.modal === 'gallery') {
+          history.back();
+        }
       }
 
       function nextImage() {
@@ -540,10 +560,29 @@
 
       function updateModal() {
         const img = galleryImages[currentImageIndex];
-        document.getElementById('modalImage').src = img.url;
+        const modalImage = document.getElementById('modalImage');
+        const modalLoader = document.getElementById('modalLoader');
+        
+        // Reset loading state
+        modalImage.classList.add('opacity-0');
+        modalLoader.classList.remove('hidden');
+        
+        modalImage.src = img.url;
         document.getElementById('modalTitle').textContent = img.title;
         document.getElementById('modalCaption').textContent = img.caption;
         document.getElementById('imageCounter').textContent = `Photo ${currentImageIndex + 1} of ${galleryImages.length}`;
+        
+        // Re-initialize icons if needed
+        if (typeof lucide !== 'undefined') {
+          lucide.createIcons();
+        }
+      }
+
+      function onImageLoad() {
+        const modalImage = document.getElementById('modalImage');
+        const modalLoader = document.getElementById('modalLoader');
+        modalImage.classList.remove('opacity-0');
+        modalLoader.classList.add('hidden');
       }
 
       // Keyboard navigation

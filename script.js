@@ -29,9 +29,44 @@ document.addEventListener('DOMContentLoaded', () => {
   } catch (e) {
     console.error('Wishes init failed:', e);
   }
+
+  // Load Chatbot
+  const chatbotScript = document.createElement('script');
+  chatbotScript.type = 'module';
+  chatbotScript.src = 'chatbot.js';
+  document.body.appendChild(chatbotScript);
 });
 
 // Mobile Menu Logic
+function openMobileMenu(e) {
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (!mobileMenu) return;
+  if (e) e.preventDefault();
+  
+  mobileMenu.classList.remove('hidden');
+  mobileMenu.style.display = 'flex'; // Force display flex
+  document.body.style.overflow = 'hidden';
+  
+  // Push state for back button support
+  if (!history.state || history.state.modal !== 'menu') {
+    history.pushState({ modal: 'menu' }, '');
+  }
+}
+
+function closeMobileMenu(fromPopState = false) {
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (!mobileMenu) return;
+  
+  mobileMenu.classList.add('hidden');
+  mobileMenu.style.display = 'none'; // Force display none
+  document.body.style.overflow = 'auto';
+  
+  // If closed via UI (not back button), and state exists, go back
+  if (!fromPopState && history.state && history.state.modal === 'menu') {
+    history.back();
+  }
+}
+
 function initMobileMenu() {
   const menuBtn = document.getElementById('mobile-menu-btn');
   const menuCloseBtn = document.getElementById('mobile-menu-close');
@@ -42,35 +77,22 @@ function initMobileMenu() {
     return;
   }
 
-  const openMenu = (e) => {
-    if (e) e.preventDefault();
-    mobileMenu.classList.remove('hidden');
-    mobileMenu.style.display = 'flex'; // Force display flex
-    document.body.style.overflow = 'hidden';
-  };
-
-  const closeMenu = () => {
-    mobileMenu.classList.add('hidden');
-    mobileMenu.style.display = 'none'; // Force display none
-    document.body.style.overflow = 'auto';
-  };
-
-  menuBtn.addEventListener('click', openMenu);
+  menuBtn.addEventListener('click', openMobileMenu);
 
   if (menuCloseBtn) {
-    menuCloseBtn.addEventListener('click', closeMenu);
+    menuCloseBtn.addEventListener('click', () => closeMobileMenu());
   }
 
   // Close menu on link click
   const menuLinks = mobileMenu.querySelectorAll('a');
   menuLinks.forEach(link => {
-    link.addEventListener('click', closeMenu);
+    link.addEventListener('click', () => closeMobileMenu());
   });
 
   // Close on escape key
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
-      closeMenu();
+      closeMobileMenu();
     }
   });
 }
@@ -85,6 +107,13 @@ function initPageLoader() {
     setTimeout(() => {
       loader.classList.add('hidden');
     }, 500);
+  });
+
+  // Handle back-forward cache (bfcache)
+  window.addEventListener('pageshow', (event) => {
+    if (event.persisted) {
+      loader.classList.add('hidden');
+    }
   });
 
   // Fallback if window load doesn't fire or takes too long
@@ -623,6 +652,11 @@ function openProjectModal(projectId) {
   const modal = document.getElementById('project-modal');
   const content = document.getElementById('modal-content');
   
+  // Push state for back button support
+  if (!history.state || history.state.modal !== 'project') {
+    history.pushState({ modal: 'project' }, '');
+  }
+
   document.getElementById('modal-title').innerText = project.title;
   
   const categoryLabel = document.getElementById('modal-category');
@@ -640,58 +674,66 @@ function openProjectModal(projectId) {
   
   const githubLink = document.getElementById('modal-github');
   const documentLink = document.getElementById('modal-document');
-  const linksSection = githubLink.parentElement.parentElement;
+  const linksSection = githubLink ? githubLink.parentElement.parentElement : null;
   
   const tagsContainer = document.getElementById('modal-tags');
-  const metaGrid = collaboratorsSection.parentElement;
+  const metaGrid = collaboratorsSection ? collaboratorsSection.parentElement : null;
 
   // Handle Collaborators
-  if (project.collaborators && project.collaborators.length > 0) {
+  if (collaboratorsSection && project.collaborators && project.collaborators.length > 0) {
     collaboratorsSection.classList.remove('hidden');
     collaboratorsContainer.innerHTML = project.collaborators.map(c => `<div>${c}</div>`).join('');
-  } else {
+  } else if (collaboratorsSection) {
     collaboratorsSection.classList.add('hidden');
   }
 
   // Handle Links
-  if (project.github || project.document) {
+  if (linksSection && (project.github || project.document)) {
     linksSection.classList.remove('hidden');
-    if (project.github && project.github !== '#') {
-      githubLink.href = project.github;
-      githubLink.classList.remove('hidden');
-    } else {
-      githubLink.classList.add('hidden');
+    if (githubLink) {
+      if (project.github && project.github !== '#') {
+        githubLink.href = project.github;
+        githubLink.classList.remove('hidden');
+      } else {
+        githubLink.classList.add('hidden');
+      }
     }
-    if (project.document && project.document !== '#') {
-      documentLink.href = project.document;
-      documentLink.classList.remove('hidden');
-    } else {
-      documentLink.classList.add('hidden');
+    if (documentLink) {
+      if (project.document && project.document !== '#') {
+        documentLink.href = project.document;
+        documentLink.classList.remove('hidden');
+      } else {
+        documentLink.classList.add('hidden');
+      }
     }
     
     // If both links are hidden after checking values
-    if (githubLink.classList.contains('hidden') && documentLink.classList.contains('hidden')) {
+    if (githubLink && documentLink && githubLink.classList.contains('hidden') && documentLink.classList.contains('hidden')) {
       linksSection.classList.add('hidden');
     }
-  } else {
+  } else if (linksSection) {
     linksSection.classList.add('hidden');
   }
 
   // Handle Tags
-  if (project.tags && project.tags.length > 0) {
-    tagsContainer.classList.remove('hidden');
-    tagsContainer.innerHTML = project.tags.map(tag => `
-      <span class="px-3 py-1 rounded-full bg-zinc-800/50 text-zinc-400 text-[10px] uppercase tracking-widest border border-zinc-800">${tag}</span>
-    `).join('');
-  } else {
-    tagsContainer.classList.add('hidden');
+  if (tagsContainer) {
+    if (project.tags && project.tags.length > 0) {
+      tagsContainer.classList.remove('hidden');
+      tagsContainer.innerHTML = project.tags.map(tag => `
+        <span class="px-3 py-1 rounded-full bg-zinc-800/50 text-zinc-400 text-[10px] uppercase tracking-widest border border-zinc-800">${tag}</span>
+      `).join('');
+    } else {
+      tagsContainer.classList.add('hidden');
+    }
   }
 
   // Hide Meta Grid if both sub-sections are hidden
-  if (collaboratorsSection.classList.contains('hidden') && linksSection.classList.contains('hidden')) {
-    metaGrid.classList.add('hidden');
-  } else {
-    metaGrid.classList.remove('hidden');
+  if (metaGrid && collaboratorsSection && linksSection) {
+    if (collaboratorsSection.classList.contains('hidden') && linksSection.classList.contains('hidden')) {
+      metaGrid.classList.add('hidden');
+    } else {
+      metaGrid.classList.remove('hidden');
+    }
   }
 
   modal.classList.remove('hidden');
@@ -703,9 +745,10 @@ function openProjectModal(projectId) {
   document.body.style.overflow = 'hidden';
 }
 
-function closeProjectModal() {
+function closeProjectModal(fromPopState = false) {
   const modal = document.getElementById('project-modal');
   const content = document.getElementById('modal-content');
+  if (!modal || modal.classList.contains('hidden')) return;
   
   content.classList.remove('scale-100', 'opacity-100');
   content.classList.add('scale-95', 'opacity-0');
@@ -714,7 +757,28 @@ function closeProjectModal() {
     modal.classList.add('hidden');
     document.body.style.overflow = 'auto';
   }, 300);
+
+  // If closed via UI (not back button), and state exists, go back
+  if (!fromPopState && history.state && history.state.modal === 'project') {
+    history.back();
+  }
 }
+
+// Global Popstate Listener for Back Button Support
+window.addEventListener('popstate', (event) => {
+  // Hide loader if it was shown
+  const loader = document.getElementById('page-loader');
+  if (loader) loader.classList.add('hidden');
+
+  // Close any open modals or menus when back button is pressed
+  closeProjectModal(true);
+  closeMobileMenu(true);
+  
+  // Also handle gallery modal if it exists (defined in favorites.html)
+  if (typeof closeGallery === 'function') {
+    closeGallery(true);
+  }
+});
 
 // Wishes Spot Logic
 async function initWishes() {
@@ -769,7 +833,9 @@ async function initWishes() {
       const titleWidth = wishTitle.scrollWidth;
       const messageWidth = wishMessage.scrollWidth;
       const maxWidth = Math.max(titleWidth, messageWidth) + 4;
-      wishTitle.parentElement.style.width = `${maxWidth}px`;
+      if (wishTitle.parentElement) {
+        wishTitle.parentElement.style.width = `${maxWidth}px`;
+      }
     }, 50);
 
     let isTitle = true;
