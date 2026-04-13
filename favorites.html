@@ -87,321 +87,243 @@
     </header>
 
     <!-- Main Content -->
-    <main class="flex-1 flex flex-col max-w-6xl mx-auto w-full px-4 pt-20 pb-24 relative z-10">
-      <div class="fade-in space-y-16">
-        <div class="space-y-4">
-          <h1 class="text-4xl md:text-6xl font-bold tracking-tighter">My <span class="text-zinc-500">Favorites</span>.</h1>
-          <p class="text-zinc-400 text-lg leading-relaxed">
-            A curated collection of things that inspire me, entertain me, and keep me going. From the silver screen to the football pitch.
+    <main class="flex-1 flex flex-col max-w-7xl mx-auto w-full px-4 pt-20 pb-24 relative z-10">
+      <div class="fade-in space-y-20">
+        <!-- Hero Section -->
+        <div class="max-w-3xl space-y-6">
+          <h1 class="text-5xl md:text-8xl font-black tracking-tighter leading-[0.9]">
+            THINGS I <span class="text-zinc-700">LOVE</span>.
+          </h1>
+          <p class="text-zinc-400 text-lg md:text-xl leading-relaxed font-medium max-w-2xl">
+            A digital sanctuary of inspirations, passions, and the simple joys that define my journey. From cosmic mysteries to the perfect kacchi.
           </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Movies -->
-          <div class="grok-card p-8 rounded-3xl space-y-6 group hover:border-zinc-700 transition-all">
-            <div class="flex items-center justify-between">
-              <h3 class="text-2xl font-bold">Movies</h3>
-              <div class="p-3 rounded-2xl bg-zinc-900 border border-zinc-800 text-zinc-400 group-hover:text-white transition-colors">
-                <i data-lucide="film" class="w-6 h-6"></i>
+        <!-- Bento Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-4 md:auto-rows-[200px]">
+          
+          <!-- Cinema & Shows (Large 2x2) -->
+          <div class="md:col-span-2 md:row-span-2 grok-card rounded-[2.5rem] p-8 flex flex-col justify-between group relative overflow-hidden min-h-[400px] md:min-h-0">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-zinc-500/5 blur-[80px] -mr-32 -mt-32 group-hover:bg-zinc-500/10 transition-all duration-700"></div>
+            <div class="relative z-10">
+              <div class="flex items-center gap-4 mb-8">
+                <div class="w-12 h-12 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 group-hover:text-white transition-colors">
+                  <i data-lucide="clapperboard" class="w-6 h-6"></i>
+                </div>
+                <div>
+                  <h3 class="text-2xl font-bold tracking-tight">Cinema & Shows</h3>
+                </div>
               </div>
-            </div>
-            <div class="space-y-4">
-              <ul class="space-y-3 text-zinc-400 text-sm">
-                <li class="flex items-center gap-3">
-                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
-                  Zack Snyder's Justice League
-                </li>
-                <li class="flex items-center gap-3">
-                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
-                  The Martian
-                </li>
-                <li class="flex items-center gap-3">
-                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
-                  Train To Busan
-                </li>
-                <li class="flex items-center gap-3">
-                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
-                  The Dark Knight Rises
-                </li>
-                <li class="flex items-center gap-3">
-                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
-                  The Shawshank Redemption
-                </li>
-              </ul>
+              
+              <div class="mb-8 pb-6 border-b border-zinc-800/50">
+                <h4 class="text-[10px] font-bold text-zinc-500 uppercase tracking-widest mb-3">Favorite Genres</h4>
+                <div class="flex flex-wrap gap-x-3 gap-y-1">
+                  <span class="text-xs text-zinc-400">Mystery</span>
+                  <span class="text-xs text-zinc-400">Fantasy</span>
+                  <span class="text-xs text-zinc-400">Sci-Fi</span>
+                  <span class="text-xs text-zinc-400">Supernatural</span>
+                  <span class="text-xs text-zinc-400">Time Travel</span>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 gap-y-3">
+                <div class="flex items-center justify-between group/item">
+                  <span class="text-zinc-400 group-hover/item:text-white transition-colors">Zack Snyder's Justice League</span>
+                  <span class="text-[10px] font-mono text-zinc-600">DC</span>
+                </div>
+                <div class="flex items-center justify-between group/item">
+                  <span class="text-zinc-400 group-hover/item:text-white transition-colors">Black Mirror</span>
+                  <span class="text-[10px] font-mono text-zinc-600">SCI-FI</span>
+                </div>
+                <div class="flex items-center justify-between group/item">
+                  <span class="text-zinc-400 group-hover/item:text-white transition-colors">Dark</span>
+                  <span class="text-[10px] font-mono text-zinc-600 uppercase">Time Travel</span>
+                </div>
+                <div class="flex items-center justify-between group/item">
+                  <span class="text-zinc-400 group-hover/item:text-white transition-colors">The Martian</span>
+                  <span class="text-[10px] font-mono text-zinc-600">SPACE</span>
+                </div>
+                <div class="flex items-center justify-between group/item">
+                  <span class="text-zinc-400 group-hover/item:text-white transition-colors">Stranger Things</span>
+                  <span class="text-[10px] font-mono text-zinc-600 uppercase">Monster Horror</span>
+                </div>
+              </div>
             </div>
           </div>
 
-          <!-- TV Shows -->
-          <div class="grok-card p-8 rounded-3xl space-y-6 group hover:border-zinc-700 transition-all">
-            <div class="flex items-center justify-between">
-              <h3 class="text-2xl font-bold">TV Shows</h3>
-              <div class="p-3 rounded-2xl bg-zinc-900 border border-zinc-800 text-zinc-400 group-hover:text-white transition-colors">
-                <i data-lucide="tv" class="w-6 h-6"></i>
+          <!-- Gaming (Medium 2x1) -->
+          <div class="md:col-span-2 md:row-span-1 grok-card rounded-[2.5rem] p-8 flex items-center justify-between group relative overflow-hidden min-h-[200px]">
+            <div class="absolute inset-0 bg-gradient-to-br from-zinc-900/0 via-zinc-900/0 to-zinc-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+            <div class="relative z-10 flex flex-col justify-between h-full">
+              <h3 class="text-2xl font-bold tracking-tight">The Gaming Den</h3>
+              <div class="flex gap-2">
+                <span class="px-2 py-1 rounded-md bg-zinc-900 border border-zinc-800 text-[10px] font-mono text-zinc-400">Grand Theft Auto</span>
+                <span class="px-2 py-1 rounded-md bg-zinc-900 border border-zinc-800 text-[10px] font-mono text-zinc-400">FIFA</span>
+                <span class="px-2 py-1 rounded-md bg-zinc-900 border border-zinc-800 text-[10px] font-mono text-zinc-400">Need for Speed</span>
               </div>
             </div>
-            <div class="space-y-4">
-              <ul class="space-y-3 text-zinc-400 text-sm">
-                <li class="flex items-center gap-3">
-                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
-                  Black Mirror
-                </li>
-                <li class="flex items-center gap-3">
-                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
-                  Stranger Things
-                </li>
-                <li class="flex items-center gap-3">
-                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
-                  Dark
-                </li>
-                <li class="flex items-center gap-3">
-                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
-                  13 Reasons Why (Season 1)
-                </li>
-                <li class="flex items-center gap-3">
-                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
-                  Chernobyl
-                </li>
-              </ul>
+            <div class="relative z-10">
+              <div class="w-16 h-16 rounded-3xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-500 group-hover:text-white group-hover:scale-110 transition-all duration-500 rotate-12">
+                <i data-lucide="gamepad-2" class="w-8 h-8"></i>
+              </div>
             </div>
           </div>
 
-          <!-- Games -->
-          <div class="grok-card p-8 rounded-3xl space-y-6 group hover:border-zinc-700 transition-all">
-            <div class="flex items-center justify-between">
-              <h3 class="text-2xl font-bold">Games</h3>
-              <div class="p-3 rounded-2xl bg-zinc-900 border border-zinc-800 text-zinc-400 group-hover:text-white transition-colors">
-                <i data-lucide="gamepad-2" class="w-6 h-6"></i>
-              </div>
+          <!-- Culinary (Small 1x1) -->
+          <div class="md:col-span-1 md:row-span-1 grok-card rounded-[2.5rem] p-6 flex flex-col justify-between group hover:bg-zinc-900/80 transition-all">
+            <div class="text-zinc-500 group-hover:text-white transition-colors">
+              <i data-lucide="utensils" class="w-6 h-6"></i>
             </div>
-            <div class="space-y-4">
-              <ul class="space-y-3 text-zinc-400 text-sm">
-                <li class="flex items-center gap-3">
-                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
-                  Grand Theft Auto V
-                </li>
-                <li class="flex items-center gap-3">
-                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
-                  FIFA 20
-                </li>
-                <li class="flex items-center gap-3">
-                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
-                  PUBG
-                </li>
-                <li class="flex items-center gap-3">
-                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
-                  Need for Speed
-                </li>
-                <li class="flex items-center gap-3">
-                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
-                  PES
-                </li>
-              </ul>
+            <div>
+              <h4 class="font-bold">Kacchi</h4>
+              <p class="text-[10px] text-zinc-500 uppercase tracking-widest">Soul Food</p>
             </div>
           </div>
 
-          <!-- Sports -->
-          <div class="grok-card p-8 rounded-3xl space-y-6 group hover:border-zinc-700 transition-all">
-            <div class="flex items-center justify-between">
-              <h3 class="text-2xl font-bold">Sports & Athletes</h3>
-              <div class="p-3 rounded-2xl bg-zinc-900 border border-zinc-800 text-zinc-400 group-hover:text-white transition-colors">
-                <i data-lucide="trophy" class="w-6 h-6"></i>
-              </div>
+          <!-- Travel (Small 1x1) -->
+          <div class="md:col-span-1 md:row-span-1 grok-card rounded-[2.5rem] p-6 flex flex-col justify-between group hover:bg-zinc-900/80 transition-all">
+            <div class="text-zinc-500 group-hover:text-white transition-colors">
+              <i data-lucide="map-pin" class="w-6 h-6"></i>
             </div>
-            <div class="space-y-4">
-              <ul class="space-y-3 text-zinc-400 text-sm">
-                <li class="flex items-center gap-3">
-                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
-                  Novak Djokovic (Tennis)
-                </li>
-                <li class="flex items-center gap-3">
-                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
-                  Argentina (Football)
-                </li>
-                <li class="flex items-center gap-3">
-                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
-                  Manchester City (Premier League)
-                </li>
-                <li class="flex items-center gap-3">
-                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
-                  Bangladesh (Cricket)
-                </li>
-                <li class="flex items-center gap-3">
-                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
-                  Chennai Super Kings (IPL)
-                </li>
-              </ul>
+            <div>
+              <h4 class="font-bold">London</h4>
+              <p class="text-[10px] text-zinc-500 uppercase tracking-widest">Travel Log</p>
             </div>
           </div>
 
-          <!-- Food -->
-          <div class="grok-card p-8 rounded-3xl space-y-6 group hover:border-zinc-700 transition-all">
-            <div class="flex items-center justify-between">
-              <h3 class="text-2xl font-bold">Food</h3>
-              <div class="p-3 rounded-2xl bg-zinc-900 border border-zinc-800 text-zinc-400 group-hover:text-white transition-colors">
-                <i data-lucide="utensils" class="w-6 h-6"></i>
+          <!-- Athletic Spirit (Medium 1x2) -->
+          <div class="md:col-span-1 md:row-span-2 grok-card rounded-[2.5rem] p-8 flex flex-col justify-between group relative overflow-hidden min-h-[400px] md:min-h-0">
+             <div class="absolute bottom-0 left-0 w-32 h-32 bg-zinc-500/5 blur-[40px] -ml-16 -mb-16"></div>
+             <div class="relative z-10">
+                <div class="w-10 h-10 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-500 mb-6">
+                  <i data-lucide="trophy" class="w-5 h-5"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-6 leading-tight whitespace-nowrap">Athletic Spirit</h3>
+                <ul class="space-y-4">
+                  <li class="text-xs text-zinc-400 group-hover:text-zinc-200 transition-colors">Novak Djokovic</li>
+                  <li class="text-xs text-zinc-400 group-hover:text-zinc-200 transition-colors">Argentina</li>
+                  <li class="text-xs text-zinc-400 group-hover:text-zinc-200 transition-colors">Man City</li>
+                  <li class="text-xs text-zinc-400 group-hover:text-zinc-200 transition-colors">CSK</li>
+                </ul>
+             </div>
+          </div>
+
+          <!-- The Mind's Eye (Large 3x2) -->
+          <div class="md:col-span-3 md:row-span-2 grok-card rounded-[2.5rem] p-6 md:p-10 flex flex-col group relative overflow-hidden min-h-[500px] md:min-h-0">
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-radial-glow opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+            
+            <div class="flex flex-col md:flex-row gap-12 relative z-10 h-full">
+              <div class="flex-1 space-y-8">
+                <div>
+                  <h3 class="text-3xl font-bold tracking-tight mb-2">The Mind's Eye</h3>
+                  <p class="text-xs font-mono text-zinc-500 uppercase tracking-widest">Intellectual Pursuits</p>
+                </div>
+                
+                <div class="space-y-6">
+                  <div class="space-y-2">
+                    <h4 class="text-xs font-bold text-white uppercase tracking-wider">Interests</h4>
+                    <div class="flex flex-wrap gap-2">
+                      <span class="text-sm text-zinc-400 hover:text-white transition-colors cursor-default">Psychology</span>
+                      <span class="text-zinc-800">•</span>
+                      <span class="text-sm text-zinc-400 hover:text-white transition-colors cursor-default">Neuroscience</span>
+                      <span class="text-zinc-800">•</span>
+                      <span class="text-sm text-zinc-400 hover:text-white transition-colors cursor-default">Astronomy</span>
+                    </div>
+                  </div>
+                  
+                  <div class="space-y-2">
+                    <h4 class="text-xs font-bold text-white uppercase tracking-wider">Bookshelf</h4>
+                    <div class="space-y-1">
+                      <p class="text-sm text-zinc-400">Atomic Habits</p>
+                      <p class="text-sm text-zinc-400">Black Holes: The Key to Understanding the Universe</p>
+                      <p class="text-sm text-zinc-400">AI Superpowers</p>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="space-y-4">
-              <ul class="space-y-3 text-zinc-400 text-sm">
-                <li class="flex items-center gap-3">
-                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
-                  Kacchi Biriyani
-                </li>
-                <li class="flex items-center gap-3">
-                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
-                  Mejbani
-                </li>
-                <li class="flex items-center gap-3">
-                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
-                  Mac and Cheese
-                </li>
-                <li class="flex items-center gap-3">
-                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
-                  Butter Chicken
-                </li>
-                <li class="flex items-center gap-3">
-                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
-                  Fish and chips
-                </li>
-              </ul>
+
+              <div class="w-px bg-zinc-800/50 hidden md:block"></div>
+
+              <div class="flex-1 space-y-8">
+                <div>
+                  <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-6">Hobbies</h4>
+                  <div class="grid grid-cols-2 gap-4">
+                    <div class="p-4 rounded-2xl bg-zinc-900/50 border border-zinc-800/50 group/hobby hover:border-zinc-700 transition-all">
+                      <i data-lucide="palette" class="w-4 h-4 text-zinc-500 mb-2 group-hover/hobby:text-white transition-colors"></i>
+                      <p class="text-xs font-medium text-zinc-400">Painting</p>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-zinc-900/50 border border-zinc-800/50 group/hobby hover:border-zinc-700 transition-all">
+                      <i data-lucide="chef-hat" class="w-4 h-4 text-zinc-500 mb-2 group-hover/hobby:text-white transition-colors"></i>
+                      <p class="text-xs font-medium text-zinc-400">Cooking</p>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-zinc-900/50 border border-zinc-800/50 group/hobby hover:border-zinc-700 transition-all">
+                      <i data-lucide="swords" class="w-4 h-4 text-zinc-500 mb-2 group-hover/hobby:text-white transition-colors"></i>
+                      <p class="text-xs font-medium text-zinc-400">Chess</p>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-zinc-900/50 border border-zinc-800/50 group/hobby hover:border-zinc-700 transition-all">
+                      <i data-lucide="cpu" class="w-4 h-4 text-zinc-500 mb-2 group-hover/hobby:text-white transition-colors"></i>
+                      <p class="text-xs font-medium text-zinc-400">New Tech</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
-          <!-- Travel -->
-          <div class="grok-card p-8 rounded-3xl space-y-6 group hover:border-zinc-700 transition-all">
-            <div class="flex items-center justify-between">
-              <h3 class="text-2xl font-bold">Places I've Visited</h3>
-              <div class="p-3 rounded-2xl bg-zinc-900 border border-zinc-800 text-zinc-400 group-hover:text-white transition-colors">
-                <i data-lucide="map" class="w-6 h-6"></i>
-              </div>
+          <!-- Sports (Small 1x1) - Extra fill -->
+          <div class="md:col-span-1 md:row-span-1 grok-card rounded-[2.5rem] p-6 flex flex-col justify-between group hover:bg-zinc-900/80 transition-all">
+            <div class="text-zinc-500 group-hover:text-white transition-colors">
+              <i data-lucide="flag" class="w-6 h-6"></i>
             </div>
-            <div class="space-y-4">
-              <ul class="space-y-3 text-zinc-400 text-sm">
-                <li class="flex items-center gap-3">
-                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
-                  Changi Village, Singapore
-                </li>
-                <li class="flex items-center gap-3">
-                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
-                  Agra, Uttar Pradesh
-                </li>
-                <li class="flex items-center gap-3">
-                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
-                  London, United Kingdom
-                </li>
-                <li class="flex items-center gap-3">
-                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
-                  Swansea, United Kingdom
-                </li>
-                <li class="flex items-center gap-3">
-                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
-                  Istanbul, Turkey
-                </li>
-              </ul>
+            <div>
+              <h4 class="font-bold">Bangladesh</h4>
+              <p class="text-[10px] text-zinc-500 uppercase tracking-widest">Cricket</p>
             </div>
           </div>
 
-          <!-- Hobbies -->
-          <div class="grok-card p-8 rounded-3xl space-y-6 group hover:border-zinc-700 transition-all">
-            <div class="flex items-center justify-between">
-              <h3 class="text-2xl font-bold">Hobbies</h3>
-              <div class="p-3 rounded-2xl bg-zinc-900 border border-zinc-800 text-zinc-400 group-hover:text-white transition-colors">
-                <i data-lucide="palette" class="w-6 h-6"></i>
+          <!-- Quote (Medium 1x1) -->
+          <div class="md:col-span-1 md:row-span-1 grok-card rounded-[2.5rem] p-6 flex flex-col justify-center items-center text-center group bg-zinc-900/30">
+            <i data-lucide="quote" class="w-4 h-4 text-zinc-800 mb-3"></i>
+            <p class="text-[10px] font-mono text-zinc-500 leading-tight">
+              “THE BEST WAY TO PREDICT THE FUTURE IS TO CREATE IT.”<br>— PETER DRUCKER
+            </p>
+          </div>
+
+          <!-- Photography Gallery (Full Width 6x3) -->
+          <div class="md:col-span-4 lg:col-span-6 md:row-span-3 grok-card rounded-[2.5rem] p-8 md:p-12 flex flex-col group relative overflow-hidden min-h-[500px] md:min-h-0 cursor-pointer" onclick="openGallery(0)">
+            <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-zinc-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+            
+            <div class="relative z-10 mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
+              <div>
+                <div class="w-12 h-12 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 mb-6 group-hover:text-white transition-colors">
+                  <i data-lucide="camera" class="w-6 h-6"></i>
+                </div>
+                <h3 class="text-4xl font-black tracking-tighter mb-2">Captured Moments</h3>
               </div>
             </div>
-            <div class="space-y-4">
-              <ul class="space-y-3 text-zinc-400 text-sm">
-                <li class="flex items-center gap-3">
-                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
-                  Cooking
-                </li>
-                <li class="flex items-center gap-3">
-                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
-                  Painting
-                </li>
-                <li class="flex items-center gap-3">
-                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
-                  Chess
-                </li>
-                <li class="flex items-center gap-3">
-                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
-                  Exploring New Tech
-                </li>
-                <li class="flex items-center gap-3">
-                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
-                  Gardening
-                </li>
-              </ul>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 relative z-10 flex-1">
+              <div class="rounded-2xl overflow-hidden aspect-[3/4]">
+                <img src="pictures/IMG20250102175550.jpg" alt="Gallery Preview 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" referrerPolicy="no-referrer">
+              </div>
+              <div class="rounded-2xl overflow-hidden aspect-[3/4]">
+                <img src="pictures/IMG20220401160123.jpg" alt="Gallery Preview 2" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" referrerPolicy="no-referrer">
+              </div>
+              <div class="rounded-2xl overflow-hidden aspect-[3/4]">
+                <img src="pictures/9c150393-428e-433d-a2a2-87eb7267d379.jpg" alt="Gallery Preview 3" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" referrerPolicy="no-referrer">
+              </div>
+              <div class="rounded-2xl overflow-hidden aspect-[3/4] hidden md:block">
+                <img src="pictures/37c11e17-a0ae-44f3-8b23-326a8793fcf9.jpg" alt="Gallery Preview 4" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" referrerPolicy="no-referrer">
+              </div>
+              <div class="rounded-2xl overflow-hidden aspect-[3/4] relative">
+                <img src="pictures/1ad9725b-0604-437f-a886-815632e78192.jpg" alt="Gallery Preview 5" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" referrerPolicy="no-referrer">
+                <div class="absolute inset-0 bg-black/60 flex items-center justify-center">
+                  <span class="text-white font-bold text-xl">+5</span>
+                </div>
+              </div>
             </div>
           </div>
 
-          <!-- Interests -->
-          <div class="grok-card p-8 rounded-3xl space-y-6 group hover:border-zinc-700 transition-all">
-            <div class="flex items-center justify-between">
-              <h3 class="text-2xl font-bold">Interests</h3>
-              <div class="p-3 rounded-2xl bg-zinc-900 border border-zinc-800 text-zinc-400 group-hover:text-white transition-colors">
-                <i data-lucide="sparkles" class="w-6 h-6"></i>
-              </div>
-            </div>
-            <div class="space-y-4">
-              <ul class="space-y-3 text-zinc-400 text-sm">
-                <li class="flex items-center gap-3">
-                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
-                  Human Psychology
-                </li>
-                <li class="flex items-center gap-3">
-                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
-                  Stars & Galaxies
-                </li>
-                <li class="flex items-center gap-3">
-                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
-                  Space-Time
-                </li>
-                <li class="flex items-center gap-3">
-                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
-                  Black Holes
-                </li>
-                <li class="flex items-center gap-3">
-                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
-                  Mysterious Phenomena
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Books & Learning -->
-          <div class="grok-card p-8 rounded-3xl space-y-6 group hover:border-zinc-700 transition-all">
-            <div class="flex items-center justify-between">
-              <h3 class="text-2xl font-bold">Books & Learning</h3>
-              <div class="p-3 rounded-2xl bg-zinc-900 border border-zinc-800 text-zinc-400 group-hover:text-white transition-colors">
-                <i data-lucide="book-open" class="w-6 h-6"></i>
-              </div>
-            </div>
-            <div class="space-y-4">
-              <ul class="space-y-3 text-zinc-400 text-sm">
-                <li class="flex items-center gap-3">
-                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
-                  Atomic Habits
-                </li>
-                <li class="flex items-center gap-3">
-                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
-                  Emotional Intelligence
-                </li>
-                <li class="flex items-center gap-3">
-                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
-                  Who Moved My Cheese?
-                </li>
-                <li class="flex items-center gap-3">
-                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
-                  Black Holes: The Key to Understanding the Universe
-                </li>
-                <li class="flex items-center gap-3">
-                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
-                  AI Superpowers
-                </li>
-              </ul>
-            </div>
-          </div>
         </div>
       </div>
     </main>
@@ -502,6 +424,162 @@
         </a>
       </div>
     </div>
+
+    <!-- Gallery Modal -->
+    <div id="galleryModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 md:p-8">
+      <div class="absolute inset-0 bg-black/95 backdrop-blur-xl" onclick="closeGallery()"></div>
+      
+      <div class="relative z-10 w-full max-w-5xl flex flex-col items-center">
+        <!-- Close Button -->
+        <button onclick="closeGallery()" class="absolute -top-12 right-0 text-zinc-400 hover:text-white transition-colors">
+          <i data-lucide="x" class="w-8 h-8"></i>
+        </button>
+
+        <!-- Image Container -->
+        <div class="w-full max-w-md aspect-[3/4] rounded-3xl overflow-hidden bg-zinc-900 border border-zinc-800 shadow-2xl relative group">
+          <img id="modalImage" src="" alt="Gallery Image" class="w-full h-full object-cover" referrerPolicy="no-referrer">
+          
+          <!-- Navigation Buttons (Inside Container for better mobile visibility) -->
+          <button onclick="prevImage()" class="absolute left-2 top-1/2 -translate-y-1/2 z-20 text-white/50 hover:text-white transition-colors p-2 bg-black/20 backdrop-blur-sm rounded-full md:bg-transparent md:backdrop-blur-none md:-left-12">
+            <i data-lucide="chevron-left" class="w-8 h-8 md:w-10 md:h-10"></i>
+          </button>
+          <button onclick="nextImage()" class="absolute right-2 top-1/2 -translate-y-1/2 z-20 text-white/50 hover:text-white transition-colors p-2 bg-black/20 backdrop-blur-sm rounded-full md:bg-transparent md:backdrop-blur-none md:-right-12">
+            <i data-lucide="chevron-right" class="w-8 h-8 md:w-10 md:h-10"></i>
+          </button>
+          
+          <!-- Caption Overlay -->
+          <div class="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
+            <h4 id="modalTitle" class="text-2xl font-bold text-white mb-2"></h4>
+            <p id="modalCaption" class="text-zinc-400 text-sm max-w-2xl"></p>
+            <div class="mt-4 flex items-center gap-4">
+              <span id="imageCounter" class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Gallery Data
+      const galleryImages = [
+        {
+          url: "pictures/IMG20250102175550.jpg",
+          title: "Greenwich Carousel",
+          caption: "A nostalgic merry-go-round standing gracefully beside the historic Cutty Sark in Greenwich."
+        },
+        {
+          url: "pictures/IMG20220401160123.jpg",
+          title: "Winter Warmth",
+          caption: "A quiet moment enjoying a hot cup of coffee on a crisp, sunny winter afternoon."
+        },
+        {
+          url: "pictures/9c150393-428e-433d-a2a2-87eb7267d379.jpg",
+          title: "Transit Perspectives",
+          caption: "A fleeting view of the University of Greenwich front street, framed by the window of a passing bus."
+        },
+        {
+          url: "pictures/37c11e17-a0ae-44f3-8b23-326a8793fcf9.jpg",
+          title: "Academic Interior",
+          caption: "Capturing the architectural character and quiet atmosphere from within a University of Greenwich campus building."
+        },
+        {
+          url: "pictures/1ad9725b-0604-437f-a886-815632e78192.jpg",
+          title: "Canary Wharf Skyline",
+          caption: "A zoomed-in perspective of the towering commercial skyscrapers that define the Canary Wharf skyline."
+        },
+        {
+          url: "pictures/50656507-34cb-4921-ab62-d47d68071f7c.jpg",
+          title: "Campus Life",
+          caption: "The rhythmic flow of students moving through the historic grounds of the University of Greenwich."
+        },
+        {
+          url: "pictures/b3594dfd-1cba-4800-b7a8-3f4253b855e9.jpg",
+          title: "Nocturnal Haze",
+          caption: "City lights shimmering through a thick blanket of fog, creating a mysterious and ethereal night scene."
+        },
+        {
+          url: "pictures/10929d4a-d18a-4e4d-92bd-bb59c0de4fba.jpg",
+          title: "Al Fresco Solitude",
+          caption: "A peaceful outdoor seating area, inviting a moment of rest amidst the urban landscape."
+        },
+        {
+          url: "pictures/640e74df-5d3e-477a-a9cf-6deca11e1441.jpg",
+          title: "The Graduation Toss",
+          caption: "A milestone moment—throwing my cap into the air with the beautiful University of Greenwich campus as my backdrop."
+        },
+        {
+          url: "pictures/625e4fbb-6da9-483f-abdd-1c94a2fcd2a4.jpg",
+          title: "The Greenwich Vista",
+          caption: "A breathtaking view from the top of Greenwich Park, overlooking the university campus and the distant Canary Wharf towers."
+        }
+      ];
+
+      let currentImageIndex = 0;
+
+      function openGallery(index) {
+        currentImageIndex = index;
+        updateModal();
+        document.getElementById('galleryModal').classList.remove('hidden');
+        document.body.style.overflow = 'hidden'; // Prevent scrolling
+      }
+
+      function closeGallery() {
+        document.getElementById('galleryModal').classList.add('hidden');
+        document.body.style.overflow = 'auto'; // Restore scrolling
+      }
+
+      function nextImage() {
+        currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+        updateModal();
+      }
+
+      function prevImage() {
+        currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+        updateModal();
+      }
+
+      function updateModal() {
+        const img = galleryImages[currentImageIndex];
+        document.getElementById('modalImage').src = img.url;
+        document.getElementById('modalTitle').textContent = img.title;
+        document.getElementById('modalCaption').textContent = img.caption;
+        document.getElementById('imageCounter').textContent = `Photo ${currentImageIndex + 1} of ${galleryImages.length}`;
+      }
+
+      // Keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        if (document.getElementById('galleryModal').classList.contains('hidden')) return;
+        
+        if (e.key === 'Escape') closeGallery();
+        if (e.key === 'ArrowRight') nextImage();
+        if (e.key === 'ArrowLeft') prevImage();
+      });
+
+      // Touch Swipe Support
+      let touchStartX = 0;
+      let touchEndX = 0;
+      
+      const modalContainer = document.getElementById('galleryModal');
+      
+      modalContainer.addEventListener('touchstart', e => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, false);
+      
+      modalContainer.addEventListener('touchend', e => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+      }, false);
+      
+      function handleSwipe() {
+        const swipeThreshold = 50;
+        if (touchEndX < touchStartX - swipeThreshold) {
+          nextImage(); // Swipe Left -> Next
+        }
+        if (touchEndX > touchStartX + swipeThreshold) {
+          prevImage(); // Swipe Right -> Prev
+        }
+      }
+    </script>
 
     <script src="script.js"></script>
   </body>

@@ -9,7 +9,7 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
         darkMode: 'class',
@@ -18,6 +18,7 @@
             fontFamily: {
               sans: ['Inter', 'sans-serif'],
               mono: ['JetBrains Mono', 'monospace'],
+              bangla: ['Hind Siliguri', 'sans-serif'],
             },
             colors: {
               zinc: {
@@ -93,20 +94,23 @@
     </header>
 
     <!-- Main Content -->
-    <main class="flex-1 flex flex-col max-w-7xl mx-auto w-full px-4 pt-12 pb-24 relative z-10">
-      <div class="fade-in space-y-16">
+    <main class="flex-1 flex flex-col max-w-7xl mx-auto w-full px-4 pt-8 pb-24 relative z-10">
+      <div class="fade-in flex flex-col gap-10">
         
         <!-- Wishes Spot -->
         <div id="wishes-spot" class="hidden">
-          <div class="inline-flex items-center gap-3 px-4 rounded-full bg-zinc-900/50 border border-zinc-800/50 backdrop-blur-sm overflow-hidden h-9 max-w-[calc(100vw-2rem)]">
-            <div class="flex-shrink-0">
-              <i data-lucide="sparkles" class="w-3 h-3 text-zinc-400 animate-pulse"></i>
+          <div class="relative inline-flex items-center gap-3 px-4 rounded-full bg-zinc-900/50 border border-zinc-800/50 backdrop-blur-sm overflow-hidden h-9 max-w-[calc(100vw-2rem)] wishes-glow">
+            <!-- Celebration Background -->
+            <div class="celebration-bg"></div>
+            <!-- Particles Container -->
+            <div id="particles-container" class="absolute inset-0 pointer-events-none"></div>
+            
+            <div class="flex-shrink-0 relative z-10">
+              <i data-lucide="sparkles" class="w-3 h-3 text-zinc-400 animate-pulse-subtle"></i>
             </div>
-            <div class="relative h-9 overflow-hidden transition-[width] duration-500">
-              <div id="wish-cycle-container" class="flex flex-col transition-transform duration-700 ease-in-out">
-                <span id="wish-title" class="text-[10px] font-mono text-zinc-100 uppercase tracking-widest h-9 flex items-center whitespace-nowrap"></span>
-                <span id="wish-message" class="text-xs font-medium text-zinc-400 h-9 flex items-center whitespace-nowrap"></span>
-              </div>
+            <div class="relative h-9 overflow-hidden transition-[width] duration-500 z-10">
+              <div id="wish-title" class="absolute inset-0 text-sm font-bold text-zinc-100 flex items-center whitespace-nowrap transition-all duration-700 ease-in-out"></div>
+              <div id="wish-message" class="absolute inset-0 text-sm font-semibold text-zinc-400 flex items-center whitespace-nowrap transition-all duration-700 ease-in-out opacity-0 translate-x-4 blur-sm"></div>
             </div>
           </div>
         </div>

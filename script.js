@@ -721,9 +721,8 @@ async function initWishes() {
   const wishesSpot = document.getElementById('wishes-spot');
   const wishTitle = document.getElementById('wish-title');
   const wishMessage = document.getElementById('wish-message');
-  const cycleContainer = document.getElementById('wish-cycle-container');
   
-  if (!wishesSpot || !wishTitle || !wishMessage || !cycleContainer) return;
+  if (!wishesSpot || !wishTitle || !wishMessage) return;
 
   const now = new Date();
   const month = now.getMonth() + 1;
@@ -731,24 +730,59 @@ async function initWishes() {
   const dayOfWeek = now.getDay();
 
   const startCycling = (title, message) => {
+    // Detect if text is Bangla (Bengali script range: \u0980-\u09FF)
+    const isBangla = /[\u0980-\u09FF]/.test(title) || /[\u0980-\u09FF]/.test(message);
+    
+    if (isBangla) {
+      wishTitle.classList.add('font-bangla');
+      wishMessage.classList.add('font-bangla');
+    } else {
+      wishTitle.classList.remove('font-bangla');
+      wishMessage.classList.remove('font-bangla');
+    }
+
     wishTitle.textContent = title;
     wishMessage.textContent = message;
     wishesSpot.classList.remove('hidden');
 
-    // Calculate the width needed for the longest text to ensure responsiveness
+    // Particle Spawning Logic
+    const particlesContainer = document.getElementById('particles-container');
+    if (particlesContainer) {
+      setInterval(() => {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        const x = Math.random() * 100;
+        const y = 50 + Math.random() * 50; // Start from bottom half
+        particle.style.left = `${x}%`;
+        particle.style.top = `${y}%`;
+        // Brighter, more saturated colors
+        const color = `hsl(${Math.random() * 360}, 90%, 80%)`;
+        particle.style.background = color;
+        particle.style.color = color; // For box-shadow currentColor
+        particlesContainer.appendChild(particle);
+        setTimeout(() => particle.remove(), 2000);
+      }, 200); // Faster spawning
+    }
+
+    // Calculate the width needed for the longest text
     setTimeout(() => {
       const titleWidth = wishTitle.scrollWidth;
       const messageWidth = wishMessage.scrollWidth;
-      // Add a small buffer for safety
       const maxWidth = Math.max(titleWidth, messageWidth) + 4;
-      cycleContainer.parentElement.style.width = `${maxWidth}px`;
+      wishTitle.parentElement.style.width = `${maxWidth}px`;
     }, 50);
 
     let isTitle = true;
     setInterval(() => {
       isTitle = !isTitle;
-      cycleContainer.style.transform = isTitle ? 'translateY(0)' : 'translateY(-36px)';
-    }, 3000);
+      if (isTitle) {
+        wishTitle.classList.remove('opacity-0', '-translate-x-4', 'blur-sm');
+        wishMessage.classList.add('opacity-0', 'translate-x-4', 'blur-sm');
+      } else {
+        wishTitle.classList.add('opacity-0', '-translate-x-4', 'blur-sm');
+        wishMessage.classList.remove('opacity-0', 'translate-x-4', 'blur-sm');
+      }
+    }, 4000);
 
     if (typeof lucide !== 'undefined') {
       lucide.createIcons();
@@ -757,11 +791,18 @@ async function initWishes() {
 
   // 1. Check Fixed National/International Days
   const fixedDays = [
+    { month: 4, day: 13, title: "শুভ নববর্ষ!🏵️", message: "সবাইকে বাংলা নববর্ষের শুভেচ্ছা। 🐯" },
     { month: 2, day: 21, title: "Happy International Mother Language Day", message: "Remembering the Language Martyrs." },
-    { month: 3, day: 26, title: "Happy Independence Day", message: "Celebrating freedom and unity 🇧🇩" },
-    { month: 4, day: 14, title: "শুভ নববর্ষ!🍎", message: "সবাইকে বাংলা নববর্ষের শুভেচ্ছা।" },
-    { month: 12, day: 16, title: "Happy Victory Day", message: "May the red and green flag always fly high with pride. 🇧🇩" }
+    { month: 3, day: 26, title: "Happy Independence Day", message: "Celebrating freedom and unity" },
+    { month: 4, day: 14, title: "শুভ নববর্ষ!🏵️", message: "সবাইকে বাংলা নববর্ষের শুভেচ্ছা। 🐯" },
+    { month: 12, day: 16, title: "Happy Victory Day", message: "May the red and green flag always fly high with pride" }
   ];
+
+  // Special Check: Happy New Year (First 10 days of January)
+  if (month === 1 && day <= 10) {
+    startCycling(`Happy New Year ${now.getFullYear()}! ✨`, "Wishing you a year full of joy, peace, and success.");
+    return;
+  }
 
   const todayFixed = fixedDays.find(d => d.month === month && d.day === day);
   if (todayFixed) {
