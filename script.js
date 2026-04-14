@@ -356,38 +356,180 @@ const projectsData = {
   'face-mask-detector': {
     title: 'Face Mask Detection & Warning Systems',
     category: 'Industrial Project',
-    overview: 'Developed a real-time face mask detection system using Convolutional Neural Networks (CNN). The model achieved 95% accuracy and was designed for deployment in public spaces to assist with safety compliance monitoring.',
-    collaborators: ['Syed Irfan'],
-    github: 'https://github.com/syedirfanx',
+    overview: `
+      <div class="space-y-6">
+        <div class="space-y-4">
+          <p>A real-time safety compliance system designed for public and industrial spaces. The platform utilizes deep learning models to detect face mask usage with high precision and trigger automated warnings for non-compliance.</p>
+          
+          <div class="aspect-video w-full rounded-xl overflow-hidden bg-zinc-900 border border-zinc-800">
+            <iframe 
+              class="w-full h-full" 
+              src="https://www.youtube.com/embed/kOOOnQBQ7Iw" 
+              title="Face Mask Detection Showcase" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              referrerpolicy="strict-origin-when-cross-origin" 
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+        
+        <div class="space-y-2">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500">Project Overview</h4>
+          <ul class="space-y-2 text-sm text-zinc-400">
+            <li class="flex items-start gap-3">
+              <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+              <span><strong class="text-zinc-200">Real-time Detection:</strong> Developed a high-accuracy system using Convolutional Neural Networks (CNN) to monitor public spaces.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+              <span><strong class="text-zinc-200">Automated Alerts:</strong> Integrated a warning mechanism that triggers notifications or audio alerts upon detecting non-compliance.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+              <span><strong class="text-zinc-200">Performance Optimization:</strong> Achieved 95% detection accuracy through extensive model training and optimization for edge deployment.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="space-y-2">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500">Technologies Used</h4>
+          <ul class="space-y-1 text-sm text-zinc-400">
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">Deep Learning:</strong> CNN, TensorFlow/Keras</span></li>
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">Computer Vision:</strong> OpenCV</span></li>
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">Language:</strong> Python</span></li>
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">Deployment:</strong> Real-time Video Stream Processing</span></li>
+          </ul>
+        </div>
+      </div>
+    `,
+    collaborators: ['<span class="text-white font-bold">Syed Irfan</span> (Lead Developer)', 'Sakib Mukter', 'Nafis Faysal'],
+    github: 'closed',
     document: '#',
-    tags: ['Computer Vision', 'CNN', 'TensorFlow', 'Real-time']
+    tags: ['CNN', 'OpenCV', 'Deep Learning']
   },
   'id-card-ocr': {
     title: 'NID Card OCR System (Bangla & English)',
     category: 'Industrial Project',
-    overview: 'An advanced OCR pipeline designed to extract both Bangla and English text from National ID cards. The system processes images to output structured JSON data, facilitating automated data entry for financial and governmental services.',
-    collaborators: ['Syed Irfan'],
-    github: 'https://github.com/syedirfanx',
+    overview: `
+      <div class="space-y-4">
+        <p>An advanced OCR pipeline designed to extract both Bangla and English text from National ID cards. The system processes images to output structured JSON data, facilitating automated data entry for financial and governmental services.</p>
+        
+        <div class="space-y-2">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500">Project Overview</h4>
+          <ul class="space-y-2 text-sm text-zinc-400">
+            <li class="flex items-start gap-3">
+              <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+              <span><strong class="text-zinc-200">Multi-Language Extraction:</strong> Developed a robust pipeline for extracting both Bangla and English text from complex National ID layouts.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+              <span><strong class="text-zinc-200">Structured Data Output:</strong> Implemented post-processing logic to convert raw OCR text into structured JSON format for seamless integration.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+              <span><strong class="text-zinc-200">Preprocessing Pipeline:</strong> Integrated image enhancement techniques to improve OCR accuracy on low-quality scans and photos.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="space-y-2">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500">Technologies Used</h4>
+          <ul class="space-y-1 text-sm text-zinc-400">
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">OCR Engine:</strong> Tesseract OCR</span></li>
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">Language:</strong> Python</span></li>
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">Image Processing:</strong> OpenCV</span></li>
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">Data Formatting:</strong> JSON Serialization</span></li>
+          </ul>
+        </div>
+      </div>
+    `,
+    collaborators: ['<span class="text-white font-bold">Syed Irfan</span> (Lead Developer)', 'Nafis Faysal'],
+    github: 'closed',
     document: '#',
-    tags: ['OCR', 'NLP', 'Bangla OCR', 'Python']
+    tags: ['OCR', 'Tesseract', 'python']
   },
   'flight-booking': {
     title: 'Flight Booking System',
     category: 'Academic Project',
-    overview: 'A comprehensive full-stack application for flight management. It features a robust backend for handling complex scheduling, seat allocation, and user bookings with high concurrency.',
-    collaborators: ['Syed Irfan', 'Project Partners'],
-    github: 'https://github.com/syedirfanx',
+    overview: `
+      <div class="space-y-4">
+        <p>A comprehensive web-based flight management system developed for the CSE 311 Database Systems course (Spring 2020). The platform facilitates seamless flight discovery, real-time status tracking, and secure reservation management through a robust relational database backend.</p>
+        
+        <div class="space-y-2">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500">Project Overview</h4>
+          <ul class="space-y-2 text-sm text-zinc-400">
+            <li class="flex items-start gap-3">
+              <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+              <span><strong class="text-zinc-200">User Management:</strong> Implemented secure user registration and login systems to manage passenger profiles and booking history.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+              <span><strong class="text-zinc-200">Flight Discovery:</strong> Developed advanced search functionality allowing users to find flights based on specific criteria and check real-time flight status.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+              <span><strong class="text-zinc-200">Reservation System:</strong> Built a complete booking workflow from seat selection to final reservation, ensuring data consistency across the flight database.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="space-y-2">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500">Technologies Used</h4>
+          <ul class="space-y-1 text-sm text-zinc-400">
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">Backend:</strong> PHP</span></li>
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">Database:</strong> MySQL</span></li>
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">Frontend:</strong> HTML5 & CSS3</span></li>
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">Architecture:</strong> Relational Database Design</span></li>
+          </ul>
+        </div>
+      </div>
+    `,
+    collaborators: ['<span class="text-white font-bold">Syed Irfan</span> (Project Lead)', 'Nafis Faysal', 'Tamanna Rahman'],
+    github: 'https://github.com/syedirfanx/FlightBooking',
     document: '#',
-    tags: ['Full Stack', 'Database Design', 'Backend']
+    tags: ['Full Stack', 'Database Systems', 'PHP']
   },
   'crowdfunding': {
     title: 'Secure Crowdfunding using BlockChain Technology',
     category: 'Academic Project',
-    overview: 'A decentralized crowdfunding platform built on the Ethereum blockchain. It uses smart contracts to ensure that funds are only released when specific project milestones are met, providing maximum security for donors.',
-    collaborators: ['Syed Irfan'],
-    github: 'https://github.com/syedirfanx',
-    document: '#',
-    tags: ['Blockchain', 'Ethereum', 'Solidity', 'Smart Contracts']
+    overview: `
+      <div class="space-y-4">
+        <p>A decentralized crowdfunding solution addressing accountability issues through Ethereum-based Smart Contracts. The system integrates ERC-20 tokens to ensure transparent, secure, and interchangeable fund management across the ecosystem.</p>
+        
+        <div class="space-y-2">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500">Project Overview</h4>
+          <ul class="space-y-2 text-sm text-zinc-400">
+            <li class="flex items-start gap-3">
+              <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+              <span><strong class="text-zinc-200">ERC-20 Integration:</strong> Utilized standard fungible tokens for uniform and interchangeable transactions, securing the funding process.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+              <span><strong class="text-zinc-200">P2P Trading:</strong> Developed a decentralized peer-to-peer platform allowing direct investment and funding without intermediaries, reducing costs.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+              <span><strong class="text-zinc-200">Smart Contract Functions:</strong> Implemented core ERC-20 functions (transfer, approve, transferFrom, allowance) to handle secure balance updates and authorized transfers.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="space-y-2">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500">Technical Implementation</h4>
+          <ul class="space-y-1 text-sm text-zinc-400">
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">Smart Contracts:</strong> Solidity with OpenZeppelin libraries</span></li>
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">Blockchain:</strong> Ethereum (EVM-based)</span></li>
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">Tools:</strong> Remix IDE, Metamask, Web3 Applications</span></li>
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">Key Features:</strong> Balance tracking, token sale/buy logic, and automated authorization checks.</span></li>
+          </ul>
+        </div>
+      </div>
+    `,
+    collaborators: ['<span class="text-white font-bold">Syed Irfan</span>', 'Georgios Samakovitis'],
+    github: 'closed',
+    document: 'https://media.licdn.com/dms/document/media/v2/D4E1FAQE8MvVzlg7RRw/feedshare-document-pdf-analyzed/feedshare-document-pdf-analyzed/0/1702928307221?e=1776902400&v=beta&t=OBsarsp93QYk-b54VvLOHZyMViA8TTUkD6iSMg1Y1KM',
+    tags: ['ERC-20', 'Solidity', 'Ethereum', 'Smart Contracts', 'P2P Trading', 'OpenZeppelin']
   },
   'bank-transaction': {
     title: 'Bank Transaction Monitoring using BlockChain Technology',
@@ -431,9 +573,9 @@ const projectsData = {
         </div>
       </div>
     `,
-    collaborators: ['<span class="text-white font-bold">Syed Irfan</span>'],
+    collaborators: ['<span class="text-white font-bold">Syed Irfan</span>', 'Georgios Samakovitis'],
     github: '#',
-    document: 'https://www.linkedin.com/posts/syedirfanx_anti-money-laundering-activity-7142918122277109762-ZvoR?utm_source=share&utm_medium=member_desktop&rcm=ACoAAB94B5gBvPGzSjUVU9CJ7qkji92F0C7hplQ',
+    document: 'https://media.licdn.com/dms/document/media/v2/D4E1FAQGM6amBkKH2Ww/feedshare-document-pdf-analyzed/feedshare-document-pdf-analyzed/0/1703004327594?e=1776902400&v=beta&t=8vPpNT5_7Zlm8mX2oFmxVtV2eWBKZfpuC8QC1PlGGoY',
     tags: ['Blockchain', 'FinTech', 'Smart Contracts']
   },
   'smart-door-lock': {
