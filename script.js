@@ -31,7 +31,42 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// Mobile Menu Logic
+// Toast Notification System
+function showToast(message, title = 'Access Restricted') {
+  // Remove existing toast if any
+  const existingToast = document.querySelector('.custom-toast');
+  if (existingToast) existingToast.remove();
+
+  const overlay = document.createElement('div');
+  overlay.className = 'custom-toast fixed inset-0 z-[200] flex items-center justify-center p-6 bg-black/40 backdrop-blur-sm';
+  overlay.style.animation = 'fadeIn 0.3s ease-out forwards';
+  
+  overlay.innerHTML = `
+    <div class="bg-zinc-950 border border-zinc-800 p-8 rounded-3xl shadow-2xl max-w-sm w-full text-center space-y-4 transform transition-all" style="animation: scaleIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards">
+      <div class="w-12 h-12 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center mx-auto text-zinc-500">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      </div>
+      <div class="space-y-2">
+        <h4 class="text-white font-bold tracking-tight">${title}</h4>
+        <p class="text-zinc-400 text-sm leading-relaxed">${message}</p>
+      </div>
+      <button onclick="this.closest('.custom-toast').remove()" class="w-full py-3 bg-white text-black rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-zinc-200 transition-colors">
+        Understood
+      </button>
+    </div>
+  `;
+  
+  document.body.appendChild(overlay);
+
+  // Auto-remove after 5 seconds if not clicked
+  setTimeout(() => {
+    if (overlay.parentNode) {
+      overlay.style.opacity = '0';
+      overlay.style.transition = 'opacity 0.5s ease';
+      setTimeout(() => overlay.remove(), 500);
+    }
+  }, 5000);
+}
 function openMobileMenu(e) {
   const mobileMenu = document.getElementById('mobile-menu');
   if (!mobileMenu) return;
@@ -228,29 +263,95 @@ const projectsData = {
   'disease-classification': {
     title: 'Rice Leaf Disease Detection using Machine Learning Techniques',
     category: 'Publication and conference paper',
-    overview: 'This research co-authored a conference paper presenting findings on rice leaf disease detection. We utilized machine learning algorithms to achieve a testing accuracy of 97.92%. The study involved rigorous evaluation using TPR, FPR, Precision, and AUC metrics to ensure the model\'s reliability in an agricultural context.',
-    collaborators: ['Syed Irfan', 'Research Team at North South University'],
-    github: 'https://github.com/syedirfanx',
-    document: '#',
-    tags: ['Machine Learning', 'Agriculture AI', 'Data Analysis']
+    overview: 'This project presents a rice leaf disease detection system using machine learning approaches. Three of the most common rice plant diseases namely leaf smut, bacterial leaf blight and brown spot diseases are detected in this work. Clear images of affected rice leaves with white background were used as the input. After necessary pre-processing, the dataset was trained on with a range of different machine learning algorithms including that of KNN(K-Nearest Neighbour), J48(Decision Tree), Naive Bayes and Logistic Regression. Decision tree algorithm, after 10-fold cross validation, achieved an accuracy of over 97% when applied on the test dataset.',
+    collaborators: ['Kawser Ahmed', 'Tasmia Rahman Shahidi', '<span class="text-white font-bold">Syed Irfan</span>', 'Sifat Momen'],
+    github: 'closed',
+    document: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=MG9ta8wAAAAJ&authuser=1&citation_for_view=MG9ta8wAAAAJ:u5HHmVD_uO8C',
+    tags: ['Machine Learning', 'Classification', 'Data Analysis']
   },
   'swarm-intelligence': {
     title: 'Feature Selection using Swarm Intelligence Techniques',
     category: 'MSc Thesis',
-    overview: 'My thesis research focuses on decentralized optimization algorithms to enhance feature selection in high-dimensional datasets. By mimicking the collective behavior of social insects, we aim to improve model accuracy while significantly reducing computational overhead.',
-    collaborators: ['Syed Irfan', 'Academic Supervisors'],
-    github: 'https://github.com/syedirfanx',
-    document: '#',
-    tags: ['Optimization', 'Swarm Intelligence', 'Python', 'Feature Selection']
+    overview: `
+      <div class="space-y-4">
+        <p>This project applies Particle Swarm Optimization (PSO) and Dispersive Flies Optimization (DFO) techniques for feature selection. The goal is to identify the optimal subset of features from a large dataset to improve classification accuracy in machine learning tasks.</p>
+        
+        <div class="space-y-2">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500">Project Overview</h4>
+          <ul class="space-y-2 text-sm text-zinc-400">
+            <li class="flex items-start gap-3">
+              <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+              <span><strong class="text-zinc-200">Algorithm Implementation:</strong> Implemented PSO and DFO algorithms to select relevant features.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+              <span><strong class="text-zinc-200">Dimensionality Reduction:</strong> Reduced dimensionality of datasets while enhancing model performance.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+              <span><strong class="text-zinc-200">Performance Evaluation:</strong> Evaluated selected features on classification tasks to demonstrate accuracy improvements.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="space-y-2">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500">Technologies Used</h4>
+          <ul class="space-y-1 text-sm text-zinc-400">
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">Language:</strong> Python</span></li>
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">Data Processing:</strong> NumPy, Pandas</span></li>
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">Machine Learning:</strong> Scikit-learn (for classification models)</span></li>
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">Optimization:</strong> Custom implementations of PSO and DFO</span></li>
+          </ul>
+        </div>
+      </div>
+    `,
+    collaborators: ['<span class="text-white font-bold">Syed Irfan</span>', 'Mohammad Majid al-Rifaie', 'Oroojeni MJ Hooman'],
+    github: 'https://github.com/syedirfanx/swarm-intelligence',
+    document: 'private',
+    tags: ['Feature Engineering', 'Swarm Intelligence', 'Optimization']
   },
   'starpals-ai': {
     title: 'StarPals AI: Revolutionizing Talent Casting with Artificial Intelligence',
     category: 'Personal Innovation',
-    overview: 'StarPals AI is a cutting-edge film casting platform. It utilizes Generative AI, Natural Language Processing, and Multi-Modal Learning to facilitate actor profiling, lookalike detection, and precise role-matching for the entertainment industry.',
-    collaborators: ['Syed Irfan (Lead Developer)', 'StarPals Team'],
-    github: 'https://github.com/syedirfanx',
-    document: '#',
-    tags: ['Gen AI', 'NLP', 'Multi-Modal', 'Python']
+    overview: `
+      <div class="space-y-4">
+        <p>StarPals AI is a cutting-edge film casting platform that leverages advanced generative artificial intelligence to streamline the talent discovery process. It facilitates precise role-matching by analyzing actor profiles, scripts, and visual data through multi-modal learning.</p>
+        
+        <div class="space-y-2">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500">Project Overview</h4>
+          <ul class="space-y-2 text-sm text-zinc-400">
+            <li class="flex items-start gap-3">
+              <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+              <span><strong class="text-zinc-200">AI-Driven Profiling:</strong> Developed a platform for automated actor profiling, script analysis, and lookalike detection.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+              <span><strong class="text-zinc-200">Intelligent Matching:</strong> Implemented precise role-matching algorithms using Generative AI and Natural Language Processing (NLP).</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+              <span><strong class="text-zinc-200">Workflow Optimization:</strong> Streamlined the casting workflow for the entertainment industry with automated character extraction and visual similarity tools.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="space-y-2">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500">Technologies Used</h4>
+          <ul class="space-y-1 text-sm text-zinc-400">
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">Generative AI:</strong> Google Gemini 2.5 Flash</span></li>
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">AI Orchestration:</strong> Genkit</span></li>
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">Frameworks:</strong> Next.js 15 & React 19</span></li>
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">Language:</strong> TypeScript & Node.js</span></li>
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">UI/UX:</strong> Tailwind CSS & Shadcn UI</span></li>
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">Database:</strong> In-memory MVP (Ready for Firebase Firestore integration)</span></li>
+          </ul>
+        </div>
+      </div>
+    `,
+    collaborators: ['<span class="text-white font-bold">Syed Irfan</span> (Lead Developer)'],
+    github: 'https://github.com/syedirfanx/StarPalsAI',
+    document: 'https://github.com/syedirfanx/StarPalsAI/tree/main/documents',
+    tags: ['Generative AI', 'NLP', 'Next.js', 'TypeScript']
   },
   'face-mask-detector': {
     title: 'Face Mask Detection & Warning Systems',
@@ -291,11 +392,49 @@ const projectsData = {
   'bank-transaction': {
     title: 'Bank Transaction Monitoring using BlockChain Technology',
     category: 'Academic Project',
-    overview: 'A distributed ledger system designed for real-time monitoring and auditing of financial transactions. It leverages blockchain technology to prevent fraud and ensure data integrity in banking operations.',
-    collaborators: ['Syed Irfan'],
-    github: 'https://github.com/syedirfanx',
-    document: '#',
-    tags: ['Blockchain', 'FinTech', 'Distributed Systems']
+    overview: `
+      <div class="space-y-4">
+        <p>A smart contract-based system designed to monitor bank transactions in real-time, identifying and flagging suspicious activities through predefined criteria on the Ethereum network. The system ensures transparency and security while providing a robust auditing trail for regulatory authorities.</p>
+        
+        <div class="space-y-2">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500">Project Overview</h4>
+          <ul class="space-y-2 text-sm text-zinc-400">
+            <li class="flex items-start gap-3">
+              <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+              <span><strong class="text-zinc-200">Real-time Monitoring:</strong> Developed smart contracts to monitor every bank transaction and flag activities meeting suspicious criteria.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+              <span><strong class="text-zinc-200">Suspicious Activity Detection:</strong> Implemented criteria including threshold values, irregular timing/location, and association with known criminal activity.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+              <span><strong class="text-zinc-200">Automated Response:</strong> System immediately freezes accounts and triggers notifications to relevant authorities upon detection of suspicious behavior.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+              <span><strong class="text-zinc-200">Immutable Ledger:</strong> Maintains a tamper-proof, private ledger of all transactions and alerts for auditing by authorized agencies.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="space-y-2">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500">Technologies Used</h4>
+          <ul class="space-y-1 text-sm text-zinc-400">
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">Blockchain:</strong> Ethereum Network</span></li>
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">Language:</strong> Solidity</span></li>
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">Execution Environment:</strong> Ethereum Virtual Machine (EVM)</span></li>
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">Integration:</strong> APIs for bank transaction process interaction</span></li>
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">Notifications:</strong> SMTP, SMS, and Push Notification protocols</span></li>
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">Storage:</strong> Private Blockchain Ledger</span></li>
+          </ul>
+        </div>
+      </div>
+    `,
+    collaborators: ['<span class="text-white font-bold">Syed Irfan</span>'],
+    github: '#',
+    document: 'https://www.linkedin.com/posts/syedirfanx_anti-money-laundering-activity-7142918122277109762-ZvoR?utm_source=share&utm_medium=member_desktop&rcm=ACoAAB94B5gBvPGzSjUVU9CJ7qkji92F0C7hplQ',
+    tags: ['Blockchain', 'FinTech', 'Smart Contracts']
   },
   'smart-door-lock': {
     title: 'Smart Door Lock (2FA)',
@@ -685,16 +824,36 @@ function openProjectModal(projectId) {
   if (linksSection && (project.github || project.document)) {
     linksSection.classList.remove('hidden');
     if (githubLink) {
-      if (project.github && project.github !== '#') {
+      githubLink.onclick = null; // Reset
+      githubLink.removeAttribute('target'); // Reset
+      if (project.github === 'closed') {
+        githubLink.href = 'javascript:void(0)';
+        githubLink.onclick = (e) => {
+          e.preventDefault();
+          showToast('This repository is closed source and not publicly available.', 'Repository Access');
+        };
+        githubLink.classList.remove('hidden');
+      } else if (project.github && project.github !== '#') {
         githubLink.href = project.github;
+        githubLink.setAttribute('target', '_blank');
         githubLink.classList.remove('hidden');
       } else {
         githubLink.classList.add('hidden');
       }
     }
     if (documentLink) {
-      if (project.document && project.document !== '#') {
+      documentLink.onclick = null; // Reset
+      documentLink.removeAttribute('target'); // Reset
+      if (project.document === 'private') {
+        documentLink.href = 'javascript:void(0)';
+        documentLink.onclick = (e) => {
+          e.preventDefault();
+          showToast('This documentation is private and not available publicly.', 'Document Access');
+        };
+        documentLink.classList.remove('hidden');
+      } else if (project.document && project.document !== '#') {
         documentLink.href = project.document;
+        documentLink.setAttribute('target', '_blank');
         documentLink.classList.remove('hidden');
       } else {
         documentLink.classList.add('hidden');
