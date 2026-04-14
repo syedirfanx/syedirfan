@@ -88,243 +88,258 @@
 
     <!-- Main Content -->
     <main class="flex-1 flex flex-col max-w-7xl mx-auto w-full px-6 md:px-12 lg:px-16 pt-20 pb-24 relative z-10">
-      <div class="fade-in space-y-20">
+      <div class="fade-in space-y-40">
         <!-- Hero Section -->
-        <div class="max-w-3xl space-y-6">
-          <h1 class="text-5xl md:text-8xl font-black tracking-tighter leading-[0.9]">
-            THINGS I <span class="text-zinc-700">LOVE</span>.
+        <div class="max-w-4xl space-y-8">
+          <h1 class="text-4xl md:text-6xl font-bold tracking-tighter">
+            THINGS <br>I CHERISH.
           </h1>
-          <p class="text-zinc-400 text-lg md:text-xl leading-relaxed font-medium max-w-2xl">
-            A digital sanctuary of inspirations, passions, and the simple joys that define my journey. From cosmic mysteries to the perfect kacchi.
+          <p class="text-zinc-400 text-lg md:text-xl leading-relaxed font-medium max-w-3xl">
+            A digital sanctuary of inspirations, passions, and the simple joys that define my journey. From the depths of sci-fi cinema to the intricate patterns of the cosmos.
           </p>
         </div>
 
-        <!-- Bento Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-4 md:auto-rows-[200px]">
-          
-          <!-- Cinema & Shows (Large 2x2) -->
-          <div class="md:col-span-2 md:row-span-2 grok-card rounded-[2.5rem] p-8 flex flex-col justify-between group relative overflow-hidden min-h-[400px] md:min-h-0">
-            <div class="absolute top-0 right-0 w-64 h-64 bg-zinc-500/5 blur-[80px] -mr-32 -mt-32 group-hover:bg-zinc-500/10 transition-all duration-700"></div>
-            <div class="relative z-10">
-              <div class="flex items-center gap-4 mb-8">
-                <div class="w-12 h-12 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 group-hover:text-white transition-colors">
-                  <i data-lucide="clapperboard" class="w-6 h-6"></i>
-                </div>
-                <div>
-                  <h3 class="text-2xl font-bold tracking-tight">Cinema & Shows</h3>
-                </div>
-              </div>
-              
-              <div class="mb-8 pb-6 border-b border-zinc-800/50">
-                <h4 class="text-[10px] font-bold text-zinc-500 uppercase tracking-widest mb-3">Favorite Genres</h4>
-                <div class="flex flex-wrap gap-x-3 gap-y-1">
-                  <span class="text-xs text-zinc-400">Mystery</span>
-                  <span class="text-xs text-zinc-400">Fantasy</span>
-                  <span class="text-xs text-zinc-400">Sci-Fi</span>
-                  <span class="text-xs text-zinc-400">Supernatural</span>
-                  <span class="text-xs text-zinc-400">Time Travel</span>
-                </div>
-              </div>
-
-              <div class="grid grid-cols-1 gap-y-3">
-                <div class="flex items-center justify-between group/item">
-                  <span class="text-zinc-400 group-hover/item:text-white transition-colors">Zack Snyder's Justice League</span>
-                  <span class="text-[10px] font-mono text-zinc-600">DC</span>
-                </div>
-                <div class="flex items-center justify-between group/item">
-                  <span class="text-zinc-400 group-hover/item:text-white transition-colors">Black Mirror</span>
-                  <span class="text-[10px] font-mono text-zinc-600">SCI-FI</span>
-                </div>
-                <div class="flex items-center justify-between group/item">
-                  <span class="text-zinc-400 group-hover/item:text-white transition-colors">Dark</span>
-                  <span class="text-[10px] font-mono text-zinc-600 uppercase">Time Travel</span>
-                </div>
-                <div class="flex items-center justify-between group/item">
-                  <span class="text-zinc-400 group-hover/item:text-white transition-colors">The Martian</span>
-                  <span class="text-[10px] font-mono text-zinc-600">SPACE</span>
-                </div>
-                <div class="flex items-center justify-between group/item">
-                  <span class="text-zinc-400 group-hover/item:text-white transition-colors">Stranger Things</span>
-                  <span class="text-[10px] font-mono text-zinc-600 uppercase">Monster Horror</span>
-                </div>
-              </div>
+        <!-- Cinema & Shows -->
+        <section class="space-y-16">
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-zinc-900 pb-8">
+            <div class="space-y-2">
+              <h2 class="text-4xl font-bold tracking-tight">Cinema & Shows</h2>
+              <p class="text-zinc-500 font-mono text-xs uppercase tracking-widest">The art of visual storytelling</p>
+            </div>
+            <div class="flex flex-wrap gap-3">
+              <span class="px-3 py-1.5 rounded-lg bg-zinc-900/50 border border-zinc-800 text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Mystery</span>
+              <span class="px-3 py-1.5 rounded-lg bg-zinc-900/50 border border-zinc-800 text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Fantasy</span>
+              <span class="px-3 py-1.5 rounded-lg bg-zinc-900/50 border border-zinc-800 text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Sci-Fi</span>
+              <span class="px-3 py-1.5 rounded-lg bg-zinc-900/50 border border-zinc-800 text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Supernatural</span>
+              <span class="px-3 py-1.5 rounded-lg bg-zinc-900/50 border border-zinc-800 text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Time Travel</span>
             </div>
           </div>
 
-          <!-- Gaming (Medium 2x1) -->
-          <div class="md:col-span-2 md:row-span-1 grok-card rounded-[2.5rem] p-8 flex items-center justify-between group relative overflow-hidden min-h-[200px]">
-            <div class="absolute inset-0 bg-gradient-to-br from-zinc-900/0 via-zinc-900/0 to-zinc-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-            <div class="relative z-10 flex flex-col justify-between h-full">
-              <h3 class="text-2xl font-bold tracking-tight">The Gaming Den</h3>
-              <div class="flex gap-2">
-                <span class="px-2 py-1 rounded-md bg-zinc-900 border border-zinc-800 text-[10px] font-mono text-zinc-400">Grand Theft Auto</span>
-                <span class="px-2 py-1 rounded-md bg-zinc-900 border border-zinc-800 text-[10px] font-mono text-zinc-400">FIFA</span>
-                <span class="px-2 py-1 rounded-md bg-zinc-900 border border-zinc-800 text-[10px] font-mono text-zinc-400">Need for Speed</span>
+          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+            <!-- Movie Card 1 -->
+            <div class="group space-y-4">
+              <div class="aspect-[2/3] rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800 relative">
+                <img src="posters/zacksnydersjusticeleague.png" alt="Zack Snyder's Justice League" class="w-full h-full object-cover grayscale opacity-80 contrast-75 group-hover:grayscale-0 group-hover:opacity-100 group-hover:contrast-100 transition-all duration-700 group-hover:scale-105" referrerPolicy="no-referrer">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
               </div>
+              <h3 class="text-lg font-bold group-hover:text-white transition-colors text-center">Zack Snyder's Justice League</h3>
             </div>
-            <div class="relative z-10">
-              <div class="w-16 h-16 rounded-3xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-500 group-hover:text-white group-hover:scale-110 transition-all duration-500 rotate-12">
-                <i data-lucide="gamepad-2" class="w-8 h-8"></i>
+
+            <!-- Movie Card 2 -->
+            <div class="group space-y-4">
+              <div class="aspect-[2/3] rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800 relative">
+                <img src="posters/blackmirror.jpg" alt="Black Mirror" class="w-full h-full object-cover grayscale opacity-80 contrast-75 group-hover:grayscale-0 group-hover:opacity-100 group-hover:contrast-100 transition-all duration-700 group-hover:scale-105" referrerPolicy="no-referrer">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
               </div>
+              <h3 class="text-lg font-bold group-hover:text-white transition-colors text-center">Black Mirror</h3>
+            </div>
+
+            <!-- Movie Card 3 -->
+            <div class="group space-y-4">
+              <div class="aspect-[2/3] rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800 relative">
+                <img src="posters/dark.jpg" alt="Dark" class="w-full h-full object-cover grayscale opacity-80 contrast-75 group-hover:grayscale-0 group-hover:opacity-100 group-hover:contrast-100 transition-all duration-700 group-hover:scale-105" referrerPolicy="no-referrer">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              </div>
+              <h3 class="text-lg font-bold group-hover:text-white transition-colors text-center">Dark</h3>
+            </div>
+
+            <!-- Movie Card 4 -->
+            <div class="group space-y-4">
+              <div class="aspect-[2/3] rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800 relative">
+                <img src="posters/themartian.jpg" alt="The Martian" class="w-full h-full object-cover grayscale opacity-80 contrast-75 group-hover:grayscale-0 group-hover:opacity-100 group-hover:contrast-100 transition-all duration-700 group-hover:scale-105" referrerPolicy="no-referrer">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              </div>
+              <h3 class="text-lg font-bold group-hover:text-white transition-colors text-center">The Martian</h3>
+            </div>
+
+            <!-- Movie Card 5 -->
+            <div class="group space-y-4">
+              <div class="aspect-[2/3] rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800 relative">
+                <img src="posters/strangerthings.jpg" alt="Stranger Things" class="w-full h-full object-cover grayscale opacity-80 contrast-75 group-hover:grayscale-0 group-hover:opacity-100 group-hover:contrast-100 transition-all duration-700 group-hover:scale-105" referrerPolicy="no-referrer">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              </div>
+              <h3 class="text-lg font-bold group-hover:text-white transition-colors text-center">Stranger Things</h3>
             </div>
           </div>
+        </section>
 
-          <!-- Culinary (Small 1x1) -->
-          <div class="md:col-span-1 md:row-span-1 grok-card rounded-[2.5rem] p-6 flex flex-col justify-between group hover:bg-zinc-900/80 transition-all">
-            <div class="text-zinc-500 group-hover:text-white transition-colors">
-              <i data-lucide="utensils" class="w-6 h-6"></i>
+        <!-- Intellectual Pursuits -->
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+          <div class="space-y-12">
+            <div class="space-y-4">
+              <h2 class="text-5xl font-bold tracking-tight">The Mind's Eye</h2>
+              <p class="text-zinc-500 font-mono text-xs uppercase tracking-widest">Intellectual Pursuits & Curiosity</p>
             </div>
-            <div>
-              <h4 class="font-bold">Kacchi</h4>
-              <p class="text-[10px] text-zinc-500 uppercase tracking-widest">Soul Food</p>
-            </div>
-          </div>
-
-          <!-- Travel (Small 1x1) -->
-          <div class="md:col-span-1 md:row-span-1 grok-card rounded-[2.5rem] p-6 flex flex-col justify-between group hover:bg-zinc-900/80 transition-all">
-            <div class="text-zinc-500 group-hover:text-white transition-colors">
-              <i data-lucide="map-pin" class="w-6 h-6"></i>
-            </div>
-            <div>
-              <h4 class="font-bold">London</h4>
-              <p class="text-[10px] text-zinc-500 uppercase tracking-widest">Travel Log</p>
-            </div>
-          </div>
-
-          <!-- Athletic Spirit (Medium 1x2) -->
-          <div class="md:col-span-1 md:row-span-2 grok-card rounded-[2.5rem] p-8 flex flex-col justify-between group relative overflow-hidden min-h-[400px] md:min-h-0">
-             <div class="absolute bottom-0 left-0 w-32 h-32 bg-zinc-500/5 blur-[40px] -ml-16 -mb-16"></div>
-             <div class="relative z-10">
-                <div class="w-10 h-10 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-500 mb-6">
-                  <i data-lucide="trophy" class="w-5 h-5"></i>
-                </div>
-                <h3 class="text-xl font-bold mb-6 leading-tight whitespace-nowrap">Athletic Spirit</h3>
-                <ul class="space-y-4">
-                  <li class="text-xs text-zinc-400 group-hover:text-zinc-200 transition-colors">Novak Djokovic</li>
-                  <li class="text-xs text-zinc-400 group-hover:text-zinc-200 transition-colors">Argentina</li>
-                  <li class="text-xs text-zinc-400 group-hover:text-zinc-200 transition-colors">Man City</li>
-                  <li class="text-xs text-zinc-400 group-hover:text-zinc-200 transition-colors">CSK</li>
-                </ul>
-             </div>
-          </div>
-
-          <!-- The Mind's Eye (Large 3x2) -->
-          <div class="md:col-span-3 md:row-span-2 grok-card rounded-[2.5rem] p-6 md:p-10 flex flex-col group relative overflow-hidden min-h-[500px] md:min-h-0">
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-radial-glow opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
             
-            <div class="flex flex-col md:flex-row gap-12 relative z-10 h-full">
-              <div class="flex-1 space-y-8">
-                <div>
-                  <h3 class="text-3xl font-bold tracking-tight mb-2">The Mind's Eye</h3>
-                  <p class="text-xs font-mono text-zinc-500 uppercase tracking-widest">Intellectual Pursuits</p>
+            <div class="space-y-8">
+              <div class="flex gap-6 items-start">
+                <div class="w-12 h-12 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center shrink-0 text-zinc-500">
+                  <i data-lucide="brain" class="w-6 h-6"></i>
                 </div>
-                
-                <div class="space-y-6">
-                  <div class="space-y-2">
-                    <h4 class="text-xs font-bold text-white uppercase tracking-wider">Interests</h4>
-                    <div class="flex flex-wrap gap-2">
-                      <span class="text-sm text-zinc-400 hover:text-white transition-colors cursor-default">Psychology</span>
-                      <span class="text-zinc-800">•</span>
-                      <span class="text-sm text-zinc-400 hover:text-white transition-colors cursor-default">Neuroscience</span>
-                      <span class="text-zinc-800">•</span>
-                      <span class="text-sm text-zinc-400 hover:text-white transition-colors cursor-default">Astronomy</span>
-                    </div>
-                  </div>
-                  
-                  <div class="space-y-2">
-                    <h4 class="text-xs font-bold text-white uppercase tracking-wider">Bookshelf</h4>
-                    <div class="space-y-1">
-                      <p class="text-sm text-zinc-400">Atomic Habits</p>
-                      <p class="text-sm text-zinc-400">Black Holes: The Key to Understanding the Universe</p>
-                      <p class="text-sm text-zinc-400">AI Superpowers</p>
-                    </div>
-                  </div>
+                <div class="space-y-3">
+                  <h4 class="text-lg font-bold">Neuroscience & Psychology</h4>
+                  <p class="text-zinc-400 text-sm leading-relaxed">Fascinated by the biological foundations of consciousness and the intricate patterns of human behavior.</p>
                 </div>
               </div>
 
-              <div class="w-px bg-zinc-800/50 hidden md:block"></div>
+              <div class="flex gap-6 items-start">
+                <div class="w-12 h-12 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center shrink-0 text-zinc-500">
+                  <i data-lucide="orbit" class="w-6 h-6"></i>
+                </div>
+                <div class="space-y-3">
+                  <h4 class="text-lg font-bold">Astronomy & Physics</h4>
+                  <p class="text-zinc-400 text-sm leading-relaxed">Exploring the mysteries of the cosmos, from the event horizons of black holes to the fabric of spacetime.</p>
+                </div>
+              </div>
 
-              <div class="flex-1 space-y-8">
-                <div>
-                  <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-6">Hobbies</h4>
-                  <div class="grid grid-cols-2 gap-4">
-                    <div class="p-4 rounded-2xl bg-zinc-900/50 border border-zinc-800/50 group/hobby hover:border-zinc-700 transition-all">
-                      <i data-lucide="palette" class="w-4 h-4 text-zinc-500 mb-2 group-hover/hobby:text-white transition-colors"></i>
-                      <p class="text-xs font-medium text-zinc-400">Painting</p>
-                    </div>
-                    <div class="p-4 rounded-2xl bg-zinc-900/50 border border-zinc-800/50 group/hobby hover:border-zinc-700 transition-all">
-                      <i data-lucide="chef-hat" class="w-4 h-4 text-zinc-500 mb-2 group-hover/hobby:text-white transition-colors"></i>
-                      <p class="text-xs font-medium text-zinc-400">Cooking</p>
-                    </div>
-                    <div class="p-4 rounded-2xl bg-zinc-900/50 border border-zinc-800/50 group/hobby hover:border-zinc-700 transition-all">
-                      <i data-lucide="swords" class="w-4 h-4 text-zinc-500 mb-2 group-hover/hobby:text-white transition-colors"></i>
-                      <p class="text-xs font-medium text-zinc-400">Chess</p>
-                    </div>
-                    <div class="p-4 rounded-2xl bg-zinc-900/50 border border-zinc-800/50 group/hobby hover:border-zinc-700 transition-all">
-                      <i data-lucide="cpu" class="w-4 h-4 text-zinc-500 mb-2 group-hover/hobby:text-white transition-colors"></i>
-                      <p class="text-xs font-medium text-zinc-400">New Tech</p>
-                    </div>
-                  </div>
+              <div class="flex gap-6 items-start">
+                <div class="w-12 h-12 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center shrink-0 text-zinc-500">
+                  <i data-lucide="book-open" class="w-6 h-6"></i>
+                </div>
+                <div class="space-y-3">
+                  <h4 class="text-lg font-bold">The Bookshelf</h4>
+                  <ul class="space-y-1 text-zinc-400 text-sm">
+                    <li class="flex items-start gap-2">
+                      <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+                      Atomic Habits
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+                      Black Holes: The Key to Understanding the Universe
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+                      AI Superpowers
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Sports (Small 1x1) - Extra fill -->
-          <div class="md:col-span-1 md:row-span-1 grok-card rounded-[2.5rem] p-6 flex flex-col justify-between group hover:bg-zinc-900/80 transition-all">
-            <div class="text-zinc-500 group-hover:text-white transition-colors">
-              <i data-lucide="flag" class="w-6 h-6"></i>
-            </div>
-            <div>
-              <h4 class="font-bold">Bangladesh</h4>
-              <p class="text-[10px] text-zinc-500 uppercase tracking-widest">Cricket</p>
-            </div>
-          </div>
-
-          <!-- Quote (Medium 1x1) -->
-          <div class="md:col-span-1 md:row-span-1 grok-card rounded-[2.5rem] p-6 flex flex-col justify-center items-center text-center group bg-zinc-900/30">
-            <i data-lucide="quote" class="w-4 h-4 text-zinc-800 mb-3"></i>
-            <p class="text-[10px] font-mono text-zinc-500 leading-tight">
-              “THE BEST WAY TO PREDICT THE FUTURE IS TO CREATE IT.”<br>— PETER DRUCKER
-            </p>
-          </div>
-
-          <!-- Photography Gallery (Full Width 6x3) -->
-          <div class="md:col-span-4 lg:col-span-6 md:row-span-3 grok-card rounded-[2.5rem] p-8 md:p-12 flex flex-col group relative overflow-hidden min-h-[500px] md:min-h-0 cursor-pointer" onclick="openGallery(0)">
-            <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-zinc-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
-            
-            <div class="relative z-10 mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
-              <div>
-                <div class="w-12 h-12 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 mb-6 group-hover:text-white transition-colors">
-                  <i data-lucide="camera" class="w-6 h-6"></i>
-                </div>
-                <h3 class="text-4xl font-black tracking-tighter mb-2">Captured Moments</h3>
-              </div>
-            </div>
-
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 relative z-10 flex-1">
-              <div class="rounded-2xl overflow-hidden aspect-[3/4] bg-zinc-900 skeleton">
-                <img src="pictures/IMG20250102175550.jpg" alt="Gallery Preview 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-0 transition-opacity duration-300" loading="lazy" onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('skeleton')" referrerPolicy="no-referrer">
-              </div>
-              <div class="rounded-2xl overflow-hidden aspect-[3/4] bg-zinc-900 skeleton">
-                <img src="pictures/IMG20220401160123.jpg" alt="Gallery Preview 2" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-0 transition-opacity duration-300" loading="lazy" onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('skeleton')" referrerPolicy="no-referrer">
-              </div>
-              <div class="rounded-2xl overflow-hidden aspect-[3/4] bg-zinc-900 skeleton">
-                <img src="pictures/9c150393-428e-433d-a2a2-87eb7267d379.jpg" alt="Gallery Preview 3" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-0 transition-opacity duration-300" loading="lazy" onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('skeleton')" referrerPolicy="no-referrer">
-              </div>
-              <div class="rounded-2xl overflow-hidden aspect-[3/4] bg-zinc-900 skeleton hidden md:block">
-                <img src="pictures/37c11e17-a0ae-44f3-8b23-326a8793fcf9.jpg" alt="Gallery Preview 4" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-0 transition-opacity duration-300" loading="lazy" onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('skeleton')" referrerPolicy="no-referrer">
-              </div>
-              <div class="rounded-2xl overflow-hidden aspect-[3/4] bg-zinc-900 skeleton relative">
-                <img src="pictures/1ad9725b-0604-437f-a886-815632e78192.jpg" alt="Gallery Preview 5" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-0 transition-opacity duration-300" loading="lazy" onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('skeleton')" referrerPolicy="no-referrer">
-                <div class="absolute inset-0 bg-black/60 flex items-center justify-center z-10">
-                  <span class="text-white font-bold text-xl">+5</span>
+          <div class="relative">
+            <div class="aspect-square rounded-[3rem] bg-zinc-900 border border-zinc-800 overflow-hidden relative">
+              <div class="absolute inset-0 flex items-center justify-center p-12">
+                <div class="text-center space-y-6">
+                  <i data-lucide="quote" class="w-12 h-12 text-zinc-700 mx-auto"></i>
+                  <p class="text-2xl md:text-3xl font-medium tracking-tight leading-relaxed">
+                    "The best way to predict the future is to create it."
+                  </p>
+                  <p class="text-zinc-500 font-mono text-xs uppercase tracking-widest">— Peter Drucker</p>
                 </div>
               </div>
             </div>
+            <!-- Decorative elements -->
+            <div class="absolute -top-6 -right-6 w-32 h-32 bg-zinc-500/10 blur-3xl rounded-full"></div>
+            <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-zinc-500/10 blur-3xl rounded-full"></div>
+          </div>
+        </section>
+
+        <!-- Lifestyle & Hobbies -->
+        <section class="space-y-16">
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-zinc-900 pb-8">
+            <div class="space-y-2">
+              <h2 class="text-4xl font-bold tracking-tight">Lifestyle & Hobbies</h2>
+              <p class="text-zinc-500 font-mono text-xs uppercase tracking-widest">Life beyond the screen</p>
+            </div>
           </div>
 
-        </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Gaming -->
+            <div class="p-10 rounded-[2.5rem] bg-zinc-900/40 border border-zinc-800/50 hover:border-zinc-700 transition-all group">
+              <div class="w-12 h-12 rounded-2xl bg-zinc-950 border border-zinc-800 flex items-center justify-center text-zinc-500 group-hover:text-white transition-colors mb-8">
+                <i data-lucide="gamepad-2" class="w-6 h-6"></i>
+              </div>
+              <h3 class="text-xl font-bold mb-6">Gaming</h3>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1.5 rounded-lg bg-zinc-900/50 border border-zinc-800 text-[10px] font-bold text-zinc-400 uppercase tracking-widest">GTA</span>
+                <span class="px-3 py-1.5 rounded-lg bg-zinc-900/50 border border-zinc-800 text-[10px] font-bold text-zinc-400 uppercase tracking-widest">FIFA</span>
+                <span class="px-3 py-1.5 rounded-lg bg-zinc-900/50 border border-zinc-800 text-[10px] font-bold text-zinc-400 uppercase tracking-widest">NFS</span>
+              </div>
+            </div>
+
+            <!-- Culinary -->
+            <div class="p-10 rounded-[2.5rem] bg-zinc-900/40 border border-zinc-800/50 hover:border-zinc-700 transition-all group">
+              <div class="w-12 h-12 rounded-2xl bg-zinc-950 border border-zinc-800 flex items-center justify-center text-zinc-500 group-hover:text-white transition-colors mb-8">
+                <i data-lucide="utensils" class="w-6 h-6"></i>
+              </div>
+              <h3 class="text-xl font-bold mb-6">Culinary</h3>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1.5 rounded-lg bg-zinc-900/50 border border-zinc-800 text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Kacchi</span>
+                <span class="px-3 py-1.5 rounded-lg bg-zinc-900/50 border border-zinc-800 text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Mac & Cheese</span>
+                <span class="px-3 py-1.5 rounded-lg bg-zinc-900/50 border border-zinc-800 text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Butter Chicken</span>
+              </div>
+            </div>
+
+            <!-- Sports -->
+            <div class="p-10 rounded-[2.5rem] bg-zinc-900/40 border border-zinc-800/50 hover:border-zinc-700 transition-all group">
+              <div class="w-12 h-12 rounded-2xl bg-zinc-950 border border-zinc-800 flex items-center justify-center text-zinc-500 group-hover:text-white transition-colors mb-8">
+                <i data-lucide="trophy" class="w-6 h-6"></i>
+              </div>
+              <h3 class="text-xl font-bold mb-6">Athletic Spirit</h3>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1.5 rounded-lg bg-zinc-900/50 border border-zinc-800 text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Novac Djokovic</span>
+                <span class="px-3 py-1.5 rounded-lg bg-zinc-900/50 border border-zinc-800 text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Argentina</span>
+                <span class="px-3 py-1.5 rounded-lg bg-zinc-900/50 border border-zinc-800 text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Mancity</span>
+                <span class="px-3 py-1.5 rounded-lg bg-zinc-900/50 border border-zinc-800 text-[10px] font-bold text-zinc-400 uppercase tracking-widest">CSK</span>
+              </div>
+            </div>
+
+            <!-- Travel -->
+            <div class="p-10 rounded-[2.5rem] bg-zinc-900/40 border border-zinc-800/50 hover:border-zinc-700 transition-all group">
+              <div class="w-12 h-12 rounded-2xl bg-zinc-950 border border-zinc-800 flex items-center justify-center text-zinc-500 group-hover:text-white transition-colors mb-8">
+                <i data-lucide="map-pin" class="w-6 h-6"></i>
+              </div>
+              <h3 class="text-xl font-bold mb-6">Travel</h3>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1.5 rounded-lg bg-zinc-900/50 border border-zinc-800 text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Singapore</span>
+                <span class="px-3 py-1.5 rounded-lg bg-zinc-900/50 border border-zinc-800 text-[10px] font-bold text-zinc-400 uppercase tracking-widest">London</span>
+                <span class="px-3 py-1.5 rounded-lg bg-zinc-900/50 border border-zinc-800 text-[10px] font-bold text-zinc-400 uppercase tracking-widest">India</span>
+                <span class="px-3 py-1.5 rounded-lg bg-zinc-900/50 border border-zinc-800 text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Turkey</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Photography Gallery -->
+        <section class="space-y-16">
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-zinc-900 pb-8">
+            <div class="space-y-2">
+              <h2 class="text-4xl font-bold tracking-tight">Captured Moments</h2>
+              <p class="text-zinc-500 font-mono text-xs uppercase tracking-widest">Through my lens: A collection of visual memories</p>
+            </div>
+            <button onclick="openGallery(0)" class="px-6 py-3 rounded-xl bg-white text-black text-xs font-bold uppercase tracking-widest hover:bg-zinc-200 transition-colors">
+              View Full Gallery
+            </button>
+          </div>
+
+          <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+            <div class="aspect-[3/4] rounded-3xl overflow-hidden bg-zinc-900 border border-zinc-800 group cursor-pointer" onclick="openGallery(0)">
+              <img src="pictures/IMG20250102175550.jpg" alt="Gallery 1" class="w-full h-full object-cover opacity-80 contrast-75 group-hover:opacity-100 group-hover:contrast-100 transition-all duration-700 group-hover:scale-110" referrerPolicy="no-referrer">
+            </div>
+            <div class="aspect-[3/4] rounded-3xl overflow-hidden bg-zinc-900 border border-zinc-800 group cursor-pointer" onclick="openGallery(1)">
+              <img src="pictures/IMG20220401160123.jpg" alt="Gallery 2" class="w-full h-full object-cover opacity-80 contrast-75 group-hover:opacity-100 group-hover:contrast-100 transition-all duration-700 group-hover:scale-110" referrerPolicy="no-referrer">
+            </div>
+            <div class="aspect-[3/4] rounded-3xl overflow-hidden bg-zinc-900 border border-zinc-800 group cursor-pointer relative" onclick="openGallery(2)">
+              <img src="pictures/9c150393-428e-433d-a2a2-87eb7267d379.jpg" alt="Gallery 3" class="w-full h-full object-cover opacity-80 contrast-75 group-hover:opacity-100 group-hover:contrast-100 transition-all duration-700 group-hover:scale-110" referrerPolicy="no-referrer">
+              <div class="absolute inset-0 flex items-center justify-center bg-black/40 md:hidden">
+                <span class="text-2xl font-bold text-white">+7</span>
+              </div>
+            </div>
+            <div class="aspect-[3/4] rounded-3xl overflow-hidden bg-zinc-900 border border-zinc-800 group cursor-pointer hidden md:block relative" onclick="openGallery(3)">
+              <img src="pictures/37c11e17-a0ae-44f3-8b23-326a8793fcf9.jpg" alt="Gallery 4" class="w-full h-full object-cover opacity-80 contrast-75 group-hover:opacity-100 group-hover:contrast-100 transition-all duration-700 group-hover:scale-110" referrerPolicy="no-referrer">
+              <div class="absolute inset-0 flex items-center justify-center bg-black/40 lg:hidden">
+                <span class="text-2xl font-bold text-white">+6</span>
+              </div>
+            </div>
+            <div class="aspect-[3/4] rounded-3xl overflow-hidden bg-zinc-900 border border-zinc-800 group cursor-pointer hidden lg:block relative" onclick="openGallery(4)">
+              <img src="pictures/1ad9725b-0604-437f-a886-815632e78192.jpg" alt="Gallery 5" class="w-full h-full object-cover opacity-80 contrast-75 group-hover:opacity-100 group-hover:contrast-100 transition-all duration-700 group-hover:scale-110" referrerPolicy="no-referrer">
+              <div class="absolute inset-0 flex items-center justify-center bg-black/40">
+                <span class="text-2xl font-bold text-white">+5</span>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     </main>
 

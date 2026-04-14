@@ -29,12 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
   } catch (e) {
     console.error('Wishes init failed:', e);
   }
-
-  // Load Chatbot
-  const chatbotScript = document.createElement('script');
-  chatbotScript.type = 'module';
-  chatbotScript.src = 'chatbot.js';
-  document.body.appendChild(chatbotScript);
 });
 
 // Mobile Menu Logic
