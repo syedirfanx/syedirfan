@@ -310,3 +310,41 @@ body {
   20% { opacity: 1; }
   100% { transform: translateY(-25px) scale(1.2); opacity: 0; }
 }
+
+/* Global Photo Theme Shade */
+.theme-photo-shade {
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-photo-shade img {
+  filter: grayscale(0.25) contrast(0.9);
+  transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.theme-photo-shade::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(9, 9, 11, 0.2);
+  transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  z-index: 10;
+}
+
+.theme-photo-shade:hover img {
+  filter: grayscale(0) contrast(1);
+}
+
+.theme-photo-shade:hover::after {
+  background-color: transparent;
+}
+
+/* Static Variant (No Hover Effect) */
+.theme-photo-shade.static-shade:hover img {
+  filter: grayscale(0.25) contrast(0.9);
+}
+
+.theme-photo-shade.static-shade:hover::after {
+  background-color: rgba(9, 9, 11, 0.2);
+}

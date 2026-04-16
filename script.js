@@ -716,11 +716,11 @@ const projectsData = {
           <p>This project involved the design and simulation of complex digital systems for the CSE 231 Digital Logic Design course. The implementation focuses on combinational and sequential circuit design with rigorous verification.</p>
           
           <div class="grid grid-cols-2 gap-4">
-            <div class="aspect-square rounded-xl overflow-hidden bg-zinc-900 border border-zinc-800">
-              <img src="projects/dld1.jpg" alt="DLD Circuit 1" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity" referrerPolicy="no-referrer">
+            <div class="aspect-square rounded-xl overflow-hidden bg-zinc-900 border border-zinc-800 theme-photo-shade">
+              <img src="projects/dld1.jpg" alt="DLD Circuit 1" class="w-full h-full object-cover" referrerPolicy="no-referrer">
             </div>
-            <div class="aspect-square rounded-xl overflow-hidden bg-zinc-900 border border-zinc-800">
-              <img src="projects/dld2.png" alt="DLD Circuit 2" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity" referrerPolicy="no-referrer">
+            <div class="aspect-square rounded-xl overflow-hidden bg-zinc-900 border border-zinc-800 theme-photo-shade">
+              <img src="projects/dld2.png" alt="DLD Circuit 2" class="w-full h-full object-cover" referrerPolicy="no-referrer">
             </div>
           </div>
         </div>
