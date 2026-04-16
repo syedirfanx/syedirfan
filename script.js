@@ -581,109 +581,399 @@ const projectsData = {
   'smart-door-lock': {
     title: 'Smart Door Lock (2FA)',
     category: 'Academic Project',
-    overview: 'An IoT-based security solution that combines hardware (Arduino/Raspberry Pi) with a mobile application. It implements two-factor authentication for physical access control, enhancing home and office security.',
-    collaborators: ['Syed Irfan', 'IoT Team'],
-    github: 'https://github.com/syedirfanx',
-    document: '#',
+    overview: 'An advanced IoT-based security system that implements two-factor authentication (2FA) using face recognition and fingerprint scanning. This dual-layer biometric approach significantly increases security for physical access control in homes and offices.',
+    collaborators: ['Hassan Kafi (Project Lead)', 'Tauhidur Rahman', '<span class="text-white font-bold">Syed Irfan</span>', 'Syeda Nowrin'],
+    github: 'closed',
+    document: 'private',
     tags: ['IoT', 'Security', '2FA', 'Embedded Systems']
   },
   'traffic-monitor': {
     title: 'Traffic Monitor App',
     category: 'Academic Project',
-    overview: 'A computer vision-based Android mobile application developed in Java. It analyzes real-time traffic camera feeds to detect vehicles, estimate flow rates, and identify congestion points for urban traffic management.',
-    collaborators: ['Syed Irfan'],
-    github: 'https://github.com/syedirfanx',
+    overview: `
+      <div class="space-y-4">
+        <p>An Android application developed for the CSE 299 Junior Project Design (Fall 2018). It empowers traffic authorities to detect speed limit violations in real-time within sensitive zones using precise GPS tracking.</p>
+        
+        <div class="space-y-2">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500">Project Overview</h4>
+          <ul class="space-y-2 text-sm text-zinc-400">
+            <li class="flex items-start gap-3">
+              <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+              <span><strong class="text-zinc-200">Zone-Specific Monitoring:</strong> Automated speed detection in sensitive areas like schools, hospitals, mosques, and highways.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+              <span><strong class="text-zinc-200">GPS Tracking:</strong> Utilizes real-time location data to calculate vehicle speed and cross-reference with zone speed limits.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+              <span><strong class="text-zinc-200">Violation Detection:</strong> Automatically flags and records speed violations for traffic management and enforcement.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="space-y-2">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500">Technologies Used</h4>
+          <ul class="space-y-1 text-sm text-zinc-400">
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">Platform:</strong> Android Studio</span></li>
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">Language:</strong> Java</span></li>
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">Core Services:</strong> Google Maps API & GPS Location Services</span></li>
+          </ul>
+        </div>
+      </div>
+    `,
+    collaborators: ['<span class="text-white font-bold">Syed Irfan</span> (Project Lead)', 'Hassan Kafi', 'Tauhidur Rahman', 'Shadman Sadiq'],
+    github: 'https://github.com/syedirfanx/traffic-monitor-app',
     document: '#',
-    tags: ['CV', 'Mobile App', 'Android', 'Java']
+    tags: ['Android', 'Java', 'GPS', 'Mobile App']
   },
   'machine-overheat': {
     title: 'Machine Overheat Detection',
     category: 'Academic Project',
-    overview: 'An industrial monitoring system that uses temperature sensors and predictive logic to detect potential machinery overheating. It provides real-time alerts to prevent hardware damage and downtime.',
-    collaborators: ['Syed Irfan'],
-    github: 'https://github.com/syedirfanx',
+    overview: `
+      <div class="space-y-4">
+        <p>An Arduino-based industrial monitoring system developed for the CSE 323 Operating Systems Design (Fall 2018) course. It provides real-time detection of machinery overheating in industrial environments where visual monitoring is insufficient.</p>
+        
+        <div class="space-y-2">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500">Project Overview</h4>
+          <ul class="space-y-2 text-sm text-zinc-400">
+            <li class="flex items-start gap-3">
+              <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+              <span><strong class="text-zinc-200">Industrial Monitoring:</strong> Designed for factories with heavy machinery to detect thermal anomalies invisible to the naked eye.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+              <span><strong class="text-zinc-200">Predictive Maintenance:</strong> Triggers immediate alerts upon detecting dangerous temperature thresholds, ensuring machines operate within safe thermal limits.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+              <span><strong class="text-zinc-200">Operational Efficiency:</strong> Helps maintain peak performance and prevents hardware damage or downtime by ensuring consistent thermal regulation.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="space-y-2">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500">Technologies Used</h4>
+          <ul class="space-y-1 text-sm text-zinc-400">
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">Hardware:</strong> Arduino Board & Temperature Sensors</span></li>
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">Monitoring:</strong> Real-time Serial Feedback</span></li>
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">Integration:</strong> Alert & Maintenance Workflow logic</span></li>
+          </ul>
+        </div>
+      </div>
+    `,
+    collaborators: ['<span class="text-white font-bold">Syed Irfan</span> (Project Lead)', 'Sazzad Hossain Risad', 'Ahsanul Kabir'],
+    github: 'https://github.com/syedirfanx/machine-overheat-detection',
     document: '#',
-    tags: ['Embedded Systems', 'Industrial IoT', 'Sensors']
+    tags: ['Arduino', 'IoT', 'Embedded Systems', 'Sensors']
   },
   'study-theatre': {
     title: 'Study Theatre',
     category: 'Industrial Project',
-    overview: 'A collaborative mobile application for students built with Flutter. It facilitates organized resource sharing, group study scheduling, and real-time academic collaboration.',
-    collaborators: ['Syed Irfan', 'Mobile Dev Team'],
-    github: 'https://github.com/syedirfanx',
-    document: '#',
-    tags: ['Mobile App Dev', 'Flutter', 'Collaboration', 'Education Tech']
+    overview: `
+      <div class="space-y-4">
+        <p>A specialized mobile application developed in Flutter that enables teachers to stream live lectures directly to students. The platform focuses on secure, high-quality educational broadcasting with real-time interaction.</p>
+        
+        <div class="space-y-2">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500">Key Features</h4>
+          <ul class="space-y-2 text-sm text-zinc-400">
+            <li class="flex items-start gap-3">
+              <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+              <span><strong class="text-zinc-200">Live Streaming:</strong> Facilitates seamless real-time video broadcasting for academic lectures.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+              <span><strong class="text-zinc-200">Access Control:</strong> Implements a verification system where only paid, verified accounts can access premium lecture content.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+              <span><strong class="text-zinc-200">Interactive Stream:</strong> Students can ask questions and engage with the lecturer directly during the live session.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="space-y-2">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500">Technologies Used</h4>
+          <ul class="space-y-1 text-sm text-zinc-400">
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">Platform:</strong> Android Studio & Flutter</span></li>
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">Language:</strong> Dart</span></li>
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">Backend:</strong> Google Firebase</span></li>
+          </ul>
+        </div>
+      </div>
+    `,
+    collaborators: ['Taufiq Rahman', '<span class="text-white font-bold">Syed Irfan</span>', 'Nafis Faysal'],
+    github: 'closed',
+    document: 'private',
+    tags: ['Flutter', 'Dart', 'Firebase', 'Streaming']
   },
   'digital-logic': {
     title: 'Digital Logic Design',
     category: 'Academic Project',
-    overview: 'Implementation and simulation of fundamental digital circuits. This project involved designing complex logic gates, flip-flops, and counters to understand the core architecture of modern computing.',
-    collaborators: ['Syed Irfan'],
-    github: 'https://github.com/syedirfanx',
+    overview: `
+      <div class="space-y-6">
+        <div class="space-y-4">
+          <p>This project involved the design and simulation of complex digital systems for the CSE 231 Digital Logic Design course. The implementation focuses on combinational and sequential circuit design with rigorous verification.</p>
+          
+          <div class="grid grid-cols-2 gap-4">
+            <div class="aspect-square rounded-xl overflow-hidden bg-zinc-900 border border-zinc-800">
+              <img src="projects/dld1.jpg" alt="DLD Circuit 1" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity" referrerPolicy="no-referrer">
+            </div>
+            <div class="aspect-square rounded-xl overflow-hidden bg-zinc-900 border border-zinc-800">
+              <img src="projects/dld2.png" alt="DLD Circuit 2" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity" referrerPolicy="no-referrer">
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500">Technical Specifications</h4>
+          <ul class="space-y-2 text-sm text-zinc-400">
+            <li class="flex items-start gap-3">
+              <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+              <span><strong class="text-zinc-200">Displayed Digits:</strong> Circuitry designed to correctly render the sequence 10864.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+              <span><strong class="text-zinc-200">Combinational Circuit:</strong> Optimized using Simplified SOP (Sum of Products) expressions.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+              <span><strong class="text-zinc-200">Counter Arrangement:</strong> Designed for the specific sequence: 1, 5, 7, 9, 13.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+              <span><strong class="text-zinc-200">Registers:</strong> Implemented using D Flip-flops with dedicated parallel/serial load registers.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="space-y-2">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500">Technologies Used</h4>
+          <ul class="space-y-1 text-sm text-zinc-400">
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">Simulation:</strong> Logisim</span></li>
+          </ul>
+        </div>
+      </div>
+    `,
+    collaborators: ['<span class="text-white font-bold">Syed Irfan</span>'],
+    github: 'https://github.com/syedirfanx/digital-logic-design',
     document: '#',
-    tags: ['Hardware', 'Circuit Design', 'Digital Logic']
+    tags: ['Logisim', 'Circuit Design', 'Digital Logic']
   },
   'whack-a-mole': {
     title: 'Whack A Mole',
     category: 'Academic Project',
-    overview: 'A classic arcade game implementation. This project focused on mastering event-driven programming, timing logic, and responsive UI design in a browser environment.',
-    collaborators: ['Syed Irfan'],
-    github: 'https://github.com/syedirfanx',
+    overview: `
+      <div class="space-y-4">
+        <p>A classic arcade game implementation developed for the CSE 215 Programming Language II course. This project focuses on object-oriented programming, event-driven logic, and UI design within the Java ecosystem.</p>
+        
+        <div class="space-y-2">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500">Project Overview</h4>
+          <ul class="space-y-2 text-sm text-zinc-400">
+            <li class="flex items-start gap-3">
+              <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+              <span><strong class="text-zinc-200">Event-Driven Gameplay:</strong> Implemented real-time mouse interaction and synchronized timing logic for mole visibility.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+              <span><strong class="text-zinc-200">OOP Architecture:</strong> Leveraged Java's object-oriented principles to manage game state, scoring, and UI components.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="space-y-2">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500">Technologies Used</h4>
+          <ul class="space-y-1 text-sm text-zinc-400">
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">Language:</strong> Java</span></li>
+          </ul>
+        </div>
+      </div>
+    `,
+    collaborators: ['Abdul Ahad Alif', '<span class="text-white font-bold">Syed Irfan</span>', 'Alin Mostafa'],
+    github: 'https://github.com/syedirfanx/whack-a-mole',
     document: '#',
-    tags: ['Game Dev', 'JavaScript', 'UI/UX']
+    tags: ['Java', 'OOP', 'Game Dev']
   },
   'synthetic-face': {
     title: 'Synthetic Face Generation using GAN',
     category: 'Academic Project',
-    overview: 'An exploration into Generative Adversarial Networks (GANs). This project focuses on training models to generate high-fidelity, non-existent human faces with controllable attributes like age and expression.',
-    collaborators: ['Syed Irfan'],
-    github: 'https://github.com/syedirfanx',
+    overview: `
+      <div class="space-y-4">
+        <p>A Deep Learning project developed for CSE 465 (Spring 2020). The project focuses on designing and training a Deep Convolutional Generative Adversarial Network (DCGAN) to synthesize high-fidelity human faces.</p>
+        
+        <div class="space-y-2">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500">Project Goal</h4>
+          <p class="text-sm text-zinc-400 leading-relaxed">The primary objective was to architect a generator network capable of producing realistic facial images that resemble non-existent celebrities by learning features from a large-scale face dataset.</p>
+        </div>
+
+        <div class="space-y-2">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500">Technologies Used</h4>
+          <ul class="space-y-1 text-sm text-zinc-400">
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">Architecture:</strong> DCGAN</span></li>
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">Deep Learning:</strong> TensorFlow/Keras or PyTorch</span></li>
+          </ul>
+        </div>
+      </div>
+    `,
+    collaborators: ['<span class="text-white font-bold">Syed Irfan</span>', 'Asaduzzaman Khan'],
+    github: 'https://github.com/syedirfanx/face-generation',
     document: '#',
-    tags: ['GANs', 'Deep Learning', 'Generative AI']
+    tags: ['GANs', 'Deep Learning', 'Generative AI', 'DCGAN']
   },
   'valentines-data': {
     title: 'Valentine\'s Day Consumer Data Analysis',
     category: 'Personal Project',
-    overview: 'A data science project that analyzes consumer spending habits during the Valentine\'s season. It uses sentiment analysis and trend forecasting to identify market patterns and consumer behavior.',
-    collaborators: ['Syed Irfan'],
-    github: 'https://github.com/syedirfanx',
+    overview: `
+      <div class="space-y-4">
+        <p>A data-driven exploration of Valentine’s Day consumer trends, behaviors, and sentiments — uncovering insights from gift preferences to spending patterns using 10 years of National Retail Federation survey data.</p>
+        
+        <div class="space-y-2">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500">Project Insights</h4>
+          <ul class="space-y-2 text-sm text-zinc-400">
+            <li class="flex items-start gap-3">
+              <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+              <span><strong class="text-zinc-200">Spending Disparity:</strong> Analysis revealed that men tend to spend significantly more on flowers than women.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+              <span><strong class="text-zinc-200">Generational Shifts:</strong> Younger age groups show a preference for flowers, while older consumers shift spending towards greeting cards.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="space-y-2">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500">Tech Stack</h4>
+          <ul class="space-y-1 text-sm text-zinc-400">
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">Tools:</strong> Python (Pandas, NumPy, Matplotlib, Seaborn)</span></li>
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">Environment:</strong> Jupyter Notebook</span></li>
+          </ul>
+        </div>
+      </div>
+    `,
+    collaborators: ['<span class="text-white font-bold">Syed Irfan</span>'],
+    github: 'https://github.com/syedirfanx/ValentineConsumerTrends',
     document: '#',
-    tags: ['Data Science', 'Sentiment Analysis', 'Market Trends']
+    tags: ['Data Science', 'Data Analysis', 'Python', 'Matplotlib']
   },
   'file-organizer': {
     title: 'Auto File Organizer',
     category: 'Personal Project',
-    overview: 'A Python-based utility that automatically categorizes and moves files based on their extensions and content. It includes real-time directory monitoring and detailed logging of all file operations.',
-    collaborators: ['Syed Irfan'],
-    github: 'https://github.com/syedirfanx',
+    overview: `
+      <div class="space-y-4">
+        <p>AutoFileOrganizer is a Python-based automated file management system that continuously monitors a folder, organizes files by type and date, and logs all activities in real-time.</p>
+        
+        <div class="space-y-2">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500">Key Features</h4>
+          <ul class="space-y-2 text-sm text-zinc-400">
+            <li class="flex items-start gap-3">
+              <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+              <span><strong class="text-zinc-200">Real-time Monitoring:</strong> Active directory watching for instant file organization upon detection.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+              <span><strong class="text-zinc-200">Structured Storage:</strong> Moves files into a <code>MyFiles/YYYY-MM-DD/EXTENSION/</code> directory structure.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+              <span><strong class="text-zinc-200">Detailed Logging:</strong> Generates CSV logs containing timestamps, file names, and path history.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="space-y-2">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500">Technologies Used</h4>
+          <ul class="space-y-1 text-sm text-zinc-400">
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">Language:</strong> Python</span></li>
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">Analysis:</strong> Matplotlib (Visualization script)</span></li>
+          </ul>
+        </div>
+      </div>
+    `,
+    collaborators: ['<span class="text-white font-bold">Syed Irfan</span>'],
+    github: 'https://github.com/syedirfanx/auto-file-organizer',
     document: '#',
-    tags: ['Automation', 'Python', 'Productivity']
+    tags: ['Automation', 'Python', 'File Management']
   },
   'bangla-newspaper-summarizer': {
     title: 'Bangla Newspaper Image Summarizer',
     category: 'Personal Project',
-    overview: 'An AI-powered tool that processes images of Bangla newspapers using OCR to extract text and generate concise summaries. It helps users quickly digest news from physical or digital newspaper clippings.',
-    collaborators: ['Syed Irfan'],
-    github: 'https://github.com/syedirfanx',
+    overview: `
+      <div class="space-y-4">
+        <p>An AI-powered tool designed to automate reading Bangla newspaper images, extracting text via OCR, generating summaries, and securely storing them on Google Drive.</p>
+        
+        <div class="space-y-2">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500">Pipeline Flow</h4>
+          <div class="text-[10px] font-mono text-zinc-500 bg-zinc-950 p-4 rounded-xl border border-zinc-800 leading-tight">
+            Images (data/) → OCR → Preprocessing → Summarization → Google Drive Upload
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500">Key Features</h4>
+          <ul class="space-y-2 text-sm text-zinc-400">
+            <li class="flex items-start gap-3">
+              <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+              <span><strong class="text-zinc-200">Full Bangla OCR:</strong> High-precision text extraction from scanned newspaper clippings.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+              <span><strong class="text-zinc-200">Advanced NLP:</strong> LexRank summarization with frequency-based fallback for Bangla text.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+              <span><strong class="text-zinc-200">Cloud Integration:</strong> Automated uploads of summaries in CSV, JSON, and text formats to Drive.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    `,
+    collaborators: ['<span class="text-white font-bold">Syed Irfan</span>'],
+    github: 'https://github.com/syedirfanx/bangla-news-summarizer',
     document: '#',
-    tags: ['OCR', 'NLP', 'Bangla AI', 'Summarization']
+    tags: ['OCR', 'NLP', 'Bangla AI', 'Summarization', 'LexRank']
   },
   'news-aggregator': {
-    title: 'News Aggregator Service',
+    title: 'Web Scraping Service',
     category: 'Industrial Project',
-    overview: 'A personalized news service that scrapes multiple sources, categorizes articles using NLP, and provides concise summaries using the LexRank algorithm.',
-    collaborators: ['Syed Irfan'],
-    github: 'https://github.com/syedirfanx',
+    overview: `
+      <div class="space-y-4">
+        <p>A specialized news data extraction service that scrapes headlines, complete articles, and publication dates from various portals for structured analysis.</p>
+        
+        <div class="space-y-2">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500">Key Features</h4>
+          <ul class="space-y-2 text-sm text-zinc-400">
+            <li class="flex items-start gap-3">
+              <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+              <span><strong class="text-zinc-200">Multi-Portal Extraction:</strong> Scrapes news data including headlines, article bodies, and metadata.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+              <span><strong class="text-zinc-200">Structured Output:</strong> Saves extracted datasets in CSV and JSON formats for analytical portability.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="space-y-2">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500">Technologies Used</h4>
+          <ul class="space-y-1 text-sm text-zinc-400">
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">Scraping:</strong> Python, BeautifulSoup, Requests</span></li>
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">Analysis:</strong> Pandas</span></li>
+          </ul>
+        </div>
+      </div>
+    `,
+    collaborators: ['<span class="text-white font-bold">Syed Irfan</span>', 'Nafis Faysal'],
+    github: 'https://github.com/syedirfanx/web-scraping',
     document: '#',
-    tags: ['NLP', 'Web Scraping', 'Summarization']
+    tags: ['Web Scraping', 'BeautifulSoup', 'Python', 'Data Science']
   },
   'shell-lubricants': {
     title: 'Shell Lubricants E-commerce App',
     category: 'Industrial Project',
     overview: 'A robust e-commerce mobile application developed for Shell Lubricants using Flutter. The app features a streamlined product catalog, secure checkout, and real-time order tracking tailored for industrial and consumer lubricant sales.',
-    collaborators: ['Syed Irfan', 'Development Team'],
-    github: 'https://github.com/syedirfanx',
-    document: '#',
+    collaborators: ['<span class="text-white font-bold">Syed Irfan</span>', 'Ranjit Das', 'Asiful Alam Fahim'],
+    github: 'closed',
+    document: 'private',
     tags: ['Mobile App Dev', 'Flutter', 'E-commerce', 'Industrial']
   },
   'greenwich': {
