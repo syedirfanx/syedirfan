@@ -353,6 +353,47 @@ const projectsData = {
     document: 'https://github.com/syedirfanx/StarPalsAI/tree/main/documents',
     tags: ['Generative AI', 'NLP', 'Next.js', 'TypeScript']
   },
+  'network-flow-optimization': {
+    title: 'AI Network Flow Prediction and Resource Optimization',
+    category: 'Personal Project',
+    overview: `
+      <div class="space-y-4">
+        <p>An intelligent system designed to predict dynamic network traffic patterns and proactively allocate resources. This project addresses the reactive nature of traditional network systems by implementing a machine learning-based framework for predictive optimization.</p>
+        
+        <div class="space-y-2">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500">Project Highlights</h4>
+          <ul class="space-y-2 text-sm text-zinc-400">
+            <li class="flex items-start gap-3">
+              <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+              <span><strong class="text-zinc-200">Traffic Prediction:</strong> Implemented a Random Forest Regressor to estimate future network congestion with high precision.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+              <span><strong class="text-zinc-200">Dynamic Resource Allocation:</strong> Developed a rule-based decision engine for load-adaptive routing and scaling.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span>
+              <span><strong class="text-zinc-200">Research Significance:</strong> Demonstrates proactive optimization in SDN, Network Traffic Engineering, and AI-driven communication systems.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="space-y-2">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500">Technologies Used</h4>
+          <ul class="space-y-1 text-sm text-zinc-400">
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">AI/ML:</strong> Random Forest Regressor, Scikit-learn</span></li>
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">NetOps:</strong> Traffic Engineering & Resource Simulation</span></li>
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">Data Processing:</strong> Python, Pandas, NumPy</span></li>
+            <li class="flex items-start gap-3"><span class="w-1 h-1 rounded-full bg-zinc-700 mt-2 shrink-0"></span><span><strong class="text-zinc-200">Visualization:</strong> Matplotlib</span></li>
+          </ul>
+        </div>
+      </div>
+    `,
+    collaborators: ['<span class="text-white font-bold">Syed Irfan</span>'],
+    github: 'https://github.com/syedirfanx/ai-network-traffic-optimization',
+    document: 'https://github.com/syedirfanx/ai-network-traffic-optimization/blob/main/README.md',
+    tags: ['AI', 'SDN', 'ML Optimization', 'Network Traffic']
+  },
   'face-mask-detector': {
     title: 'Face Mask Detection & Warning Systems',
     category: 'Industrial Project',
