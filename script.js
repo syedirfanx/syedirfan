@@ -205,8 +205,8 @@ function initStars() {
       this.y = Math.random() * canvas.height;
       this.size = Math.random() * 1.8;
       this.opacity = Math.random();
-      this.speed = Math.random() * 0.005 + 0.002;
-      this.direction = Math.random() > 0.5 ? 1 : -1;
+      this.speed = Math.random() * 0.05 + 0.02; // Faster speed for twinkling
+      this.twinklePhase = Math.random() * Math.PI * 2;
       
       // Galaxy star colors (white, slight blue, slight yellow)
       const colors = [
@@ -219,94 +219,24 @@ function initStars() {
     }
     
     update() {
-      this.opacity += this.speed * this.direction;
-      if (this.opacity > 0.8 || this.opacity < 0.1) {
-        this.direction *= -1;
-      }
+      this.twinklePhase += this.speed;
+      this.opacity = (Math.sin(this.twinklePhase) * 0.4 + 0.6); // Oscillation between 0.2 and 1.0
     }
     
     draw() {
-      ctx.fillStyle = `rgba(${this.color}, ${this.opacity * 0.4})`;
+      const twinklingSize = this.size * (0.8 + Math.sin(this.twinklePhase) * 0.2);
+      ctx.fillStyle = `rgba(${this.color}, ${this.opacity * 0.5})`;
       ctx.beginPath();
-      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.arc(this.x, this.y, twinklingSize, 0, Math.PI * 2);
       ctx.fill();
       
       // Add a very subtle glow to brighter stars
-      if (this.size > 1.5 && this.opacity > 0.7) {
-        ctx.shadowBlur = 3;
-        ctx.shadowColor = `rgba(${this.color}, ${this.opacity * 0.2})`;
+      if (this.size > 1.2 && this.opacity > 0.8) {
+        ctx.shadowBlur = twinklingSize * 2;
+        ctx.shadowColor = `rgba(${this.color}, ${this.opacity * 0.3})`;
       } else {
         ctx.shadowBlur = 0;
       }
-    }
-  }
-
-  class Nebula {
-    constructor() {
-      this.reset();
-    }
-
-    reset() {
-      this.x = Math.random() * canvas.width;
-      this.y = Math.random() * canvas.height;
-      this.radius = Math.random() * (canvas.width * 0.6) + canvas.width * 0.3;
-      this.color = this.getRandomColor();
-      this.opacity = 0;
-      this.maxOpacity = Math.random() * 0.15 + 0.1; // Increased opacity
-      this.speed = Math.random() * 0.0005 + 0.0002;
-      this.fadeSpeed = Math.random() * 0.001 + 0.0005;
-      this.direction = 1;
-      this.vx = (Math.random() - 0.5) * 0.3;
-      this.vy = (Math.random() - 0.5) * 0.3;
-    }
-
-    getRandomColor() {
-      const nebulaColors = [
-        '88, 28, 135',   // Rich Purple
-        '30, 58, 138',   // Deep Blue
-        '124, 58, 237',  // Violet
-        '30, 64, 175',   // Royal Blue
-        '76, 29, 149',   // Indigo
-      ];
-      return nebulaColors[Math.floor(Math.random() * nebulaColors.length)];
-    }
-
-    update() {
-      // Slow movement
-      this.x += this.vx;
-      this.y += this.vy;
-
-      // Pulse opacity
-      this.opacity += this.fadeSpeed * this.direction;
-      if (this.opacity >= this.maxOpacity) {
-        this.direction = -1;
-      } else if (this.opacity <= 0) {
-        this.reset();
-      }
-
-      // Boundary check
-      if (this.x < -this.radius) this.x = canvas.width + this.radius;
-      if (this.x > canvas.width + this.radius) this.x = -this.radius;
-      if (this.y < -this.radius) this.y = canvas.height + this.radius;
-      if (this.y > canvas.height + this.radius) this.y = -this.radius;
-    }
-
-    draw() {
-      const gradient = ctx.createRadialGradient(
-        this.x, this.y, 0,
-        this.x, this.y, this.radius
-      );
-      
-      gradient.addColorStop(0, `rgba(${this.color}, ${this.opacity})`);
-      gradient.addColorStop(0.5, `rgba(${this.color}, ${this.opacity * 0.4})`);
-      gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
-
-      ctx.fillStyle = gradient;
-      ctx.globalCompositeOperation = 'screen';
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.globalCompositeOperation = 'source-over';
     }
   }
 
@@ -370,18 +300,11 @@ function initStars() {
     stars.push(new Star());
   }
 
-  const nebulas = Array.from({ length: 8 }, () => new Nebula());
-
   const shootingStars = Array.from({ length: 2 }, () => new ShootingStar());
   
   function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    nebulas.forEach(nebula => {
-      nebula.update();
-      nebula.draw();
-    });
-    
     stars.forEach(star => {
       star.update();
       star.draw();
@@ -1365,8 +1288,8 @@ function renderProjects() {
   grid.innerHTML = '';
 
   const filteredProjects = Object.entries(projectsData).filter(([id, project]) => {
-    // Skip academic background items in the research grid
-    if (id === 'greenwich' || id === 'nsu') return false;
+    // Skip academic background, professional experience, and collaboration items in the research grid
+    if (id === 'greenwich' || id === 'nsu' || id.startsWith('exp-') || id.startsWith('collab-')) return false;
 
     const tags = project.tags || [];
 
