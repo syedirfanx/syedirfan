@@ -185,7 +185,7 @@ function initStars() {
   
   const ctx = canvas.getContext('2d');
   let stars = [];
-  const starCount = 150;
+  const starCount = 400;
   
   function resize() {
     canvas.width = window.innerWidth;
@@ -201,42 +201,213 @@ function initStars() {
     }
     
     reset() {
-      this.x = Math.random() * canvas.width;
-      this.y = Math.random() * canvas.height;
-      this.size = Math.random() * 1.8;
-      this.opacity = Math.random();
-      this.speed = Math.random() * 0.05 + 0.02; // Faster speed for twinkling
-      this.twinklePhase = Math.random() * Math.PI * 2;
+      // Center of orbit is bottom right
+      const cx = canvas.width;
+      const cy = canvas.height;
       
-      // Galaxy star colors (white, slight blue, slight yellow)
+      this.angle = Math.random() * Math.PI * 2;
+      this.radius = Math.random() * Math.sqrt(cx * cx + cy * cy);
+      // Parallax effect: further stars move slower
+      this.speed = (Math.random() * 0.00015 + 0.00005) * (1 - this.radius / (canvas.width * 1.5));
+      
+      this.baseSize = Math.random() * 1.2 + 0.3;
+      this.size = this.baseSize;
+      
+      // Twinkle properties
+      this.twinklePhase = Math.random() * Math.PI * 2;
+      this.twinkleSpeed = Math.random() * 0.04 + 0.01;
+      this.opacity = Math.random() * 0.5 + 0.2;
+      
       const colors = [
-        '255, 255, 255', // White
-        '200, 220, 255', // Blueish
-        '255, 245, 220', // Yellowish
-        '255, 220, 255'  // Pinkish
+        '255, 255, 255', // Pure White
+        '210, 230, 255', // Ice Blue
+        '255, 240, 220', // Warm White
+        '180, 210, 255', // Deep Sky Blue
+        '255, 255, 200'  // Pale Gold
       ];
       this.color = colors[Math.floor(Math.random() * colors.length)];
     }
     
     update() {
-      this.twinklePhase += this.speed;
-      this.opacity = (Math.sin(this.twinklePhase) * 0.4 + 0.6); // Oscillation between 0.2 and 1.0
+      this.angle -= this.speed;
+      
+      this.x = canvas.width + Math.cos(this.angle) * this.radius;
+      this.y = canvas.height + Math.sin(this.angle) * this.radius;
+      
+      // Pulsing/Twinkling logic
+      this.twinklePhase += this.twinkleSpeed;
+      const pulse = Math.sin(this.twinklePhase);
+      this.opacity = 0.4 + pulse * 0.3;
+      this.size = this.baseSize * (1 + pulse * 0.2);
     }
     
     draw() {
-      const twinklingSize = this.size * (0.8 + Math.sin(this.twinklePhase) * 0.2);
-      ctx.fillStyle = `rgba(${this.color}, ${this.opacity * 0.5})`;
+      // Visibility check
+      if (this.x < -50 || this.y < -50 || this.x > canvas.width + 50 || this.y > canvas.height + 50) return;
+
+      ctx.fillStyle = `rgba(${this.color}, ${this.opacity})`;
       ctx.beginPath();
-      ctx.arc(this.x, this.y, twinklingSize, 0, Math.PI * 2);
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
       ctx.fill();
       
-      // Add a very subtle glow to brighter stars
-      if (this.size > 1.2 && this.opacity > 0.8) {
-        ctx.shadowBlur = twinklingSize * 2;
-        ctx.shadowColor = `rgba(${this.color}, ${this.opacity * 0.3})`;
+      // glow for brighter stars
+      if (this.size > 1.1 && this.opacity > 0.6) {
+        ctx.shadowBlur = this.size * 3;
+        ctx.shadowColor = `rgba(${this.color}, ${this.opacity * 0.4})`;
       } else {
         ctx.shadowBlur = 0;
       }
+    }
+  }
+
+  class Galaxy {
+    constructor() {
+      this.reset();
+    }
+
+    reset() {
+      const cx = canvas.width;
+      const cy = canvas.height;
+      this.angle = Math.random() * Math.PI * 2;
+      this.radius = Math.random() * canvas.width * 0.8;
+      this.speed = 0.00004 + Math.random() * 0.00004;
+      this.size = Math.random() * 40 + 60;
+      this.rotation = Math.random() * Math.PI * 2;
+      this.opacity = Math.random() * 0.15 + 0.05;
+      
+      const colors = ['180, 200, 255', '255, 200, 255', '200, 255, 255'];
+      this.color = colors[Math.floor(Math.random() * colors.length)];
+    }
+
+    update() {
+      this.angle -= this.speed;
+      this.x = canvas.width + Math.cos(this.angle) * this.radius;
+      this.y = canvas.height + Math.sin(this.angle) * this.radius;
+    }
+
+    draw() {
+      if (this.x < -this.size || this.y < -this.size || this.x > canvas.width + this.size || this.y > canvas.height + this.size) return;
+
+      ctx.save();
+      ctx.translate(this.x, this.y);
+      ctx.rotate(this.rotation);
+      
+      const gradient = ctx.createRadialGradient(0, 0, 0, 0, 0, this.size);
+      gradient.addColorStop(0, `rgba(${this.color}, ${this.opacity})`);
+      gradient.addColorStop(0.4, `rgba(${this.color}, ${this.opacity * 0.4})`);
+      gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+
+      ctx.fillStyle = gradient;
+      ctx.scale(2, 0.6); // Oval spiral shape
+      ctx.beginPath();
+      ctx.arc(0, 0, this.size, 0, Math.PI * 2);
+      ctx.fill();
+      
+      ctx.restore();
+    }
+  }
+
+  class Planet {
+    constructor() {
+      this.reset();
+    }
+
+    reset() {
+      const cx = canvas.width;
+      const cy = canvas.height;
+      this.angle = Math.random() * Math.PI * 2;
+      this.radius = canvas.width * 0.8 + Math.random() * canvas.width * 0.5;
+      this.speed = 0.00002 + Math.random() * 0.00003;
+      this.size = Math.random() * 15 + 10;
+      
+      const planetColors = [
+        '#2a4d69', // Deep Blue
+        '#63ace5', // Light Blue
+        '#adcbe3', // Pale Blue
+        '#e7d3d3', // Dusty Rose
+        '#4b3832'  // Deep Brown
+      ];
+      this.color = planetColors[Math.floor(Math.random() * planetColors.length)];
+      this.opacity = 0.4 + Math.random() * 0.3;
+    }
+
+    update() {
+      this.angle -= this.speed;
+      this.x = canvas.width + Math.cos(this.angle) * this.radius;
+      this.y = canvas.height + Math.sin(this.angle) * this.radius;
+    }
+
+    draw() {
+      if (this.x < -this.size || this.y < -this.size || this.x > canvas.width + this.size || this.y > canvas.height + this.size) return;
+
+      const gradient = ctx.createRadialGradient(
+        this.x - this.size * 0.3, this.y - this.size * 0.3, 0,
+        this.x, this.y, this.size
+      );
+      gradient.addColorStop(0, this.color);
+      gradient.addColorStop(1, 'rgba(0,0,0,0.8)');
+
+      ctx.save();
+      ctx.globalAlpha = this.opacity;
+      ctx.shadowBlur = 20;
+      ctx.shadowColor = this.color;
+      ctx.fillStyle = gradient;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    }
+  }
+
+  class Comet {
+    constructor() {
+      this.reset();
+    }
+
+    reset() {
+      this.active = false;
+      this.waitTime = Math.random() * 40000 + 20000;
+      this.startTime = Date.now() + this.waitTime;
+      
+      this.x = -100;
+      this.y = Math.random() * (canvas.height * 0.5);
+      this.speed = Math.random() * 0.2 + 0.1;
+      this.size = Math.random() * 2 + 1;
+      this.length = Math.random() * 100 + 150;
+    }
+
+    update() {
+      if (!this.active) {
+        if (Date.now() > this.startTime) this.active = true;
+        return;
+      }
+
+      this.x += this.speed;
+      this.y += this.speed * 0.3;
+
+      if (this.x > canvas.width + this.length) this.reset();
+    }
+
+    draw() {
+      if (!this.active) return;
+
+      const gradient = ctx.createLinearGradient(this.x, this.y, this.x - this.length, this.y - this.length * 0.3);
+      gradient.addColorStop(0, 'rgba(200, 220, 255, 0.8)');
+      gradient.addColorStop(1, 'rgba(100, 150, 255, 0)');
+
+      ctx.strokeStyle = gradient;
+      ctx.lineWidth = this.size;
+      ctx.lineCap = 'round';
+      ctx.beginPath();
+      ctx.moveTo(this.x, this.y);
+      ctx.lineTo(this.x - this.length, this.y - this.length * 0.3);
+      ctx.stroke();
+
+      // Nucleus
+      ctx.fillStyle = 'white';
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fill();
     }
   }
 
@@ -253,7 +424,7 @@ function initStars() {
       this.opacity = 0;
       this.angle = (Math.PI / 4) + (Math.random() * 0.1 - 0.05); 
       this.active = false;
-      this.waitTime = Math.random() * 5000 + 1000;
+      this.waitTime = Math.random() * 20000 + 10000;
       this.startTime = Date.now() + this.waitTime;
     }
 
@@ -295,21 +466,39 @@ function initStars() {
       ctx.stroke();
     }
   }
-  
+
   for (let i = 0; i < starCount; i++) {
     stars.push(new Star());
   }
 
   const shootingStars = Array.from({ length: 2 }, () => new ShootingStar());
+  const planets = Array.from({ length: 3 }, () => new Planet());
+  const galaxies = Array.from({ length: 2 }, () => new Galaxy());
+  const comets = Array.from({ length: 1 }, () => new Comet());
   
   function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    galaxies.forEach(galaxy => {
+      galaxy.update();
+      galaxy.draw();
+    });
+
+    planets.forEach(planet => {
+      planet.update();
+      planet.draw();
+    });
 
     stars.forEach(star => {
       star.update();
       star.draw();
     });
 
+    comets.forEach(comet => {
+      comet.update();
+      comet.draw();
+    });
+    
     shootingStars.forEach(sStar => {
       sStar.update();
       sStar.draw();
@@ -455,7 +644,7 @@ const projectsData = {
     collaborators: ['<span class="text-white font-bold">Syed Irfan</span>'],
     github: 'https://github.com/syedirfanx/ai-network-traffic-optimization',
     document: 'https://github.com/syedirfanx/ai-network-traffic-optimization/blob/main/README.md',
-    tags: ['AI', 'SDN', 'ML Optimization', 'Network Traffic']
+    tags: ['AI', 'SDN', 'ML Optimization', 'Network Traffic', 'Network']
   },
   'face-mask-detector': {
     title: 'Face Mask Detection & Warning Systems',
