@@ -240,18 +240,158 @@ function initStars() {
       }
     }
   }
+
+  class Nebula {
+    constructor() {
+      this.reset();
+    }
+
+    reset() {
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.radius = Math.random() * (canvas.width * 0.6) + canvas.width * 0.3;
+      this.color = this.getRandomColor();
+      this.opacity = 0;
+      this.maxOpacity = Math.random() * 0.15 + 0.1; // Increased opacity
+      this.speed = Math.random() * 0.0005 + 0.0002;
+      this.fadeSpeed = Math.random() * 0.001 + 0.0005;
+      this.direction = 1;
+      this.vx = (Math.random() - 0.5) * 0.3;
+      this.vy = (Math.random() - 0.5) * 0.3;
+    }
+
+    getRandomColor() {
+      const nebulaColors = [
+        '88, 28, 135',   // Rich Purple
+        '30, 58, 138',   // Deep Blue
+        '124, 58, 237',  // Violet
+        '30, 64, 175',   // Royal Blue
+        '76, 29, 149',   // Indigo
+      ];
+      return nebulaColors[Math.floor(Math.random() * nebulaColors.length)];
+    }
+
+    update() {
+      // Slow movement
+      this.x += this.vx;
+      this.y += this.vy;
+
+      // Pulse opacity
+      this.opacity += this.fadeSpeed * this.direction;
+      if (this.opacity >= this.maxOpacity) {
+        this.direction = -1;
+      } else if (this.opacity <= 0) {
+        this.reset();
+      }
+
+      // Boundary check
+      if (this.x < -this.radius) this.x = canvas.width + this.radius;
+      if (this.x > canvas.width + this.radius) this.x = -this.radius;
+      if (this.y < -this.radius) this.y = canvas.height + this.radius;
+      if (this.y > canvas.height + this.radius) this.y = -this.radius;
+    }
+
+    draw() {
+      const gradient = ctx.createRadialGradient(
+        this.x, this.y, 0,
+        this.x, this.y, this.radius
+      );
+      
+      gradient.addColorStop(0, `rgba(${this.color}, ${this.opacity})`);
+      gradient.addColorStop(0.5, `rgba(${this.color}, ${this.opacity * 0.4})`);
+      gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+
+      ctx.fillStyle = gradient;
+      ctx.globalCompositeOperation = 'screen';
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.globalCompositeOperation = 'source-over';
+    }
+  }
+
+  class ShootingStar {
+    constructor() {
+      this.reset();
+    }
+
+    reset() {
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * (canvas.height * 0.5);
+      this.len = Math.random() * 80 + 20;
+      this.speed = Math.random() * 15 + 10;
+      this.opacity = 0;
+      this.angle = (Math.PI / 4) + (Math.random() * 0.1 - 0.05); 
+      this.active = false;
+      this.waitTime = Math.random() * 5000 + 1000;
+      this.startTime = Date.now() + this.waitTime;
+    }
+
+    update() {
+      if (!this.active) {
+        if (Date.now() > this.startTime) {
+          this.active = true;
+        }
+        return;
+      }
+
+      this.x += Math.cos(this.angle) * this.speed;
+      this.y += Math.sin(this.angle) * this.speed;
+      this.opacity += 0.01;
+
+      if (this.x > canvas.width + this.len || this.y > canvas.height + this.len) {
+        this.reset();
+      }
+    }
+
+    draw() {
+      if (!this.active) return;
+      
+      const grad = ctx.createLinearGradient(
+        this.x, this.y,
+        this.x - Math.cos(this.angle) * this.len,
+        this.y - Math.sin(this.angle) * this.len
+      );
+      
+      grad.addColorStop(0, `rgba(255, 255, 255, ${Math.min(this.opacity, 0.4)})`);
+      grad.addColorStop(1, 'rgba(255, 255, 255, 0)');
+
+      ctx.strokeStyle = grad;
+      ctx.lineWidth = 1.5;
+      ctx.lineCap = 'round';
+      ctx.beginPath();
+      ctx.moveTo(this.x, this.y);
+      ctx.lineTo(this.x - Math.cos(this.angle) * this.len, this.y - Math.sin(this.angle) * this.len);
+      ctx.stroke();
+    }
+  }
   
   for (let i = 0; i < starCount; i++) {
     stars.push(new Star());
   }
+
+  const nebulas = Array.from({ length: 8 }, () => new Nebula());
+
+  const shootingStars = Array.from({ length: 2 }, () => new ShootingStar());
   
   function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    nebulas.forEach(nebula => {
+      nebula.update();
+      nebula.draw();
+    });
     
     stars.forEach(star => {
       star.update();
       star.draw();
     });
+
+    shootingStars.forEach(sStar => {
+      sStar.update();
+      sStar.draw();
+    });
+
     requestAnimationFrame(animate);
   }
   
@@ -1090,6 +1230,125 @@ const projectsData = {
             <span class="px-3 py-1 rounded-lg bg-zinc-900 border border-zinc-800 text-xs text-zinc-400">Software Engineering</span>
           </div>
         </div>
+      </div>
+    `
+  },
+  'exp-career-break': {
+    title: 'Machine Learning Engineer',
+    category: 'Career Break • London & Chattogram',
+    tags: ['Generative AI', 'LLMs', 'Web Development', 'Data Analysis'],
+    overview: `
+      <div class="space-y-4">
+        <p class="text-zinc-400 text-sm leading-relaxed">Dedicated period of self-directed research, skill acquisition, and project development focusing on modern AI technologies and full-stack engineering.</p>
+        <div class="space-y-4">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500">Key Achievements</h4>
+          <ul class="list-disc list-outside ml-4 space-y-2 text-zinc-400 text-sm leading-relaxed marker:text-zinc-600">
+            <li>Developed <span class="text-zinc-200">StarPals AI</span>, a film casting platform leveraging Gemini 2.5 Flash and Genkit to automate actor profiling and talent matching.</li>
+            <li>Built <span class="text-zinc-200">Auto File Organizer</span>, with real-time monitoring, file categorization, CSV logging & visualization.</li>
+            <li>Engineered <span class="text-zinc-200">Bangla News Image Summarizer</span>, an NLP pipeline with OCR, LexRank summarization & Google Drive integration.</li>
+            <li>Developed <span class="text-zinc-200">Network Intrusion Detection</span> system classifying network traffic as normal or malicious.</li>
+            <li>Built <span class="text-zinc-200">Network Traffic Prediction</span> model to predict load and automate resource allocation (R²: 0.78).</li>
+            <li>Completed data analysis projects on consumer trends, salary insights, and inflation forecasting.</li>
+          </ul>
+        </div>
+      </div>
+    `
+  },
+  'exp-swift71': {
+    title: 'Software Engineer',
+    category: 'Swift71 • Dhaka, Bangladesh',
+    tags: ['Flutter', 'UI/UX', 'Client Communication', 'Documentation'],
+    overview: `
+      <div class="space-y-4">
+        <p class="text-zinc-400 text-sm leading-relaxed">Contributed to mobile application development lifecycle, specifically focusing on cross-platform solutions and client-centric design.</p>
+        <div class="space-y-4">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500">Key Responsibilities</h4>
+          <ul class="list-disc list-outside ml-4 space-y-2 text-zinc-400 text-sm leading-relaxed marker:text-zinc-600">
+            <li>Designed UI/UX using hybrid framework <span class="text-zinc-200">Flutter</span>.</li>
+            <li>Effectively communicated with clients to discern and address their specific requirements.</li>
+            <li>Crafted documentation for app design, ensuring clarity and alignment with client objectives.</li>
+          </ul>
+        </div>
+      </div>
+    `
+  },
+  'exp-codephilics': {
+    title: 'Machine Learning Engineer',
+    category: 'Codephilics • Dhaka, Bangladesh',
+    tags: ['CNN', 'OCR', 'Data Scraping', 'Computer Vision', 'Python'],
+    overview: `
+      <div class="space-y-4">
+        <p class="text-zinc-400 text-sm leading-relaxed">Focused on industrial AI applications, including computer vision and automated data processing pipelines.</p>
+        <div class="space-y-4">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500">Key Achievements</h4>
+          <ul class="list-disc list-outside ml-4 space-y-2 text-zinc-400 text-sm leading-relaxed marker:text-zinc-600">
+            <li>Developed a <span class="text-zinc-200">CNN-based</span> machine learning model for face mask detection, with 95% detection accuracy.</li>
+            <li>Prepared an OCR system, to extract Bangla and English text data from NID cards and store them in json.</li>
+            <li>Directed an automated data scraping utilizing Python libraries, achieving a 50% reduction in data collection time.</li>
+          </ul>
+        </div>
+      </div>
+    `
+  },
+  'exp-nsu-ra': {
+    title: 'Research Assistant',
+    category: 'North South University • Dhaka, Bangladesh',
+    tags: ['Machine Learning', 'Data Analysis', 'Publication', 'Classification'],
+    overview: `
+      <div class="space-y-4">
+        <p class="text-zinc-400 text-sm leading-relaxed">Assisted in academic research focusing on agricultural applications of machine learning, specifically in automated Rice Leaf Disease detection and classification.</p>
+        <div class="space-y-4">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500">Key Achievements</h4>
+          <ul class="list-disc list-outside ml-4 space-y-2 text-zinc-400 text-sm leading-relaxed marker:text-zinc-600">
+            <li>Analyzed Dataset using 10-fold cross validation, evaluation and classification algorithms.</li>
+            <li>Achieved highest testing accuracy of <span class="text-zinc-200">97.92%</span> with Decision Tree (J48).</li>
+            <li>Evaluated additional performance metrics (TPR, FPR, Precision, Recall, F-Measure, AUC).</li>
+            <li>Co-authored a conference paper presenting our findings in disease classification.</li>
+          </ul>
+        </div>
+      </div>
+    `
+  },
+  'collab-toastmasters': {
+    title: 'Toastmasters International',
+    category: 'Charter Member • Dhaka, Bangladesh',
+    tags: ['Leadership', 'Public Speaking', 'Communication'],
+    overview: `
+      <div class="space-y-4">
+        <ul class="list-disc list-outside ml-4 space-y-2 text-zinc-400 text-sm leading-relaxed marker:text-zinc-600">
+          <li>Developed public speaking and leadership skills, improving communication and team collaboration.</li>
+          <li>Certified as an active charter member.</li>
+        </ul>
+      </div>
+    `
+  },
+  'collab-nsu-acm': {
+    title: 'NSU ACM Student Chapter',
+    category: 'Team Member • Dhaka, Bangladesh',
+    tags: ['Community', 'Workshops', 'Technical Events'],
+    overview: `
+      <div class="space-y-4">
+        <p class="text-zinc-400 text-sm leading-relaxed">Contributed to technical events and workshops, fostering a community of student developers and researchers within the ACM network.</p>
+      </div>
+    `
+  },
+  'collab-nsu-problem-solvers': {
+    title: 'NSU Problem Solvers',
+    category: 'Team Member • Dhaka, Bangladesh',
+    tags: ['Competitive Programming', 'Algorithms', 'Logic'],
+    overview: `
+      <div class="space-y-4">
+        <p class="text-zinc-400 text-sm leading-relaxed">Engaged in competitive programming and algorithmic problem-solving sessions, honing analytical skills and efficient coding practices.</p>
+      </div>
+    `
+  },
+  'collab-nsu-ece': {
+    title: 'NSU ECE Department Iftar',
+    category: 'Organizer • Dhaka, Bangladesh',
+    tags: ['Organization', 'Logistics', 'Leadership'],
+    overview: `
+      <div class="space-y-4">
+        <p class="text-zinc-400 text-sm leading-relaxed">Successfully organized and managed the departmental Iftar event, coordinating logistics and team efforts for a large-scale gathering.</p>
       </div>
     `
   }
