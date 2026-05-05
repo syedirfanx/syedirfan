@@ -215,7 +215,7 @@ function initStars() {
       
       // Twinkle properties
       this.twinklePhase = Math.random() * Math.PI * 2;
-      this.twinkleSpeed = Math.random() * 0.04 + 0.01;
+      this.twinkleSpeed = (Math.random() * 0.04 + 0.01);
       this.opacity = Math.random() * 0.5 + 0.2;
       
       const colors = [
@@ -270,7 +270,7 @@ function initStars() {
       const cy = canvas.height;
       this.angle = Math.random() * Math.PI * 2;
       this.radius = Math.random() * canvas.width * 0.8;
-      this.speed = 0.00004 + Math.random() * 0.00004;
+      this.speed = (0.00004 + Math.random() * 0.00004);
       this.size = Math.random() * 40 + 60;
       this.rotation = Math.random() * Math.PI * 2;
       this.opacity = Math.random() * 0.15 + 0.05;
@@ -317,7 +317,7 @@ function initStars() {
       const cy = canvas.height;
       this.angle = Math.random() * Math.PI * 2;
       this.radius = canvas.width * 0.8 + Math.random() * canvas.width * 0.5;
-      this.speed = 0.00002 + Math.random() * 0.00003;
+      this.speed = (0.00002 + Math.random() * 0.00003);
       this.size = Math.random() * 15 + 10;
       
       const planetColors = [
