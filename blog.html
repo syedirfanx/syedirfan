@@ -30,6 +30,25 @@
       }
     </script>
     <link rel="stylesheet" href="style.css">
+    <script>
+      async function onThumbnailLoad(img) {
+        if (!img.complete) return;
+        try {
+          await img.decode();
+          img.classList.remove('invisible', 'opacity-0');
+          const container = img.closest('.skeleton') || img.parentElement;
+          if (container && container.classList.contains('skeleton')) {
+            setTimeout(() => {
+              container.classList.remove('skeleton');
+            }, 100);
+          }
+        } catch (err) {
+          if (img.complete && img.naturalWidth > 0) {
+            img.classList.remove('invisible', 'opacity-0');
+          }
+        }
+      }
+    </script>
   </head>
   <body class="min-h-screen flex flex-col selection:bg-zinc-800 selection:text-white">
     <!-- Page Loader -->
@@ -143,8 +162,8 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <!-- Post 1 -->
         <article class="grok-card p-6 rounded-2xl border border-zinc-800/50 flex flex-col group hover:border-zinc-700 transition-all">
-          <div class="aspect-video rounded-xl bg-zinc-900 border border-zinc-800 overflow-hidden mb-6 relative theme-photo-shade">
-            <img src="blog/1.png" alt="Neuroscience" class="w-full h-full object-cover grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105 transition-all duration-700">
+          <div class="aspect-video rounded-xl bg-zinc-900 border border-zinc-800 overflow-hidden mb-6 relative theme-photo-shade skeleton">
+            <img src="blog/1.png" alt="Neuroscience" class="w-full h-full object-cover grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105 transition-all duration-700 opacity-0 invisible" onload="onThumbnailLoad(this)">
           </div>
           <div class="space-y-4 flex-1 flex flex-col">
             <div class="flex items-center gap-3">

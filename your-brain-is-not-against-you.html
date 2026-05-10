@@ -30,6 +30,25 @@
       }
     </script>
     <link rel="stylesheet" href="style.css">
+    <script>
+      async function onThumbnailLoad(img) {
+        if (!img.complete) return;
+        try {
+          await img.decode();
+          img.classList.remove('invisible', 'opacity-0');
+          const container = img.closest('.skeleton') || img.parentElement;
+          if (container && container.classList.contains('skeleton')) {
+            setTimeout(() => {
+              container.classList.remove('skeleton');
+            }, 100);
+          }
+        } catch (err) {
+          if (img.complete && img.naturalWidth > 0) {
+            img.classList.remove('invisible', 'opacity-0');
+          }
+        }
+      }
+    </script>
   </head>
   <body class="min-h-screen flex flex-col selection:bg-zinc-800 selection:text-white">
     <!-- Page Loader -->
@@ -157,8 +176,8 @@
         </header>
 
         <!-- Main Image -->
-        <div class="aspect-video rounded-3xl overflow-hidden border border-zinc-800 shadow-2xl relative theme-photo-shade group">
-           <img src="blog/1.png" alt="Neuroscience" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 brightness-75 grayscale group-hover:grayscale-0 group-hover:brightness-100">
+        <div class="aspect-video rounded-3xl overflow-hidden border border-zinc-800 shadow-2xl relative theme-photo-shade group skeleton">
+           <img src="blog/1.png" alt="Neuroscience" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 brightness-75 grayscale group-hover:grayscale-0 group-hover:brightness-100 opacity-0 invisible" onload="onThumbnailLoad(this)">
         </div>
 
         <!-- Content -->
@@ -212,8 +231,8 @@
           </p>
 
           <div class="not-prose my-16 group">
-            <div class="aspect-video rounded-3xl overflow-hidden border border-zinc-800 shadow-2xl relative theme-photo-shade">
-              <img src="blog/2.png" alt="Myelinated Pathways" class="w-full h-full object-cover grayscale brightness-75 group-hover:grayscale-0 transition-all duration-700">
+            <div class="aspect-video rounded-3xl overflow-hidden border border-zinc-800 shadow-2xl relative theme-photo-shade skeleton">
+              <img src="blog/2.png" alt="Myelinated Pathways" class="w-full h-full object-cover grayscale brightness-75 group-hover:grayscale-0 transition-all duration-700 opacity-0 invisible" onload="onThumbnailLoad(this)">
             </div>
             <figcaption class="text-xs font-bold text-zinc-400 uppercase tracking-widest mt-6 text-center">Myelinated pathways carry signals up to 100× faster - making familiar behaviors feel effortless and automatic.</figcaption>
           </div>
@@ -296,8 +315,8 @@
           </p>
 
           <div class="not-prose my-16 group">
-            <div class="aspect-video rounded-3xl overflow-hidden border border-zinc-800 shadow-2xl relative theme-photo-shade">
-              <img src="blog/3.png" alt="MIT Graybiel Lab Diagram" class="w-full h-full object-cover">
+            <div class="aspect-video rounded-3xl overflow-hidden border border-zinc-800 shadow-2xl relative theme-photo-shade skeleton">
+              <img src="blog/3.png" alt="MIT Graybiel Lab Diagram" class="w-full h-full object-cover opacity-0 invisible" onload="onThumbnailLoad(this)">
             </div>
             <figcaption class="text-xs font-bold text-zinc-400 uppercase tracking-widest mt-6 text-center">The habit loop, as studied at MIT's Graybiel Lab: once encoded, it runs almost entirely on autopilot in the basal ganglia.</figcaption>
           </div>
@@ -478,8 +497,8 @@
           </ol>
 
           <div class="not-prose my-16 group">
-            <div class="aspect-video rounded-3xl overflow-hidden border border-zinc-800 shadow-2xl relative theme-photo-shade">
-              <img src="blog/4.png" alt="Pathways in Forest" class="w-full h-full object-cover grayscale brightness-75 group-hover:grayscale-0 transition-all duration-700">
+            <div class="aspect-video rounded-3xl overflow-hidden border border-zinc-800 shadow-2xl relative theme-photo-shade skeleton">
+              <img src="blog/4.png" alt="Pathways in Forest" class="w-full h-full object-cover grayscale brightness-75 group-hover:grayscale-0 transition-all duration-700 opacity-0 invisible" onload="onThumbnailLoad(this)">
             </div>
             <figcaption class="text-xs font-bold text-zinc-400 uppercase tracking-widest mt-6 text-center">Every time you choose the new behavior, the new neural trail gets a little clearer. Every time you avoid the old one, it gets a little more overgrown.</figcaption>
           </div>
