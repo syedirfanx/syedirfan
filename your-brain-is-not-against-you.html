@@ -330,7 +330,7 @@
             The basal ganglia, which controls automatic habit behavior, operates largely outside conscious awareness. It is efficient, fast, and incredibly stubborn. When you try to break a habit, the conscious, rational part of your brain - the prefrontal cortex - has to actively override the basal ganglia.
           </p>
           <p>
-            This is neurologically exhausting. The prefrontal cortex requires much more glucose and mental effort to operate than the basal ganglia. When it tries to suppress a well-myelinated habit pathway, you experience this as:
+            This is neurobiologically exhausting. The prefrontal cortex requires much more glucose and mental effort to operate than the basal ganglia. When it tries to suppress a well-myelinated habit pathway, you experience this as:
           </p>
           <ul class="space-y-4 my-8 list-none">
             <li class="flex items-center gap-3 text-zinc-300">
@@ -474,7 +474,7 @@
                 </div>
                 <div class="space-y-3">
                     <p class="text-zinc-300 font-bold tracking-tight">Expect discomfort and plan for it.</p>
-                    <p class="text-base text-zinc-500">The new pathway is unmyelinated. It will feel wrong, unnatural, insufficient. This is not failure - it is neurological growing pain. The discomfort is proof that new wiring is being laid.</p>
+                    <p class="text-base text-zinc-500">The new pathway is unmyelinated. It will feel wrong, unnatural, insufficient. This is not failure - it is neurobiological growing pain. The discomfort is proof that new wiring is being laid.</p>
                 </div>
             </li>
             <li class="flex gap-8 group">
@@ -579,22 +579,22 @@
                     Every person reading this has a habit they're proud of building - or one they're still wrestling with. Your experience might be exactly what someone else needs to hear. Drop your thoughts below. No judgment here - just people figuring out their brains together. 💬
                 </p>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto px-6 text-left pt-6">
-                    <div class="p-4 rounded-xl bg-zinc-900/50 border border-zinc-800/50 flex items-start gap-3">
+                    <button class="prompt-btn p-4 rounded-xl bg-zinc-900/50 border border-zinc-800/50 flex items-start gap-3 hover:border-zinc-600 hover:bg-zinc-900 transition-all cursor-pointer text-left group">
                         <span class="text-lg">💪</span>
-                        <span class="text-[11px] font-bold text-zinc-500 uppercase tracking-wider">A habit I successfully replaced...</span>
-                    </div>
-                    <div class="p-4 rounded-xl bg-zinc-900/50 border border-zinc-800/50 flex items-start gap-3">
+                        <span class="text-[11px] font-bold text-zinc-500 group-hover:text-zinc-300 uppercase tracking-wider">A habit I successfully replaced...</span>
+                    </button>
+                    <button class="prompt-btn p-4 rounded-xl bg-zinc-900/50 border border-zinc-800/50 flex items-start gap-3 hover:border-zinc-600 hover:bg-zinc-900 transition-all cursor-pointer text-left group">
                         <span class="text-lg">🤔</span>
-                        <span class="text-[11px] font-bold text-zinc-500 uppercase tracking-wider">What surprised me most from this...</span>
-                    </div>
-                    <div class="p-4 rounded-xl bg-zinc-900/50 border border-zinc-800/50 flex items-start gap-3">
+                        <span class="text-[11px] font-bold text-zinc-500 group-hover:text-zinc-300 uppercase tracking-wider">What surprised me most from this...</span>
+                    </button>
+                    <button class="prompt-btn p-4 rounded-xl bg-zinc-900/50 border border-zinc-800/50 flex items-start gap-3 hover:border-zinc-600 hover:bg-zinc-900 transition-all cursor-pointer text-left group">
                         <span class="text-lg">😤</span>
-                        <span class="text-[11px] font-bold text-zinc-500 uppercase tracking-wider">The habit I'm currently fighting...</span>
-                    </div>
-                    <div class="p-4 rounded-xl bg-zinc-900/50 border border-zinc-800/50 flex items-start gap-3">
+                        <span class="text-[11px] font-bold text-zinc-500 group-hover:text-zinc-300 uppercase tracking-wider">The habit I'm currently fighting...</span>
+                    </button>
+                    <button class="prompt-btn p-4 rounded-xl bg-zinc-900/50 border border-zinc-800/50 flex items-start gap-3 hover:border-zinc-600 hover:bg-zinc-900 transition-all cursor-pointer text-left group">
                         <span class="text-lg">❓</span>
-                        <span class="text-[11px] font-bold text-zinc-500 uppercase tracking-wider">A question I still have...</span>
-                    </div>
+                        <span class="text-[11px] font-bold text-zinc-500 group-hover:text-zinc-300 uppercase tracking-wider">A question I still have...</span>
+                    </button>
                 </div>
             </div>
 
@@ -997,6 +997,21 @@
               setTimeout(() => { span.innerText = originalText; }, 2000);
             });
           }
+
+          // Discussion Prompts
+          const promptBtns = document.querySelectorAll('.prompt-btn');
+
+          promptBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+              const text = btn.querySelector('span:last-child').innerText;
+              if (commentInput) {
+                commentInput.value = text + ' ';
+                commentInput.focus();
+                // Smooth scroll to comment box
+                commentInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              }
+            });
+          });
 
           updateStatus("Neural link synchronized", 'online');
 
