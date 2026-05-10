@@ -1196,7 +1196,7 @@ const projectsData = {
         
         <div class="space-y-2">
           <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500">Pipeline Flow</h4>
-          <div class="text-[10px] font-mono text-zinc-500 bg-zinc-950 p-4 rounded-xl border border-zinc-800 leading-tight">
+          <div class="text-[10px] font-bold text-zinc-500 bg-zinc-950 p-4 rounded-xl border border-zinc-800 leading-tight">
             Images (data/) → OCR → Preprocessing → Summarization → Google Drive Upload
           </div>
         </div>
@@ -1276,20 +1276,20 @@ const projectsData = {
     overview: `
       <div class="space-y-6">
         <div>
-          <p class="text-zinc-500 text-sm font-mono uppercase tracking-widest mt-1">University of Greenwich • London, UK</p>
+          <p class="text-zinc-500 text-sm font-bold uppercase tracking-widest mt-1">University of Greenwich • London, UK</p>
         </div>
         <div>
           <p class="text-zinc-400 text-sm leading-relaxed">A comprehensive program focusing on advanced data analysis, machine learning, and their applications in the financial sector.</p>
         </div>
         <div class="p-4 rounded-xl bg-zinc-900/50 border border-zinc-800/50">
-          <p class="text-xs font-mono text-zinc-500 uppercase tracking-widest mb-2">MSc Project</p>
+          <p class="text-xs font-bold text-zinc-500 uppercase tracking-widest mb-2">MSc Project</p>
           <div class="flex justify-between text-sm text-zinc-300">
             <span>Feature Selection using Swarm Intelligence Techniques</span>
             <span class="text-zinc-600">60cr</span>
           </div>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 pt-2">
-          <p class="text-xs font-mono text-zinc-500 uppercase tracking-widest col-span-full mb-2">Core Modules</p>
+          <p class="text-xs font-bold text-zinc-500 uppercase tracking-widest col-span-full mb-2">Core Modules</p>
           <div class="flex justify-between text-sm text-zinc-400 border-b border-zinc-800/30 pb-1"><span>Applied Machine Learning</span><span class="text-zinc-600">15cr</span></div>
           <div class="flex justify-between text-sm text-zinc-400 border-b border-zinc-800/30 pb-1"><span>Big Data</span><span class="text-zinc-600">15cr</span></div>
           <div class="flex justify-between text-sm text-zinc-400 border-b border-zinc-800/30 pb-1"><span>Blockchain for FinTech</span><span class="text-zinc-600">15cr</span></div>
@@ -1309,29 +1309,29 @@ const projectsData = {
     overview: `
       <div class="space-y-6">
         <div>
-          <p class="text-zinc-500 text-sm font-mono uppercase tracking-widest mt-1">North South University • Dhaka, Bangladesh</p>
+          <p class="text-zinc-500 text-sm font-bold uppercase tracking-widest mt-1">North South University • Dhaka, Bangladesh</p>
         </div>
         <div>
           <p class="text-zinc-400 text-sm leading-relaxed">Specialized in Artificial Intelligence, focusing on neural networks, pattern recognition, and software engineering.</p>
         </div>
         <div class="p-4 rounded-xl bg-zinc-900/50 border border-zinc-800/50 space-y-3">
           <div>
-            <p class="text-xs font-mono text-zinc-500 uppercase tracking-widest mb-1">Thesis</p>
+            <p class="text-xs font-bold text-zinc-500 uppercase tracking-widest mb-1">Thesis</p>
             <p class="text-zinc-300 text-sm">Generating Faces from Fingerprints using Artificial Neural Networks</p>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <p class="text-xs font-mono text-zinc-500 uppercase tracking-widest mb-1">Senior Project</p>
+              <p class="text-xs font-bold text-zinc-500 uppercase tracking-widest mb-1">Senior Project</p>
               <p class="text-zinc-300 text-sm">Smart Door Lock System</p>
             </div>
             <div>
-              <p class="text-xs font-mono text-zinc-500 uppercase tracking-widest mb-1">Junior Project</p>
+              <p class="text-xs font-bold text-zinc-500 uppercase tracking-widest mb-1">Junior Project</p>
               <p class="text-zinc-300 text-sm">Traffic Monitor Android App</p>
             </div>
           </div>
         </div>
         <div class="pt-2">
-          <p class="text-xs font-mono text-zinc-500 uppercase tracking-widest mb-3">Key Coursework</p>
+          <p class="text-xs font-bold text-zinc-500 uppercase tracking-widest mb-3">Key Coursework</p>
           <div class="flex flex-wrap gap-2">
             <span class="px-3 py-1 rounded-lg bg-zinc-900 border border-zinc-800 text-xs text-zinc-400">Data Structures & Algorithms</span>
             <span class="px-3 py-1 rounded-lg bg-zinc-900 border border-zinc-800 text-xs text-zinc-400">Machine Learning</span>
@@ -1519,7 +1519,7 @@ function renderProjects() {
     
     card.innerHTML = `
       <div class="flex justify-between items-start mb-6">
-        <span class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">${project.category}</span>
+        <span class="text-[10px] font-bold text-zinc-500 uppercase tracking-widest">${project.category}</span>
       </div>
       <h3 class="text-xl font-bold mb-3">${project.title}</h3>
       <div class="flex items-center gap-1.5 text-[10px] font-bold text-zinc-600 group-hover:text-zinc-400 transition-colors mb-6 uppercase tracking-widest">

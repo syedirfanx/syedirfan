@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23000' stroke='%23333' stroke-width='2'/><text x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' fill='%23fff' font-family='sans-serif' font-weight='bold' font-size='45'>SI</text></svg>">
+    <title>Blog | Syed Irfan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              mono: ['JetBrains Mono', 'monospace'],
+              bangla: ['Hind Siliguri', 'sans-serif'],
+            },
+            colors: {
+              zinc: {
+                950: '#09090b',
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body class="min-h-screen flex flex-col selection:bg-zinc-800 selection:text-white">
+    <!-- Page Loader -->
+    <div id="page-loader">
+      <div class="loader-visual">
+        <div class="loader-ring"></div>
+        <div class="loader-ring"></div>
+        <div class="loader-ring"></div>
+        <div class="loader-core"></div>
+      </div>
+      <div class="loader-text">Synchronizing Neural Nebula</div>
+    </div>
+
+    <!-- Galaxy & Tech Background -->
+    <div class="nebula"></div>
+    <div class="tech-grid"></div>
+    <canvas id="stars-canvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
+
+    <!-- Background Ambient Glows -->
+    <div class="fixed inset-0 pointer-events-none z-0">
+      <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-zinc-900/20 rounded-full blur-[120px]"></div>
+      <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-zinc-900/20 rounded-full blur-[120px]"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="border-b border-zinc-800/50 bg-black/50 backdrop-blur-md z-50 sticky top-0">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 group">
+          <span class="tracking-tighter text-2xl live-name uppercase flex items-baseline gap-2">
+            <span class="font-black">SYED</span>
+            <span class="font-black">IRFAN</span>
+          </span>
+        </a>
+        
+        <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-zinc-400">
+          <a href="index.html" class="hover:text-white transition-colors">Home</a>
+          <a href="person.html" class="hover:text-white transition-colors">The Person</a>
+          
+          <!-- Background Dropdown -->
+          <div class="relative group py-4">
+            <button class="flex items-center gap-1 hover:text-white transition-colors">
+              Background
+              <i data-lucide="chevron-down" class="w-3 h-3"></i>
+            </button>
+            <div class="absolute top-full left-0 w-48 bg-zinc-900 border border-zinc-800 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top scale-95 group-hover:scale-100 z-50 p-2">
+              <a href="academic.html" class="block px-4 py-2 rounded-lg hover:bg-zinc-800 hover:text-white transition-colors text-xs">Academic</a>
+              <a href="experience.html" class="block px-4 py-2 rounded-lg hover:bg-zinc-800 hover:text-white transition-colors text-xs">Experience</a>
+              <a href="research.html" class="block px-4 py-2 rounded-lg hover:bg-zinc-800 hover:text-white transition-colors text-xs">Research & Projects</a>
+            </div>
+          </div>
+
+          <a href="favorites.html" class="hover:text-white transition-colors">Favorites</a>
+          <a href="blog.html" class="text-white transition-colors">Blog</a>
+          <a href="contact.html" class="hover:text-white transition-colors">Contact</a>
+        </nav>
+
+        <div class="flex items-center gap-3">
+          <button id="mobile-menu-btn" class="md:hidden p-3 -mr-2 text-zinc-400 hover:text-white transition-colors cursor-pointer">
+            <i data-lucide="menu" class="w-6 h-6"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div id="mobile-menu" class="fixed inset-0 bg-black z-[100] hidden flex flex-col p-6">
+      <div class="flex items-center justify-between mb-12">
+        <span class="tracking-tighter text-2xl uppercase flex items-baseline gap-2">
+          <span class="font-black">SYED</span>
+          <span class="font-black">IRFAN</span>
+        </span>
+        <button id="mobile-menu-close" class="p-3 text-zinc-400 hover:text-white transition-colors cursor-pointer">
+          <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+      </div>
+      
+      <nav class="flex flex-col gap-8 text-lg font-bold tracking-tighter">
+        <a href="index.html" class="text-zinc-500 hover:text-white transition-colors">Home</a>
+        <a href="person.html" class="text-zinc-500 hover:text-white transition-colors">The Person</a>
+        <div class="space-y-4">
+          <p class="text-xs font-bold text-zinc-700 uppercase tracking-widest">Background</p>
+          <div class="flex flex-col gap-4 pl-4 border-l border-zinc-900">
+            <a href="academic.html" class="text-zinc-500 hover:text-white">Academic</a>
+            <a href="experience.html" class="text-zinc-500 hover:text-white">Experience</a>
+            <a href="research.html" class="text-zinc-500 hover:text-white">Research & Projects</a>
+          </div>
+        </div>
+        <a href="favorites.html" class="text-zinc-500 hover:text-white">Favorites</a>
+        <a href="blog.html" class="text-white">Blog</a>
+        <a href="contact.html" class="text-zinc-500 hover:text-white">Contact</a>
+      </nav>
+
+      <div class="mt-auto pt-12 border-t border-zinc-900 flex items-center gap-6">
+        <a href="https://github.com/syedirfanx" target="_blank" class="text-zinc-500 hover:text-white transition-colors">
+          <i data-lucide="github" class="w-6 h-6"></i>
+        </a>
+        <a href="https://linkedin.com/in/syedirfanx" target="_blank" class="text-zinc-500 hover:text-white transition-colors">
+          <i data-lucide="linkedin" class="w-6 h-6"></i>
+        </a>
+      </div>
+    </div>
+
+  <main class="flex-1 flex flex-col max-w-7xl mx-auto w-full px-6 md:px-12 lg:px-16 pt-16 pb-24 relative z-10">
+    <div class="fade-in space-y-12">
+      <div class="space-y-4">
+        <h1 class="text-4xl md:text-6xl font-bold tracking-tighter">The <span class="text-zinc-500">Journal</span>.</h1>
+        <p class="text-zinc-400 text-lg leading-relaxed">
+          Documenting fragments of engineering, system architecture, technical philosophy, astronomy, and neurology.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Post 1 -->
+        <article class="grok-card p-6 rounded-2xl border border-zinc-800/50 flex flex-col group hover:border-zinc-700 transition-all">
+          <div class="aspect-video rounded-xl bg-zinc-900 border border-zinc-800 overflow-hidden mb-6 relative theme-photo-shade">
+            <img src="blog/1.png" alt="Neuroscience" class="w-full h-full object-cover grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105 transition-all duration-700">
+          </div>
+          <div class="space-y-4 flex-1 flex flex-col">
+            <div class="flex items-center gap-3">
+              <span class="text-xs font-bold text-zinc-500 uppercase tracking-widest">May 10, 2026</span>
+              <span class="w-1 h-1 rounded-full bg-zinc-700"></span>
+              <span class="text-xs font-bold text-zinc-500 uppercase tracking-widest">Neuroscience & Habits</span>
+            </div>
+            <h2 class="text-xl font-bold text-white group-hover:text-zinc-300 transition-colors tracking-tight">Your Brain Is Not Against You - It's Just Efficient</h2>
+            <p class="text-sm leading-relaxed text-zinc-500 mb-6">The real neuroscience behind why habits form, why breaking them hurts, and why the only way out is through a new one...</p>
+            <div class="mt-auto">
+              <a href="your-brain-is-not-against-you.html" class="inline-flex items-center gap-2 text-xs font-bold text-zinc-500 uppercase tracking-widest group-hover:text-white transition-all">
+                Read more <i data-lucide="arrow-right" class="w-3 h-3"></i>
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <footer class="border-t border-zinc-800/50 bg-black/50 backdrop-blur-md py-12 mt-auto relative z-10">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
+        <div class="col-span-1 md:col-span-2 space-y-6">
+          <div class="flex items-center gap-3">
+            <span class="tracking-tighter text-xl live-name uppercase flex items-baseline gap-2">
+              <span class="font-black text-white">SYED</span>
+              <span class="font-black text-white">IRFAN</span>
+            </span>
+          </div>
+          <p class="text-zinc-500 text-sm leading-relaxed max-w-xs">
+            Specializing in AI-powered solutions, data science, and machine learning. Building the future of intelligent systems.
+          </p>
+          <div class="flex items-center gap-4">
+            <a href="https://github.com/syedirfaanx" target="_blank" class="text-zinc-500 hover:text-white transition-colors">
+              <i data-lucide="github" class="w-5 h-5"></i>
+            </a>
+            <a href="https://linkedin.com/in/syedirfaanx" target="_blank" class="text-zinc-500 hover:text-white transition-colors">
+              <i data-lucide="linkedin" class="w-5 h-5"></i>
+            </a>
+          </div>
+        </div>
+        <div class="space-y-6">
+          <h4 class="text-xs font-bold text-white uppercase tracking-widest">Navigation</h4>
+          <ul class="space-y-3 text-sm text-zinc-500">
+            <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
+            <li><a href="research.html" class="hover:text-white transition-colors">Research & Projects</a></li>
+            <li><a href="contact.html" class="hover:text-white transition-colors">Contact</a></li>
+          </ul>
+        </div>
+        <div class="space-y-6">
+          <h4 class="text-xs font-bold text-white uppercase tracking-widest">Get in Touch</h4>
+          <ul class="space-y-3 text-sm text-zinc-500">
+            <li class="flex items-center gap-2">
+              <i data-lucide="mail" class="w-4 h-4"></i>
+              <a href="mailto:syedirfaanx@outlook.com" class="hover:text-white transition-colors">syedirfaanx@outlook.com</a>
+            </li>
+            <li class="flex items-center gap-2">
+              <i data-lucide="map-pin" class="w-4 h-4"></i>
+              <span>Dhaka, Bangladesh</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="pt-12 mt-12 border-t border-zinc-800/30">
+        <p class="text-[10px] font-bold text-zinc-600 uppercase tracking-widest text-center md:text-left">
+          &copy; 2026 Syed Irfan. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    lucide.createIcons();
+
+    // Mobile Menu
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenuClose = document.getElementById('mobile-menu-close');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuBtn?.addEventListener('click', () => {
+      mobileMenu.classList.remove('translate-x-full');
+    });
+
+    mobileMenuClose?.addEventListener('click', () => {
+      mobileMenu.classList.add('translate-x-full');
+    });
+
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('bg-black/80', 'backdrop-blur-md', 'py-4');
+        navbar.classList.remove('py-6');
+      } else {
+        navbar.classList.remove('bg-black/80', 'backdrop-blur-md', 'py-4');
+        navbar.classList.add('py-6');
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23000' stroke='%23333' stroke-width='2'/><text x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' fill='%23fff' font-family='sans-serif' font-weight='bold' font-size='45'>SI</text></svg>">
+    <title>Your Brain Is Not Against You - It's Just Efficient | Syed Irfan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              mono: ['JetBrains Mono', 'monospace'],
+              bangla: ['Hind Siliguri', 'sans-serif'],
+            },
+            colors: {
+              zinc: {
+                950: '#09090b',
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body class="min-h-screen flex flex-col selection:bg-zinc-800 selection:text-white">
+    <!-- Page Loader -->
+    <div id="page-loader">
+      <div class="loader-visual">
+        <div class="loader-ring"></div>
+        <div class="loader-ring"></div>
+        <div class="loader-ring"></div>
+        <div class="loader-core"></div>
+      </div>
+      <div class="loader-text">Synchronizing Neural Nebula</div>
+    </div>
+
+    <!-- Reading Progress Bar -->
+    <div id="progress-bar" class="fixed top-0 left-0 h-0.5 bg-white z-[100] transition-all duration-150" style="width: 0%"></div>
+
+    <!-- Galaxy & Tech Background -->
+    <div class="nebula text-zinc-900/10"></div>
+    <div class="tech-grid opacity-20"></div>
+    <canvas id="stars-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-40"></canvas>
+
+    <!-- Header -->
+    <header class="border-b border-zinc-800/50 bg-black/50 backdrop-blur-md z-50 sticky top-0">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 h-16 flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-3 group">
+          <span class="tracking-tighter text-2xl live-name uppercase flex items-baseline gap-2">
+            <span class="font-black">SYED</span>
+            <span class="font-black">IRFAN</span>
+          </span>
+        </a>
+        
+        <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-zinc-400">
+          <a href="index.html" class="hover:text-white transition-colors">Home</a>
+          <a href="person.html" class="hover:text-white transition-colors">The Person</a>
+          
+          <!-- Background Dropdown -->
+          <div class="relative group py-4">
+            <button class="flex items-center gap-1 hover:text-white transition-colors">
+              Background
+              <i data-lucide="chevron-down" class="w-3 h-3"></i>
+            </button>
+            <div class="absolute top-full left-0 w-48 bg-zinc-900 border border-zinc-800 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top scale-95 group-hover:scale-100 z-50 p-2">
+              <a href="academic.html" class="block px-4 py-2 rounded-lg hover:bg-zinc-800 hover:text-white transition-colors text-xs">Academic</a>
+              <a href="experience.html" class="block px-4 py-2 rounded-lg hover:bg-zinc-800 hover:text-white transition-colors text-xs">Experience</a>
+              <a href="research.html" class="block px-4 py-2 rounded-lg hover:bg-zinc-800 hover:text-white transition-colors text-xs">Research & Projects</a>
+            </div>
+          </div>
+
+          <a href="favorites.html" class="hover:text-white transition-colors">Favorites</a>
+          <a href="blog.html" class="hover:text-white transition-colors">Blog</a>
+          <a href="contact.html" class="hover:text-white transition-colors">Contact</a>
+        </nav>
+
+        <div class="flex items-center gap-3">
+          <div id="sync-status" class="w-1.5 h-1.5 rounded-full bg-zinc-800 transition-colors duration-500" title="Neural Link Status"></div>
+          <button id="mobile-menu-btn" class="md:hidden p-3 -mr-2 text-zinc-400 hover:text-white transition-colors cursor-pointer">
+            <i data-lucide="menu" class="w-6 h-6"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div id="mobile-menu" class="fixed inset-0 bg-black z-[100] hidden flex flex-col p-6">
+      <div class="flex items-center justify-between mb-12">
+        <span class="tracking-tighter text-2xl uppercase flex items-baseline gap-2">
+          <span class="font-black">SYED</span>
+          <span class="font-black">IRFAN</span>
+        </span>
+        <button id="mobile-menu-close" class="p-3 text-zinc-400 hover:text-white transition-colors cursor-pointer">
+          <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+      </div>
+      
+      <nav class="flex flex-col gap-8 text-lg font-bold tracking-tighter">
+        <a href="index.html" class="text-zinc-500 hover:text-white transition-colors">Home</a>
+        <a href="person.html" class="text-zinc-500 hover:text-white transition-colors">The Person</a>
+        <div class="space-y-4">
+          <p class="text-xs font-bold text-zinc-700 uppercase tracking-widest">Background</p>
+          <div class="flex flex-col gap-4 pl-4 border-l border-zinc-900">
+            <a href="academic.html" class="text-zinc-500 hover:text-white">Academic</a>
+            <a href="experience.html" class="text-zinc-500 hover:text-white">Experience</a>
+            <a href="research.html" class="text-zinc-500 hover:text-white">Research & Projects</a>
+          </div>
+        </div>
+        <a href="favorites.html" class="text-zinc-500 hover:text-white">Favorites</a>
+        <a href="blog.html" class="text-zinc-500 hover:text-white">Blog</a>
+        <a href="contact.html" class="text-zinc-500 hover:text-white">Contact</a>
+      </nav>
+
+      <div class="mt-auto pt-12 border-t border-zinc-900 flex items-center gap-6">
+        <a href="https://github.com/syedirfanx" target="_blank" class="text-zinc-500 hover:text-white transition-colors">
+          <i data-lucide="github" class="w-6 h-6"></i>
+        </a>
+        <a href="https://linkedin.com/in/syedirfanx" target="_blank" class="text-zinc-500 hover:text-white transition-colors">
+          <i data-lucide="linkedin" class="w-6 h-6"></i>
+        </a>
+      </div>
+    </div>
+
+    <main class="flex-1 max-w-5xl mx-auto w-full px-6 md:px-12 pt-8 pb-24 relative z-10">
+      <!-- Back to Blogs -->
+      <a href="blog.html" class="inline-flex items-center gap-2 text-zinc-500 hover:text-white transition-colors mb-8 group">
+        <i data-lucide="arrow-left" class="w-4 h-4 transition-transform group-hover:-translate-x-1"></i>
+        <span class="text-xs font-bold uppercase tracking-widest">Back to Blogs</span>
+      </a>
+
+      <article class="space-y-12">
+        <!-- Post Header -->
+        <header class="space-y-8 text-left">
+          <div class="flex items-center gap-4 text-xs font-bold text-zinc-500 uppercase tracking-widest">
+            <span class="px-3 py-1 rounded bg-zinc-950 border border-zinc-800 text-zinc-400">Neuroscience & Habits</span>
+            <span>May 10, 2026</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-zinc-900"></span>
+            <span>12 min read</span>
+          </div>
+          
+          <div class="space-y-6">
+            <h1 class="text-5xl md:text-7xl font-bold text-white tracking-tight leading-[1.05] animate-slide-up">
+              Your Brain Is Not Against You - It's Just Efficient
+            </h1>
+            <p class="text-xl md:text-2xl text-zinc-400 font-light leading-relaxed">
+              The real neuroscience behind why habits form, why breaking them hurts, and why the only way out is through a new one.
+            </p>
+          </div>
+        </header>
+
+        <!-- Main Image -->
+        <div class="aspect-video rounded-3xl overflow-hidden border border-zinc-800 shadow-2xl relative theme-photo-shade group">
+           <img src="blog/1.png" alt="Neuroscience" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 brightness-75 grayscale group-hover:grayscale-0 group-hover:brightness-100">
+        </div>
+
+        <!-- Content -->
+        <div class="prose prose-zinc prose-invert max-w-none text-zinc-400 leading-relaxed text-xl">
+          <p class="text-white text-2xl font-light tracking-tight mb-16 leading-relaxed opacity-90">
+            Have you ever tried to quit something - scrolling your phone in the morning, reaching for a cigarette, biting your nails, saying yes when you want to say no - and felt a strange, almost physical discomfort pulling you back?
+          </p>
+
+          <p>
+            You knew the old habit was bad. You wanted to change. And yet your body almost moved on its own. Like gravity. Like water finding a crack.
+          </p>
+
+          <p>
+            That's not weakness. That's not lack of willpower. That is your brain doing exactly what it was designed to do - and once you understand the neuroscience behind it, everything changes.
+          </p>
+
+          <h2 class="text-white text-3xl font-bold tracking-tight mt-24 mb-10">The Signal Inside Your Skull</h2>
+          <p>
+            Every thought you think. Every action you take. Every craving that surfaces at 2 AM. All of it begins with the same thing: a tiny electrical signal called an action potential.
+          </p>
+          <p>
+            Neurons - the nerve cells in your brain - communicate by firing these electrical impulses across gaps called synapses. When neuron A fires frequently enough to trigger neuron B, the synapse between them strengthens. The connection becomes more efficient, faster, easier to activate.
+          </p>
+
+          <div class="not-prose my-16 p-8 md:p-12 rounded-3xl bg-zinc-950 border border-zinc-800 shadow-2xl relative overflow-hidden group">
+            <div class="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition-opacity">
+              <i data-lucide="microscope" class="w-16 h-16 text-white"></i>
+            </div>
+            <h4 class="text-xs font-bold text-white uppercase tracking-widest mb-6">The Science: Hebb's Law (1949)</h4>
+            <p class="text-zinc-400 leading-relaxed mb-6">
+              Neuropsychologist Donald Hebb first described this in 1949 with a phrase that has echoed through every brain science textbook since:
+            </p>
+            <p class="text-white text-2xl font-bold tracking-tight mb-6">
+              "Neurons that fire together, wire together."
+            </p>
+            <p class="text-zinc-500 text-sm leading-relaxed italic">
+              Every time two neurons activate simultaneously, the synapse between them is reinforced - like clearing a trail through a forest. The more often you walk the same path, the clearer and wider it becomes.
+            </p>
+          </div>
+
+          <p>
+            But synaptic strengthening is only half the story. The other half is something called myelination.
+          </p>
+
+          <h2 class="text-white text-3xl font-bold tracking-tight mt-24 mb-10">Myelin: The Brain's Speed Highway</h2>
+          <p>
+            Running along each neuron's axon (the "wire" that carries signals forward) is a fatty white sheath called myelin. Think of it like the rubber insulation around an electrical cable.
+          </p>
+          <p>
+            When you repeatedly activate a neural pathway, your brain wraps more and more myelin around that axon. The result? Signals travel up to 100 times faster along myelinated pathways than unmyelinated ones.
+          </p>
+
+          <div class="not-prose my-16 group">
+            <div class="aspect-video rounded-3xl overflow-hidden border border-zinc-800 shadow-2xl relative theme-photo-shade">
+              <img src="blog/2.png" alt="Myelinated Pathways" class="w-full h-full object-cover grayscale brightness-75 group-hover:grayscale-0 transition-all duration-700">
+            </div>
+            <figcaption class="text-xs font-bold text-zinc-400 uppercase tracking-widest mt-6 text-center">Myelinated pathways carry signals up to 100× faster - making familiar behaviors feel effortless and automatic.</figcaption>
+          </div>
+
+          <p>
+            This is why a professional pianist's fingers seem to move on their own, why a seasoned driver barely thinks about changing gears, why you can type without looking at the keyboard. Those pathways are superhighways - wide, fast, and well-lit.
+          </p>
+          <p>
+            A new behavior, by contrast, is a dirt path through a forest. It takes effort, attention, and often discomfort to walk it.
+          </p>
+
+          <blockquote class="my-24 italic text-white text-3xl md:text-5xl font-light leading-tight tracking-tighter text-center px-8 relative">
+            <div class="absolute -top-12 left-1/2 -translate-x-1/2 text-zinc-900 select-none">
+              <i data-lucide="quote" class="w-24 h-24"></i>
+            </div>
+            <span class="relative z-10">"A habit, in the brain's language, is simply a neural pathway that has been repeated so many times it becomes the path of least resistance."</span>
+          </blockquote>
+
+          <h2 class="text-white text-3xl font-bold tracking-tight mt-24 mb-10">The Habit Loop: Cue → Routine → Reward</h2>
+          <p>
+            Neuroscientist Ann Graybiel's research at MIT revealed that the brain doesn't just store habits - it chunks them. A repeated sequence of behavior gets packaged into a single, automatic unit managed primarily by the basal ganglia - a deep, ancient part of the brain.
+          </p>
+
+          <div class="not-prose my-16 p-8 md:p-12 rounded-3xl border border-zinc-800 bg-zinc-950/20 backdrop-blur-sm shadow-2xl overflow-hidden">
+            <div class="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
+              <div class="flex flex-col items-center gap-3">
+                <div class="w-20 h-20 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center shadow-lg group hover:border-white/20 transition-all">
+                  <span class="text-2xl font-black text-white">1</span>
+                </div>
+                <div class="text-center">
+                  <p class="text-xs font-bold text-white uppercase tracking-widest mb-1">Cue</p>
+                  <p class="text-[10px] text-zinc-600 uppercase font-bold tracking-wider">Trigger</p>
+                </div>
+                <div class="md:hidden">
+                    <i data-lucide="arrow-down" class="w-4 h-4 text-zinc-800"></i>
+                </div>
+              </div>
+              
+              <div class="hidden md:block">
+                <i data-lucide="arrow-right" class="w-6 h-6 text-zinc-800"></i>
+              </div>
+
+              <div class="flex flex-col items-center gap-3">
+                <div class="w-20 h-20 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center shadow-lg group hover:border-white/20 transition-all">
+                  <span class="text-2xl font-black text-white">2</span>
+                </div>
+                <div class="text-center">
+                  <p class="text-xs font-bold text-white uppercase tracking-widest mb-1">Routine</p>
+                  <p class="text-[10px] text-zinc-600 uppercase font-bold tracking-wider">Behavior</p>
+                </div>
+                <div class="md:hidden">
+                    <i data-lucide="arrow-down" class="w-4 h-4 text-zinc-800"></i>
+                </div>
+              </div>
+
+              <div class="hidden md:block">
+                <i data-lucide="arrow-right" class="w-6 h-6 text-zinc-800"></i>
+              </div>
+
+              <div class="flex flex-col items-center gap-3">
+                <div class="w-20 h-20 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center shadow-lg group hover:border-white/20 transition-all">
+                  <span class="text-2xl font-black text-white">3</span>
+                </div>
+                <div class="text-center">
+                  <p class="text-xs font-bold text-white uppercase tracking-widest mb-1">Reward</p>
+                  <p class="text-[10px] text-zinc-600 uppercase font-bold tracking-wider">Dopamine</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="mt-16 max-w-2xl mx-auto space-y-8 border-t border-zinc-800/50 pt-12">
+              <p class="text-sm text-zinc-500 leading-relaxed"><span class="text-white font-bold uppercase tracking-wider mr-2">Cue -</span> A trigger in your environment or internal state (stress, a location, a time of day, an emotion) that activates the habit circuit.</p>
+              <p class="text-sm text-zinc-500 leading-relaxed"><span class="text-white font-bold uppercase tracking-wider mr-2">Routine -</span> The automatic behavior itself - what you actually do. Checking your phone, lighting a cigarette, biting your nails.</p>
+              <p class="text-sm text-zinc-500 leading-relaxed"><span class="text-white font-bold uppercase tracking-wider mr-2">Reward -</span> A release of dopamine (the brain's "feel good" neurotransmitter) that confirms to the brain: this was worth doing. Remember this for next time.</p>
+            </div>
+          </div>
+
+          <p>
+            Over time, the cue alone is enough to trigger a powerful dopamine anticipation response. Your brain starts craving the reward before you've even done anything. This is why habits feel urgent - even irresistible.
+          </p>
+
+          <div class="not-prose my-16 group">
+            <div class="aspect-video rounded-3xl overflow-hidden border border-zinc-800 shadow-2xl relative theme-photo-shade">
+              <img src="blog/3.png" alt="MIT Graybiel Lab Diagram" class="w-full h-full object-cover">
+            </div>
+            <figcaption class="text-xs font-bold text-zinc-400 uppercase tracking-widest mt-6 text-center">The habit loop, as studied at MIT's Graybiel Lab: once encoded, it runs almost entirely on autopilot in the basal ganglia.</figcaption>
+          </div>
+
+          <h2 class="text-white text-3xl font-bold tracking-tight mt-24 mb-10">Why Changing Habits Feels So Wrong</h2>
+          <p>
+            Here is the part that most people don't know - and that changes everything once they do.
+          </p>
+          <p>
+            The basal ganglia, which controls automatic habit behavior, operates largely outside conscious awareness. It is efficient, fast, and incredibly stubborn. When you try to break a habit, the conscious, rational part of your brain - the prefrontal cortex - has to actively override the basal ganglia.
+          </p>
+          <p>
+            This is neurologically exhausting. The prefrontal cortex requires much more glucose and mental effort to operate than the basal ganglia. When it tries to suppress a well-myelinated habit pathway, you experience this as:
+          </p>
+          <ul class="space-y-4 my-8 list-none">
+            <li class="flex items-center gap-3 text-zinc-300">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-zinc-800"></i>
+                <span>A feeling of restlessness or anxiety</span>
+            </li>
+            <li class="flex items-center gap-3 text-zinc-300">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-zinc-800"></i>
+                <span>Irritability and low mood</span>
+            </li>
+            <li class="flex items-center gap-3 text-zinc-300">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-zinc-800"></i>
+                <span>Intrusive thoughts about the habit</span>
+            </li>
+            <li class="flex items-center gap-3 text-zinc-300">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-zinc-800"></i>
+                <span>A physical sense of "something is wrong"</span>
+            </li>
+            <li class="flex items-center gap-3 text-zinc-300">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-zinc-800"></i>
+                <span>Mental fatigue and reduced focus</span>
+            </li>
+          </ul>
+
+          <div class="not-prose my-16 p-8 md:p-12 rounded-3xl bg-zinc-950 border border-zinc-800 shadow-2xl relative overflow-hidden group">
+            <h4 class="text-xs font-bold text-white uppercase tracking-widest mb-6">The Science: Long-Term Potentiation (LTP)</h4>
+            <p class="text-zinc-400 leading-relaxed mb-6">
+              When a synapse is repeatedly activated, it undergoes Long-Term Potentiation - a persistent strengthening of that connection. The post-synaptic neuron becomes increasingly sensitive to signals from the pre-synaptic neuron.
+            </p>
+            <p class="text-zinc-400 leading-relaxed mb-6">
+              This means the more you've practiced a habit, the lower the activation threshold becomes. It takes less and less stimulus to fire the same neural sequence. The habit becomes hair-trigger fast.
+            </p>
+            <p class="text-zinc-500 text-sm leading-relaxed italic">
+              Conversely, a new behavior has a high activation threshold - it requires deliberate effort, conscious attention, and repeated failure before the synapse begins to strengthen.
+            </p>
+          </div>
+
+          <h2 class="text-white text-3xl font-bold tracking-tight mt-24 mb-10">The Most Important Truth: You Cannot Delete a Habit</h2>
+          <p>
+            This is perhaps the most crucial insight from modern neuroscience: habits are never truly erased from the brain.
+          </p>
+          <p>
+            The neural pathways that encode your old habits remain intact, dormant, ready to be reactivated by the right cue - even years later. This is why recovering addicts can relapse after a decade of sobriety. This is why old anxieties resurface under stress. The wiring is still there.
+          </p>
+
+          <p class="text-white text-2xl font-light tracking-tight my-16 leading-relaxed opacity-90 italic border-l-2 border-white pl-8">
+            You do not break a habit. You replace it. The cue and the reward stay the same - only the routine changes.
+          </p>
+
+          <p>
+            What the brain can do is build a competing pathway - a new routine attached to the same cue and same reward - that, with repetition, becomes more dominant than the old one.
+          </p>
+
+          <div class="not-prose my-20 overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-950/20 backdrop-blur-sm shadow-2xl overflow-x-auto">
+            <table class="w-full text-left border-collapse min-w-[600px]">
+              <thead>
+                <tr class="border-b border-zinc-900">
+                  <th class="py-6 px-8 text-[11px] font-bold text-zinc-500 uppercase tracking-widest">Brain Factor</th>
+                  <th class="py-6 px-8 text-[11px] font-bold text-zinc-500 uppercase tracking-widest">Old Habit</th>
+                  <th class="py-6 px-8 text-[11px] font-bold text-zinc-500 uppercase tracking-widest">New Habit (early)</th>
+                  <th class="py-6 px-8 text-[11px] font-bold text-zinc-500 uppercase tracking-widest">New Habit (established)</th>
+                </tr>
+              </thead>
+              <tbody class="text-xs">
+                <tr class="border-b border-zinc-900/50">
+                  <td class="py-6 px-8 text-zinc-300 font-bold uppercase tracking-wider">Myelination</td>
+                  <td class="py-6 px-8 text-zinc-400">Thick, fast automated</td>
+                  <td class="py-6 px-8 text-zinc-400">Thin, slow effortful</td>
+                  <td class="py-6 px-8 text-zinc-400">Growing thicker improving</td>
+                </tr>
+                <tr class="border-b border-zinc-900/50">
+                  <td class="py-6 px-8 text-zinc-300 font-bold uppercase tracking-wider">Synaptic Strength</td>
+                  <td class="py-6 px-8 text-zinc-400">Very high (LTP established)</td>
+                  <td class="py-6 px-8 text-zinc-400">Very low (new connection)</td>
+                  <td class="py-6 px-8 text-zinc-400">Moderate to high</td>
+                </tr>
+                <tr class="border-b border-zinc-900/50">
+                  <td class="py-6 px-8 text-zinc-300 font-bold uppercase tracking-wider">Brain Region</td>
+                  <td class="py-6 px-8 text-zinc-400">Basal ganglia (auto)</td>
+                  <td class="py-6 px-8 text-zinc-400">Prefrontal cortex (effort)</td>
+                  <td class="py-6 px-8 text-zinc-400">Transferring to basal ganglia</td>
+                </tr>
+                <tr class="border-b border-zinc-900/50">
+                  <td class="py-6 px-8 text-zinc-300 font-bold uppercase tracking-wider">Dopamine Response</td>
+                  <td class="py-6 px-8 text-zinc-400">Strong anticipatory craving</td>
+                  <td class="py-6 px-8 text-zinc-400">Delayed, mild reward</td>
+                  <td class="py-6 px-8 text-zinc-400">Craving begins to transfer</td>
+                </tr>
+                <tr class="border-b border-zinc-900/50">
+                  <td class="py-6 px-8 text-zinc-300 font-bold uppercase tracking-wider">Felt Experience</td>
+                  <td class="py-6 px-8 text-zinc-400">Effortless, automatic</td>
+                  <td class="py-6 px-8 text-zinc-400">Uncomfortable, tiring resist it</td>
+                  <td class="py-6 px-8 text-zinc-400">Increasingly natural</td>
+                </tr>
+                <tr class="bg-zinc-900/20">
+                  <td class="py-8 px-8 text-white font-black uppercase tracking-wider">Can it be erased?</td>
+                  <td class="py-8 px-8 text-zinc-400 font-bold tracking-widest">NO - ONLY SUPPRESSED</td>
+                  <td class="py-8 px-8 text-zinc-800 font-black">-</td>
+                  <td class="py-8 px-8 text-white font-bold tracking-widest uppercase">Becomes dominant over time</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2 class="text-white text-3xl font-bold tracking-tight mt-24 mb-10">How to Actually Replace a Habit (The Neuroscience Way)</h2>
+          <p>
+            Now that you understand what's happening in your brain, here is a step-by-step approach grounded in the neuroscience of habit replacement - not suppression.
+          </p>
+
+          <ol class="space-y-12 my-16 list-none counter-reset-step">
+            <li class="flex gap-8 group">
+                <div class="w-12 h-12 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center shrink-0 group-hover:border-white/20 transition-all shadow-xl">
+                    <span class="text-white font-black">1</span>
+                </div>
+                <div class="space-y-3">
+                    <p class="text-zinc-300 font-bold tracking-tight">Identify your cue precisely.</p>
+                    <p class="text-base text-zinc-500">Track the habit for one week. Note what triggers it - time of day, emotion, location, social context. The cue is the anchor. You need to know it exactly.</p>
+                </div>
+            </li>
+            <li class="flex gap-8 group">
+                <div class="w-12 h-12 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center shrink-0 group-hover:border-white/20 transition-all shadow-xl">
+                    <span class="text-white font-black">2</span>
+                </div>
+                <div class="space-y-3">
+                    <p class="text-zinc-300 font-bold tracking-tight">Identify the real reward.</p>
+                    <p class="text-base text-zinc-500">Ask: what am I actually getting from this? Stress relief? A sense of control? Social connection? Boredom relief? The routine is negotiable. The reward is not.</p>
+                </div>
+            </li>
+            <li class="flex gap-8 group">
+                <div class="w-12 h-12 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center shrink-0 group-hover:border-white/20 transition-all shadow-xl">
+                    <span class="text-white font-black">3</span>
+                </div>
+                <div class="space-y-3">
+                    <p class="text-zinc-300 font-bold tracking-tight">Design a new routine for the same cue and reward.</p>
+                    <p class="text-base text-zinc-500">When the cue hits, insert a new behavior that delivers the same underlying reward. Stress → walk instead of smoke. Boredom → book instead of scroll.</p>
+                </div>
+            </li>
+            <li class="flex gap-8 group">
+                <div class="w-12 h-12 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center shrink-0 group-hover:border-white/20 transition-all shadow-xl">
+                    <span class="text-white font-black">4</span>
+                </div>
+                <div class="space-y-3">
+                    <p class="text-zinc-300 font-bold tracking-tight">Expect discomfort and plan for it.</p>
+                    <p class="text-base text-zinc-500">The new pathway is unmyelinated. It will feel wrong, unnatural, insufficient. This is not failure - it is neurological growing pain. The discomfort is proof that new wiring is being laid.</p>
+                </div>
+            </li>
+            <li class="flex gap-8 group">
+                <div class="w-12 h-12 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center shrink-0 group-hover:border-white/20 transition-all shadow-xl">
+                    <span class="text-white font-black">5</span>
+                </div>
+                <div class="space-y-3">
+                    <p class="text-zinc-300 font-bold tracking-tight">Repeat relentlessly for 60-90 days.</p>
+                    <p class="text-base text-zinc-500">Research suggests habit formation takes anywhere from 18 to 254 days depending on complexity. The average is around 66 days. Myelination and LTP take time. Every repetition counts.</p>
+                </div>
+            </li>
+            <li class="flex gap-8 group">
+                <div class="w-12 h-12 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center shrink-0 group-hover:border-white/20 transition-all shadow-xl">
+                    <span class="text-white font-black">6</span>
+                </div>
+                <div class="space-y-3">
+                    <p class="text-zinc-300 font-bold tracking-tight">Protect the new pathway from the old cue.</p>
+                    <p class="text-base text-zinc-500">In early stages, if possible, change your environment to reduce exposure to the original cue. Remove the trigger to reduce the likelihood of slipping back onto the old highway.</p>
+                </div>
+            </li>
+          </ol>
+
+          <div class="not-prose my-16 group">
+            <div class="aspect-video rounded-3xl overflow-hidden border border-zinc-800 shadow-2xl relative theme-photo-shade">
+              <img src="blog/4.png" alt="Pathways in Forest" class="w-full h-full object-cover grayscale brightness-75 group-hover:grayscale-0 transition-all duration-700">
+            </div>
+            <figcaption class="text-xs font-bold text-zinc-400 uppercase tracking-widest mt-6 text-center">Every time you choose the new behavior, the new neural trail gets a little clearer. Every time you avoid the old one, it gets a little more overgrown.</figcaption>
+          </div>
+
+          <h2 class="text-white text-3xl font-bold tracking-tight mt-24 mb-10">A Final Word on Willpower</h2>
+          <p>
+            Willpower is real - but it is a finite resource. The prefrontal cortex, as we discussed, depletes with use. Trying to stop a habit through sheer willpower forces you to fight that cortex-vs-basal-ganglia battle every single time the cue appears.
+          </p>
+          <p>
+            Replacement, by contrast, redirects the signal. Instead of fighting the neural current, you dig a new channel for it to flow through. With enough repetition, the new channel becomes the natural one.
+          </p>
+          <p>
+            Your brain is not the enemy. It is the most sophisticated pattern-recognition and efficiency machine in the known universe. It built your habits because it was trying to help you - to save energy, to automate the familiar.
+          </p>
+          <p>
+            The question is simply: which patterns do you want it to automate next?
+          </p>
+
+          <!-- More here comment -->
+          <!-- I will add more here later - keep current state as anchor -->
+        </div>
+
+        <!-- End of Content Interaction -->
+        <div class="flex flex-col md:flex-row items-center justify-between gap-8 py-10 border-y border-zinc-900/50 mt-32">
+          <div class="flex items-center gap-4">
+            <button id="like-btn" class="flex items-center gap-3 px-8 py-3.5 rounded-full bg-zinc-900/50 border border-zinc-800 text-zinc-400 hover:text-white hover:border-zinc-700 transition-all group cursor-pointer shadow-xl backdrop-blur-sm">
+              <i data-lucide="heart" class="w-4 h-4 transition-transform group-hover:scale-110"></i>
+              <span id="like-count" class="text-xs font-bold">0</span>
+            </button>
+            <div class="relative">
+              <button id="share-btn" class="flex items-center gap-3 px-8 py-3.5 rounded-full bg-zinc-900/50 border border-zinc-800 text-zinc-400 hover:text-white hover:border-zinc-700 transition-all cursor-pointer shadow-xl backdrop-blur-sm">
+                <i data-lucide="share-2" class="w-4 h-4"></i>
+                <span class="text-xs font-bold uppercase tracking-widest">Share</span>
+              </button>
+              
+              <!-- Share Popup -->
+              <div id="share-popup" class="absolute bottom-full mb-4 left-1/2 -translate-x-1/2 w-48 bg-zinc-900 border border-zinc-800 rounded-2xl shadow-2xl opacity-0 invisible transition-all duration-200 transform scale-95 z-50 p-2 pointer-events-none">
+                <div class="grid grid-cols-1 gap-1">
+                  <a href="#" id="share-x" target="_blank" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-zinc-800 text-zinc-400 hover:text-white transition-colors group">
+                    <i data-lucide="twitter" class="w-4 h-4 text-zinc-500 group-hover:text-white"></i>
+                    <span class="text-xs font-bold uppercase tracking-widest">Post on X</span>
+                  </a>
+                  <a href="#" id="share-fb" target="_blank" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-zinc-800 text-zinc-400 hover:text-white transition-colors group">
+                    <i data-lucide="facebook" class="w-4 h-4 text-zinc-500 group-hover:text-white"></i>
+                    <span class="text-xs font-bold uppercase tracking-widest">Facebook</span>
+                  </a>
+                  <a href="#" id="share-li" target="_blank" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-zinc-800 text-zinc-400 hover:text-white transition-colors group">
+                    <i data-lucide="linkedin" class="w-4 h-4 text-zinc-500 group-hover:text-white"></i>
+                    <span class="text-xs font-bold uppercase tracking-widest">LinkedIn</span>
+                  </a>
+                  <button id="share-copy" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-zinc-800 text-zinc-400 hover:text-white transition-colors group w-full text-left">
+                    <i data-lucide="copy" class="w-4 h-4 text-zinc-500 group-hover:text-white"></i>
+                    <span class="text-xs font-bold uppercase tracking-widest">Copy Link</span>
+                  </button>
+                </div>
+                <div class="absolute top-full left-1/2 -translate-x-1/2 border-8 border-transparent border-t-zinc-800"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3 text-xs font-bold text-zinc-600 uppercase tracking-widest">
+            <span>Neuroscience</span>
+            <span class="w-1 h-1 rounded-full bg-zinc-800"></span>
+            <span>Journal #1</span>
+          </div>
+        </div>
+
+        <!-- Discussion -->
+        <section id="discussion" class="pt-12 border-t border-zinc-900 space-y-12">
+            <div class="not-prose text-center space-y-4 py-12 bg-zinc-950/30 rounded-3xl border border-zinc-900/50">
+                <i data-lucide="message-square" class="w-8 h-8 text-zinc-800 mx-auto"></i>
+                <div class="space-y-1">
+                    <h3 class="text-xl font-bold text-white tracking-tight">Join the Discussion</h3>
+                    <p class="text-sm text-zinc-500 max-w-lg mx-auto leading-relaxed uppercase tracking-widest font-bold">What's Your Habit Story?</p>
+                </div>
+                <p class="text-sm text-zinc-400 max-w-xl mx-auto px-6 italic">
+                    Every person reading this has a habit they're proud of building - or one they're still wrestling with. Your experience might be exactly what someone else needs to hear. Drop your thoughts below. No judgment here - just people figuring out their brains together. 💬
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto px-6 text-left pt-6">
+                    <div class="p-4 rounded-xl bg-zinc-900/50 border border-zinc-800/50 flex items-start gap-3">
+                        <span class="text-lg">💪</span>
+                        <span class="text-[11px] font-bold text-zinc-500 uppercase tracking-wider">A habit I successfully replaced...</span>
+                    </div>
+                    <div class="p-4 rounded-xl bg-zinc-900/50 border border-zinc-800/50 flex items-start gap-3">
+                        <span class="text-lg">🤔</span>
+                        <span class="text-[11px] font-bold text-zinc-500 uppercase tracking-wider">What surprised me most from this...</span>
+                    </div>
+                    <div class="p-4 rounded-xl bg-zinc-900/50 border border-zinc-800/50 flex items-start gap-3">
+                        <span class="text-lg">😤</span>
+                        <span class="text-[11px] font-bold text-zinc-500 uppercase tracking-wider">The habit I'm currently fighting...</span>
+                    </div>
+                    <div class="p-4 rounded-xl bg-zinc-900/50 border border-zinc-800/50 flex items-start gap-3">
+                        <span class="text-lg">❓</span>
+                        <span class="text-[11px] font-bold text-zinc-500 uppercase tracking-wider">A question I still have...</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-6">
+                <!-- Comment Input -->
+                <div class="space-y-4">
+                  <div class="flex flex-col md:flex-row gap-4">
+                    <div class="flex-1 grok-card p-0.5 rounded-md border border-zinc-800/50 focus-within:border-white/20 transition-all">
+                      <input type="text" id="nickname-input" class="w-full bg-zinc-950/50 border-0 rounded-[0.3rem] px-6 py-3 text-xs text-white focus:outline-none placeholder:text-zinc-600 font-bold uppercase tracking-widest" placeholder="Your Display Name" maxlength="50">
+                    </div>
+                  </div>
+                  <div class="relative group grok-card p-1 rounded-lg border border-zinc-800/50 focus-within:border-white/20 transition-all">
+                    <textarea id="comment-input" class="w-full bg-zinc-950/50 border-0 rounded-md p-8 text-sm text-white focus:outline-none transition-all min-h-[160px] placeholder:text-zinc-800" placeholder="Contribute to the analysis..." maxlength="1000"></textarea>
+                    <div class="absolute bottom-6 right-8 opacity-100 transition-all z-20">
+                      <button id="post-comment" class="px-8 py-3 bg-white text-black text-[10px] font-black uppercase tracking-widest rounded-full hover:bg-zinc-200 transition-all cursor-pointer shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed z-30">Publish Response</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Comment List -->
+                <div class="space-y-0 divide-y divide-zinc-900" id="comments-container">
+                  <!-- Dynamically Populated -->
+                </div>
+
+                <!-- View More Button -->
+                <div id="view-more-container" class="hidden flex justify-center pt-8">
+                  <button id="view-more-btn" class="px-8 py-3 rounded-full bg-zinc-900/50 border border-zinc-800 text-zinc-500 hover:text-white hover:border-zinc-700 text-xs font-bold uppercase tracking-widest transition-all cursor-pointer backdrop-blur-sm">
+                    View More Responses
+                  </button>
+                </div>
+            </div>
+        </section>
+      </article>
+    </main>
+
+    <!-- Scroll to Top -->
+    <button id="scroll-to-top" class="fixed bottom-12 right-12 p-5 rounded-full bg-white text-black shadow-2xl opacity-0 invisible translate-y-4 transition-all duration-300 z-[90] cursor-pointer hover:scale-110 active:scale-95 group">
+      <i data-lucide="arrow-up" class="w-5 h-5 transition-transform group-hover:-translate-y-1"></i>
+    </button>
+
+    <footer class="border-t border-zinc-800/50 bg-black/50 backdrop-blur-md py-12 mt-auto relative z-10">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
+          <div class="col-span-1 md:col-span-2 space-y-6">
+            <div class="flex items-center gap-3">
+              <span class="tracking-tighter text-xl live-name uppercase flex items-baseline gap-2">
+                <span class="font-black text-white">SYED</span>
+                <span class="font-black text-white">IRFAN</span>
+              </span>
+            </div>
+            <p class="text-zinc-500 text-sm leading-relaxed max-w-xs">
+              Specializing in AI-powered solutions, data science, and machine learning. Building the future of intelligent systems.
+            </p>
+            <div class="flex items-center gap-4">
+              <a href="https://github.com/syedirfaanx" target="_blank" class="text-zinc-500 hover:text-white transition-colors">
+                <i data-lucide="github" class="w-5 h-5"></i>
+              </a>
+              <a href="https://linkedin.com/in/syedirfaanx" target="_blank" class="text-zinc-500 hover:text-white transition-colors">
+                <i data-lucide="linkedin" class="w-5 h-5"></i>
+              </a>
+            </div>
+          </div>
+          <div class="space-y-6">
+            <h4 class="text-xs font-bold text-white uppercase tracking-widest">Navigation</h4>
+            <ul class="space-y-3 text-sm text-zinc-500">
+              <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
+              <li><a href="research.html" class="hover:text-white transition-colors">Research & Projects</a></li>
+              <li><a href="contact.html" class="hover:text-white transition-colors">Contact</a></li>
+            </ul>
+          </div>
+          <div class="space-y-6">
+            <h4 class="text-xs font-bold text-white uppercase tracking-widest">Get in Touch</h4>
+            <ul class="space-y-3 text-sm text-zinc-500">
+              <li class="flex items-center gap-2">
+                <i data-lucide="mail" class="w-4 h-4"></i>
+                <a href="mailto:syedirfaanx@outlook.com" class="hover:text-white transition-colors">syedirfaanx@outlook.com</a>
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="map-pin" class="w-4 h-4"></i>
+                <span>Dhaka, Bangladesh</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="pt-12 mt-12 border-t border-zinc-800/30">
+          <p class="text-[10px] font-bold text-zinc-600 uppercase tracking-widest text-center md:text-left">
+            &copy; 2026 Syed Irfan. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Global Logic -->
+    <script src="script.js"></script>
+
+    <script type="module">
+      import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js';
+      import { 
+        getFirestore, 
+        initializeFirestore, 
+        doc, 
+        getDoc, 
+        setDoc, 
+        updateDoc, 
+        increment, 
+        collection, 
+        addDoc, 
+        query, 
+        orderBy, 
+        onSnapshot, 
+        serverTimestamp,
+        terminate
+      } from 'https://www.gstatic.com/firebasejs/10.12.1/firebase-firestore.js';
+
+      const firebaseConfig = {
+        projectId: "gen-lang-client-0674499407",
+        appId: "1:382505778552:web:e62265e391a41210615c8d",
+        apiKey: "AIzaSyDetk-5us6Om0MikhEtfGUusSHBtWYH7nE",
+        authDomain: "gen-lang-client-0674499407.firebaseapp.com",
+        firestoreDatabaseId: "ai-studio-23189e9b-5adf-400d-89d1-ce224e0f1ff4",
+        storageBucket: "gen-lang-client-0674499407.firebasestorage.app",
+        messagingSenderId: "382505778552",
+        measurementId: ""
+      };
+
+      console.log("[Blog] Module initialization started (v10.12.1)");
+      const POST_ID = 'brain-efficiency-habits';
+
+      function updateStatus(msg, status = 'loading') {
+        const statusDot = document.getElementById('sync-status');
+        const colors = {
+          'loading': '#eab308', // Yellow
+          'online': '#10b981',  // Green
+          'error': '#f43f5e',   // Red
+          'offline': '#71717a'  // Gray
+        };
+        const color = colors[status] || colors.loading;
+
+        console.log(`[Blog-Sync] [${status.toUpperCase()}] ${msg}`);
+        
+        if (statusDot) {
+          statusDot.style.backgroundColor = color;
+          statusDot.style.boxShadow = `0 0 8px ${color}88`;
+          statusDot.title = String(msg);
+        }
+      }
+
+      function handleFirestoreError(error, operationType, path) {
+        const code = error?.code || 'unknown';
+        const msg = error?.message || 'Check connection';
+        console.error(`[Blog-Error] ${operationType} on ${path}:`, error);
+        updateStatus(`Uplink Error (${code})`, 'error');
+      }
+
+      async function startApp() {
+        console.log("[Blog] startApp starting...");
+        try {
+          updateStatus("Initializing Grid...", 'loading');
+          const app = initializeApp(firebaseConfig);
+          
+          let db;
+          try {
+            db = initializeFirestore(app, {
+              experimentalForceLongPolling: true,
+              useFetchStreams: false 
+            }, firebaseConfig.firestoreDatabaseId || "(default)");
+          } catch (e) {
+            db = getFirestore(app);
+          }
+          
+          const postRef = doc(db, 'posts', POST_ID);
+          const commentsColl = collection(db, 'posts', POST_ID, 'comments');
+
+          const likeBtn = document.getElementById('like-btn');
+          const likeCountLabel = document.getElementById('like-count');
+          const nicknameInput = document.getElementById('nickname-input');
+          const commentInput = document.getElementById('comment-input');
+          const postCommentBtn = document.getElementById('post-comment');
+          const commentsContainer = document.getElementById('comments-container');
+          
+          let localLiked = localStorage.getItem(`liked_${POST_ID}`) === 'true';
+
+          const updateLikeUI = () => {
+            if (!likeBtn) return;
+            const icon = likeBtn.querySelector('i');
+            if (localLiked) {
+              if (icon) { icon.style.fill = '#f43f5e'; icon.style.color = '#f43f5e'; }
+              likeBtn.classList.add('border-rose-500/50', 'bg-rose-500/5');
+              if (likeCountLabel) likeCountLabel.classList.add('text-rose-400');
+            } else {
+              if (icon) { icon.style.fill = 'transparent'; icon.style.color = 'currentColor'; }
+              likeBtn.classList.remove('border-rose-500/50', 'bg-rose-500/5');
+              if (likeCountLabel) likeCountLabel.classList.remove('text-rose-400');
+            }
+          };
+          updateLikeUI();
+
+          updateStatus("Probing Uplink...", 'loading');
+          
+          let hasConnected = false;
+
+          const probe = async (attempt = 0) => {
+            try {
+              const snap = await getDoc(postRef);
+              if (!snap.exists()) {
+                 await setDoc(postRef, { likesCount: 0 });
+              }
+              hasConnected = true;
+              updateStatus("Portal Active", 'online');
+            } catch (e) {
+              if (attempt < 3) {
+                 const delay = 2000 * (attempt + 1);
+                 updateStatus(`Retrying Link...`, 'loading');
+                 setTimeout(() => probe(attempt + 1), delay);
+              } else {
+                handleFirestoreError(e, 'handshake', `posts/${POST_ID}`);
+              }
+            }
+          };
+          
+          probe();
+
+          onSnapshot(postRef, (s) => {
+                try {
+                  const data = s.data();
+                  if (data && likeCountLabel) {
+                    likeCountLabel.innerText = data.likesCount ?? 0;
+                  }
+                  updateStatus("Signal Synchronized", 'online');
+                } catch (e) {}
+          }, (err) => {
+            handleFirestoreError(err, 'get', `posts/${POST_ID}`);
+          });
+
+          if (likeBtn) {
+            likeBtn.onclick = async (e) => {
+              e.preventDefault();
+              const wasLiked = localLiked;
+              localLiked = !wasLiked;
+              localStorage.setItem(`liked_${POST_ID}`, localLiked);
+              updateLikeUI();
+              
+              const diff = localLiked ? 1 : -1;
+              try {
+                await setDoc(postRef, { 
+                  likesCount: increment(diff),
+                  lastInteraction: serverTimestamp() 
+                }, { merge: true });
+              } catch (err) {
+                localLiked = wasLiked;
+                localStorage.setItem(`liked_${POST_ID}`, localLiked);
+                updateLikeUI();
+                handleFirestoreError(err, 'update', `posts/${POST_ID}`);
+              }
+            };
+          }
+
+          // --- Comments ---
+          if (nicknameInput) nicknameInput.value = localStorage.getItem('blog_nickname') || '';
+          
+          let allComments = [];
+          let commentsToShow = 3;
+          const viewMoreContainer = document.getElementById('view-more-container');
+          const viewMoreBtn = document.getElementById('view-more-btn');
+
+          const renderComments = () => {
+            if (!commentsContainer) return;
+            
+            if (allComments.length === 0) {
+              commentsContainer.innerHTML = '<div class="text-center py-20 text-zinc-800 text-xs font-bold uppercase tracking-widest">BE THE FIRST TO COMMENT</div>';
+              if (viewMoreContainer) viewMoreContainer.classList.add('hidden');
+              return;
+            }
+
+            const visibleComments = allComments.slice(0, commentsToShow);
+            
+            commentsContainer.innerHTML = visibleComments.map(docSnap => {
+              const data = docSnap.data();
+              let dateStr = 'Processing...';
+              if (data.createdAt) {
+                try {
+                  const d = data.createdAt.toDate ? data.createdAt.toDate() : new Date(data.createdAt);
+                  dateStr = d.toLocaleDateString();
+                } catch (err) {}
+              }
+              const isPending = docSnap.metadata.hasPendingWrites;
+              const authorName = String(data.authorName || 'Explorer');
+              
+              return `
+                <div class="flex gap-6 group py-4 first:pt-0 animate-fade-in relative ${isPending ? 'opacity-50 grayscale' : ''}">
+                  <div class="w-10 h-10 rounded-md bg-zinc-950 border border-zinc-800 flex items-center justify-center shrink-0 shadow-2xl relative z-10 group-hover:border-zinc-600 transition-colors">
+                    <span class="text-[10px] font-black text-zinc-600 group-hover:text-zinc-400 uppercase tracking-tighter transition-colors">${authorName.substring(0, 2).toUpperCase()}</span>
+                  </div>
+                  <div class="space-y-1.5 flex-1">
+                    <header class="flex items-center gap-4">
+                      <span class="text-sm font-black text-white uppercase tracking-wider">${authorName}</span>
+                      <span class="w-1 h-1 rounded-full bg-zinc-800"></span>
+                      <span class="text-[10px] text-zinc-700 font-bold uppercase tracking-widest">${dateStr}</span>
+                    </header>
+                    <p class="text-sm text-zinc-500 font-medium leading-relaxed max-w-2xl">${data.content || ''}</p>
+                  </div>
+                </div>
+              `;
+            }).join('');
+
+            if (viewMoreContainer) {
+              if (allComments.length > commentsToShow) {
+                viewMoreContainer.classList.remove('hidden');
+              } else {
+                viewMoreContainer.classList.add('hidden');
+              }
+            }
+
+            if (typeof lucide !== 'undefined') {
+              try { lucide.createIcons(); } catch(e) {}
+            }
+          };
+
+          const q = query(commentsColl, orderBy('createdAt', 'desc'));
+          onSnapshot(q, (snapshot) => {
+            allComments = snapshot.docs;
+            renderComments();
+          }, (err) => {
+            handleFirestoreError(err, 'list', `posts/${POST_ID}/comments`);
+          });
+
+          if (viewMoreBtn) {
+            viewMoreBtn.addEventListener('click', () => {
+              commentsToShow += 5;
+              renderComments();
+            });
+          }
+
+          if (postCommentBtn) {
+            postCommentBtn.addEventListener('click', async () => {
+              let author = 'Explorer';
+              let text = '';
+              
+              try {
+                author = (nicknameInput?.value || 'Explorer').trim();
+                text = (commentInput?.value || '').trim();
+                if (!text) return;
+
+                postCommentBtn.disabled = true;
+                postCommentBtn.innerText = 'TRANSMITTING...';
+                updateStatus("Broadcasting...", 'loading');
+
+                localStorage.setItem('blog_nickname', author);
+                
+                await addDoc(commentsColl, {
+                  authorName: author,
+                  content: text,
+                  createdAt: serverTimestamp()
+                });
+                
+                if (commentInput) commentInput.value = '';
+                updateStatus("Broadcast Successful", 'online');
+              } catch (e) {
+                handleFirestoreError(e, 'create', `posts/${POST_ID}/comments`);
+              } finally {
+                if (postCommentBtn) {
+                  postCommentBtn.disabled = false;
+                  postCommentBtn.innerText = 'PUBLISH RESPONSE';
+                }
+              }
+            });
+          }
+
+          // Share Effect
+          const shareBtn = document.getElementById('share-btn');
+          const sharePopup = document.getElementById('share-popup');
+          const shareX = document.getElementById('share-x');
+          const shareFB = document.getElementById('share-fb');
+          const shareLI = document.getElementById('share-li');
+          const shareCopy = document.getElementById('share-copy');
+
+          if (shareBtn && sharePopup) {
+            shareBtn.addEventListener('click', (e) => {
+              e.stopPropagation();
+              if (!sharePopup.classList.contains('invisible')) {
+                sharePopup.classList.add('opacity-0', 'invisible', 'scale-95', 'pointer-events-none');
+              } else {
+                const url = encodeURIComponent(window.location.href);
+                const title = encodeURIComponent("Your Brain Is Not Against You - It's Just Efficient");
+                if (shareX) shareX.href = `https://twitter.com/intent/tweet?url=${url}&text=${title}`;
+                if (shareFB) shareFB.href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+                if (shareLI) shareLI.href = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
+                sharePopup.classList.remove('opacity-0', 'invisible', 'scale-95', 'pointer-events-none');
+              }
+            });
+            document.addEventListener('click', () => {
+              sharePopup.classList.add('opacity-0', 'invisible', 'scale-95', 'pointer-events-none');
+            });
+            shareCopy?.addEventListener('click', (e) => {
+              e.stopPropagation();
+              navigator.clipboard.writeText(window.location.href);
+              const span = shareCopy.querySelector('span');
+              const originalText = span.innerText;
+              span.innerText = 'COPIED!';
+              setTimeout(() => { span.innerText = originalText; }, 2000);
+            });
+          }
+
+          updateStatus("Neural link synchronized", 'online');
+
+        } catch (error) {
+          updateStatus(`Failure: ${error.message}`, 'error');
+        }
+      }
+
+      startApp();
+
+      // Scroll Interactions
+      window.addEventListener('scroll', () => {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        
+        const progressBar = document.getElementById("progress-bar");
+        if (progressBar) progressBar.style.width = scrolled + "%";
+
+        const scrollToTop = document.getElementById('scroll-to-top');
+        if (scrollToTop) {
+          if (winScroll > 500) {
+            scrollToTop.classList.remove('opacity-0', 'invisible', 'translate-y-4');
+          } else {
+            scrollToTop.classList.add('opacity-0', 'invisible', 'translate-y-4');
+          }
+        }
+      });
+
+      document.getElementById('scroll-to-top')?.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    </script>
+  </body>
+</html>

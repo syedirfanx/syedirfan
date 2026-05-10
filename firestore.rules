@@ -1,0 +1,50 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // 0. Global Safety Net
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // --- Global Helpers ---
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128;
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    // --- Validation Blueprints ---
+    function isValidPost(data) {
+      return data.likesCount is int;
+    }
+
+    function isValidComment(data) {
+      return data.authorName is string 
+        && data.content is string 
+        && data.createdAt is timestamp;
+    }
+
+    // --- Posts ---
+    match /posts/{postId} {
+      allow read: if true;
+      allow create: if isValidPost(incoming());
+      allow update: if isValidPost(incoming());
+    }
+
+    // --- Comments ---
+    match /posts/{postId}/comments/{commentId} {
+      allow read: if true;
+      allow create: if isValidComment(incoming());
+    }
+  }
+}
