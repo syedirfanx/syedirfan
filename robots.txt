@@ -1,0 +1,6 @@
+# General robots.txt rules for SEO
+User-agent: *
+Allow: /
+
+# Sitemap link
+Sitemap: https://syedirfan.co.uk/sitemap.xml

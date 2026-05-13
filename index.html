@@ -137,7 +137,7 @@
         <!-- Innovation & Strategy Section -->
         <section class="space-y-8 pt-16">
           <div class="space-y-2">
-            <h2 class="text-2xl font-black tracking-tighter uppercase font-display">Focus Areas</h2>
+            <h2 class="text-2xl font-black tracking-tighter uppercase font-display">Focus <span class="text-zinc-500">Areas</span></h2>
             <div class="h-1 w-12 bg-zinc-800"></div>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -165,11 +165,98 @@
           </div>
         </section>
 
+        <!-- Recent Highlights Section -->
+        <section class="space-y-8 pt-16">
+          <div class="space-y-2">
+            <h2 class="text-2xl font-black tracking-tighter uppercase font-display">Recent <span class="text-zinc-500">Highlights</span></h2>
+            <div class="h-1 w-12 bg-zinc-800"></div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Card 1: Latest Education -->
+            <div class="grok-card p-6 rounded-2xl border border-zinc-800/50 space-y-6 hover:border-zinc-700 transition-all flex flex-col h-full">
+              <div class="flex justify-between items-start">
+                <div class="text-[10px] font-bold text-zinc-500 uppercase tracking-widest">
+                  Academic
+                </div>
+                <span class="px-2 py-1 rounded-md bg-zinc-800/50 text-[10px] font-bold text-zinc-400 uppercase tracking-widest border border-zinc-800">Graduated</span>
+              </div>
+              <div class="space-y-2 flex-1">
+                <h3 class="font-bold text-xl leading-tight tracking-tight">MSc in Data Science</h3>
+                <p class="text-zinc-500 text-[10px] font-bold uppercase tracking-wider">University of Greenwich • 2023</p>
+                <div class="pt-2">
+                  <button onclick="openProjectModal('greenwich')" class="inline-flex items-center gap-2 text-[10px] font-bold text-white uppercase tracking-widest hover:opacity-80 transition-opacity group cursor-pointer">
+                    View MSc Details
+                    <i data-lucide="eye" class="w-3 h-3"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="pt-2 border-t border-zinc-900">
+                <a href="academic.html" class="inline-flex items-center gap-2 text-[10px] font-bold text-zinc-500 uppercase tracking-widest hover:text-white transition-colors group">
+                  See full academic background 
+                  <i data-lucide="arrow-right" class="w-3 h-3 group-hover:translate-x-1 transition-transform"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Card 2: Recent Project -->
+            <div class="grok-card p-6 rounded-2xl border border-zinc-800/50 space-y-6 hover:border-zinc-700 transition-all flex flex-col h-full">
+              <div class="flex justify-between items-start">
+                <div class="text-[10px] font-bold text-zinc-500 uppercase tracking-widest">
+                  Project
+                </div>
+                <span class="px-2 py-1 rounded-md bg-zinc-800/50 text-[10px] font-bold text-zinc-400 uppercase tracking-widest border border-zinc-800">Completed</span>
+              </div>
+              <div class="space-y-2 flex-1">
+                <h3 class="font-bold text-xl leading-tight tracking-tight">AI Network Flow Prediction and Resource Optimization</h3>
+                <p class="text-zinc-500 text-[10px] font-bold uppercase tracking-wider">Research • Network Optimization</p>
+                <div class="pt-2">
+                  <button onclick="openProjectModal('network-flow-optimization')" class="inline-flex items-center gap-2 text-[10px] font-bold text-white uppercase tracking-widest hover:opacity-80 transition-opacity group cursor-pointer">
+                    View Project Description
+                    <i data-lucide="eye" class="w-3 h-3"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="pt-2 border-t border-zinc-900">
+                <a href="research.html" class="inline-flex items-center gap-2 text-[10px] font-bold text-zinc-500 uppercase tracking-widest hover:text-white transition-colors group">
+                  See all research & projects
+                  <i data-lucide="arrow-right" class="w-3 h-3 group-hover:translate-x-1 transition-transform"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Card 3: Featured Blog -->
+            <div class="grok-card p-6 rounded-2xl border border-zinc-800/50 space-y-6 hover:border-zinc-700 transition-all flex flex-col h-full">
+              <div class="flex justify-between items-start">
+                <div class="text-[10px] font-bold text-zinc-500 uppercase tracking-widest">
+                  Blog
+                </div>
+                <span class="px-2 py-1 rounded-md bg-zinc-800/50 text-[10px] font-bold text-zinc-400 uppercase tracking-widest border border-zinc-800">Featured</span>
+              </div>
+              <div class="space-y-2 flex-1">
+                <h3 class="font-bold text-xl leading-tight tracking-tight">Your Brain Is Not Against You - It's Just Efficient</h3>
+                <p class="text-zinc-500 text-[10px] font-bold uppercase tracking-wider">Neuroscience • May 2026</p>
+                <div class="pt-2">
+                  <a href="your-brain-is-not-against-you.html" class="inline-flex items-center gap-2 text-[10px] font-bold text-white uppercase tracking-widest hover:opacity-80 transition-opacity group">
+                    Read this blog post
+                    <i data-lucide="book-open" class="w-3 h-3"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="pt-2 border-t border-zinc-900">
+                <a href="blog.html" class="inline-flex items-center gap-2 text-[10px] font-bold text-zinc-500 uppercase tracking-widest hover:text-white transition-colors group">
+                  Go to all blog posts
+                  <i data-lucide="arrow-right" class="w-3 h-3 group-hover:translate-x-1 transition-transform"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <!-- Featured Projects Section -->
         <section class="space-y-8">
           <div class="flex items-end justify-between">
             <div class="space-y-2">
-              <h2 class="text-2xl font-black tracking-tighter uppercase font-display">Featured Projects</h2>
+              <h2 class="text-2xl font-black tracking-tighter uppercase font-display">Featured <span class="text-zinc-500">Projects</span></h2>
               <div class="h-1 w-12 bg-zinc-800"></div>
             </div>
             <a href="research.html" class="text-xs font-bold text-zinc-500 hover:text-white transition-colors uppercase tracking-widest flex items-center gap-2 group">
@@ -184,7 +271,7 @@
               <div class="flex justify-between items-start mb-6">
                 <span class="text-[10px] font-bold text-zinc-500 uppercase tracking-widest">Personal Innovation</span>
               </div>
-              <h3 class="text-xl font-bold mb-3">StarPals AI: Revolutionizing Talent Casting with Artificial Intelligence</h3>
+              <h3 class="text-xl font-bold mb-3 leading-tight tracking-tight">StarPals AI: Revolutionizing Talent Casting with Artificial Intelligence</h3>
               <div class="flex items-center gap-1.5 text-[10px] font-bold text-zinc-600 group-hover:text-zinc-400 transition-colors mb-6 uppercase tracking-widest">
                 <span>See details</span>
                 <i data-lucide="chevron-right" class="w-2.5 h-2.5"></i>
@@ -201,7 +288,7 @@
               <div class="flex justify-between items-start mb-6">
                 <span class="text-[10px] font-bold text-zinc-500 uppercase tracking-widest">MSc Thesis</span>
               </div>
-              <h3 class="text-xl font-bold mb-3">Feature Selection using Swarm Intelligence Techniques</h3>
+              <h3 class="text-xl font-bold mb-3 leading-tight tracking-tight">Feature Selection using Swarm Intelligence Techniques</h3>
               <div class="flex items-center gap-1.5 text-[10px] font-bold text-zinc-600 group-hover:text-zinc-400 transition-colors mb-6 uppercase tracking-widest">
                 <span>See details</span>
                 <i data-lucide="chevron-right" class="w-2.5 h-2.5"></i>
@@ -217,7 +304,7 @@
               <div class="flex justify-between items-start mb-6">
                 <span class="text-[10px] font-bold text-zinc-500 uppercase tracking-widest">Academic Project</span>
               </div>
-              <h3 class="text-xl font-bold mb-3">Bank Transaction Monitoring using BlockChain Technology</h3>
+              <h3 class="text-xl font-bold mb-3 leading-tight tracking-tight">Bank Transaction Monitoring using BlockChain Technology</h3>
               <div class="flex items-center gap-1.5 text-[10px] font-bold text-zinc-600 group-hover:text-zinc-400 transition-colors mb-6 uppercase tracking-widest">
                 <span>See details</span>
                 <i data-lucide="chevron-right" class="w-2.5 h-2.5"></i>
