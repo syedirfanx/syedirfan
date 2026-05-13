@@ -67,7 +67,7 @@
       }
     </script>
   </head>
-  <body class="min-h-screen flex flex-col selection:bg-zinc-800 selection:text-white">
+  <body class="min-h-screen flex flex-col selection:bg-zinc-800 selection:text-white overflow-x-hidden">
     <!-- Page Loader -->
     <div id="page-loader">
       <div class="loader-visual">
@@ -153,7 +153,7 @@
             </div>
           </div>
 
-          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-8">
             <!-- Movie Card 1 -->
             <div class="group space-y-4">
               <div class="aspect-[2/3] rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800 relative skeleton theme-photo-shade">
@@ -297,7 +297,7 @@
         </section>
 
         <!-- Intellectual Pursuits -->
-        <section class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center overflow-hidden">
           <div class="space-y-12">
             <div class="space-y-4">
               <h2 class="text-5xl font-bold tracking-tight">The Mind's Eye</h2>
@@ -377,7 +377,7 @@
             </div>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
             <!-- Gaming -->
             <div class="p-10 rounded-[2.5rem] bg-zinc-900/40 border border-zinc-800/50 hover:border-zinc-700 transition-all group">
               <div class="w-12 h-12 rounded-2xl bg-zinc-950 border border-zinc-800 flex items-center justify-center text-zinc-500 group-hover:text-white transition-colors mb-8">
@@ -437,7 +437,7 @@
         </section>
 
         <!-- Competitive Spirit / Gaming Highlights -->
-        <section class="space-y-12 relative">
+        <section class="space-y-12 relative overflow-hidden">
           <!-- Background Glow -->
           <div class="absolute -top-24 -left-24 w-96 h-96 bg-zinc-500/5 blur-[100px] rounded-full pointer-events-none"></div>
           <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-zinc-500/5 blur-[100px] rounded-full pointer-events-none"></div>
@@ -541,7 +541,7 @@
             </div>
           </div>
 
-          <div id="galleryGrid" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+          <div id="galleryGrid" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
             <!-- Images are now managed by index to handle responsive counts -->
             <div class="aspect-[3/4] rounded-3xl overflow-hidden bg-zinc-900 border border-zinc-800 group cursor-pointer skeleton theme-photo-shade" data-gallery-index="0" onclick="openGallery(0)">
               <img src="pictures/IMG20250102175550.jpg" alt="Gallery 1" class="w-full h-full object-cover group-hover:scale-110 opacity-0 invisible" fetchpriority="high" referrerPolicy="no-referrer" onload="onThumbnailLoad(this)">
@@ -630,7 +630,7 @@
               </span>
             </div>
             <p class="text-zinc-500 text-sm leading-relaxed max-w-xs">
-              Specializing in AI-powered solutions, data science, and machine learning. Building the future of intelligent systems.
+              Engineering at the intersection of AI-powered solutions and strategic innovation.
             </p>
             <div class="flex items-center gap-4">
               <a href="https://github.com/syedirfanx" target="_blank" class="text-zinc-500 hover:text-white transition-colors">
