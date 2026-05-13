@@ -9,14 +9,16 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
         darkMode: 'class',
         theme: {
           extend: {
             fontFamily: {
-              sans: ['Inter', 'sans-serif'],
+              sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+              display: ['Space Grotesk', 'sans-serif'],
+              brand: ['Outfit', 'sans-serif'],
               mono: ['JetBrains Mono', 'monospace'],
             },
             colors: {
@@ -51,7 +53,7 @@
     <header class="border-b border-zinc-800/50 bg-black/50 backdrop-blur-md z-50 sticky top-0">
       <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 h-16 flex items-center justify-between">
         <div class="flex items-center gap-3">
-          <a href="index.html" class="tracking-tighter text-2xl live-name uppercase flex items-baseline gap-2">
+          <a href="index.html" class="tracking-tight text-2xl live-name uppercase flex items-baseline gap-2 font-brand">
             <span class="font-black">SYED</span>
             <span class="font-black">IRFAN</span>
           </a>
@@ -93,7 +95,7 @@
         <!-- Hero Section -->
         <div class="grid grid-cols-1 lg:grid-cols-[1.1fr,0.9fr] gap-10 md:gap-12 items-center">
           <div class="space-y-6">
-            <h1 class="text-4xl md:text-6xl font-bold tracking-tighter shrink-0">The <span class="text-zinc-500">Person</span> Behind the Code.</h1>
+            <h1 class="text-4xl md:text-6xl font-black tracking-tighter shrink-0 font-display">The <span class="text-zinc-500">Person</span> Behind the Code.</h1>
             <div class="space-y-4 text-zinc-400 text-lg leading-relaxed">
               <p>
                 My journey as a computer science professional began in the vibrant city of <span class="text-zinc-300">Chittagong, Bangladesh</span>. It's a path defined by a relentless curiosity about how the world works, a drive that eventually took me from the computer labs of <span class="text-zinc-300">North South University</span> to the historic streets of <span class="text-zinc-300">London</span>.
@@ -266,7 +268,7 @@
           <!-- Brand & Bio -->
           <div class="col-span-1 md:col-span-2 space-y-6">
             <div class="flex items-center gap-3">
-              <span class="tracking-tighter text-xl live-name uppercase flex items-baseline gap-2">
+              <span class="tracking-tight text-xl live-name uppercase flex items-baseline gap-2 font-brand">
                 <span class="font-black">SYED</span>
                 <span class="font-black">IRFAN</span>
               </span>
@@ -321,7 +323,7 @@
     <!-- Mobile Menu Overlay -->
     <div id="mobile-menu" class="fixed inset-0 bg-black z-[100] hidden flex flex-col p-6">
       <div class="flex items-center justify-between mb-12">
-        <span class="tracking-tighter text-2xl uppercase flex items-baseline gap-2">
+        <span class="tracking-tight text-2xl uppercase flex items-baseline gap-2 font-brand">
           <span class="font-black">SYED</span>
           <span class="font-black">IRFAN</span>
         </span>
