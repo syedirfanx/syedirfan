@@ -217,20 +217,23 @@ body {
 }
 
 /* Celebration Effects */
-.celebration-bg {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
-  background-size: 200% 100%;
-  animation: move-bg 6s linear infinite;
-  pointer-events: none;
-  z-index: 0;
+
+/* Typewriter Cursor */
+.typewriter-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.2em;
+  background-color: currentColor;
+  margin-left: 2px;
+  vertical-align: middle;
+  animation: blink 1s step-end infinite;
 }
 
-.wishes-glow {
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05), inset 0 0 10px rgba(255, 255, 255, 0.02);
-  animation: glow-pulse 8s ease-in-out infinite;
+@keyframes blink {
+  from, to { opacity: 1; }
+  50% { opacity: 0; }
 }
+
 
 /* Bento Grid Utilities */
 .bg-radial-glow {
@@ -264,15 +267,13 @@ body {
 
 .particle {
   position: absolute;
-  width: 3px;
-  height: 3px;
   background: #fff;
   border-radius: 50%;
   pointer-events: none;
   opacity: 0;
-  animation: float-particle 2s ease-out forwards;
   filter: blur(0.5px);
-  box-shadow: 0 0 4px currentColor;
+  box-shadow: 0 0 6px currentColor;
+  animation: float-particle var(--duration, 2.5s) ease-out forwards;
 }
 
 /* Skeleton & Loading States */
@@ -305,9 +306,9 @@ body {
 }
 
 @keyframes float-particle {
-  0% { transform: translateY(0) scale(0); opacity: 0; }
-  20% { opacity: 1; }
-  100% { transform: translateY(-25px) scale(1.2); opacity: 0; }
+  0% { transform: translate(0, 0) scale(0); opacity: 0; }
+  20% { opacity: 0.8; }
+  100% { transform: translate(var(--x-drift, 0), -120px) scale(0); opacity: 0; }
 }
 
 /* Global Photo Theme Shade */

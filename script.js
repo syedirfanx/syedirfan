@@ -1780,90 +1780,87 @@ window.addEventListener('popstate', (event) => {
 // Wishes Spot Logic
 async function initWishes() {
   const wishesSpot = document.getElementById('wishes-spot');
-  const wishTitle = document.getElementById('wish-title');
-  const wishMessage = document.getElementById('wish-message');
+  const typewriterText = document.getElementById('typewriter-text');
   
-  if (!wishesSpot || !wishTitle || !wishMessage) return;
+  if (!wishesSpot || !typewriterText) return;
 
   const now = new Date();
   const month = now.getMonth() + 1;
   const day = now.getDate();
   const dayOfWeek = now.getDay();
 
-  const startCycling = (title, message) => {
-    // Detect if text is Bangla (Bengali script range: \u0980-\u09FF)
-    const isBangla = /[\u0980-\u09FF]/.test(title) || /[\u0980-\u09FF]/.test(message);
-    
-    if (isBangla) {
-      wishTitle.classList.add('font-bangla');
-      wishMessage.classList.add('font-bangla');
-    } else {
-      wishTitle.classList.remove('font-bangla');
-      wishMessage.classList.remove('font-bangla');
+  const type = async (text, speed = 80) => {
+    for (let i = 0; i < text.length; i++) {
+      typewriterText.textContent += text.charAt(i);
+      await new Promise(r => setTimeout(r, speed));
     }
+  };
 
-    wishTitle.textContent = title;
-    wishMessage.textContent = message;
+  const erase = async (speed = 40) => {
+    const text = typewriterText.textContent;
+    for (let i = text.length; i >= 0; i--) {
+      typewriterText.textContent = text.substring(0, i);
+      await new Promise(r => setTimeout(r, speed));
+    }
+  };
+
+  const startCycling = async (title, message) => {
+    const isBangla = /[\u0980-\u09FF]/.test(title) || /[\u0980-\u09FF]/.test(message);
+    if (isBangla) typewriterText.classList.add('font-bangla');
+    else typewriterText.classList.remove('font-bangla');
+
     wishesSpot.classList.remove('hidden');
 
-    // Particle Spawning Logic
     const particlesContainer = document.getElementById('particles-container');
     if (particlesContainer) {
       setInterval(() => {
+        // Only produce if there is text and it's visible (not just empty strings)
+        if (typewriterText.textContent.trim().length === 0) return;
+
         const particle = document.createElement('div');
         particle.className = 'particle';
-        const x = Math.random() * 100;
-        const y = 50 + Math.random() * 50; // Start from bottom half
-        particle.style.left = `${x}%`;
-        particle.style.top = `${y}%`;
-        // Brighter, more saturated colors
+        
+        // Randomized attributes
+        const size = Math.random() * 3 + 1;
+        const xDrift = (Math.random() - 0.5) * 50; // drift left/right
+        const duration = 2 + Math.random() * 2;
+        
+        particle.style.left = `${Math.random() * 100}%`;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.setProperty('--x-drift', `${xDrift}px`);
+        particle.style.setProperty('--duration', `${duration}s`);
+        
         const color = `hsl(${Math.random() * 360}, 90%, 80%)`;
         particle.style.background = color;
-        particle.style.color = color; // For box-shadow currentColor
+        particle.style.color = color;
         particlesContainer.appendChild(particle);
-        setTimeout(() => particle.remove(), 2000);
-      }, 200); // Faster spawning
+        setTimeout(() => particle.remove(), duration * 1000);
+      }, 300);
     }
 
-    // Calculate the width needed for the longest text
-    setTimeout(() => {
-      const titleWidth = wishTitle.scrollWidth;
-      const messageWidth = wishMessage.scrollWidth;
-      const maxWidth = Math.max(titleWidth, messageWidth) + 4;
-      if (wishTitle.parentElement) {
-        wishTitle.parentElement.style.width = `${maxWidth}px`;
-      }
-    }, 50);
+    const phrases = [title, message];
+    let index = 0;
 
-    let isTitle = true;
-    setInterval(() => {
-      isTitle = !isTitle;
-      if (isTitle) {
-        wishTitle.classList.remove('opacity-0', '-translate-x-4', 'blur-sm');
-        wishMessage.classList.add('opacity-0', 'translate-x-4', 'blur-sm');
-      } else {
-        wishTitle.classList.add('opacity-0', '-translate-x-4', 'blur-sm');
-        wishMessage.classList.remove('opacity-0', 'translate-x-4', 'blur-sm');
-      }
-    }, 4000);
-
-    if (typeof lucide !== 'undefined') {
-      lucide.createIcons();
+    while (true) {
+      await type(phrases[index]);
+      await new Promise(r => setTimeout(r, 3000));
+      await erase();
+      await new Promise(r => setTimeout(r, 600));
+      index = (index + 1) % phrases.length;
     }
   };
 
   // 1. Check Fixed National/International Days
   const fixedDays = [
-    { month: 4, day: 13, title: "শুভ নববর্ষ!🏵️", message: "সবাইকে বাংলা নববর্ষের শুভেচ্ছা। 🐯" },
-    { month: 2, day: 21, title: "Happy International Mother Language Day", message: "Remembering the Language Martyrs." },
-    { month: 3, day: 26, title: "Happy Independence Day", message: "Celebrating freedom and unity" },
-    { month: 4, day: 14, title: "শুভ নববর্ষ!🏵️", message: "সবাইকে বাংলা নববর্ষের শুভেচ্ছা। 🐯" },
-    { month: 12, day: 16, title: "Happy Victory Day", message: "May the red and green flag always fly high with pride" }
+    { month: 4, day: 13, title: "শুভ নববর্ষ!", message: "সবাইকে বাংলা নববর্ষের শুভেচ্ছা।" },
+    { month: 2, day: 21, title: "International Mother Language Day", message: "Remembering the Language Martyrs" },
+    { month: 3, day: 26, title: "Independence Day", message: "Celebrating freedom and unity" },
+    { month: 12, day: 16, title: "Victory Day", message: "The red and green flag flies high" }
   ];
 
-  // Special Check: Happy New Year (First 10 days of January)
   if (month === 1 && day <= 10) {
-    startCycling(`Happy New Year ${now.getFullYear()}! ✨`, "Wishing you a year full of joy, peace, and success.");
+    startCycling(`Happy New Year ${now.getFullYear()}`, "A Year Of Innovation And Growth");
     return;
   }
 
@@ -1885,12 +1882,12 @@ async function initWishes() {
       const hMonth = hijri.month.number;
 
       if (hMonth === 10 && (hDay === 1 || hDay === 2 || hDay === 3)) {
-        startCycling("Eid Mubarak", "Wishing you a blessed Eid. ✨");
+        startCycling("Eid Mubarak", "Wishing You A Blessed Eid");
         return;
       }
       
       if (hMonth === 12 && (hDay === 10 || hDay === 11 || hDay === 12)) {
-        startCycling("Eid Mubarak", "Wishing you a blessed Eid. ✨");
+        startCycling("Eid Mubarak", "Wishing You A Blessed Eid");
         return;
       }
     }
@@ -1900,7 +1897,7 @@ async function initWishes() {
 
   // 3. Check for Jummah (Friday)
   if (dayOfWeek === 5) {
-    startCycling("Jummah Mubarak", "Have a blessed Friday. ✨");
+    startCycling("Jummah Mubarak", "Have A Blessed Friday");
     return;
   }
 

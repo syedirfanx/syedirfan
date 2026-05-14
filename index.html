@@ -98,23 +98,21 @@
     </header>
 
     <!-- Main Content -->
-    <main class="flex-1 flex flex-col max-w-7xl mx-auto w-full px-6 md:px-12 lg:px-16 pt-16 pb-24 relative z-10">
-      <div class="fade-in flex flex-col gap-10">
+    <main class="flex-1 flex flex-col max-w-7xl mx-auto w-full px-6 md:px-12 lg:px-16 pt-10 pb-24 relative z-10">
+      <div class="fade-in flex flex-col">
         
         <!-- Wishes Spot -->
-        <div id="wishes-spot" class="hidden">
-          <div class="relative inline-flex items-center gap-3 px-4 rounded-full bg-zinc-900/50 border border-zinc-800/50 backdrop-blur-sm overflow-hidden h-9 max-w-[calc(100vw-2rem)] wishes-glow">
-            <!-- Celebration Background -->
-            <div class="celebration-bg"></div>
+        <div id="wishes-spot" class="hidden mb-8">
+          <div class="relative inline-flex items-center gap-3">
             <!-- Particles Container -->
             <div id="particles-container" class="absolute inset-0 pointer-events-none"></div>
             
             <div class="flex-shrink-0 relative z-10">
-              <i data-lucide="sparkles" class="w-3 h-3 text-zinc-400 animate-pulse-subtle"></i>
+              <i data-lucide="terminal" class="w-3 h-3 text-zinc-500"></i>
             </div>
-            <div class="relative h-9 overflow-hidden transition-[width] duration-500 z-10">
-              <div id="wish-title" class="absolute inset-0 text-sm font-bold text-zinc-100 flex items-center whitespace-nowrap transition-all duration-700 ease-in-out"></div>
-              <div id="wish-message" class="absolute inset-0 text-sm font-semibold text-zinc-400 flex items-center whitespace-nowrap transition-all duration-700 ease-in-out opacity-0 translate-x-4 blur-sm"></div>
+            <div class="relative flex items-center z-10">
+              <span id="typewriter-text" class="text-xs font-mono font-bold text-zinc-100 flex items-center whitespace-nowrap uppercase tracking-wider"></span>
+              <span class="typewriter-cursor text-zinc-500"></span>
             </div>
           </div>
         </div>
@@ -258,7 +256,7 @@
         </section>
 
         <!-- Featured Projects Section -->
-        <section class="space-y-8">
+        <section class="space-y-8 pt-16">
           <div class="flex items-end justify-between">
             <div class="space-y-2">
               <h2 class="text-2xl font-black tracking-tighter uppercase font-display">Featured <span class="text-zinc-500">Projects</span></h2>
@@ -325,7 +323,7 @@
       </section>
 
       <!-- CTA Section -->
-      <section class="pb-12">
+      <section class="pt-16 pb-12">
           <div class="p-12 rounded-3xl bg-zinc-900/30 border border-zinc-800/50 text-center space-y-8 relative overflow-hidden">
             <div class="absolute inset-0 bg-gradient-to-b from-transparent to-zinc-950/50 pointer-events-none"></div>
             <div class="relative z-10 space-y-4">
