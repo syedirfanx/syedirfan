@@ -9,7 +9,7 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@900&family=JetBrains+Mono:wght@400;500&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@900&family=JetBrains+Mono:wght@400;500&family=Hind+Siliguri:wght@400;500;600;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
         darkMode: 'class',
@@ -20,6 +20,7 @@
               display: ['Space Grotesk', 'sans-serif'],
               brand: ['Outfit', 'sans-serif'],
               mono: ['JetBrains Mono', 'monospace'],
+              cursive: ['Dancing Script', 'cursive'],
               bangla: ['Hind Siliguri', 'sans-serif'],
             },
             colors: {
@@ -155,8 +156,14 @@
   <main class="flex-1 flex flex-col max-w-7xl mx-auto w-full px-6 md:px-12 lg:px-16 pt-16 pb-24 relative z-10">
     <div class="fade-in space-y-12">
       <div class="space-y-4">
-        <h1 class="text-4xl md:text-6xl font-black tracking-tighter font-display">Blog<span class="text-zinc-500">.</span></h1>
-        <p class="text-zinc-400 text-lg leading-relaxed">
+        <h1 class="flex items-baseline gap-x-3 md:gap-x-5 flex-wrap text-left">
+          <span class="tracking-tight text-3xl md:text-6xl uppercase flex items-baseline gap-3 font-brand shrink-0">
+            <span class="font-black text-white">SYED</span>
+            <span class="font-black text-white">IRFAN</span>
+          </span>
+          <span class="font-cursive text-zinc-300 text-3xl md:text-5xl lowercase leading-none shrink-0">journal</span>
+        </h1>
+        <p class="text-zinc-400 text-lg leading-relaxed max-w-4xl">
           Documenting fragments of engineering, system architecture, technical philosophy, astronomy, and neuroscience.
         </p>
       </div>
@@ -186,58 +193,63 @@
     </div>
   </main>
 
-  <footer class="border-t border-zinc-800/50 bg-black/50 backdrop-blur-md py-12 mt-auto relative z-10">
-    <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
-        <div class="col-span-1 md:col-span-2 space-y-6">
-          <div class="flex items-center gap-3">
-            <span class="tracking-tight text-xl live-name uppercase flex items-baseline gap-2 font-brand">
-              <span class="font-black text-white">SYED</span>
-              <span class="font-black text-white">IRFAN</span>
-            </span>
-          </div>
+    <footer class="border-t border-zinc-800/50 bg-black/50 backdrop-blur-md py-12 mt-auto relative z-10">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
+          <!-- Brand & Bio -->
+          <div class="col-span-1 md:col-span-2 space-y-6">
+            <div class="flex items-center gap-3">
+              <span class="tracking-tight text-xl live-name uppercase flex items-baseline gap-2 font-brand">
+                <span class="font-black text-white">SYED</span>
+                <span class="font-black text-white">IRFAN</span>
+              </span>
+            </div>
             <p class="text-zinc-500 text-sm leading-relaxed max-w-xs">
               Engineering at the intersection of AI-powered solutions and strategic innovation.
             </p>
-          <div class="flex items-center gap-4">
-            <a href="https://github.com/syedirfaanx" target="_blank" class="text-zinc-500 hover:text-white transition-colors">
-              <i data-lucide="github" class="w-5 h-5"></i>
-            </a>
-            <a href="https://linkedin.com/in/syedirfaanx" target="_blank" class="text-zinc-500 hover:text-white transition-colors">
-              <i data-lucide="linkedin" class="w-5 h-5"></i>
-            </a>
+            <div class="flex items-center gap-4">
+              <a href="https://github.com/syedirfaanx" target="_blank" class="text-zinc-500 hover:text-white transition-colors">
+                <i data-lucide="github" class="w-5 h-5"></i>
+              </a>
+              <a href="https://linkedin.com/in/syedirfaanx" target="_blank" class="text-zinc-500 hover:text-white transition-colors">
+                <i data-lucide="linkedin" class="w-5 h-5"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="space-y-6">
+            <h4 class="text-xs font-bold text-white uppercase tracking-widest">Navigation</h4>
+            <ul class="space-y-3 text-sm text-zinc-500">
+              <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
+              <li><a href="person.html" class="hover:text-white transition-colors">The Person</a></li>
+              <li><a href="contact.html" class="hover:text-white transition-colors">Contact</a></li>
+            </ul>
+          </div>
+
+          <!-- Contact Info -->
+          <div class="space-y-6">
+            <h4 class="text-xs font-bold text-white uppercase tracking-widest">Get in Touch</h4>
+            <ul class="space-y-3 text-sm text-zinc-500">
+              <li class="flex items-center gap-2">
+                <i data-lucide="mail" class="w-4 h-4"></i>
+                <a href="mailto:syedirfaanx@outlook.com" class="hover:text-white transition-colors">syedirfaanx@outlook.com</a>
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="map-pin" class="w-4 h-4"></i>
+                <span>Dhaka, Bangladesh</span>
+              </li>
+            </ul>
           </div>
         </div>
-        <div class="space-y-6">
-          <h4 class="text-xs font-bold text-white uppercase tracking-widest">Navigation</h4>
-          <ul class="space-y-3 text-sm text-zinc-500">
-            <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
-            <li><a href="blog.html" class="hover:text-white transition-colors">Blog</a></li>
-            <li><a href="research.html" class="hover:text-white transition-colors">Research & Projects</a></li>
-            <li><a href="contact.html" class="hover:text-white transition-colors">Contact</a></li>
-          </ul>
-        </div>
-        <div class="space-y-6">
-          <h4 class="text-xs font-bold text-white uppercase tracking-widest">Get in Touch</h4>
-          <ul class="space-y-3 text-sm text-zinc-500">
-            <li class="flex items-center gap-2">
-              <i data-lucide="mail" class="w-4 h-4"></i>
-              <a href="mailto:syedirfaanx@outlook.com" class="hover:text-white transition-colors">syedirfaanx@outlook.com</a>
-            </li>
-            <li class="flex items-center gap-2">
-              <i data-lucide="map-pin" class="w-4 h-4"></i>
-              <span>Dhaka, Bangladesh</span>
-            </li>
-          </ul>
+
+        <div class="pt-12 mt-12 border-t border-zinc-800/30 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p class="text-[10px] font-bold text-zinc-600 uppercase tracking-widest">
+            &copy; 2026 Syed Irfan. All rights reserved.
+          </p>
         </div>
       </div>
-      <div class="pt-12 mt-12 border-t border-zinc-800/30">
-        <p class="text-[10px] font-bold text-zinc-600 uppercase tracking-widest text-center md:text-left">
-          &copy; 2026 Syed Irfan. All rights reserved.
-        </p>
-      </div>
-    </div>
-  </footer>
+    </footer>
 
   <script src="script.js"></script>
   <script>

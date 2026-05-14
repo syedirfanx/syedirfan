@@ -9,7 +9,7 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@900&family=JetBrains+Mono:wght@400;500&family=Hind+Siliguri:wght@400;500;600;700&family=Playball&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@900&family=JetBrains+Mono:wght@400;500&family=Hind+Siliguri:wght@400;500;600;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
         darkMode: 'class',
@@ -21,7 +21,7 @@
               brand: ['Outfit', 'sans-serif'],
               mono: ['JetBrains Mono', 'monospace'],
               bangla: ['Hind Siliguri', 'sans-serif'],
-              cursive: ['Playball', 'cursive'],
+              cursive: ['Dancing Script', 'cursive'],
             },
             colors: {
               zinc: {
@@ -74,90 +74,29 @@
     <canvas id="stars-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-40"></canvas>
 
     <!-- Header -->
-    <header class="border-b border-zinc-800/50 bg-black/50 backdrop-blur-md z-50 sticky top-0">
-      <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 h-16 flex items-center justify-between">
-        <a href="index.html" class="flex items-center gap-3 group">
-          <span class="tracking-tight text-2xl live-name uppercase flex items-baseline gap-2 font-brand">
-            <span class="font-black">SYED</span>
-            <span class="font-black">IRFAN</span>
-          </span>
+    <header class="border-b border-zinc-900/50 bg-black/80 backdrop-blur-xl z-50 sticky top-0">
+      <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-4 group">
+          <div class="flex items-baseline gap-2 flex-nowrap whitespace-nowrap">
+            <span class="tracking-tight text-2xl live-name uppercase flex items-baseline gap-2 font-brand">
+              <span class="font-black">SYED</span>
+              <span class="font-black">IRFAN</span>
+            </span>
+            <span class="font-cursive text-zinc-300 text-2xl lowercase leading-none">journal</span>
+          </div>
         </a>
         
-        <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-zinc-400">
-          <a href="index.html" class="hover:text-white transition-colors">Home</a>
-          <a href="person.html" class="hover:text-white transition-colors">The Person</a>
-          
-          <!-- Background Dropdown -->
-          <div class="relative group py-4">
-            <button class="flex items-center gap-1 hover:text-white transition-colors">
-              Background
-              <i data-lucide="chevron-down" class="w-3 h-3"></i>
-            </button>
-            <div class="absolute top-full left-0 w-48 bg-zinc-900 border border-zinc-800 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top scale-95 group-hover:scale-100 z-50 p-2">
-              <a href="academic.html" class="block px-4 py-2 rounded-lg hover:bg-zinc-800 hover:text-white transition-colors text-xs">Academic</a>
-              <a href="experience.html" class="block px-4 py-2 rounded-lg hover:bg-zinc-800 hover:text-white transition-colors text-xs">Experience</a>
-              <a href="research.html" class="block px-4 py-2 rounded-lg hover:bg-zinc-800 hover:text-white transition-colors text-xs">Research & Projects</a>
-            </div>
-          </div>
-
-          <a href="favorites.html" class="hover:text-white transition-colors">Favorites</a>
-          <a href="blog.html" class="hover:text-white transition-colors">Blog</a>
-          <a href="contact.html" class="hover:text-white transition-colors">Contact</a>
-        </nav>
-
-        <div class="flex items-center gap-3">
+        <div class="flex items-center gap-6">
+          <a href="blog.html" class="text-[10px] font-bold text-zinc-500 hover:text-white transition-colors uppercase tracking-[0.2em] flex items-center gap-2 group">
+            <i data-lucide="arrow-left" class="w-3 h-3 transition-transform group-hover:-translate-x-1"></i>
+            <span class="hidden sm:inline">Back to </span>Blog
+          </a>
           <div id="sync-status" class="hidden w-1.5 h-1.5 rounded-full bg-zinc-800 transition-colors duration-500" title="Neural Link Status"></div>
-          <button id="mobile-menu-btn" class="md:hidden p-3 -mr-2 text-zinc-400 hover:text-white transition-colors cursor-pointer">
-            <i data-lucide="menu" class="w-6 h-6"></i>
-          </button>
         </div>
       </div>
     </header>
 
-    <div id="mobile-menu" class="fixed inset-0 bg-black z-[100] hidden flex flex-col p-6">
-      <div class="flex items-center justify-between mb-12">
-        <span class="tracking-tight text-2xl uppercase flex items-baseline gap-2 font-brand">
-          <span class="font-black">SYED</span>
-          <span class="font-black">IRFAN</span>
-        </span>
-        <button id="mobile-menu-close" class="p-3 text-zinc-400 hover:text-white transition-colors cursor-pointer">
-          <i data-lucide="x" class="w-6 h-6"></i>
-        </button>
-      </div>
-      
-      <nav class="flex flex-col gap-8 text-lg font-bold tracking-tighter">
-        <a href="index.html" class="text-zinc-500 hover:text-white transition-colors">Home</a>
-        <a href="person.html" class="text-zinc-500 hover:text-white transition-colors">The Person</a>
-        <div class="space-y-4">
-          <p class="text-xs font-bold text-zinc-700 uppercase tracking-widest">Background</p>
-          <div class="flex flex-col gap-4 pl-4 border-l border-zinc-900">
-            <a href="academic.html" class="text-zinc-500 hover:text-white">Academic</a>
-            <a href="experience.html" class="text-zinc-500 hover:text-white">Experience</a>
-            <a href="research.html" class="text-zinc-500 hover:text-white">Research & Projects</a>
-          </div>
-        </div>
-        <a href="favorites.html" class="text-zinc-500 hover:text-white">Favorites</a>
-        <a href="blog.html" class="text-zinc-500 hover:text-white">Blog</a>
-        <a href="contact.html" class="text-zinc-500 hover:text-white">Contact</a>
-      </nav>
-
-      <div class="mt-auto pt-12 border-t border-zinc-900 flex items-center gap-6">
-        <a href="https://github.com/syedirfanx" target="_blank" class="text-zinc-500 hover:text-white transition-colors">
-          <i data-lucide="github" class="w-6 h-6"></i>
-        </a>
-        <a href="https://linkedin.com/in/syedirfanx" target="_blank" class="text-zinc-500 hover:text-white transition-colors">
-          <i data-lucide="linkedin" class="w-6 h-6"></i>
-        </a>
-      </div>
-    </div>
-
     <main class="flex-1 max-w-5xl mx-auto w-full px-6 md:px-12 pt-8 pb-24 relative z-10">
-      <!-- Back to Blog -->
-      <a href="blog.html" class="inline-flex items-center gap-2 text-zinc-500 hover:text-white transition-colors mb-8 group">
-        <i data-lucide="arrow-left" class="w-4 h-4 transition-transform group-hover:-translate-x-1"></i>
-        <span class="text-xs font-bold uppercase tracking-widest">Back to Blog</span>
-      </a>
-
       <article class="space-y-12">
         <!-- Post Header -->
         <header class="space-y-8 text-left">
@@ -184,8 +123,8 @@
         </div>
 
         <!-- Content -->
-        <div class="prose prose-zinc prose-invert max-w-none text-zinc-400 leading-relaxed text-xl">
-          <p class="text-white text-2xl font-light tracking-tight mb-16 leading-relaxed opacity-90">
+        <div class="prose prose-zinc prose-invert max-w-none text-zinc-300 leading-[1.8] text-lg md:text-xl font-normal">
+          <p class="text-white text-2xl md:text-3xl font-light tracking-tight mb-20 leading-relaxed opacity-95">
             Have you ever tried to quit something - scrolling your phone in the morning, reaching for a cigarette, biting your nails, saying yes when you want to say no - and felt a strange, almost physical discomfort pulling you back?
           </p>
 
@@ -637,52 +576,39 @@
       <i data-lucide="arrow-up" class="w-5 h-5 transition-transform group-hover:-translate-y-1"></i>
     </button>
 
-    <footer class="border-t border-zinc-800/50 bg-black/50 backdrop-blur-md py-12 mt-auto relative z-10">
-      <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
-          <div class="col-span-1 md:col-span-2 space-y-6">
-            <div class="flex items-center gap-3">
-              <span class="tracking-tight text-xl live-name uppercase flex items-baseline gap-2 font-brand">
-                <span class="font-black text-white">SYED</span>
-                <span class="font-black text-white">IRFAN</span>
-              </span>
-            </div>
-            <p class="text-zinc-500 text-sm leading-relaxed max-w-xs">
-              Engineering at the intersection of AI-powered solutions and strategic innovation.
-            </p>
-            <div class="flex items-center gap-4">
-              <a href="https://github.com/syedirfaanx" target="_blank" class="text-zinc-500 hover:text-white transition-colors">
-                <i data-lucide="github" class="w-5 h-5"></i>
-              </a>
-              <a href="https://linkedin.com/in/syedirfaanx" target="_blank" class="text-zinc-500 hover:text-white transition-colors">
-                <i data-lucide="linkedin" class="w-5 h-5"></i>
-              </a>
-            </div>
+    <footer class="border-t border-zinc-900 bg-black py-24 relative z-10">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
+          <!-- Left: Brand -->
+          <div class="flex justify-center md:justify-start items-baseline gap-2 order-1">
+            <span class="tracking-tight text-xl live-name uppercase flex items-baseline gap-2 font-brand">
+              <span class="font-black text-white">SYED</span>
+              <span class="font-black text-white">IRFAN</span>
+            </span>
+            <span class="font-cursive text-zinc-300 text-xl lowercase leading-none">journal</span>
           </div>
-          <div class="space-y-6">
-            <h4 class="text-xs font-bold text-white uppercase tracking-widest">Navigation</h4>
-            <ul class="space-y-3 text-sm text-zinc-500">
-              <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
-              <li><a href="research.html" class="hover:text-white transition-colors">Research & Projects</a></li>
-              <li><a href="contact.html" class="hover:text-white transition-colors">Contact</a></li>
-            </ul>
+
+          <!-- Middle: Social -->
+          <div class="flex justify-center items-center gap-6 order-2">
+            <a href="https://github.com/syedirfaanx" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+              <i data-lucide="github" class="w-4 h-4"></i>
+            </a>
+            <a href="https://linkedin.com/in/syedirfaanx" target="_blank" class="text-zinc-600 hover:text-white transition-colors">
+              <i data-lucide="linkedin" class="w-4 h-4"></i>
+            </a>
           </div>
-          <div class="space-y-6">
-            <h4 class="text-xs font-bold text-white uppercase tracking-widest">Get in Touch</h4>
-            <ul class="space-y-3 text-sm text-zinc-500">
-              <li class="flex items-center gap-2">
-                <i data-lucide="mail" class="w-4 h-4"></i>
-                <a href="mailto:syedirfaanx@outlook.com" class="hover:text-white transition-colors">syedirfaanx@outlook.com</a>
-              </li>
-              <li class="flex items-center gap-2">
-                <i data-lucide="map-pin" class="w-4 h-4"></i>
-                <span>Dhaka, Bangladesh</span>
-              </li>
-            </ul>
-          </div>
+
+          <!-- Right: Nav -->
+          <nav class="flex justify-center md:justify-end items-center gap-8 text-[10px] font-bold text-zinc-600 uppercase tracking-widest order-3">
+            <a href="index.html" class="hover:text-white transition-colors">Home</a>
+            <a href="person.html" class="hover:text-white transition-colors">The Person</a>
+            <a href="contact.html" class="hover:text-white transition-colors">Contact</a>
+          </nav>
         </div>
-        <div class="pt-12 mt-12 border-t border-zinc-800/30">
-          <p class="text-[10px] font-bold text-zinc-600 uppercase tracking-widest text-center md:text-left">
+        
+        <!-- Bottom: Copyright -->
+        <div class="mt-24 pt-8 border-t border-zinc-900 text-center">
+          <p class="text-[10px] font-bold text-zinc-600 uppercase tracking-widest">
             &copy; 2026 Syed Irfan. All rights reserved.
           </p>
         </div>

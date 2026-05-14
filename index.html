@@ -9,7 +9,7 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@900&family=JetBrains+Mono:wght@400;500&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@900&family=JetBrains+Mono:wght@400;500&family=Hind+Siliguri:wght@400;500;600;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
         darkMode: 'class',
@@ -20,6 +20,7 @@
               display: ['Space Grotesk', 'sans-serif'],
               brand: ['Outfit', 'sans-serif'],
               mono: ['JetBrains Mono', 'monospace'],
+              cursive: ['Dancing Script', 'cursive'],
               bangla: ['Hind Siliguri', 'sans-serif'],
             },
             colors: {
@@ -227,8 +228,12 @@
             <!-- Card 3: Featured Blog -->
             <div class="grok-card p-6 rounded-2xl border border-zinc-800/50 space-y-6 hover:border-zinc-700 transition-all flex flex-col h-full">
               <div class="flex justify-between items-start">
-                <div class="text-[10px] font-bold text-zinc-500 uppercase tracking-widest">
-                  Blog
+                <div class="flex items-baseline gap-1.5 flex-nowrap shrink-0">
+                  <span class="tracking-tight text-[11px] uppercase flex items-baseline gap-1 font-brand">
+                    <span class="font-black">SYED</span>
+                    <span class="font-black">IRFAN</span>
+                  </span>
+                  <span class="font-cursive text-zinc-300 text-sm lowercase leading-none">journal</span>
                 </div>
                 <span class="px-2 py-1 rounded-md bg-zinc-800/50 text-[10px] font-bold text-zinc-400 uppercase tracking-widest border border-zinc-800">Featured</span>
               </div>
@@ -372,7 +377,7 @@
           <div class="space-y-6">
             <h4 class="text-xs font-bold text-white uppercase tracking-widest">Navigation</h4>
             <ul class="space-y-3 text-sm text-zinc-500">
-              <li><a href="research.html" class="hover:text-white transition-colors">Research & Projects</a></li>
+              <li><a href="person.html" class="hover:text-white transition-colors">The Person</a></li>
               <li><a href="blog.html" class="hover:text-white transition-colors">Blog</a></li>
               <li><a href="contact.html" class="hover:text-white transition-colors">Contact</a></li>
             </ul>
