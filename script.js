@@ -1780,73 +1780,90 @@ window.addEventListener('popstate', (event) => {
 // Wishes Spot Logic
 async function initWishes() {
   const wishesSpot = document.getElementById('wishes-spot');
-  const typewriterText = document.getElementById('typewriter-text');
+  const decodeText = document.getElementById('decode-text');
+  const particlesContainer = document.getElementById('particles-container');
   
-  if (!wishesSpot || !typewriterText) return;
+  if (!wishesSpot || !decodeText) return;
 
   const now = new Date();
   const month = now.getMonth() + 1;
   const day = now.getDate();
   const dayOfWeek = now.getDay();
 
-  const type = async (text, speed = 80) => {
-    for (let i = 0; i < text.length; i++) {
-      typewriterText.textContent += text.charAt(i);
-      await new Promise(r => setTimeout(r, speed));
+  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#&$%§*+=-";
+
+  const solveText = async (targetText, iterations = 10) => {
+    const isBangla = /[\u0980-\u09FF]/.test(targetText);
+    if (isBangla) decodeText.classList.add('font-bangla');
+    else decodeText.classList.remove('font-bangla');
+
+    let currentText = "";
+    
+    // Initial scramble
+    for (let i = 0; i < targetText.length; i++) {
+      currentText += chars[Math.floor(Math.random() * chars.length)];
     }
+    decodeText.textContent = currentText;
+
+    // Solve character by character
+    for (let i = 0; i < targetText.length; i++) {
+      for (let j = 0; j < 3; j++) {
+        let scrambled = targetText.substring(0, i);
+        for (let k = i; k < targetText.length; k++) {
+          scrambled += chars[Math.floor(Math.random() * chars.length)];
+        }
+        decodeText.textContent = scrambled;
+        await new Promise(r => setTimeout(r, 40));
+      }
+      decodeText.textContent = targetText.substring(0, i + 1) + currentText.substring(i + 1);
+    }
+    decodeText.textContent = targetText;
   };
 
-  const erase = async (speed = 40) => {
-    const text = typewriterText.textContent;
-    for (let i = text.length; i >= 0; i--) {
-      typewriterText.textContent = text.substring(0, i);
-      await new Promise(r => setTimeout(r, speed));
+  const clearText = async () => {
+    const originalText = decodeText.textContent;
+    for (let i = originalText.length; i >= 0; i--) {
+      let scrambled = "";
+      for (let j = 0; j < i; j++) {
+        scrambled += chars[Math.floor(Math.random() * chars.length)];
+      }
+      decodeText.textContent = scrambled;
+      await new Promise(r => setTimeout(r, 20));
     }
+    decodeText.textContent = "";
   };
 
   const startCycling = async (title, message) => {
-    const isBangla = /[\u0980-\u09FF]/.test(title) || /[\u0980-\u09FF]/.test(message);
-    if (isBangla) typewriterText.classList.add('font-bangla');
-    else typewriterText.classList.remove('font-bangla');
-
     wishesSpot.classList.remove('hidden');
 
-    const particlesContainer = document.getElementById('particles-container');
     if (particlesContainer) {
       setInterval(() => {
-        // Only produce if there is text and it's visible (not just empty strings)
-        if (typewriterText.textContent.trim().length === 0) return;
-
+        if (!decodeText.textContent.trim()) return;
         const particle = document.createElement('div');
         particle.className = 'particle';
-        
-        // Randomized attributes
-        const size = Math.random() * 3 + 1;
-        const xDrift = (Math.random() - 0.5) * 50; // drift left/right
-        const duration = 2 + Math.random() * 2;
-        
+        const size = Math.random() * 1.5 + 0.5;
+        const duration = 1.5 + Math.random() * 1.5;
         particle.style.left = `${Math.random() * 100}%`;
         particle.style.width = `${size}px`;
         particle.style.height = `${size}px`;
-        particle.style.setProperty('--x-drift', `${xDrift}px`);
         particle.style.setProperty('--duration', `${duration}s`);
-        
-        const color = `hsl(${Math.random() * 360}, 90%, 80%)`;
+        particle.style.setProperty('--x-drift', `${(Math.random() - 0.5) * 30}px`);
+        const color = `hsl(${210 + Math.random() * 20}, 100%, 75%)`; // Precise tech blue
         particle.style.background = color;
         particle.style.color = color;
+        particle.style.boxShadow = `0 0 4px ${color}`;
         particlesContainer.appendChild(particle);
         setTimeout(() => particle.remove(), duration * 1000);
-      }, 300);
+      }, 600);
     }
 
     const phrases = [title, message];
     let index = 0;
-
     while (true) {
-      await type(phrases[index]);
-      await new Promise(r => setTimeout(r, 3000));
-      await erase();
-      await new Promise(r => setTimeout(r, 600));
+      await solveText(phrases[index]);
+      await new Promise(r => setTimeout(r, 5000));
+      await clearText();
+      await new Promise(r => setTimeout(r, 1000));
       index = (index + 1) % phrases.length;
     }
   };

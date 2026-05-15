@@ -98,21 +98,29 @@
     </header>
 
     <!-- Main Content -->
-    <main class="flex-1 flex flex-col max-w-7xl mx-auto w-full px-6 md:px-12 lg:px-16 pt-10 pb-24 relative z-10">
+    <main class="flex-1 flex flex-col max-w-7xl mx-auto w-full px-6 md:px-12 lg:px-16 pt-4 pb-24 relative z-10">
       <div class="fade-in flex flex-col">
         
         <!-- Wishes Spot -->
-        <div id="wishes-spot" class="hidden mb-8">
-          <div class="relative inline-flex items-center gap-3">
-            <!-- Particles Container -->
-            <div id="particles-container" class="absolute inset-0 pointer-events-none"></div>
-            
-            <div class="flex-shrink-0 relative z-10">
-              <i data-lucide="terminal" class="w-3 h-3 text-zinc-500"></i>
-            </div>
-            <div class="relative flex items-center z-10">
-              <span id="typewriter-text" class="text-xs font-mono font-bold text-zinc-100 flex items-center whitespace-nowrap uppercase tracking-wider"></span>
-              <span class="typewriter-cursor text-zinc-500"></span>
+        <div id="wishes-spot" class="hidden mb-6">
+          <div class="relative group cursor-default">
+            <!-- Main Display -->
+            <div class="relative inline-flex items-center gap-4 px-4 py-2.5 rounded-xl bg-zinc-900/30 border border-zinc-800/40 backdrop-blur-md overflow-hidden wishes-glow transition-all duration-500">
+              <!-- Grid Overlay -->
+              <div class="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+              
+              <!-- Status Dot -->
+              <div class="relative z-10 flex items-center justify-center">
+                <div class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse shadow-[0_0_8px_rgba(59,130,246,0.5)]"></div>
+              </div>
+
+              <!-- Particles Container -->
+              <div id="particles-container" class="absolute inset-0 pointer-events-none"></div>
+              
+              <div class="relative z-10 flex items-center min-w-[220px] h-6">
+                <span id="decode-text" class="text-sm font-mono font-semibold text-white whitespace-nowrap uppercase tracking-widest leading-none drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"></span>
+                <span class="w-1.5 h-4 bg-blue-500/90 ml-2 animate-pulse self-center shadow-[0_0_12px_rgba(59,130,246,0.6)]"></span>
+              </div>
             </div>
           </div>
         </div>
