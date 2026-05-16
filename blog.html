@@ -12,7 +12,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@900&family=JetBrains+Mono:wght@400;500&family=Hind+Siliguri:wght@400;500;600;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
-        darkMode: 'class',
         theme: {
           extend: {
             fontFamily: {
@@ -171,8 +170,8 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <!-- Post 1 -->
         <article class="grok-card p-6 rounded-2xl border border-zinc-800/50 flex flex-col group hover:border-zinc-700 transition-all">
-          <div class="aspect-video rounded-xl bg-zinc-900 border border-zinc-800 overflow-hidden mb-6 relative theme-photo-shade skeleton">
-            <img src="blog/1.png" alt="Neuroscience" class="w-full h-full object-cover grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105 transition-all duration-700 opacity-0 invisible" onload="onThumbnailLoad(this)">
+          <div class="aspect-video rounded-xl bg-zinc-900 border border-zinc-800 overflow-hidden mb-6 relative skeleton theme-photo-shade">
+            <img src="blog/1.png" alt="Neuroscience" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700 opacity-0 invisible" onload="onThumbnailLoad(this)">
           </div>
           <div class="space-y-4 flex-1 flex flex-col">
             <div class="flex items-center gap-3">
@@ -251,7 +250,7 @@
       </div>
     </footer>
 
-  <script src="script.js"></script>
+  <script type="module" src="script.js"></script>
   <script>
     lucide.createIcons();
 

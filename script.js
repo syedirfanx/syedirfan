@@ -1,4 +1,18 @@
 // Initialize everything
+// Ensure critical functions are globally available
+window.showToast = showToast;
+window.openMobileMenu = openMobileMenu;
+window.closeMobileMenu = closeMobileMenu;
+window.openProjectModal = openProjectModal;
+window.closeProjectModal = closeProjectModal;
+window.toggleDropdown = toggleDropdown;
+window.selectCategory = selectCategory;
+window.selectStack = selectStack;
+window.resetFilters = resetFilters;
+window.filterByCategory = filterByCategory;
+window.filterByStack = filterByStack;
+window.updateResetButton = updateResetButton;
+
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize loader first
   initPageLoader();
@@ -654,7 +668,7 @@ const projectsData = {
         <div class="space-y-4">
           <p>A real-time safety compliance system designed for public and industrial spaces. The platform utilizes deep learning models to detect face mask usage with high precision and trigger automated warnings for non-compliance.</p>
           
-          <div class="aspect-video w-full rounded-xl overflow-hidden bg-zinc-900 border border-zinc-800">
+          <div class="aspect-video w-full rounded-xl overflow-hidden bg-zinc-900 border border-zinc-800 theme-photo-shade">
             <iframe 
               class="w-full h-full" 
               src="https://www.youtube.com/embed/kOOOnQBQ7Iw" 
@@ -1624,30 +1638,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function openProjectModal(projectId) {
   const project = projectsData[projectId];
-  if (!project) return;
+  if (!project) {
+    console.warn(`Project data not found for ID: ${projectId}`);
+    return;
+  }
 
   const modal = document.getElementById('project-modal');
   const content = document.getElementById('modal-content');
+  
+  if (!modal || !content) {
+    console.warn('Project modal elements not found in DOM');
+    return;
+  }
   
   // Push state for back button support
   if (!history.state || history.state.modal !== 'project') {
     history.pushState({ modal: 'project' }, '');
   }
 
-  document.getElementById('modal-title').innerText = project.title;
+  const titleEl = document.getElementById('modal-title');
+  if (titleEl) titleEl.innerText = project.title;
   
   const categoryLabel = document.getElementById('modal-category');
-  if (project.category) {
-    categoryLabel.innerText = project.category;
-    categoryLabel.classList.remove('hidden');
-  } else {
-    categoryLabel.classList.add('hidden');
+  if (categoryLabel) {
+    if (project.category) {
+      categoryLabel.innerText = project.category;
+      categoryLabel.classList.remove('hidden');
+    } else {
+      categoryLabel.classList.add('hidden');
+    }
   }
 
-  document.getElementById('modal-overview').innerHTML = project.overview;
+  const overviewEl = document.getElementById('modal-overview');
+  if (overviewEl) overviewEl.innerHTML = project.overview;
   
   const collaboratorsContainer = document.getElementById('modal-collaborators');
-  const collaboratorsSection = collaboratorsContainer.parentElement;
+  const collaboratorsSection = collaboratorsContainer ? collaboratorsContainer.parentElement : null;
   
   const githubLink = document.getElementById('modal-github');
   const documentLink = document.getElementById('modal-document');
@@ -1659,7 +1685,9 @@ function openProjectModal(projectId) {
   // Handle Collaborators
   if (collaboratorsSection && project.collaborators && project.collaborators.length > 0) {
     collaboratorsSection.classList.remove('hidden');
-    collaboratorsContainer.innerHTML = project.collaborators.map(c => `<div>${c}</div>`).join('');
+    if (collaboratorsContainer) {
+      collaboratorsContainer.innerHTML = project.collaborators.map(c => `<div>${c}</div>`).join('');
+    }
   } else if (collaboratorsSection) {
     collaboratorsSection.classList.add('hidden');
   }

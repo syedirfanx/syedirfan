@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="dark">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,7 +12,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
-        darkMode: 'class',
         theme: {
           extend: {
             fontFamily: {
@@ -573,9 +572,7 @@
             </div>
             <div class="aspect-[3/4] rounded-3xl overflow-hidden bg-zinc-900 border border-zinc-800 group cursor-pointer hidden skeleton theme-photo-shade" data-gallery-index="9" onclick="openGallery(9)">
               <img src="pictures/625e4fbb-6da9-483f-abdd-1c94a2fcd2a4.jpg" alt="Gallery 10" class="w-full h-full object-cover group-hover:scale-110 opacity-0 invisible" loading="lazy" referrerPolicy="no-referrer" onload="onThumbnailLoad(this)">
-            </div>
-
-            <div class="aspect-[3/4] rounded-3xl overflow-hidden bg-zinc-900 border border-zinc-800 group cursor-pointer hidden skeleton theme-photo-shade" data-gallery-index="10" onclick="openGallery(10)">
+            </div>            <div class="aspect-[3/4] rounded-3xl overflow-hidden bg-zinc-900 border border-zinc-800 group cursor-pointer hidden skeleton theme-photo-shade" data-gallery-index="10" onclick="openGallery(10)">
               <img src="pictures/11.jpg" alt="Gallery 11" class="w-full h-full object-cover group-hover:scale-110 opacity-0 invisible" loading="lazy" referrerPolicy="no-referrer" onload="onThumbnailLoad(this)">
             </div>
             <div class="aspect-[3/4] rounded-3xl overflow-hidden bg-zinc-900 border border-zinc-800 group cursor-pointer hidden skeleton theme-photo-shade" data-gallery-index="11" onclick="openGallery(11)">
@@ -590,7 +587,7 @@
             <div class="aspect-[3/4] rounded-3xl overflow-hidden bg-zinc-900 border border-zinc-800 group cursor-pointer hidden skeleton theme-photo-shade" data-gallery-index="14" onclick="openGallery(14)">
               <img src="pictures/15.jpg" alt="Gallery 15" class="w-full h-full object-cover group-hover:scale-110 opacity-0 invisible" loading="lazy" referrerPolicy="no-referrer" onload="onThumbnailLoad(this)">
             </div>
-
+ 
             <div class="aspect-[3/4] rounded-3xl overflow-hidden bg-zinc-900 border border-zinc-800 group cursor-pointer hidden skeleton theme-photo-shade" data-gallery-index="15" onclick="openGallery(15)">
               <img src="pictures/16.jpg" alt="Gallery 16" class="w-full h-full object-cover group-hover:scale-110 opacity-0 invisible" loading="lazy" referrerPolicy="no-referrer" onload="onThumbnailLoad(this)">
             </div>
@@ -1049,6 +1046,6 @@
       });
     </script>
 
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
   </body>
 </html>
