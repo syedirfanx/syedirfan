@@ -530,11 +530,11 @@ function initStars() {
 const projectsData = {
   'disease-classification': {
     title: 'Rice Leaf Disease Detection using Machine Learning Techniques',
-    category: 'Publication and conference paper',
+    category: 'Publication',
     overview: 'This project presents a rice leaf disease detection system using machine learning approaches. Three of the most common rice plant diseases namely leaf smut, bacterial leaf blight and brown spot diseases are detected in this work. Clear images of affected rice leaves with white background were used as the input. After necessary pre-processing, the dataset was trained on with a range of different machine learning algorithms including that of KNN(K-Nearest Neighbour), J48(Decision Tree), Naive Bayes and Logistic Regression. Decision tree algorithm, after 10-fold cross validation, achieved an accuracy of over 97% when applied on the test dataset.',
     collaborators: ['Kawser Ahmed', 'Tasmia Rahman Shahidi', '<span class="text-white font-bold">Syed Irfan</span>', 'Sifat Momen'],
     github: 'closed',
-    document: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=MG9ta8wAAAAJ&authuser=1&citation_for_view=MG9ta8wAAAAJ:u5HHmVD_uO8C',
+    document: 'https://scholar.google.com/citations?view_op=list_works&hl=en&authuser=1&hl=en&user=MG9ta8wAAAAJ&authuser=1',
     tags: ['Machine Learning', 'Classification', 'Data Analysis']
   },
   'swarm-intelligence': {
@@ -837,7 +837,7 @@ const projectsData = {
     `,
     collaborators: ['<span class="text-white font-bold">Syed Irfan</span>', 'Georgios Samakovitis'],
     github: 'closed',
-    document: 'https://media.licdn.com/dms/document/media/v2/D4E1FAQE8MvVzlg7RRw/feedshare-document-pdf-analyzed/feedshare-document-pdf-analyzed/0/1702928307221?e=1776902400&v=beta&t=OBsarsp93QYk-b54VvLOHZyMViA8TTUkD6iSMg1Y1KM',
+    document: 'https://www.linkedin.com/posts/syedirfanx_blockchain-for-fintech-activity-7142599184020373504-mI22?',
     tags: ['ERC-20', 'Solidity', 'Ethereum', 'Smart Contracts', 'P2P Trading', 'OpenZeppelin']
   },
   'bank-transaction': {
@@ -884,7 +884,7 @@ const projectsData = {
     `,
     collaborators: ['<span class="text-white font-bold">Syed Irfan</span>', 'Georgios Samakovitis'],
     github: '#',
-    document: 'https://media.licdn.com/dms/document/media/v2/D4E1FAQGM6amBkKH2Ww/feedshare-document-pdf-analyzed/feedshare-document-pdf-analyzed/0/1703004327594?e=1776902400&v=beta&t=8vPpNT5_7Zlm8mX2oFmxVtV2eWBKZfpuC8QC1PlGGoY',
+    document: 'https://www.linkedin.com/posts/syedirfanx_anti-money-laundering-ugcPost-7142918121555652612-fhUW/',
     tags: ['Blockchain', 'FinTech', 'Smart Contracts']
   },
   'smart-door-lock': {
@@ -1500,7 +1500,7 @@ function renderProjects() {
 
     // Category Filter
     const matchesCategory = currentCategory === 'all' || 
-                           (currentCategory === 'Conference Paper' && (project.category === 'Conference Paper' || project.category === 'Publication and conference paper')) ||
+                           (currentCategory === 'Conference Paper' && (project.category === 'Conference Paper' || project.category === 'Publication')) ||
                            (currentCategory === 'Academic Project' && (project.category === 'Academic Project' || project.category === 'Thesis Research' || project.category === 'MSc Thesis')) ||
                            (currentCategory === 'Personal Innovation' && (project.category === 'Personal Innovation' || project.category === 'Personal Project')) ||
                            project.category === currentCategory;
@@ -1974,7 +1974,7 @@ function generateCVPDF() {
   
   // Brand Header
   doc.setFont("helvetica", "bold");
-  doc.setFontSize(24);
+  doc.setFontSize(28);
   doc.setTextColor(255, 255, 255);
   doc.setLineWidth(0.1);
   doc.setDrawColor(255, 255, 255);
@@ -1982,7 +1982,7 @@ function generateCVPDF() {
   
   // Tagline
   doc.setFont("helvetica", "normal");
-  doc.setFontSize(8);
+  doc.setFontSize(9.5);
   doc.setTextColor(161, 161, 170);
   doc.text('MACHINE LEARNING ENGINEER', 14, 28, { charSpace: 0.8 });
   
@@ -1991,17 +1991,45 @@ function generateCVPDF() {
   doc.line(14, 32, 50, 32);
 
   // Address under the underline
-  doc.setFontSize(7.5);
+  doc.setFontSize(8.5);
   doc.setTextColor(161, 161, 170); // Zinc-400 for consistency with tagline
-  doc.text('Dhaka, Bangladesh', 14, 38);
+  doc.text('Dhaka, Bangladesh', 14, 39);
 
   // Contact Info (Right Aligned in Header)
-  doc.setFontSize(7.5);
+  doc.setFontSize(8.5);
   doc.setTextColor(212, 212, 216); // Zinc-300
   const rightX = pageWidth - 14;
-  doc.text('syedirfaanx@outlook.com', rightX, 22, { align: 'right' });
-  doc.text('github.com/syedirfanx | linkedin.com/in/syedirfanx', rightX, 27, { align: 'right' });
-  doc.text('syedirfan.co.uk', rightX, 32, { align: 'right' });
+  
+  const emailStr = 'syedirfanx@outlook.com';
+  const githubStr = 'github.com/syedirfanx';
+  const linkedinStr = 'linkedin.com/in/syedirfanx';
+  const webStr = 'syedirfan.co.uk';
+
+  // Calculate widths for manual linking
+  const emailWidth = doc.getTextWidth(emailStr);
+  const linkedinWidth = doc.getTextWidth(linkedinStr);
+  const githubWidth = doc.getTextWidth(githubStr);
+  const webWidth = doc.getTextWidth(webStr);
+  const pipeWidth = doc.getTextWidth(' | ');
+
+  // Email
+  doc.text(emailStr, rightX, 22, { align: 'right' });
+  doc.link(rightX - emailWidth, 18, emailWidth, 6, { url: 'mailto:syedirfanx@outlook.com' });
+  
+  // LinkedIn
+  doc.text(linkedinStr, rightX, 27, { align: 'right' });
+  doc.link(rightX - linkedinWidth, 23, linkedinWidth, 6, { url: 'https://linkedin.com/in/syedirfanx' });
+  
+  // Pipe separator
+  doc.text(' | ', rightX - linkedinWidth, 27, { align: 'right' });
+  
+  // GitHub
+  doc.text(githubStr, rightX - linkedinWidth - pipeWidth, 27, { align: 'right' });
+  doc.link(rightX - linkedinWidth - pipeWidth - githubWidth, 23, githubWidth, 6, { url: 'https://github.com/syedirfanx' });
+
+  // Website
+  doc.text(webStr, rightX, 32, { align: 'right' });
+  doc.link(rightX - webWidth, 28, webWidth, 6, { url: 'https://syedirfan.co.uk' });
 
   let yPos = 70;
 
@@ -2013,34 +2041,37 @@ function generateCVPDF() {
       yPos = 20;
     }
     doc.setFont("helvetica", "bold");
-    doc.setFontSize(10);
+    doc.setFontSize(12);
     doc.setTextColor(24, 24, 27);
     doc.text(title.toUpperCase(), 14, yPos);
     doc.setDrawColor(228, 228, 231); // Zinc-200
-    doc.setLineWidth(0.2);
+    doc.setLineWidth(0.3);
     doc.line(14, yPos + 2, pageWidth - 14, yPos + 2);
     yPos += 10;
   };
 
   // 2. Education Section
   addSectionTitle('Education');
-  doc.setFontSize(9);
+  doc.setFontSize(11);
   doc.setFont("helvetica", "bold");
   doc.text('Master of Science (MSc) in Data Science', 14, yPos);
   doc.setFont("helvetica", "normal");
+  doc.setFontSize(10);
   doc.setTextColor(113, 113, 122);
   doc.text('2022 - 2023', pageWidth - 14, yPos, { align: 'right' });
   doc.setTextColor(39, 39, 42);
-  doc.text('University of Greenwich, London, UK', 14, yPos + 5);
-  yPos += 12;
+  doc.text('University of Greenwich, London, UK', 14, yPos + 6);
+  yPos += 14;
   
   doc.setFont("helvetica", "bold");
+  doc.setFontSize(11);
   doc.text('Bachelor of Science (BSc) in Computer Science & Engineering', 14, yPos);
   doc.setFont("helvetica", "normal");
+  doc.setFontSize(10);
   doc.setTextColor(113, 113, 122);
   doc.text('2015 - 2020', pageWidth - 14, yPos, { align: 'right' });
   doc.setTextColor(39, 39, 42);
-  doc.text('North South University, Dhaka, Bangladesh', 14, yPos + 5);
+  doc.text('North South University, Dhaka, Bangladesh', 14, yPos + 6);
   yPos += 18;
 
   // 3. Work Experience
@@ -2056,28 +2087,30 @@ function generateCVPDF() {
       yPos = 20;
     }
     doc.setFont("helvetica", "bold");
+    doc.setFontSize(11);
     doc.setTextColor(24, 24, 27);
     doc.text(exp.role, 14, yPos);
     
     doc.setFont("helvetica", "normal");
+    doc.setFontSize(10);
     doc.setTextColor(113, 113, 122);
     doc.text(exp.period, pageWidth - 14, yPos, { align: 'right' });
     
     doc.setTextColor(39, 39, 42);
-    doc.text(`${exp.org} • ${exp.location}`, 14, yPos + 5);
-    yPos += 13;
+    doc.text(`${exp.org} • ${exp.location}`, 14, yPos + 6);
+    yPos += 14;
   });
-  yPos += 5;
+  yPos += 2;
 
   // 4. Publication (One primary)
   addSectionTitle('Publications');
   doc.setFont("helvetica", "normal");
-  doc.setFontSize(9);
+  doc.setFontSize(10.5);
   doc.setTextColor(39, 39, 42);
   const pub = "• Rice Leaf Disease Detection using Machine Learning Techniques. (Presented at International Conference on Sustainable Technologies for Industry 4.0)";
   const pubLines = doc.splitTextToSize(pub, pageWidth - 28);
   doc.text(pubLines, 14, yPos);
-  yPos += (pubLines.length * 5) + 7;
+  yPos += (pubLines.length * 6) + 4;
 
   // 5. Research & Projects (Curated)
   addSectionTitle('Selected Research & Projects');
@@ -2097,12 +2130,12 @@ function generateCVPDF() {
   
   selectedProjects.forEach(proj => {
     doc.setFont("helvetica", "bold");
-    doc.setFontSize(9);
+    doc.setFontSize(10.5);
     doc.setTextColor(24, 24, 27);
     doc.text(`• ${proj.title}`, 14, yPos);
     
     doc.setFont("helvetica", "italic");
-    doc.setFontSize(8);
+    doc.setFontSize(9);
     doc.setTextColor(113, 113, 122);
     doc.text(proj.cat, pageWidth - 14, yPos, { align: 'right' });
     
@@ -2115,18 +2148,18 @@ function generateCVPDF() {
     }
   });
 
-  // Force Skills to next page as requested
-  if (doc.internal.getNumberOfPages() === 1) {
+  // Force Skills to next page if yPos is getting high
+  if (yPos > 200 || doc.internal.getNumberOfPages() === 1) {
     doc.addPage();
     yPos = 20;
   }
-  yPos += 8;
+  yPos += 4;
 
   // 6. Skills (5-8)
   addSectionTitle('Technical Skills');
   const skills = ['Python (PyTorch, TensorFlow)', 'Computer Vision (CNNs, GANs)', 'Natural Language Processing', 'Data Engineering (SQL, Pandas)', 'Mobile Dev (Flutter, Firebase)', 'Cloud (Google Cloud Platform)', 'Machine Learning (Scikit-learn)', 'Blockchain (Solidity)'];
   doc.setFont("helvetica", "normal");
-  doc.setFontSize(9);
+  doc.setFontSize(10.5);
   doc.setTextColor(39, 39, 42);
   doc.text(skills.join('  •  '), 14, yPos, { maxWidth: pageWidth - 28 });
   yPos += 18;
@@ -2134,27 +2167,32 @@ function generateCVPDF() {
   // 7. Extra-Curricular
   addSectionTitle('Leadership & Activities');
   doc.setFont("helvetica", "bold");
-  doc.setFontSize(9);
+  doc.setFontSize(10.5);
   doc.setTextColor(24, 24, 27);
   doc.text('Charter Member | Toastmasters International', 14, yPos);
   doc.setFont("helvetica", "normal");
+  doc.setFontSize(9.5);
   doc.setTextColor(113, 113, 122);
   doc.text('2017 - 2018', pageWidth - 14, yPos, { align: 'right' });
   yPos += 6;
   doc.setFont("helvetica", "bold");
+  doc.setFontSize(10.5);
   doc.setTextColor(24, 24, 27);
   doc.text('Team Member | NSU Problem Solvers', 14, yPos);
   doc.setFont("helvetica", "normal");
+  doc.setFontSize(9.5);
   doc.setTextColor(113, 113, 122);
   doc.text('2017', pageWidth - 14, yPos, { align: 'right' });
   yPos += 6;
   doc.setFont("helvetica", "bold");
+  doc.setFontSize(10.5);
   doc.setTextColor(24, 24, 27);
   doc.text('Student Chapter Member | North South University ACM Student Chapter', 14, yPos);
   doc.setFont("helvetica", "normal");
+  doc.setFontSize(9.5);
   doc.setTextColor(113, 113, 122);
   doc.text('2018', pageWidth - 14, yPos, { align: 'right' });
-  yPos += 15;
+  yPos += 12;
 
   // 8. References
   addSectionTitle('References');
@@ -2180,20 +2218,20 @@ function generateCVPDF() {
       yPos = 20;
     }
     doc.setFont("helvetica", "bold");
-    doc.setFontSize(9);
+    doc.setFontSize(11);
     doc.setTextColor(24, 24, 27);
     doc.text(ref.name, x, yPos);
     
     doc.setFont("helvetica", "normal");
-    doc.setFontSize(8.5);
+    doc.setFontSize(10);
     doc.setTextColor(39, 39, 42);
-    doc.text(ref.title, x, yPos + 5);
-    doc.text(ref.org, x, yPos + 9);
+    doc.text(ref.title, x, yPos + 6);
+    doc.text(ref.org, x, yPos + 11);
     doc.setTextColor(113, 113, 122);
-    doc.text(`Email: ${ref.email}`, x, yPos + 13);
+    doc.text(`Email: ${ref.email}`, x, yPos + 16);
     
     if (index % 2 !== 0 || index === refs.length - 1) {
-      yPos += 25;
+      yPos += 30;
     }
   });
   
@@ -2201,7 +2239,7 @@ function generateCVPDF() {
   const pageCount = doc.internal.getNumberOfPages();
   for(let i = 1; i <= pageCount; i++) {
     doc.setPage(i);
-    doc.setFontSize(7);
+    doc.setFontSize(8);
     doc.setTextColor(161, 161, 170);
     doc.text(`Page ${i} of ${pageCount} | Generated on ${new Date().toLocaleDateString()} | syedirfan.co.uk`, 14, doc.internal.pageSize.height - 10);
   }
@@ -2283,7 +2321,7 @@ function generateProjectPortfolioPDF() {
 
       const tags = project.tags || [];
       const matchesCategory = currentCategory === 'all' || 
-                             (currentCategory === 'Conference Paper' && (project.category === 'Conference Paper' || project.category === 'Publication and conference paper')) ||
+                             (currentCategory === 'Conference Paper' && (project.category === 'Conference Paper' || project.category === 'Publication')) ||
                              (currentCategory === 'Academic Project' && (project.category === 'Academic Project' || project.category === 'Thesis Research' || project.category === 'MSc Thesis')) ||
                              (currentCategory === 'Personal Innovation' && (project.category === 'Personal Innovation' || project.category === 'Personal Project')) ||
                              project.category === currentCategory;
@@ -2302,7 +2340,7 @@ function generateProjectPortfolioPDF() {
     // Sort projects by specific category priority requested by consumer
     const categoryPriority = {
       'Conference Paper': 1,
-      'Publication and conference paper': 1,
+      'Publication': 1,
       'MSc Thesis': 2,
       'Thesis Research': 3,
       'Academic Project': 4,
@@ -2335,11 +2373,30 @@ function generateProjectPortfolioPDF() {
         if (!primaryUrl) primaryUrl = liveLink;
       }
       
-      const strippedOverview = stripHtml(p.overview);
+      const fullText = stripHtml(p.overview);
+      let shortDesc = fullText;
+      
+      // Smart extraction: try to get the first sentence
+      const firstSentenceMatch = fullText.match(/^[^.!?]+[.!?]/);
+      if (firstSentenceMatch) {
+        shortDesc = firstSentenceMatch[0];
+        // If first sentence is too long, truncate at word boundary
+        if (shortDesc.length > 130) {
+          const cutIndex = shortDesc.lastIndexOf(' ', 125);
+          shortDesc = shortDesc.substring(0, cutIndex > 0 ? cutIndex : 125) + '...';
+        }
+      } else {
+        // Fallback truncation at word boundary
+        if (fullText.length > 120) {
+          const cutIndex = fullText.lastIndexOf(' ', 115);
+          shortDesc = fullText.substring(0, cutIndex > 0 ? cutIndex : 115) + '...';
+        }
+      }
+
       rows.push([
         p.title,
         p.category || 'N/A',
-        strippedOverview.substring(0, 150) + (strippedOverview.length > 150 ? '...' : ''),
+        shortDesc,
         linkTextParts.join('\n\n')
       ]);
       // Store primary link for the whole cell click (fallback to gh then docs)
@@ -2352,15 +2409,16 @@ function generateProjectPortfolioPDF() {
     head: [columns],
     body: rows,
     startY: 60,
+    margin: { left: 14, right: 14 },
     rowPageBreak: 'avoid',
-    styles: { fontSize: 9, cellPadding: 6, font: "helvetica", halign: 'left', textColor: [39, 39, 42] },
+    styles: { fontSize: 10, cellPadding: 2.5, font: "helvetica", halign: 'left', textColor: [39, 39, 42] },
     headStyles: { fillStyle: 'F', fillColor: [24, 24, 27], textColor: [255, 255, 255], fontStyle: 'bold' },
-    alternateRowStyles: { fillColor: [250, 250, 250] },
+    alternateRowStyles: { fillColor: [228, 228, 231] },
     columnStyles: {
       0: { fontStyle: 'bold', cellWidth: 35, textColor: [0, 0, 0] },
-      1: { cellWidth: 30 },
-      2: { cellWidth: 65 },
-      3: { cellWidth: 50, textColor: [37, 99, 235], fontSize: 7 } 
+      1: { cellWidth: 33 },
+      2: { cellWidth: 77 },
+      3: { cellWidth: 'auto', textColor: [37, 99, 235], fontSize: 8.5 } 
     },
     didDrawCell: (data) => {
       if (data.column.index === 3 && data.cell.section === 'body') {
