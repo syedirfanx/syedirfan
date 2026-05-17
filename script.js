@@ -12,6 +12,8 @@ window.resetFilters = resetFilters;
 window.filterByCategory = filterByCategory;
 window.filterByStack = filterByStack;
 window.updateResetButton = updateResetButton;
+window.generateProjectPortfolioPDF = generateProjectPortfolioPDF;
+window.generateCVPDF = generateCVPDF;
 
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize loader first
@@ -1947,4 +1949,438 @@ async function initWishes() {
   }
 
   wishesSpot.classList.add('hidden');
+}
+
+/**
+ * Generates a dynamic PDF of all projects using jsPDF
+ */
+// --- CUSTOM CV GENERATION ---
+function generateCVPDF() {
+  const { jsPDF } = jspdf;
+  const doc = new jsPDF();
+  const pageWidth = doc.internal.pageSize.width;
+  
+  // 1. Header Background (Matching Portfolio)
+  doc.setFillColor(24, 24, 27);
+  doc.rect(0, 0, pageWidth, 55, 'F');
+  
+  // Dot grid pattern
+  doc.setFillColor(63, 63, 70);
+  for (let x = 5; x < pageWidth; x += 8) {
+    for (let y = 5; y < 50; y += 8) {
+      doc.circle(x, y, 0.15, 'F');
+    }
+  }
+  
+  // Brand Header
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(24);
+  doc.setTextColor(255, 255, 255);
+  doc.setLineWidth(0.1);
+  doc.setDrawColor(255, 255, 255);
+  doc.text('SYED IRFAN', 14, 22, { renderingMode: 'fillThenStroke' });
+  
+  // Tagline
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(8);
+  doc.setTextColor(161, 161, 170);
+  doc.text('MACHINE LEARNING ENGINEER', 14, 28, { charSpace: 0.8 });
+  
+  doc.setDrawColor(63, 63, 70);
+  doc.setLineWidth(0.3);
+  doc.line(14, 32, 50, 32);
+
+  // Address under the underline
+  doc.setFontSize(7.5);
+  doc.setTextColor(161, 161, 170); // Zinc-400 for consistency with tagline
+  doc.text('Dhaka, Bangladesh', 14, 38);
+
+  // Contact Info (Right Aligned in Header)
+  doc.setFontSize(7.5);
+  doc.setTextColor(212, 212, 216); // Zinc-300
+  const rightX = pageWidth - 14;
+  doc.text('syedirfaanx@outlook.com', rightX, 22, { align: 'right' });
+  doc.text('github.com/syedirfanx | linkedin.com/in/syedirfanx', rightX, 27, { align: 'right' });
+  doc.text('syedirfan.co.uk', rightX, 32, { align: 'right' });
+
+  let yPos = 70;
+
+  // Helper for Section Titles
+  const addSectionTitle = (title) => {
+    // Ensure enough space for section or add page
+    if (yPos > 260) {
+      doc.addPage();
+      yPos = 20;
+    }
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(10);
+    doc.setTextColor(24, 24, 27);
+    doc.text(title.toUpperCase(), 14, yPos);
+    doc.setDrawColor(228, 228, 231); // Zinc-200
+    doc.setLineWidth(0.2);
+    doc.line(14, yPos + 2, pageWidth - 14, yPos + 2);
+    yPos += 10;
+  };
+
+  // 2. Education Section
+  addSectionTitle('Education');
+  doc.setFontSize(9);
+  doc.setFont("helvetica", "bold");
+  doc.text('Master of Science (MSc) in Data Science', 14, yPos);
+  doc.setFont("helvetica", "normal");
+  doc.setTextColor(113, 113, 122);
+  doc.text('2022 - 2023', pageWidth - 14, yPos, { align: 'right' });
+  doc.setTextColor(39, 39, 42);
+  doc.text('University of Greenwich, London, UK', 14, yPos + 5);
+  yPos += 12;
+  
+  doc.setFont("helvetica", "bold");
+  doc.text('Bachelor of Science (BSc) in Computer Science & Engineering', 14, yPos);
+  doc.setFont("helvetica", "normal");
+  doc.setTextColor(113, 113, 122);
+  doc.text('2015 - 2020', pageWidth - 14, yPos, { align: 'right' });
+  doc.setTextColor(39, 39, 42);
+  doc.text('North South University, Dhaka, Bangladesh', 14, yPos + 5);
+  yPos += 18;
+
+  // 3. Work Experience
+  addSectionTitle('Work Experience');
+  const experiences = [
+    { role: 'Machine Learning Engineer', org: 'Career Break', location: 'London & Chattogram', period: 'Present' },
+    { role: 'Machine Learning Engineer', org: 'Codephilics', location: 'Dhaka, Bangladesh', period: '2020 - 2021' },
+    { role: 'Software Engineer', org: 'Swift71', location: 'Dhaka, Bangladesh', period: '2019 - 2020' }
+  ];
+  experiences.forEach(exp => {
+    if (yPos > 270) {
+      doc.addPage();
+      yPos = 20;
+    }
+    doc.setFont("helvetica", "bold");
+    doc.setTextColor(24, 24, 27);
+    doc.text(exp.role, 14, yPos);
+    
+    doc.setFont("helvetica", "normal");
+    doc.setTextColor(113, 113, 122);
+    doc.text(exp.period, pageWidth - 14, yPos, { align: 'right' });
+    
+    doc.setTextColor(39, 39, 42);
+    doc.text(`${exp.org} • ${exp.location}`, 14, yPos + 5);
+    yPos += 13;
+  });
+  yPos += 5;
+
+  // 4. Publication (One primary)
+  addSectionTitle('Publications');
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(9);
+  doc.setTextColor(39, 39, 42);
+  const pub = "• Rice Leaf Disease Detection using Machine Learning Techniques. (Presented at International Conference on Sustainable Technologies for Industry 4.0)";
+  const pubLines = doc.splitTextToSize(pub, pageWidth - 28);
+  doc.text(pubLines, 14, yPos);
+  yPos += (pubLines.length * 5) + 7;
+
+  // 5. Research & Projects (Curated)
+  addSectionTitle('Selected Research & Projects');
+  const selectedProjects = [
+    { title: 'Feature Selection using Swarm Intelligence Techniques', cat: 'MSc Thesis' },
+    { title: 'StarPals AI: Revolutionizing Talent Casting', cat: 'Personal Innovation' },
+    { title: 'Study Theatre: Live Streaming for Education', cat: 'Industrial Project' },
+    { title: 'Face Mask Detection & Warning Systems', cat: 'Industrial Project' },
+    { title: 'NID Card OCR System (Bangla & English)', cat: 'Industrial Project' },
+    { title: 'Secure Crowdfunding using BlockChain Technology', cat: 'Academic Project' },
+    { title: 'Bank Transaction Monitoring using BlockChain', cat: 'Academic Project' },
+    { title: 'Flight Booking System', cat: 'Academic Project' },
+    { title: 'Traffic Monitor App: GPS Speed Detection', cat: 'Academic Project' },
+    { title: 'Machine Overheat Detection (Arduino IoT)', cat: 'Academic Project' },
+    { title: 'AI Network Flow Prediction and Optimization', cat: 'Personal Project' }
+  ];
+  
+  selectedProjects.forEach(proj => {
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(9);
+    doc.setTextColor(24, 24, 27);
+    doc.text(`• ${proj.title}`, 14, yPos);
+    
+    doc.setFont("helvetica", "italic");
+    doc.setFontSize(8);
+    doc.setTextColor(113, 113, 122);
+    doc.text(proj.cat, pageWidth - 14, yPos, { align: 'right' });
+    
+    yPos += 7;
+    
+    // Check for page overflow
+    if (yPos > 275) {
+      doc.addPage();
+      yPos = 20;
+    }
+  });
+
+  // Force Skills to next page as requested
+  if (doc.internal.getNumberOfPages() === 1) {
+    doc.addPage();
+    yPos = 20;
+  }
+  yPos += 8;
+
+  // 6. Skills (5-8)
+  addSectionTitle('Technical Skills');
+  const skills = ['Python (PyTorch, TensorFlow)', 'Computer Vision (CNNs, GANs)', 'Natural Language Processing', 'Data Engineering (SQL, Pandas)', 'Mobile Dev (Flutter, Firebase)', 'Cloud (Google Cloud Platform)', 'Machine Learning (Scikit-learn)', 'Blockchain (Solidity)'];
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(9);
+  doc.setTextColor(39, 39, 42);
+  doc.text(skills.join('  •  '), 14, yPos, { maxWidth: pageWidth - 28 });
+  yPos += 18;
+
+  // 7. Extra-Curricular
+  addSectionTitle('Leadership & Activities');
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(9);
+  doc.setTextColor(24, 24, 27);
+  doc.text('Charter Member | Toastmasters International', 14, yPos);
+  doc.setFont("helvetica", "normal");
+  doc.setTextColor(113, 113, 122);
+  doc.text('2017 - 2018', pageWidth - 14, yPos, { align: 'right' });
+  yPos += 6;
+  doc.setFont("helvetica", "bold");
+  doc.setTextColor(24, 24, 27);
+  doc.text('Team Member | NSU Problem Solvers', 14, yPos);
+  doc.setFont("helvetica", "normal");
+  doc.setTextColor(113, 113, 122);
+  doc.text('2017', pageWidth - 14, yPos, { align: 'right' });
+  yPos += 6;
+  doc.setFont("helvetica", "bold");
+  doc.setTextColor(24, 24, 27);
+  doc.text('Student Chapter Member | North South University ACM Student Chapter', 14, yPos);
+  doc.setFont("helvetica", "normal");
+  doc.setTextColor(113, 113, 122);
+  doc.text('2018', pageWidth - 14, yPos, { align: 'right' });
+  yPos += 15;
+
+  // 8. References
+  addSectionTitle('References');
+  const refs = [
+    {
+      name: 'Dr Mohammad Majid al-Rifaie',
+      title: 'Professor in Artificial Intelligence',
+      org: 'University of Greenwich, London',
+      email: 'm.alrifaie@greenwich.ac.uk'
+    },
+    {
+      name: 'Dr Rajesh Palit',
+      title: 'Professor in Electrical and Computer Engineering',
+      org: 'North South University, Dhaka',
+      email: 'rajesh.palit@northsouth.edu'
+    }
+  ];
+
+  refs.forEach((ref, index) => {
+    const x = index % 2 === 0 ? 14 : (pageWidth / 2) + 5;
+    if (yPos > 260) {
+      doc.addPage();
+      yPos = 20;
+    }
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(9);
+    doc.setTextColor(24, 24, 27);
+    doc.text(ref.name, x, yPos);
+    
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(8.5);
+    doc.setTextColor(39, 39, 42);
+    doc.text(ref.title, x, yPos + 5);
+    doc.text(ref.org, x, yPos + 9);
+    doc.setTextColor(113, 113, 122);
+    doc.text(`Email: ${ref.email}`, x, yPos + 13);
+    
+    if (index % 2 !== 0 || index === refs.length - 1) {
+      yPos += 25;
+    }
+  });
+  
+  // Footer
+  const pageCount = doc.internal.getNumberOfPages();
+  for(let i = 1; i <= pageCount; i++) {
+    doc.setPage(i);
+    doc.setFontSize(7);
+    doc.setTextColor(161, 161, 170);
+    doc.text(`Page ${i} of ${pageCount} | Generated on ${new Date().toLocaleDateString()} | syedirfan.co.uk`, 14, doc.internal.pageSize.height - 10);
+  }
+
+  doc.save('Syed_Irfan_Website_CV.pdf');
+}
+
+function generateProjectPortfolioPDF() {
+  if (typeof jspdf === 'undefined') {
+    showToast('PDF library not loaded yet. Please ensure you are on the Research page.', 'Error');
+    return;
+  }
+
+  const { jsPDF } = jspdf;
+  const doc = new jsPDF();
+  
+  // Header Background (Zinc-900)
+  doc.setFillColor(24, 24, 27);
+  doc.rect(0, 0, doc.internal.pageSize.width, 50, 'F');
+  
+  // Add subtle dot grid pattern (matching website technical feel)
+  doc.setFillColor(63, 63, 70); // Zinc-700 dots
+  for (let x = 5; x < doc.internal.pageSize.width; x += 8) {
+    for (let y = 5; y < 45; y += 8) {
+      doc.circle(x, y, 0.15, 'F');
+    }
+  }
+  
+  // Brand Header
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(22);
+  doc.setTextColor(255, 255, 255);
+  // Simulate Extra Bold (800)
+  doc.setLineWidth(0.1);
+  doc.setDrawColor(255, 255, 255);
+  doc.text('SYED IRFAN', 14, 22, { renderingMode: 'fillThenStroke' });
+  
+  // Tagline
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(7.5);
+  doc.setTextColor(161, 161, 170); // Zinc-400
+  doc.text('MACHINE LEARNING ENGINEER', 14, 29, { charSpace: 0.8 });
+  
+  // Horizontal Rule
+  doc.setDrawColor(63, 63, 70); // Zinc-700
+  doc.setLineWidth(0.3);
+  doc.line(14, 33, 50, 33);
+
+  // Document Info
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(9);
+  doc.setTextColor(255, 255, 255);
+  doc.text('RESEARCH & PROJECTS', 14, 42);
+  
+  // Right side header info
+  doc.setFontSize(7.5);
+  doc.setTextColor(113, 113, 122); // Zinc-500
+  doc.text('syedirfan.co.uk/research', doc.internal.pageSize.width - 14, 22, { align: 'right' });
+  
+  const columns = ["Title", "Category", "Description", "Source / Link"];
+  const rows = [];
+  const linkData = [];
+  
+  // Helper to strip HTML tags from overview and normalize whitespace
+  const stripHtml = (html) => {
+    if (!html) return '';
+    const tmp = document.createElement("DIV");
+    tmp.innerHTML = html;
+    let text = tmp.textContent || tmp.innerText || "";
+    // Normalize: replace multiple spaces/newlines with a single space and trim
+    return text.replace(/\s+/g, ' ').trim();
+  };
+
+  // Convert projectsData to rows matching the Research page filters
+  if (typeof projectsData !== 'undefined') {
+    const filteredProjects = Object.entries(projectsData).filter(([id, project]) => {
+      // Filter out non-project items
+      if (id === 'greenwich' || id === 'nsu' || id.startsWith('exp-') || id.startsWith('collab-')) return false;
+
+      const tags = project.tags || [];
+      const matchesCategory = currentCategory === 'all' || 
+                             (currentCategory === 'Conference Paper' && (project.category === 'Conference Paper' || project.category === 'Publication and conference paper')) ||
+                             (currentCategory === 'Academic Project' && (project.category === 'Academic Project' || project.category === 'Thesis Research' || project.category === 'MSc Thesis')) ||
+                             (currentCategory === 'Personal Innovation' && (project.category === 'Personal Innovation' || project.category === 'Personal Project')) ||
+                             project.category === currentCategory;
+      
+      const matchesStack = currentStack === 'all' || 
+                          tags.some(tag => tag.toLowerCase().includes(currentStack.toLowerCase())) ||
+                          (currentStack === 'AI/ML/Data Science' && tags.some(tag => ['AI', 'ML', 'Deep Learning', 'CNN', 'GANs', 'Data Science', 'Machine Learning', 'Sentiment Analysis'].some(t => tag.includes(t)))) ||
+                          (currentStack === 'Web/Mobile App Dev' && tags.some(tag => ['Web', 'Full Stack', 'Backend', 'Mobile', 'Flutter', 'Android', 'iOS'].some(t => tag.includes(t))));
+
+      const searchContent = `${project.title} ${project.overview} ${project.category} ${tags.join(' ')}`.toLowerCase();
+      const matchesSearch = searchContent.includes(searchQuery.toLowerCase());
+
+      return matchesCategory && matchesStack && matchesSearch;
+    });
+
+    // Sort projects by specific category priority requested by consumer
+    const categoryPriority = {
+      'Conference Paper': 1,
+      'Publication and conference paper': 1,
+      'MSc Thesis': 2,
+      'Thesis Research': 3,
+      'Academic Project': 4,
+      'Industrial Project': 5,
+      'Personal Innovation': 6,
+      'Personal Project': 7
+    };
+
+    filteredProjects.sort((a, b) => {
+      const priorityA = categoryPriority[a[1].category] || 99;
+      const priorityB = categoryPriority[b[1].category] || 99;
+      return priorityA - priorityB;
+    });
+
+    filteredProjects.forEach(([id, p]) => {
+      // Extract links
+      let linkTextParts = [];
+      let primaryUrl = null;
+      
+      // Check GitHub
+      if (p.github && p.github.startsWith('http')) {
+        linkTextParts.push(p.github);
+        primaryUrl = p.github;
+      }
+
+      // Check Live Demo / Documentation
+      const liveLink = p.link || p.url || (p.document && p.document.startsWith('http') ? p.document : null);
+      if (liveLink && liveLink.startsWith('http')) {
+        linkTextParts.push(liveLink);
+        if (!primaryUrl) primaryUrl = liveLink;
+      }
+      
+      const strippedOverview = stripHtml(p.overview);
+      rows.push([
+        p.title,
+        p.category || 'N/A',
+        strippedOverview.substring(0, 150) + (strippedOverview.length > 150 ? '...' : ''),
+        linkTextParts.join('\n\n')
+      ]);
+      // Store primary link for the whole cell click (fallback to gh then docs)
+      linkData.push(primaryUrl);
+    });
+  }
+
+  // Generate Table
+  doc.autoTable({
+    head: [columns],
+    body: rows,
+    startY: 60,
+    rowPageBreak: 'avoid',
+    styles: { fontSize: 9, cellPadding: 6, font: "helvetica", halign: 'left', textColor: [39, 39, 42] },
+    headStyles: { fillStyle: 'F', fillColor: [24, 24, 27], textColor: [255, 255, 255], fontStyle: 'bold' },
+    alternateRowStyles: { fillColor: [250, 250, 250] },
+    columnStyles: {
+      0: { fontStyle: 'bold', cellWidth: 35, textColor: [0, 0, 0] },
+      1: { cellWidth: 30 },
+      2: { cellWidth: 65 },
+      3: { cellWidth: 50, textColor: [37, 99, 235], fontSize: 7 } 
+    },
+    didDrawCell: (data) => {
+      if (data.column.index === 3 && data.cell.section === 'body') {
+        const url = linkData[data.row.index];
+        if (url) {
+          doc.link(data.cell.x, data.cell.y, data.cell.width, data.cell.height, { url: url });
+        }
+      }
+    }
+  });
+
+  // Footer with Page Numbers
+  const pageCount = doc.internal.getNumberOfPages();
+  for(let i = 1; i <= pageCount; i++) {
+    doc.setPage(i);
+    doc.setFontSize(8);
+    doc.setTextColor(150, 150, 150);
+    doc.text(`Page ${i} of ${pageCount} | Generated on ${new Date().toLocaleDateString()} | syedirfan.co.uk`, 14, doc.internal.pageSize.height - 10);
+  }
+
+  // Save the PDF
+  doc.save('Syed_Irfan_Research_&_Projects.pdf');
 }
