@@ -2031,47 +2031,67 @@ function generateCVPDF() {
   doc.text(webStr, rightX, 32, { align: 'right' });
   doc.link(rightX - webWidth, 28, webWidth, 6, { url: 'https://syedirfan.co.uk' });
 
-  let yPos = 70;
+  let yPos = 72;
+  const LEFT_MARGIN = 14;
+  const RIGHT_MARGIN = 14;
+  const CONTENT_X = LEFT_MARGIN + 4; // Standardized alignment for content and header text
 
   // Helper for Section Titles
   const addSectionTitle = (title) => {
     // Ensure enough space for section or add page
-    if (yPos > 260) {
+    if (yPos > 245) {
       doc.addPage();
-      yPos = 20;
+      yPos = 30; 
     }
+
+    // Draw Dark Block Background (Zinc-950)
+    doc.setFillColor(24, 24, 27); 
+    doc.rect(LEFT_MARGIN, yPos - 7, pageWidth - (LEFT_MARGIN + RIGHT_MARGIN), 10, 'F');
+    
+    // Subtle left accent (White)
+    doc.setFillColor(255, 255, 255);
+    doc.rect(LEFT_MARGIN, yPos - 7, 1.5, 10, 'F');
+
     doc.setFont("helvetica", "bold");
-    doc.setFontSize(12);
-    doc.setTextColor(24, 24, 27);
-    doc.text(title.toUpperCase(), 14, yPos);
-    doc.setDrawColor(228, 228, 231); // Zinc-200
-    doc.setLineWidth(0.3);
-    doc.line(14, yPos + 2, pageWidth - 14, yPos + 2);
-    yPos += 10;
+    doc.setFontSize(10);
+    doc.setTextColor(255, 255, 255);
+    // Draw text vertically centered in the 10-unit block
+    doc.text(title.toUpperCase(), CONTENT_X, yPos - 0.5);
+    
+    yPos += 13; // Space after title block
   };
 
   // 2. Education Section
   addSectionTitle('Education');
-  doc.setFontSize(11);
-  doc.setFont("helvetica", "bold");
-  doc.text('Master of Science (MSc) in Data Science', 14, yPos);
-  doc.setFont("helvetica", "normal");
-  doc.setFontSize(10);
-  doc.setTextColor(113, 113, 122);
-  doc.text('2022 - 2023', pageWidth - 14, yPos, { align: 'right' });
-  doc.setTextColor(39, 39, 42);
-  doc.text('University of Greenwich, London, UK', 14, yPos + 6);
-  yPos += 14;
   
+  // MSc
+  doc.setFontSize(10.5);
   doc.setFont("helvetica", "bold");
-  doc.setFontSize(11);
-  doc.text('Bachelor of Science (BSc) in Computer Science & Engineering', 14, yPos);
+  doc.setTextColor(24, 24, 27);
+  doc.text('Master of Science (MSc) in Data Science', CONTENT_X, yPos);
+  
   doc.setFont("helvetica", "normal");
-  doc.setFontSize(10);
+  doc.setFontSize(9.5);
   doc.setTextColor(113, 113, 122);
-  doc.text('2015 - 2020', pageWidth - 14, yPos, { align: 'right' });
+  doc.text('2022 - 2023', pageWidth - RIGHT_MARGIN, yPos, { align: 'right' });
+  
   doc.setTextColor(39, 39, 42);
-  doc.text('North South University, Dhaka, Bangladesh', 14, yPos + 6);
+  doc.text('University of Greenwich, London, UK', CONTENT_X, yPos + 5.5);
+  yPos += 16;
+  
+  // BSc
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(10.5);
+  doc.setTextColor(24, 24, 27);
+  doc.text('Bachelor of Science (BSc) in Computer Science & Engineering', CONTENT_X, yPos);
+  
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(9.5);
+  doc.setTextColor(113, 113, 122);
+  doc.text('2015 - 2020', pageWidth - RIGHT_MARGIN, yPos, { align: 'right' });
+  
+  doc.setTextColor(39, 39, 42);
+  doc.text('North South University, Dhaka, Bangladesh', CONTENT_X, yPos + 5.5);
   yPos += 18;
 
   // 3. Work Experience
@@ -2081,36 +2101,37 @@ function generateCVPDF() {
     { role: 'Machine Learning Engineer', org: 'Codephilics', location: 'Dhaka, Bangladesh', period: '2020 - 2021' },
     { role: 'Software Engineer', org: 'Swift71', location: 'Dhaka, Bangladesh', period: '2019 - 2020' }
   ];
+  
   experiences.forEach(exp => {
-    if (yPos > 270) {
+    if (yPos > 260) {
       doc.addPage();
-      yPos = 20;
+      yPos = 30;
     }
     doc.setFont("helvetica", "bold");
-    doc.setFontSize(11);
+    doc.setFontSize(10.5);
     doc.setTextColor(24, 24, 27);
-    doc.text(exp.role, 14, yPos);
+    doc.text(exp.role, CONTENT_X, yPos);
     
     doc.setFont("helvetica", "normal");
-    doc.setFontSize(10);
+    doc.setFontSize(9.5);
     doc.setTextColor(113, 113, 122);
-    doc.text(exp.period, pageWidth - 14, yPos, { align: 'right' });
+    doc.text(exp.period, pageWidth - RIGHT_MARGIN, yPos, { align: 'right' });
     
     doc.setTextColor(39, 39, 42);
-    doc.text(`${exp.org} • ${exp.location}`, 14, yPos + 6);
+    doc.text(`${exp.org} • ${exp.location}`, CONTENT_X, yPos + 5.5);
     yPos += 14;
   });
-  yPos += 2;
+  yPos += 8;
 
   // 4. Publication (One primary)
   addSectionTitle('Publications');
   doc.setFont("helvetica", "normal");
-  doc.setFontSize(10.5);
+  doc.setFontSize(10);
   doc.setTextColor(39, 39, 42);
   const pub = "• Rice Leaf Disease Detection using Machine Learning Techniques. (Presented at International Conference on Sustainable Technologies for Industry 4.0)";
-  const pubLines = doc.splitTextToSize(pub, pageWidth - 28);
-  doc.text(pubLines, 14, yPos);
-  yPos += (pubLines.length * 6) + 4;
+  const pubLines = doc.splitTextToSize(pub, pageWidth - (CONTENT_X + RIGHT_MARGIN));
+  doc.text(pubLines, CONTENT_X, yPos);
+  yPos += (pubLines.length * 6) + 14;
 
   // 5. Research & Projects (Curated)
   addSectionTitle('Selected Research & Projects');
@@ -2129,69 +2150,63 @@ function generateCVPDF() {
   ];
   
   selectedProjects.forEach(proj => {
+    if (yPos > 275) {
+      doc.addPage();
+      yPos = 30;
+    }
     doc.setFont("helvetica", "bold");
-    doc.setFontSize(10.5);
+    doc.setFontSize(10);
     doc.setTextColor(24, 24, 27);
-    doc.text(`• ${proj.title}`, 14, yPos);
+    doc.text(`• ${proj.title}`, CONTENT_X, yPos);
     
     doc.setFont("helvetica", "italic");
     doc.setFontSize(9);
     doc.setTextColor(113, 113, 122);
-    doc.text(proj.cat, pageWidth - 14, yPos, { align: 'right' });
+    doc.text(proj.cat, pageWidth - RIGHT_MARGIN, yPos, { align: 'right' });
     
     yPos += 7;
-    
-    // Check for page overflow
-    if (yPos > 275) {
-      doc.addPage();
-      yPos = 20;
-    }
   });
+  yPos += 14;
 
-  // Force Skills to next page if yPos is getting high
-  if (yPos > 200 || doc.internal.getNumberOfPages() === 1) {
+  // 6. Skills
+  if (yPos > 220) {
     doc.addPage();
-    yPos = 20;
+    yPos = 30;
   }
-  yPos += 4;
-
-  // 6. Skills (5-8)
   addSectionTitle('Technical Skills');
-  const skills = ['Python (PyTorch, TensorFlow)', 'Computer Vision (CNNs, GANs)', 'Natural Language Processing', 'Data Engineering (SQL, Pandas)', 'Mobile Dev (Flutter, Firebase)', 'Cloud (Google Cloud Platform)', 'Machine Learning (Scikit-learn)', 'Blockchain (Solidity)'];
+  const skillsList = ['Python (PyTorch, TensorFlow)', 'Computer Vision (CNNs, GANs)', 'Natural Language Processing', 'Data Engineering (SQL, Pandas)', 'Mobile Dev (Flutter, Firebase)', 'Cloud (Google Cloud Platform)', 'Machine Learning (Scikit-learn)', 'Blockchain (Solidity)'];
   doc.setFont("helvetica", "normal");
-  doc.setFontSize(10.5);
+  doc.setFontSize(10);
   doc.setTextColor(39, 39, 42);
-  doc.text(skills.join('  •  '), 14, yPos, { maxWidth: pageWidth - 28 });
-  yPos += 18;
+  const skillsText = skillsList.join('  •  ');
+  const skillLines = doc.splitTextToSize(skillsText, pageWidth - (CONTENT_X + RIGHT_MARGIN));
+  doc.text(skillLines, CONTENT_X, yPos);
+  yPos += (skillLines.length * 6) + 14; 
 
   // 7. Extra-Curricular
   addSectionTitle('Leadership & Activities');
-  doc.setFont("helvetica", "bold");
-  doc.setFontSize(10.5);
-  doc.setTextColor(24, 24, 27);
-  doc.text('Charter Member | Toastmasters International', 14, yPos);
-  doc.setFont("helvetica", "normal");
-  doc.setFontSize(9.5);
-  doc.setTextColor(113, 113, 122);
-  doc.text('2017 - 2018', pageWidth - 14, yPos, { align: 'right' });
-  yPos += 6;
-  doc.setFont("helvetica", "bold");
-  doc.setFontSize(10.5);
-  doc.setTextColor(24, 24, 27);
-  doc.text('Team Member | NSU Problem Solvers', 14, yPos);
-  doc.setFont("helvetica", "normal");
-  doc.setFontSize(9.5);
-  doc.setTextColor(113, 113, 122);
-  doc.text('2017', pageWidth - 14, yPos, { align: 'right' });
-  yPos += 6;
-  doc.setFont("helvetica", "bold");
-  doc.setFontSize(10.5);
-  doc.setTextColor(24, 24, 27);
-  doc.text('Student Chapter Member | North South University ACM Student Chapter', 14, yPos);
-  doc.setFont("helvetica", "normal");
-  doc.setFontSize(9.5);
-  doc.setTextColor(113, 113, 122);
-  doc.text('2018', pageWidth - 14, yPos, { align: 'right' });
+  const extracurriculars = [
+    { title: 'Charter Member | Toastmasters International', period: '2017 - 2018' },
+    { title: 'Team Member | NSU Problem Solvers', period: '2017' },
+    { title: 'Student Chapter Member | NSU ACM Student Chapter', period: '2018' }
+  ];
+  
+  extracurriculars.forEach(item => {
+    if (yPos > 275) {
+      doc.addPage();
+      yPos = 30;
+    }
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(10);
+    doc.setTextColor(24, 24, 27);
+    doc.text(item.title, CONTENT_X, yPos);
+    
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(9);
+    doc.setTextColor(113, 113, 122);
+    doc.text(item.period, pageWidth - RIGHT_MARGIN, yPos, { align: 'right' });
+    yPos += 7;
+  });
   yPos += 12;
 
   // 8. References
@@ -2212,26 +2227,26 @@ function generateCVPDF() {
   ];
 
   refs.forEach((ref, index) => {
-    const x = index % 2 === 0 ? 14 : (pageWidth / 2) + 5;
-    if (yPos > 260) {
+    const x = index % 2 === 0 ? CONTENT_X : (pageWidth / 2) + 4;
+    if (yPos > 250) {
       doc.addPage();
-      yPos = 20;
+      yPos = 30;
     }
     doc.setFont("helvetica", "bold");
-    doc.setFontSize(11);
+    doc.setFontSize(10.5);
     doc.setTextColor(24, 24, 27);
     doc.text(ref.name, x, yPos);
     
     doc.setFont("helvetica", "normal");
-    doc.setFontSize(10);
+    doc.setFontSize(9.5);
     doc.setTextColor(39, 39, 42);
-    doc.text(ref.title, x, yPos + 6);
-    doc.text(ref.org, x, yPos + 11);
+    doc.text(ref.title, x, yPos + 5.5);
+    doc.text(ref.org, x, yPos + 10);
     doc.setTextColor(113, 113, 122);
-    doc.text(`Email: ${ref.email}`, x, yPos + 16);
+    doc.text(`Email: ${ref.email}`, x, yPos + 14.5);
     
     if (index % 2 !== 0 || index === refs.length - 1) {
-      yPos += 30;
+      yPos += 28;
     }
   });
   
