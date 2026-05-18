@@ -2000,7 +2000,7 @@ function generateCVPDF() {
   doc.setTextColor(212, 212, 216); // Zinc-300
   const rightX = pageWidth - 14;
   
-  const emailStr = 'syedirfanx@outlook.com';
+  const emailStr = 'syedirfaanx@gmail.com';
   const githubStr = 'github.com/syedirfanx';
   const linkedinStr = 'linkedin.com/in/syedirfanx';
   const webStr = 'syedirfan.co.uk';
@@ -2014,7 +2014,7 @@ function generateCVPDF() {
 
   // Email
   doc.text(emailStr, rightX, 22, { align: 'right' });
-  doc.link(rightX - emailWidth, 18, emailWidth, 6, { url: 'mailto:syedirfanx@outlook.com' });
+  doc.link(rightX - emailWidth, 18, emailWidth, 6, { url: 'mailto:syedirfaanx@gmail.com' });
   
   // LinkedIn
   doc.text(linkedinStr, rightX, 27, { align: 'right' });
@@ -2098,8 +2098,9 @@ function generateCVPDF() {
   addSectionTitle('Work Experience');
   const experiences = [
     { role: 'Machine Learning Engineer', org: 'Career Break', location: 'London & Chattogram', period: 'Present' },
-    { role: 'Machine Learning Engineer', org: 'Codephilics', location: 'Dhaka, Bangladesh', period: '2020 - 2021' },
-    { role: 'Software Engineer', org: 'Swift71', location: 'Dhaka, Bangladesh', period: '2019 - 2020' }
+    { role: 'Software Engineer', org: 'Swift71', location: 'Dhaka, Bangladesh', period: '2020 - 2021' },
+    { role: 'Machine Learning Engineer', org: 'Codephilics', location: 'Dhaka, Bangladesh', period: '2020' },
+    { role: 'Research Assistant', org: 'North South University', location: 'Dhaka, Bangladesh', period: '2019 - 2020' }
   ];
   
   experiences.forEach(exp => {
@@ -2208,6 +2209,32 @@ function generateCVPDF() {
     yPos += 7;
   });
   yPos += 12;
+
+  // 7. Languages
+  addSectionTitle('Languages');
+  const languages = [
+    { name: 'Bangla', level: 'Native or bilingual proficiency' },
+    { name: 'English', level: 'Professional working proficiency' },
+    { name: 'Hindi', level: 'Elementary proficiency' }
+  ];
+  
+  languages.forEach((lang) => {
+    if (yPos > 275) {
+      doc.addPage();
+      yPos = 30;
+    }
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(10);
+    doc.setTextColor(24, 24, 27);
+    doc.text(lang.name, CONTENT_X, yPos);
+    
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(9);
+    doc.setTextColor(113, 113, 122);
+    doc.text(lang.level, CONTENT_X, yPos + 4.5);
+    yPos += 11;
+  });
+  yPos += 6;
 
   // 8. References
   addSectionTitle('References');
