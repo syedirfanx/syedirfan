@@ -1810,6 +1810,8 @@ window.addEventListener('popstate', (event) => {
   }
 });
 
+let videoAutoCloseTimeout = null;
+
 /**
  * Video Intro Modal Logic
  */
@@ -1820,6 +1822,12 @@ function openVideoIntro() {
   const overlay = document.getElementById('video-neural-overlay');
   
   if (!modal || !content || !video) return;
+
+  // Clear any existing timeout
+  if (videoAutoCloseTimeout) {
+    clearTimeout(videoAutoCloseTimeout);
+    videoAutoCloseTimeout = null;
+  }
 
   modal.classList.remove('hidden');
   modal.style.display = 'block';
@@ -1858,6 +1866,13 @@ function openVideoIntro() {
     }, 1500); // 1.5s delay for futuristic feel
   };
 
+  // Add listener for auto-close
+  video.onended = () => {
+    videoAutoCloseTimeout = setTimeout(() => {
+      closeVideoIntro();
+    }, 5000);
+  };
+
   // Wait for enough data to play or just timeout
   if (video.readyState >= 3) {
     startVideo();
@@ -1878,8 +1893,15 @@ function closeVideoIntro(fromPopState = false) {
   
   if (!modal || !content || !video) return;
 
+  // Clear auto-close timeout if exists
+  if (videoAutoCloseTimeout) {
+    clearTimeout(videoAutoCloseTimeout);
+    videoAutoCloseTimeout = null;
+  }
+
   // Pause video
   video.pause();
+  video.onended = null; // Remove listener
 
   content.classList.remove('scale-100', 'opacity-100');
   content.classList.add('scale-95', 'opacity-0');
