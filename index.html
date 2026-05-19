@@ -146,6 +146,10 @@
                 <i data-lucide="download" class="w-4 h-4"></i>
                 Download CV
               </button>
+              <button onclick="openVideoIntro()" class="px-8 py-3.5 bg-zinc-950 border border-zinc-800 text-white rounded-full font-bold hover:bg-zinc-900 hover:border-zinc-700 hover:scale-[1.02] active:scale-[0.98] transition-all w-full sm:w-auto text-center inline-flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-black/20">
+                <i data-lucide="play" class="w-4 h-4"></i>
+                Demo Intro
+              </button>
             </div>
           </div>
 
@@ -463,6 +467,35 @@
 
             <div id="modal-tags" class="flex flex-wrap gap-2 pt-6"></div>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Video Intro Modal -->
+    <div id="video-modal" class="fixed inset-0 z-[100] hidden overflow-y-auto">
+      <div class="fixed inset-0 bg-black/90 backdrop-blur-md" onclick="window.closeVideoIntro()"></div>
+      <div class="relative min-h-screen flex items-center justify-center p-4 pointer-events-none">
+        <div class="bg-black border border-zinc-800 w-full max-w-4xl rounded-3xl shadow-2xl overflow-hidden pointer-events-auto transform transition-all scale-95 opacity-0 duration-300" id="video-modal-content" onclick="event.stopPropagation()">
+          <div class="relative pb-[56.25%] h-0 bg-zinc-950">
+            <!-- Neural Overlay -->
+            <div id="video-neural-overlay" class="absolute inset-0 z-10 flex flex-col items-center justify-center bg-black transition-opacity duration-1000">
+              <div class="loader-visual scale-75">
+                <div class="loader-ring"></div>
+                <div class="loader-ring"></div>
+                <div class="loader-ring"></div>
+                <div class="loader-core"></div>
+              </div>
+              <div class="mt-4 font-mono text-[10px] uppercase tracking-[0.4em] text-zinc-500 animate-pulse">Initializing Interface...</div>
+            </div>
+
+            <video id="intro-video" class="absolute top-0 left-0 w-full h-full">
+              <source src="/videos/syed-irfan-demo-intro.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <button onclick="window.closeVideoIntro()" class="absolute top-4 right-4 p-2 bg-black/50 hover:bg-black text-white rounded-full transition-colors z-20 cursor-pointer shadow-lg">
+            <i data-lucide="x" class="w-6 h-6"></i>
+          </button>
         </div>
       </div>
     </div>

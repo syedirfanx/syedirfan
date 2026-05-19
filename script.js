@@ -14,6 +14,8 @@ window.filterByStack = filterByStack;
 window.updateResetButton = updateResetButton;
 window.generateProjectPortfolioPDF = generateProjectPortfolioPDF;
 window.generateCVPDF = generateCVPDF;
+window.openVideoIntro = openVideoIntro;
+window.closeVideoIntro = closeVideoIntro;
 
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize loader first
@@ -1800,12 +1802,98 @@ window.addEventListener('popstate', (event) => {
   // Close any open modals or menus when back button is pressed
   closeProjectModal(true);
   closeMobileMenu(true);
+  closeVideoIntro(true);
   
   // Also handle gallery modal if it exists (defined in favorites.html)
   if (typeof closeGallery === 'function') {
     closeGallery(true);
   }
 });
+
+/**
+ * Video Intro Modal Logic
+ */
+function openVideoIntro() {
+  const modal = document.getElementById('video-modal');
+  const content = document.getElementById('video-modal-content');
+  const video = document.getElementById('intro-video');
+  const overlay = document.getElementById('video-neural-overlay');
+  
+  if (!modal || !content || !video) return;
+
+  modal.classList.remove('hidden');
+  modal.style.display = 'block';
+  document.body.style.overflow = 'hidden';
+
+  // Handle Lucide Icons within the modal
+  if (typeof lucide !== 'undefined') {
+    lucide.createIcons();
+  }
+
+  // Reset overlay
+  if (overlay) {
+    overlay.style.opacity = '1';
+    overlay.classList.remove('hidden');
+  }
+
+  // Animate in
+  setTimeout(() => {
+    content.classList.remove('scale-95', 'opacity-0');
+    content.classList.add('scale-100', 'opacity-100');
+  }, 10);
+
+  // Play video with intro delay
+  video.currentTime = 0;
+  
+  const startVideo = () => {
+    setTimeout(() => {
+      if (overlay) overlay.style.opacity = '0';
+      video.play().catch(e => {
+        console.warn('Auto-play blocked or failed:', e);
+        video.controls = true;
+      });
+      setTimeout(() => {
+        if (overlay) overlay.classList.add('hidden');
+      }, 1000);
+    }, 1500); // 1.5s delay for futuristic feel
+  };
+
+  // Wait for enough data to play or just timeout
+  if (video.readyState >= 3) {
+    startVideo();
+  } else {
+    video.addEventListener('canplay', startVideo, { once: true });
+  }
+
+  // Push state
+  if (!history.state || history.state.modal !== 'video') {
+    history.pushState({ modal: 'video' }, '');
+  }
+}
+
+function closeVideoIntro(fromPopState = false) {
+  const modal = document.getElementById('video-modal');
+  const content = document.getElementById('video-modal-content');
+  const video = document.getElementById('intro-video');
+  
+  if (!modal || !content || !video) return;
+
+  // Pause video
+  video.pause();
+
+  content.classList.remove('scale-100', 'opacity-100');
+  content.classList.add('scale-95', 'opacity-0');
+
+  setTimeout(() => {
+    modal.classList.add('hidden');
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+  }, 300);
+
+  if (!fromPopState && history.state && history.state.modal === 'video') {
+    history.back();
+  }
+}
 
 // Wishes Spot Logic
 async function initWishes() {
