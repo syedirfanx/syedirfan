@@ -352,6 +352,11 @@ body {
   transform: translateY(0) scale(1);
 }
 
+/* Slide Down hints only show under full desktop snapping conditions */
+.slide-down-hint {
+  display: none !important;
+}
+
 @media (min-width: 1024px) and (min-height: 750px) {
   html.home-page-snap {
     scroll-snap-type: y mandatory;
@@ -366,6 +371,12 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  
+  html.home-page-snap .slide-down-hint {
+    display: flex !important;
   }
   
   html.home-page-snap footer {

@@ -75,7 +75,10 @@ function initSlideObserver() {
           activeDot.classList.add('bg-white', 'scale-125');
         }
       } else {
-        entry.target.classList.remove('slide-active');
+        const isDesktopSnap = window.matchMedia('(min-width: 1024px) and (min-height: 750px)').matches;
+        if (isDesktopSnap) {
+          entry.target.classList.remove('slide-active');
+        }
       }
     });
   }, observerOptions);
@@ -2390,7 +2393,7 @@ async function initWishes() {
 
   const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#&$%§*+=-";
 
-  const solveText = async (targetText, iterations = 10) => {
+  const solveText = async (targetText) => {
     const isBangla = /[\u0980-\u09FF]/.test(targetText);
     if (isBangla) decodeText.classList.add('font-bangla');
     else decodeText.classList.remove('font-bangla');
@@ -2431,7 +2434,8 @@ async function initWishes() {
     decodeText.textContent = "";
   };
 
-  const startCycling = async (title, message) => {
+  const startCycling = async (phrases) => {
+    if (!phrases || phrases.length === 0) return;
     wishesSpot.classList.remove('hidden');
 
     if (particlesContainer) {
@@ -2446,42 +2450,75 @@ async function initWishes() {
         particle.style.height = `${size}px`;
         particle.style.setProperty('--duration', `${duration}s`);
         particle.style.setProperty('--x-drift', `${(Math.random() - 0.5) * 30}px`);
-        const color = `hsl(${210 + Math.random() * 20}, 100%, 75%)`; // Precise tech blue
+        const brightness = 200 + Math.floor(Math.random() * 55); // beautiful soft translucent silver-white sparkle
+        const color = `rgba(${brightness}, ${brightness}, ${brightness}, ${0.4 + Math.random() * 0.4})`;
         particle.style.background = color;
         particle.style.color = color;
-        particle.style.boxShadow = `0 0 4px ${color}`;
+        particle.style.boxShadow = `0 0 4px rgba(255, 255, 255, 0.2)`;
         particlesContainer.appendChild(particle);
         setTimeout(() => particle.remove(), duration * 1000);
       }, 600);
     }
 
-    const phrases = [title, message];
     let index = 0;
     while (true) {
       await solveText(phrases[index]);
-      await new Promise(r => setTimeout(r, 5000));
+      await new Promise(r => setTimeout(r, 4500)); // Visible duration
       await clearText();
-      await new Promise(r => setTimeout(r, 1000));
+      await new Promise(r => setTimeout(r, 800)); // Gap before next entry
       index = (index + 1) % phrases.length;
     }
   };
 
   // 1. Check Fixed National/International Days
   const fixedDays = [
-    { month: 4, day: 13, title: "শুভ নববর্ষ!", message: "সবাইকে বাংলা নববর্ষের শুভেচ্ছা।" },
-    { month: 2, day: 21, title: "International Mother Language Day", message: "Remembering the Language Martyrs" },
-    { month: 3, day: 26, title: "Independence Day", message: "Celebrating freedom and unity" },
-    { month: 12, day: 16, title: "Victory Day", message: "The red and green flag flies high" }
+    {
+      month: 2,
+      day: 21,
+      phrases: [
+        "আমার ভাইয়ের রক্তে রাঙানো একুশে ফেব্রুয়ারি",
+        "ভাষা শহীদদের প্রতি গভীর শ্রদ্ধা",
+        "International Mother Language Day",
+        "Remembering the Language Martyrs"
+      ]
+    },
+    {
+      month: 3,
+      day: 26,
+      phrases: [
+        "Happy Independence Day",
+        "Celebrating freedom and unity"
+      ]
+    },
+    {
+      month: 4,
+      day: 13,
+      phrases: [
+        "শুভ নববর্ষ!",
+        "সবাইকে বাংলা নববর্ষের শুভেচ্ছা"
+      ]
+    },
+    {
+      month: 12,
+      day: 16,
+      phrases: [
+        "Happy Victory Day",
+        "Honoring the spirit of sacrifice and triumph"
+      ]
+    }
   ];
 
   if (month === 1 && day <= 10) {
-    startCycling(`Happy New Year ${now.getFullYear()}`, "A Year Of Innovation And Growth");
+    await startCycling([
+      `Happy New Year ${now.getFullYear()}`,
+      "Wishing you joy, success, and new beginnings"
+    ]);
     return;
   }
 
   const todayFixed = fixedDays.find(d => d.month === month && d.day === day);
   if (todayFixed) {
-    startCycling(todayFixed.title, todayFixed.message);
+    await startCycling(todayFixed.phrases);
     return;
   }
 
@@ -2497,12 +2534,10 @@ async function initWishes() {
       const hMonth = hijri.month.number;
 
       if (hMonth === 10 && (hDay === 1 || hDay === 2 || hDay === 3)) {
-        startCycling("Eid Mubarak", "Wishing You A Blessed Eid");
+        await startCycling(["Eid Mubarak", "Wishing You A Blessed Eid"]);
         return;
-      }
-      
-      if (hMonth === 12 && (hDay === 10 || hDay === 11 || hDay === 12)) {
-        startCycling("Eid Mubarak", "Wishing You A Blessed Eid");
+      } else if (hMonth === 12 && (hDay === 10 || hDay === 11 || hDay === 12)) {
+        await startCycling(["Eid Mubarak", "Wishing You A Blessed Eid"]);
         return;
       }
     }
@@ -2512,11 +2547,11 @@ async function initWishes() {
 
   // 3. Check for Jummah (Friday)
   if (dayOfWeek === 5) {
-    startCycling("Jummah Mubarak", "Have A Blessed Friday");
+    await startCycling(["Jummah Mubarak", "Have A Blessed Friday"]);
     return;
   }
 
-  // 4. Default: keep hidden when no special event/wish is active
+  // 4. If nothing else is active, make sure the spot is hidden
   wishesSpot.classList.add('hidden');
 }
 
