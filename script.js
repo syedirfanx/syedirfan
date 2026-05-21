@@ -16,6 +16,75 @@ window.generateProjectPortfolioPDF = generateProjectPortfolioPDF;
 window.generateCVPDF = generateCVPDF;
 window.openVideoIntro = openVideoIntro;
 window.closeVideoIntro = closeVideoIntro;
+window.scrollToSlideId = scrollToSlideId;
+
+// Smooth slide navigation
+function scrollToSlideId(id) {
+  const el = document.getElementById(id);
+  if (el) {
+    const isDesktopSnap = window.matchMedia('(min-width: 1024px) and (min-height: 750px)').matches;
+    if (isDesktopSnap) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      const header = document.querySelector('header');
+      const headerHeight = header ? header.offsetHeight : 64;
+      const elementPosition = el.getBoundingClientRect().top + window.pageYOffset;
+      // Subtract the header height + a 24px aesthetic buffer to ensure perfect, comfortable alignment
+      const offsetPosition = elementPosition - headerHeight - 24;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  }
+}
+
+// Dynamic indicator dots observer
+function initSlideObserver() {
+  const dots = {
+    'slide-welcome': document.getElementById('dot-slide-welcome'),
+    'slide-focus': document.getElementById('dot-slide-focus'),
+    'slide-highlights': document.getElementById('dot-slide-highlights'),
+    'slide-projects': document.getElementById('dot-slide-projects')
+  };
+
+  // Only run if welcome slide actually exists (homepage-specific)
+  if (!dots['slide-welcome']) return;
+
+  const observerOptions = {
+    root: null,
+    rootMargin: '-30% 0px -30% 0px',
+    threshold: 0.1
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('slide-active');
+        const id = entry.target.id;
+        Object.entries(dots).forEach(([key, dot]) => {
+          if (dot) {
+            dot.classList.remove('bg-white', 'scale-125');
+            dot.classList.add('bg-zinc-800');
+          }
+        });
+        const activeDot = dots[id];
+        if (activeDot) {
+          activeDot.classList.remove('bg-zinc-800');
+          activeDot.classList.add('bg-white', 'scale-125');
+        }
+      } else {
+        entry.target.classList.remove('slide-active');
+      }
+    });
+  }, observerOptions);
+
+  ['slide-welcome', 'slide-focus', 'slide-highlights', 'slide-projects'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) observer.observe(el);
+  });
+}
 
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize loader first
@@ -43,11 +112,290 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   try {
+    initPortraitMilkyway();
+  } catch (e) {
+    console.error('Portrait MilkyWay init failed:', e);
+  }
+
+  try {
     initWishes();
   } catch (e) {
     console.error('Wishes init failed:', e);
   }
+
+  try {
+    initSlideObserver();
+  } catch (e) {
+    console.error('Slide observer init failed:', e);
+  }
+
+  try {
+    initNebulaCanvas();
+  } catch (e) {
+    console.error('Nebula canvas init failed:', e);
+  }
 });
+
+// Interactive Ambient Canvas (The Nebula) Particle System
+function initNebulaCanvas() {
+  const canvas = document.getElementById('nebula-canvas');
+  if (!canvas) return;
+
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  let animationFrameId = null;
+  const mouse = { x: null, y: null, radius: 220, active: false };
+
+  const parent = canvas.parentElement;
+  
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = parent.clientHeight;
+    initParticles();
+  }
+
+  const resizeObserver = new ResizeObserver(() => {
+    resize();
+  });
+  resizeObserver.observe(parent);
+
+  class Particle {
+    constructor() {
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.vx = (Math.random() - 0.5) * 0.18; // elegant slow drift
+      this.vy = (Math.random() - 0.5) * 0.18;
+      this.radius = Math.random() * 1.5 + 0.6;
+      this.baseAlpha = Math.random() * 0.2 + 0.12;
+      this.alpha = this.baseAlpha;
+    }
+
+    update() {
+      this.x += this.vx;
+      this.y += this.vy;
+
+      if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+      if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+
+      if (mouse.active && mouse.x !== null && mouse.y !== null) {
+        const dx = mouse.x - this.x;
+        const dy = mouse.y - this.y;
+        const dist = Math.hypot(dx, dy);
+        if (dist < mouse.radius) {
+          const force = (mouse.radius - dist) / mouse.radius;
+          // Soft magnetic pull towards mouse cursor
+          this.x += dx * force * 0.008;
+          this.y += dy * force * 0.008;
+          this.alpha = Math.min(0.7, this.baseAlpha + force * 0.35);
+        } else {
+          if (this.alpha > this.baseAlpha) {
+            this.alpha -= 0.005;
+          }
+        }
+      } else {
+        if (this.alpha > this.baseAlpha) {
+          this.alpha -= 0.005;
+        }
+      }
+    }
+
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255, 255, 255, ${this.alpha})`;
+      ctx.fill();
+    }
+  }
+
+  function initParticles() {
+    particles = [];
+    const area = canvas.width * canvas.height;
+    const density = Math.min(100, Math.floor(area / 12000));
+    for (let i = 0; i < density; i++) {
+      particles.push(new Particle());
+    }
+  }
+
+  // Draw cybernetic 3D mesh grid mimicking Terafab.ai
+  function drawWarpedGrid() {
+    const gridSpacing = 48;
+    const padding = 60;
+    const cols = Math.ceil((canvas.width + padding * 2) / gridSpacing);
+    const rows = Math.ceil((canvas.height + padding * 2) / gridSpacing);
+
+    // Calculate warped point coordinate based on physical interaction
+    const getWarpedPoint = (x, y) => {
+      if (!mouse.active || mouse.x === null || mouse.y === null) {
+        return { x, y, glow: 0 };
+      }
+      const dx = x - mouse.x;
+      const dy = y - mouse.y;
+      const dist = Math.hypot(dx, dy);
+      const warpRadius = 240;
+      
+      if (dist < warpRadius) {
+        const force = (warpRadius - dist) / warpRadius;
+        const intensity = Math.sin(force * Math.PI); // beautiful smooth curve
+        const displacement = intensity * -20; // elegant physical gravitational indentation
+        const angle = Math.atan2(dy, dx);
+        return {
+          x: x + Math.cos(angle) * displacement,
+          y: y + Math.sin(angle) * displacement,
+          glow: intensity
+        };
+      }
+      return { x, y, glow: 0 };
+    };
+
+    // Draw horizontal grid lines
+    for (let r = 0; r < rows; r++) {
+      const py = r * gridSpacing - padding;
+      ctx.beginPath();
+      for (let c = 0; c < cols; c++) {
+        const px = c * gridSpacing - padding;
+        const pt = getWarpedPoint(px, py);
+        if (c === 0) {
+          ctx.moveTo(pt.x, pt.y);
+        } else {
+          ctx.lineTo(pt.x, pt.y);
+        }
+      }
+      ctx.strokeStyle = 'rgba(56, 189, 248, 0.04)'; // base subtle cyber layout line
+      ctx.lineWidth = 0.45;
+      ctx.stroke();
+    }
+
+    // Draw vertical grid lines
+    for (let c = 0; c < cols; c++) {
+      const px = c * gridSpacing - padding;
+      ctx.beginPath();
+      for (let r = 0; r < rows; r++) {
+        const py = r * gridSpacing - padding;
+        const pt = getWarpedPoint(px, py);
+        if (r === 0) {
+          ctx.moveTo(pt.x, pt.y);
+        } else {
+          ctx.lineTo(pt.x, pt.y);
+        }
+      }
+      ctx.strokeStyle = 'rgba(56, 189, 248, 0.04)';
+      ctx.lineWidth = 0.45;
+      ctx.stroke();
+    }
+
+    // Highlight active nodes at grid intersections near mouse
+    if (mouse.active && mouse.x !== null && mouse.y !== null) {
+      const startC = Math.max(0, Math.floor((mouse.x - 240 + padding) / gridSpacing));
+      const endC = Math.min(cols, Math.ceil((mouse.x + 240 + padding) / gridSpacing));
+      const startR = Math.max(0, Math.floor((mouse.y - 240 + padding) / gridSpacing));
+      const endR = Math.min(rows, Math.ceil((mouse.y + 240 + padding) / gridSpacing));
+
+      for (let c = startC; c < endC; c++) {
+        for (let r = startR; r < endR; r++) {
+          const px = c * gridSpacing - padding;
+          const py = r * gridSpacing - padding;
+          const pt = getWarpedPoint(px, py);
+          if (pt.glow > 0.1) {
+            // Draw a subtle high-tech dot at warped intersection
+            ctx.beginPath();
+            ctx.arc(pt.x, pt.y, 1.35 * pt.glow, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(14, 165, 233, ${pt.glow * 0.18})`;
+            ctx.fill();
+          }
+        }
+      }
+    }
+  }
+
+  function connectParticles() {
+    const maxDist = 120;
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.hypot(dx, dy);
+
+        if (dist < maxDist) {
+          let alpha = (1 - dist / maxDist) * 0.1;
+          if (mouse.active && mouse.x !== null && mouse.y !== null) {
+            const mDist = Math.hypot(mouse.x - particles[i].x, mouse.y - particles[i].y);
+            if (mDist < mouse.radius) {
+              const boost = (1 - mDist / mouse.radius);
+              alpha *= (1.5 + boost * 1.5);
+            }
+          }
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(14, 165, 233, ${Math.min(0.35, alpha)})`;
+          ctx.lineWidth = 0.55;
+          ctx.stroke();
+        }
+      }
+    }
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Draw glowing spotlight under the grid
+    if (mouse.active && mouse.x !== null && mouse.y !== null) {
+      const gradient = ctx.createRadialGradient(
+        mouse.x, mouse.y, 0,
+        mouse.x, mouse.y, 240
+      );
+      gradient.addColorStop(0, 'rgba(14, 165, 233, 0.06)'); // sky cyan spotlight core
+      gradient.addColorStop(0.5, 'rgba(14, 165, 233, 0.02)'); // soft glow bloom
+      gradient.addColorStop(1, 'rgba(0, 0, 0, 0)'); // fade out
+      
+      ctx.beginPath();
+      ctx.arc(mouse.x, mouse.y, 240, 0, Math.PI * 2);
+      ctx.fillStyle = gradient;
+      ctx.fill();
+    }
+
+    // 1. Draw Mesh Fabric Grid (Warped Space)
+    drawWarpedGrid();
+
+    // 2. Clearer and sharper stars
+    for (let i = 0; i < particles.length; i++) {
+      particles[i].update();
+      particles[i].draw();
+    }
+    
+    // 3. Glowing neural connections
+    connectParticles();
+
+    animationFrameId = requestAnimationFrame(animate);
+  }
+
+  parent.addEventListener('mousemove', (e) => {
+    const rect = canvas.getBoundingClientRect();
+    mouse.x = e.clientX - rect.left;
+    mouse.y = e.clientY - rect.top;
+    mouse.active = true;
+  });
+
+  parent.addEventListener('mouseleave', () => {
+    mouse.active = false;
+  });
+
+  parent.addEventListener('touchmove', (e) => {
+    if (e.touches.length > 0) {
+      const rect = canvas.getBoundingClientRect();
+      mouse.x = e.touches[0].clientX - rect.left;
+      mouse.y = e.touches[0].clientY - rect.top;
+      mouse.active = true;
+    }
+  }, { passive: true });
+
+  parent.addEventListener('touchend', () => {
+    mouse.active = false;
+  });
+
+  resize();
+  animate();
+}
 
 // Toast Notification System
 function showToast(message, title = 'Access Restricted') {
@@ -522,6 +870,116 @@ function initStars() {
       sStar.draw();
     });
 
+    requestAnimationFrame(animate);
+  }
+  
+  animate();
+}
+
+// Dynamic Milky Way Diagonal Stardust Backdrop for Syed Irfan's portrait
+function initPortraitMilkyway() {
+  const canvas = document.getElementById('portrait-milkyway-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  
+  let stars = [];
+  const starCount = 1400; // Dense cluster of thousands of tiny stars representing the Milky Way
+  
+  function resize() {
+    const parent = canvas.parentElement;
+    if (!parent) return;
+    const rect = parent.getBoundingClientRect();
+    // Expand the canvas bounds beyond the container circle to let the stardust spill out elegantly
+    canvas.width = rect.width + 192; // +192px spill width
+    canvas.height = rect.height + 192; // +192px spill height
+    // Center alignment offsets
+    canvas.style.transform = `translate(-96px, -96px)`;
+  }
+  
+  resize();
+  window.addEventListener('resize', resize);
+  
+  class MilkyStar {
+    constructor() {
+      this.reset();
+      this.twinklePhase = Math.random() * Math.PI * 2;
+    }
+    
+    reset(isRegen = false) {
+      const centerX = canvas.width / 2;
+      const centerY = canvas.height / 2;
+      
+      // Uniform angle in all directions to completely eliminate any aligned line appearance
+      const theta = Math.random() * Math.PI * 2;
+      
+      // Distance from center: higher density around the center/portrait boundary, fading out radially
+      const maxRadius = Math.max(canvas.width, canvas.height) * 0.8;
+      const r = Math.pow(Math.random(), 1.35) * maxRadius;
+      
+      this.x = centerX + Math.cos(theta) * r;
+      this.y = centerY + Math.sin(theta) * r;
+      
+      // Extremely tiny micro-stardust to resemble a real milky way from a distance
+      const randType = Math.random();
+      if (randType < 0.92) {
+        this.baseSize = Math.random() * 0.45 + 0.15; // Tiny micro-dust (0.15px to 0.6px)
+      } else {
+        this.baseSize = Math.random() * 0.55 + 0.6; // Subtle glisten (0.6px to 1.15px)
+      }
+      this.size = this.baseSize;
+      
+      this.twinkleSpeed = Math.random() * 0.03 + 0.01;
+      this.baseOpacity = Math.random() * 0.7 + 0.15;
+      this.opacity = this.baseOpacity;
+      
+      // Palette resembling soft, rich cosmic neutral/white tones matching the background without any cyan
+      const colors = [
+        '255, 255, 255', // Pure White
+        '244, 244, 245', // Zinc 100 white-silver
+        '228, 228, 231', // Zinc 200 soft silver
+        '255, 250, 240', // Floral cream
+        '255, 248, 220'  // Warm Cosmic cream
+      ];
+      this.color = colors[Math.floor(Math.random() * colors.length)];
+    }
+    
+    update() {
+      this.twinklePhase += this.twinkleSpeed;
+      const pulse = Math.sin(this.twinklePhase);
+      this.opacity = Math.max(0.1, this.baseOpacity + pulse * 0.3);
+      this.size = this.baseSize * (1 + pulse * 0.15);
+      
+      // Slow micro-drift simulating cosmic orbital flow
+      this.x += 0.02;
+      this.y -= 0.02;
+      
+      // Reset if it flows completely off canvas bounds
+      if (this.x > canvas.width + 100 || this.y < -100) {
+        this.reset(true);
+      }
+    }
+    
+    draw() {
+      ctx.fillStyle = `rgba(${this.color}, ${this.opacity})`;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+  
+  // Fill particle system buffer
+  for (let i = 0; i < starCount; i++) {
+    stars.push(new MilkyStar());
+  }
+  
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    stars.forEach(star => {
+      star.update();
+      star.draw();
+    });
+    
     requestAnimationFrame(animate);
   }
   
@@ -2058,6 +2516,7 @@ async function initWishes() {
     return;
   }
 
+  // 4. Default: keep hidden when no special event/wish is active
   wishesSpot.classList.add('hidden');
 }
 

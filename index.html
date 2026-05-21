@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="home-page-snap">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,7 +11,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@900&family=JetBrains+Mono:wght@400;500&family=Hind+Siliguri:wght@400;500;600;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&family=Hind+Siliguri:wght@400;500;600;700&family=Dancing+Script:wght@400;700&family=Syne:wght@700;800&family=Syncopate:wght@700&family=Orbitron:wght@800;900&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
         theme: {
@@ -23,6 +23,7 @@
               mono: ['JetBrains Mono', 'monospace'],
               cursive: ['Dancing Script', 'cursive'],
               bangla: ['Hind Siliguri', 'sans-serif'],
+              hero: ['Syne', 'sans-serif'],
             },
             colors: {
               zinc: {
@@ -99,102 +100,158 @@
     </header>
 
     <!-- Main Content -->
-    <main id="main-content" class="flex-1 flex flex-col max-w-7xl mx-auto w-full px-6 md:px-12 lg:px-16 pt-24 pb-24 relative z-10">
-      <div class="fade-in flex flex-col">
+    <main id="main-content" class="flex-1 flex flex-col max-w-7xl mx-auto w-full px-6 md:px-12 lg:px-16 relative z-10">
+      
+      <!-- Slide 1: Aesthetic Sanctuary Welcome (Poetic Screen) -->
+      <section id="slide-welcome" class="snap-section slide-active flex flex-col justify-center items-center relative py-12 md:py-16 lg:py-0 overflow-hidden lg:overflow-visible">
+        <!-- Interactive Ambient Canvas (The Nebula) -->
+        <canvas id="nebula-canvas" class="absolute top-0 left-1/2 -translate-x-1/2 w-screen h-full pointer-events-none z-0 opacity-65"></canvas>
         
-        <!-- Wishes Spot -->
-        <div id="wishes-spot" class="hidden mb-12">
-          <div class="relative group cursor-default">
-            <!-- Main Display -->
-            <div class="relative inline-flex items-center gap-4 px-4 py-2.5 rounded-xl bg-zinc-900/30 border border-zinc-800/40 backdrop-blur-md overflow-hidden wishes-glow transition-all duration-500">
-              <!-- Grid Overlay -->
-              <div class="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
-              
-              <!-- Status Dot -->
-              <div class="relative z-10 flex items-center justify-center">
-                <div class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse shadow-[0_0_8px_rgba(59,130,246,0.5)]"></div>
-              </div>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-16 items-center w-full relative z-10 max-w-6xl mx-auto px-4 md:px-0 -translate-y-4 lg:-translate-y-12 transition-transform duration-500">
+          
+          <!-- Left side content (text info and calls to action) -->
+          <div class="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left space-y-6 md:space-y-8">
+            <div class="space-y-4">
+              <!-- Wishes Spot in place of Workspace V2 -->
+              <div id="wishes-spot" class="hidden animate-fade-in mx-auto lg:mx-0">
+                <div class="relative group cursor-default">
+                  <div class="relative inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-zinc-800/80 bg-zinc-950/60 backdrop-blur-md text-[9px] font-mono tracking-[0.25em] text-cyan-400 uppercase select-none">
+                    <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse shadow-[0_0_8px_rgba(34,211,238,0.6)]"></span>
+                    
+                    <!-- Particles Container -->
+                    <div id="particles-container" class="absolute inset-0 pointer-events-none"></div>
 
-              <!-- Particles Container -->
-              <div id="particles-container" class="absolute inset-0 pointer-events-none"></div>
+                    <div class="relative z-10 flex items-center min-w-[210px] h-4">
+                      <span id="decode-text" class="text-cyan-400 font-mono font-bold whitespace-nowrap uppercase tracking-widest leading-none drop-shadow-[0_0_10px_rgba(34,211,238,0.2)]"></span>
+                      <span class="w-1.5 h-3 bg-cyan-400/90 ml-1.5 animate-pulse self-center shadow-[0_0_12px_rgba(34,211,238,0.6)]"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h1 class="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight leading-[1.08] uppercase font-brand select-none text-white max-w-2xl">
+                SYED <span class="bg-gradient-to-r from-white via-zinc-200 to-zinc-400 bg-clip-text text-transparent">IRFAN</span>
+              </h1>
+              <p class="font-cursive text-2xl sm:text-3xl md:text-4xl text-zinc-300 mt-2 hover:text-white transition-colors duration-500">
+                exploring science, intelligence &amp; system design.
+              </p>
+              <div class="w-12 h-[1px] bg-zinc-800 mx-auto lg:mx-0 mt-6 md:mt-8"></div>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row items-center gap-4 pt-4 w-full sm:w-auto">
+              <button onclick="scrollToSlideId('slide-focus')" class="relative group overflow-hidden px-8 py-3.5 bg-white text-black rounded-full font-bold uppercase tracking-widest text-[10px] sm:text-[11px] hover:text-white transition-all duration-500 w-full sm:w-auto text-center shadow-[0_4px_20px_rgba(255,255,255,0.05)] cursor-pointer flex items-center justify-center gap-2.5 z-10">
+                <span class="absolute inset-0 bg-gradient-to-r from-cyan-500 to-sky-600 rounded-full scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 ease-out z-0"></span>
+                <span class="relative z-10 flex items-center gap-2">
+                  Explore Workspace
+                  <i data-lucide="arrow-down" class="w-4 h-4 transition-transform duration-300 group-hover:translate-y-0.5"></i>
+                </span>
+              </button>
+              <button onclick="openVideoIntro()" class="relative group overflow-hidden px-8 py-3.5 bg-zinc-950/70 border border-zinc-800 text-zinc-300 rounded-full font-bold uppercase tracking-widest text-[10px] sm:text-[11px] hover:text-white hover:border-cyan-500/50 hover:shadow-[0_0_20px_rgba(34,211,238,0.15)] transition-all duration-500 w-full sm:w-auto text-center inline-flex items-center justify-center gap-2.5 cursor-pointer z-10">
+                <span class="absolute inset-0 bg-gradient-to-r from-zinc-900 to-zinc-950 rounded-full z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
+                <span class="relative z-10 flex items-center gap-2">
+                  <i data-lucide="play" class="w-3.5 h-3.5 text-cyan-400 group-hover:scale-110 transition-transform duration-300"></i>
+                  Experience Intro
+                </span>
+              </button>
+            </div>
+          </div>
+          
+          <!-- Right side content (The Portrait Image of Syed Irfan) -->
+          <div class="lg:col-span-5 flex justify-center lg:justify-end relative group">
+            <div class="relative w-64 sm:w-72 md:w-80 aspect-square max-w-full">
+              <!-- Decorative Border & Framing with Subtle Interactive Hover Effect (No circle animation) -->
+              <div class="aspect-square rounded-full overflow-hidden bg-zinc-900 border border-zinc-800/80 shadow-2xl transition-all duration-700 group-hover:border-zinc-700/80 group-hover:scale-[1.02] relative z-10 theme-photo-shade static-shade">
+                <img src="pictures/syedirfan.jpg" alt="Syed Irfan Portrait" class="w-full h-full object-cover grayscale brightness-95 contrast-105 hover:grayscale-0 transition-all duration-700 origin-center scale-[1.15] -translate-x-[2%] translate-y-[6%]" referrerPolicy="no-referrer" />
+              </div>
               
-              <div class="relative z-10 flex items-center min-w-[220px] h-6">
-                <span id="decode-text" class="text-sm font-mono font-semibold text-white whitespace-nowrap uppercase tracking-widest leading-none drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"></span>
-                <span class="w-1.5 h-4 bg-blue-500/90 ml-2 animate-pulse self-center shadow-[0_0_12px_rgba(59,130,246,0.6)]"></span>
+              <!-- Ambient Color Backglow Behind the Portrait (No circle animation scaling, just beautiful hover illumination) -->
+              <div class="absolute -inset-1 bg-gradient-to-tr from-zinc-500/10 to-transparent rounded-full blur-2xl opacity-75 group-hover:opacity-100 transition-opacity duration-700 z-0 pointer-events-none"></div>
+              
+              <!-- Milky Way Dynamic Canvas Backdrop (Density of thousands of micro-stars, beautiful subtle twinkling, expanded belt) -->
+              <canvas id="portrait-milkyway-canvas" class="absolute -inset-24 pointer-events-none z-0 overflow-visible"></canvas>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Scroll down hint -->
+        <div class="hidden md:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-1.5 cursor-pointer opacity-75 hover:opacity-100 hover:scale-105 transition-all duration-300 group" onclick="scrollToSlideId('slide-focus')">
+          <span class="text-[10px] font-mono font-bold tracking-[0.3em] text-zinc-300 uppercase group-hover:text-white transition-colors">Slide Down</span>
+          <i data-lucide="chevron-down" class="w-4 h-4 text-zinc-400 group-hover:text-white animate-bounce"></i>
+        </div>
+      </section>
+
+      <!-- Slide 2: Focus & Vision (The Existing Crafting Text & Focus Areas) -->
+      <section id="slide-focus" class="snap-section flex flex-col justify-center py-16 md:py-0 relative">
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-12 xl:col-span-5 space-y-6">
+            <div class="space-y-4">
+              <h2 class="text-4xl md:text-5xl font-black tracking-tighter leading-tight font-display text-white">
+                Crafting <span class="text-zinc-500">Intelligent</span> Solutions<br />
+                for a Smarter Future.
+              </h2>
+              <p class="text-zinc-400 text-base md:text-lg leading-relaxed">
+                Hi, I'm Syed Irfan. Navigating the frontiers of <span class="text-white">Data Science</span>, <span class="text-white">Machine Learning</span>, and <span class="text-white">Generative AI</span> to build the future of tech.
+              </p>
+            </div>
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+              <a href="contact.html" class="px-6 py-3 bg-zinc-900 border border-zinc-800 text-white rounded-full text-center text-xs font-bold hover:bg-zinc-800 transition-all">
+                Contact Me
+              </a>
+              <button onclick="generateCVPDF()" class="px-6 py-3 bg-zinc-950 border border-zinc-800 text-zinc-400 rounded-full text-xs font-bold hover:bg-zinc-90 w-full sm:w-auto hover:text-white transition-all inline-flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-black/20">
+                <i data-lucide="download" class="w-3.5 h-3.5"></i>
+                Download CV
+              </button>
+            </div>
+          </div>
+
+          <div class="lg:col-span-12 xl:col-span-7 space-y-4">
+            <div class="space-y-1">
+              <h3 class="text-[10px] font-bold text-zinc-500 uppercase tracking-widest font-display">Focus Areas</h3>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div class="grok-card p-5 rounded-2xl border border-zinc-800/40 space-y-3 bg-zinc-950/20 backdrop-blur-sm hover:border-zinc-700/60 transition-all">
+                <div class="w-8 h-8 rounded-lg bg-zinc-900 flex items-center justify-center text-white">
+                  <i data-lucide="brain-circuit" class="w-4 h-4"></i>
+                </div>
+                <h4 class="font-bold text-base text-zinc-200">Smart Design</h4>
+                <p class="text-zinc-500 text-xs leading-relaxed">Building intelligent systems to solve critical business problems.</p>
+              </div>
+              <div class="grok-card p-5 rounded-2xl border border-zinc-800/40 space-y-3 bg-zinc-950/20 backdrop-blur-sm hover:border-zinc-700/60 transition-all">
+                <div class="w-8 h-8 rounded-lg bg-zinc-900 flex items-center justify-center text-white">
+                  <i data-lucide="database" class="w-4 h-4"></i>
+                </div>
+                <h4 class="font-bold text-base text-zinc-200">Data Science</h4>
+                <p class="text-zinc-500 text-xs leading-relaxed">Turning raw data into useful insights that make smarter decisions.</p>
+              </div>
+              <div class="grok-card p-5 rounded-2xl border border-zinc-800/40 space-y-3 bg-zinc-950/20 backdrop-blur-sm hover:border-zinc-700/60 transition-all">
+                <div class="w-8 h-8 rounded-lg bg-zinc-900 flex items-center justify-center text-white">
+                  <i data-lucide="bot" class="w-4 h-4"></i>
+                </div>
+                <h4 class="font-bold text-base text-zinc-200">AI Engineering</h4>
+                <p class="text-zinc-500 text-xs leading-relaxed">Using Language Models as day-to-day tools to automate workflows.</p>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Hero Section -->
-        <section class="flex flex-col gap-12">
-          <div class="space-y-6">
-            <div class="space-y-4">
-              <h1 class="text-5xl md:text-7xl font-black tracking-tighter leading-tight font-display">
-                Crafting <span class="text-zinc-500">Intelligent</span> Solutions<br />
-                for a Smarter Future.
-              </h1>
-              <p class="text-zinc-400 text-lg md:text-xl leading-relaxed">
-                Hi, I'm Syed Irfan. Navigating the frontiers of <span class="text-white">Data Science</span>, <span class="text-white">Machine Learning</span>, and <span class="text-white">Generative AI</span> to build the future of tech.
-              </p>
-            </div>
-            <div class="flex flex-col sm:flex-row items-center gap-4 pt-4">
-              <a href="contact.html" class="px-8 py-3.5 bg-white text-black rounded-full font-bold hover:bg-zinc-200 hover:scale-[1.02] active:scale-[0.98] transition-all w-full sm:w-auto text-center shadow-lg shadow-white/5">
-                Contact Me
-              </a>
-              <button onclick="generateCVPDF()" class="px-8 py-3.5 bg-zinc-950 border border-zinc-800 text-white rounded-full font-bold hover:bg-zinc-900 hover:border-zinc-700 hover:scale-[1.02] active:scale-[0.98] transition-all w-full sm:w-auto text-center inline-flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-black/20">
-                <i data-lucide="download" class="w-4 h-4"></i>
-                Download CV
-              </button>
-              <button onclick="openVideoIntro()" class="px-8 py-3.5 bg-zinc-950 border border-zinc-800 text-white rounded-full font-bold hover:bg-zinc-900 hover:border-zinc-700 hover:scale-[1.02] active:scale-[0.98] transition-all w-full sm:w-auto text-center inline-flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-black/20">
-                <i data-lucide="play" class="w-4 h-4"></i>
-                Experience Intro
-              </button>
-            </div>
-          </div>
-
+        <div class="hidden md:flex absolute bottom-4 left-1/2 -translate-x-1/2 flex-col items-center gap-1.5 cursor-pointer opacity-75 hover:opacity-100 hover:scale-105 transition-all duration-300 group" onclick="scrollToSlideId('slide-highlights')">
+          <span class="text-[10px] font-mono font-bold tracking-[0.3em] text-zinc-300 uppercase group-hover:text-white transition-colors">Recent Highlights</span>
+          <i data-lucide="chevron-down" class="w-4 h-4 text-zinc-400 group-hover:text-white animate-bounce"></i>
+        </div>
       </section>
 
-        <!-- Innovation & Strategy Section -->
-        <section class="space-y-8 pt-16">
+      <!-- Slide 3: Recent Highlights Section -->
+      <section id="slide-highlights" class="snap-section flex flex-col justify-center py-16 md:py-0 relative">
+        <div class="space-y-6 pt-4">
           <div class="space-y-2">
-            <h2 class="text-2xl font-black tracking-tighter uppercase font-display">Focus <span class="text-zinc-500">Areas</span></h2>
-            <div class="h-1 w-12 bg-zinc-800"></div>
-          </div>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="grok-card p-6 rounded-2xl border border-zinc-800/50 space-y-4 hover:border-zinc-700 transition-all">
-              <div class="w-10 h-10 rounded-xl bg-zinc-900 flex items-center justify-center text-white">
-                <i data-lucide="brain-circuit" class="w-5 h-5"></i>
-              </div>
-              <h3 class="font-bold text-lg">Smart System Design</h3>
-              <p class="text-zinc-500 text-sm leading-relaxed">Building intelligent systems to solve critical business problems.</p>
-            </div>
-            <div class="grok-card p-6 rounded-2xl border border-zinc-800/50 space-y-4 hover:border-zinc-700 transition-all">
-              <div class="w-10 h-10 rounded-xl bg-zinc-900 flex items-center justify-center text-white">
-                <i data-lucide="database" class="w-5 h-5"></i>
-              </div>
-              <h3 class="font-bold text-lg">Data Science</h3>
-              <p class="text-zinc-500 text-sm leading-relaxed">Turning raw data into useful insights that make smarter business decisions.</p>
-            </div>
-            <div class="grok-card p-6 rounded-2xl border border-zinc-800/50 space-y-4 hover:border-zinc-700 transition-all">
-              <div class="w-10 h-10 rounded-xl bg-zinc-900 flex items-center justify-center text-white">
-                <i data-lucide="bot" class="w-5 h-5"></i>
-              </div>
-              <h3 class="font-bold text-lg">AI Engineering</h3>
-              <p class="text-zinc-500 text-sm leading-relaxed">Turning advanced language models into day-to-day business tools that can automate workflows.</p>
-            </div>
-          </div>
-        </section>
-
-        <!-- Recent Highlights Section -->
-        <section class="space-y-8 pt-16">
-          <div class="space-y-2">
-            <h2 class="text-2xl font-black tracking-tighter uppercase font-display">Recent <span class="text-zinc-500">Highlights</span></h2>
+            <h2 class="text-2xl font-black tracking-tighter uppercase font-display text-white">Recent <span class="text-zinc-500">Highlights</span></h2>
             <div class="h-1 w-12 bg-zinc-800"></div>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <!-- Card 1: Latest Education -->
-            <div class="grok-card p-6 rounded-2xl border border-zinc-800/50 space-y-6 hover:border-zinc-700 transition-all flex flex-col h-full">
+            <div class="grok-card p-6 rounded-2xl border border-zinc-800/50 space-y-6 hover:border-zinc-700 transition-all flex flex-col h-full bg-zinc-950/20 backdrop-blur-sm">
               <div class="flex justify-between items-start">
                 <div class="text-[10px] font-bold text-zinc-500 uppercase tracking-widest">
                   Academic
@@ -202,7 +259,7 @@
                 <span class="px-2 py-1 rounded-md bg-zinc-800/50 text-[10px] font-bold text-zinc-400 uppercase tracking-widest border border-zinc-800">Graduated</span>
               </div>
               <div class="space-y-2 flex-1">
-                <h3 class="font-bold text-xl leading-tight tracking-tight">MSc in Data Science</h3>
+                <h3 class="font-bold text-xl leading-tight tracking-tight text-white hover:text-zinc-300 transition-colors">MSc in Data Science</h3>
                 <p class="text-zinc-500 text-[10px] font-bold uppercase tracking-wider">University of Greenwich • 2023</p>
                 <div class="pt-2">
                   <button onclick="openProjectModal('greenwich')" class="inline-flex items-center gap-2 text-[10px] font-bold text-white uppercase tracking-widest hover:opacity-80 transition-opacity group cursor-pointer">
@@ -211,16 +268,16 @@
                   </button>
                 </div>
               </div>
-              <div class="pt-2 border-t border-zinc-900">
+              <div class="pt-2 border-t border-zinc-900 flex items-end">
                 <a href="academic.html" class="inline-flex items-center gap-2 text-[10px] font-bold text-zinc-500 uppercase tracking-widest hover:text-white transition-colors group">
-                  See full academic background 
+                  See academic background 
                   <i data-lucide="arrow-right" class="w-3 h-3 group-hover:translate-x-1 transition-transform"></i>
                 </a>
               </div>
             </div>
 
             <!-- Card 2: Recent Project -->
-            <div class="grok-card p-6 rounded-2xl border border-zinc-800/50 space-y-6 hover:border-zinc-700 transition-all flex flex-col h-full">
+            <div class="grok-card p-6 rounded-2xl border border-zinc-800/50 space-y-6 hover:border-zinc-700 transition-all flex flex-col h-full bg-zinc-950/20 backdrop-blur-sm">
               <div class="flex justify-between items-start">
                 <div class="text-[10px] font-bold text-zinc-500 uppercase tracking-widest">
                   Project
@@ -228,16 +285,16 @@
                 <span class="px-2 py-1 rounded-md bg-zinc-800/50 text-[10px] font-bold text-zinc-400 uppercase tracking-widest border border-zinc-800">Completed</span>
               </div>
               <div class="space-y-2 flex-1">
-                <h3 class="font-bold text-xl leading-tight tracking-tight">AI Network Flow Prediction and Resource Optimization</h3>
-                <p class="text-zinc-500 text-[10px] font-bold uppercase tracking-wider">Research • Network Optimization</p>
+                <h3 class="font-bold text-xl leading-tight tracking-tight text-white hover:text-zinc-300 transition-colors">AI Network Flow Prediction</h3>
+                <p class="text-zinc-500 text-[10px] font-bold uppercase tracking-wider">Research • Resource Optimization</p>
                 <div class="pt-2">
                   <button onclick="openProjectModal('network-flow-optimization')" class="inline-flex items-center gap-2 text-[10px] font-bold text-white uppercase tracking-widest hover:opacity-80 transition-opacity group cursor-pointer">
-                    View Project Description
+                    View Description
                     <i data-lucide="eye" class="w-3 h-3"></i>
                   </button>
                 </div>
               </div>
-              <div class="pt-2 border-t border-zinc-900">
+              <div class="pt-2 border-t border-zinc-900 flex items-end">
                 <a href="research.html" class="inline-flex items-center gap-2 text-[10px] font-bold text-zinc-500 uppercase tracking-widest hover:text-white transition-colors group">
                   See all research & projects
                   <i data-lucide="arrow-right" class="w-3 h-3 group-hover:translate-x-1 transition-transform"></i>
@@ -246,42 +303,50 @@
             </div>
 
             <!-- Card 3: Featured Blog -->
-            <div class="grok-card p-6 rounded-2xl border border-zinc-800/50 space-y-6 hover:border-zinc-700 transition-all flex flex-col h-full">
+            <div class="grok-card p-6 rounded-2xl border border-zinc-800/50 space-y-6 hover:border-zinc-700 transition-all flex flex-col h-full bg-zinc-950/20 backdrop-blur-sm">
               <div class="flex justify-between items-start">
                 <div class="flex items-baseline gap-1.5 flex-nowrap shrink-0">
                   <span class="tracking-tight text-[11px] uppercase flex items-baseline gap-1 font-brand">
-                    <span class="font-black">SYED</span>
-                    <span class="font-black">IRFAN</span>
+                    <span class="font-black text-white">SYED</span>
+                    <span class="font-black text-white">IRFAN</span>
                   </span>
                   <span class="font-cursive text-zinc-300 text-sm lowercase leading-none">journal</span>
                 </div>
                 <span class="px-2 py-1 rounded-md bg-zinc-800/50 text-[10px] font-bold text-zinc-400 uppercase tracking-widest border border-zinc-800">Featured</span>
               </div>
               <div class="space-y-2 flex-1">
-                <h3 class="font-bold text-xl leading-tight tracking-tight">Your Brain Is Not Against You - It's Just Efficient</h3>
+                <h3 class="font-bold text-xl leading-tight tracking-tight text-white hover:text-zinc-300 transition-colors">Your Brain Is Not Against You</h3>
                 <p class="text-zinc-500 text-[10px] font-bold uppercase tracking-wider">Neuroscience • May 2026</p>
                 <div class="pt-2">
                   <a href="your-brain-is-not-against-you.html" class="inline-flex items-center gap-2 text-[10px] font-bold text-white uppercase tracking-widest hover:opacity-80 transition-opacity group">
-                    Read this blog post
+                    Read post
                     <i data-lucide="book-open" class="w-3 h-3"></i>
                   </a>
                 </div>
               </div>
-              <div class="pt-2 border-t border-zinc-900">
+              <div class="pt-2 border-t border-zinc-900 flex items-end">
                 <a href="blog.html" class="inline-flex items-center gap-2 text-[10px] font-bold text-zinc-500 uppercase tracking-widest hover:text-white transition-colors group">
-                  Go to all blog posts
+                  Go to blog
                   <i data-lucide="arrow-right" class="w-3 h-3 group-hover:translate-x-1 transition-transform"></i>
                 </a>
               </div>
             </div>
           </div>
-        </section>
+        </div>
 
+        <div class="hidden md:flex absolute bottom-4 left-1/2 -translate-x-1/2 flex-col items-center gap-1.5 cursor-pointer opacity-75 hover:opacity-100 hover:scale-105 transition-all duration-300 group" onclick="scrollToSlideId('slide-projects')">
+          <span class="text-[10px] font-mono font-bold tracking-[0.3em] text-zinc-300 uppercase group-hover:text-white transition-colors">Featured Projects</span>
+          <i data-lucide="chevron-down" class="w-4 h-4 text-zinc-400 group-hover:text-white animate-bounce"></i>
+        </div>
+      </section>
+
+      <!-- Slide 4: Featured Projects, CTA & Footer -->
+      <section id="slide-projects" class="snap-section flex flex-col justify-start py-16 md:py-8 relative">
         <!-- Featured Projects Section -->
-        <section class="space-y-8 pt-16">
+        <div class="space-y-8">
           <div class="flex items-end justify-between">
             <div class="space-y-2">
-              <h2 class="text-2xl font-black tracking-tighter uppercase font-display">Featured <span class="text-zinc-500">Projects</span></h2>
+              <h2 class="text-2xl font-black tracking-tighter uppercase font-display text-white">Featured <span class="text-zinc-500">Projects</span></h2>
               <div class="h-1 w-12 bg-zinc-800"></div>
             </div>
             <a href="research.html" class="text-xs font-bold text-zinc-500 hover:text-white transition-colors uppercase tracking-widest flex items-center gap-2 group">
@@ -292,92 +357,90 @@
           
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <!-- Project 1 -->
-            <div onclick="openProjectModal('starpals-ai')" class="grok-card p-8 rounded-2xl flex flex-col group hover:border-zinc-700 transition-all cursor-pointer">
+            <div onclick="openProjectModal('starpals-ai')" class="grok-card p-8 rounded-2xl flex flex-col group hover:border-zinc-700 transition-all cursor-pointer bg-zinc-950/20 backdrop-blur-sm">
               <div class="flex justify-between items-start mb-6">
                 <span class="text-[10px] font-bold text-zinc-500 uppercase tracking-widest">Personal Innovation</span>
               </div>
-              <h3 class="text-xl font-bold mb-3 leading-tight tracking-tight">StarPals AI: Revolutionizing Talent Casting with Artificial Intelligence</h3>
+              <h3 class="text-xl font-bold mb-3 leading-tight tracking-tight text-white group-hover:text-zinc-200">StarPals AI: Casting Platform</h3>
               <div class="flex items-center gap-1.5 text-[10px] font-bold text-zinc-600 group-hover:text-zinc-400 transition-colors mb-6 uppercase tracking-widest">
                 <span>See details</span>
                 <i data-lucide="chevron-right" class="w-2.5 h-2.5"></i>
               </div>
               <div class="mt-auto flex flex-wrap gap-2">
-                <span class="px-3 py-1 rounded-full bg-zinc-800/50 text-zinc-400 text-[10px] uppercase tracking-widest border border-zinc-800">Generative AI</span>
-                <span class="px-3 py-1 rounded-full bg-zinc-800/50 text-zinc-400 text-[10px] uppercase tracking-widest border border-zinc-800">NLP</span>
-                <span class="px-3 py-1 rounded-full bg-zinc-800/50 text-zinc-400 text-[10px] uppercase tracking-widest border border-zinc-800">Next.js</span>
+                <span class="px-3 py-1 rounded-full bg-zinc-800/30 text-zinc-400 text-[9px] uppercase tracking-widest border border-zinc-800/50">Generative AI</span>
+                <span class="px-3 py-1 rounded-full bg-zinc-800/30 text-zinc-400 text-[9px] uppercase tracking-widest border border-zinc-800/50">NLP</span>
+                <span class="px-3 py-1 rounded-full bg-zinc-800/30 text-zinc-400 text-[9px] uppercase tracking-widest border border-zinc-800/50">Next.js</span>
               </div>
             </div>
 
             <!-- Project 2 -->
-            <div onclick="openProjectModal('swarm-intelligence')" class="grok-card p-8 rounded-2xl flex flex-col group hover:border-zinc-700 transition-all cursor-pointer">
+            <div onclick="openProjectModal('swarm-intelligence')" class="grok-card p-8 rounded-2xl flex flex-col group hover:border-zinc-700 transition-all cursor-pointer bg-zinc-950/20 backdrop-blur-sm">
               <div class="flex justify-between items-start mb-6">
                 <span class="text-[10px] font-bold text-zinc-500 uppercase tracking-widest">MSc Thesis</span>
               </div>
-              <h3 class="text-xl font-bold mb-3 leading-tight tracking-tight">Feature Selection using Swarm Intelligence Techniques</h3>
+              <h3 class="text-xl font-bold mb-3 leading-tight tracking-tight text-white group-hover:text-zinc-200">Feature Selection using Swarm Tech</h3>
               <div class="flex items-center gap-1.5 text-[10px] font-bold text-zinc-600 group-hover:text-zinc-400 transition-colors mb-6 uppercase tracking-widest">
                 <span>See details</span>
                 <i data-lucide="chevron-right" class="w-2.5 h-2.5"></i>
               </div>
               <div class="mt-auto flex flex-wrap gap-2">
-                <span class="px-3 py-1 rounded-full bg-zinc-800/50 text-zinc-400 text-[10px] uppercase tracking-widest border border-zinc-800">Feature Engineering</span>
-                <span class="px-3 py-1 rounded-full bg-zinc-800/50 text-zinc-400 text-[10px] uppercase tracking-widest border border-zinc-800">Swarm Intelligence</span>
+                <span class="px-3 py-1 rounded-full bg-zinc-800/30 text-zinc-400 text-[9px] uppercase tracking-widest border border-zinc-800/50">Feature Eng</span>
+                <span class="px-3 py-1 rounded-full bg-zinc-800/30 text-zinc-400 text-[9px] uppercase tracking-widest border border-zinc-800/50">Swarm Tech</span>
               </div>
             </div>
 
             <!-- Project 3 -->
-            <div onclick="openProjectModal('bank-transaction')" class="grok-card p-8 rounded-2xl flex flex-col group hover:border-zinc-700 transition-all cursor-pointer">
+            <div onclick="openProjectModal('bank-transaction')" class="grok-card p-8 rounded-2xl flex flex-col group hover:border-zinc-700 transition-all cursor-pointer bg-zinc-950/20 backdrop-blur-sm">
               <div class="flex justify-between items-start mb-6">
                 <span class="text-[10px] font-bold text-zinc-500 uppercase tracking-widest">Academic Project</span>
               </div>
-              <h3 class="text-xl font-bold mb-3 leading-tight tracking-tight">Bank Transaction Monitoring using BlockChain Technology</h3>
+              <h3 class="text-xl font-bold mb-3 leading-tight tracking-tight text-white group-hover:text-zinc-200">Bank Monitoring using BlockChain</h3>
               <div class="flex items-center gap-1.5 text-[10px] font-bold text-zinc-600 group-hover:text-zinc-400 transition-colors mb-6 uppercase tracking-widest">
                 <span>See details</span>
                 <i data-lucide="chevron-right" class="w-2.5 h-2.5"></i>
               </div>
               <div class="mt-auto flex flex-wrap gap-2">
-                <span class="px-3 py-1 rounded-full bg-zinc-800/50 text-zinc-400 text-[10px] uppercase tracking-widest border border-zinc-800">Blockchain</span>
-                <span class="px-3 py-1 rounded-full bg-zinc-800/50 text-zinc-400 text-[10px] uppercase tracking-widest border border-zinc-800">FinTech</span>
+                <span class="px-3 py-1 rounded-full bg-zinc-800/30 text-zinc-400 text-[9px] uppercase tracking-widest border border-zinc-800/50">Blockchain</span>
+                <span class="px-3 py-1 rounded-full bg-zinc-800/30 text-zinc-400 text-[9px] uppercase tracking-widest border border-zinc-800/50">FinTech</span>
               </div>
             </div>
-
           </div>
-        </section>
-      </section>
+        </div>
 
-      <!-- CTA Section -->
-      <section class="pt-16 pb-12">
-          <div class="p-12 rounded-3xl bg-zinc-900/30 border border-zinc-800/50 text-center space-y-8 relative overflow-hidden">
+        <!-- CTA Section -->
+        <div class="pt-16 pb-12 w-full">
+          <div class="p-12 rounded-3xl bg-zinc-90 w-full border border-zinc-800/50 text-center space-y-8 relative overflow-hidden bg-zinc-900/10 backdrop-blur-sm">
             <div class="absolute inset-0 bg-gradient-to-b from-transparent to-zinc-950/50 pointer-events-none"></div>
             <div class="relative z-10 space-y-4">
-              <h2 class="text-3xl md:text-5xl font-black tracking-tighter font-display">Let's build something <span class="text-zinc-500">intelligent</span> together.</h2>
-              <p class="text-zinc-400 max-w-xl mx-auto">
+              <h2 class="text-3xl md:text-4xl font-black tracking-tighter font-display text-white">Let's build something <span class="text-zinc-500">intelligent</span> together.</h2>
+              <p class="text-zinc-400 max-w-xl mx-auto text-sm leading-relaxed">
                 Whether you have a project in mind or just want to discuss the future of AI, feel free to reach out.
               </p>
             </div>
-            <div class="relative z-10 flex flex-col md:flex-row items-center justify-center gap-4">
-              <a href="contact.html" class="px-10 py-4 bg-white text-black rounded-full font-bold hover:bg-zinc-200 hover:scale-[1.02] active:scale-[0.98] transition-all w-full md:w-auto text-center shadow-xl shadow-white/5">
+            <div class="relative z-10 flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto">
+              <a href="contact.html" class="px-8 py-3.5 bg-white text-black rounded-full font-bold hover:bg-zinc-200 hover:scale-[1.02] active:scale-[0.98] transition-all w-full sm:w-auto text-center shadow-xl shadow-white/5 text-sm">
                 Get in Touch
               </a>
-              <a href="research.html" class="px-10 py-4 bg-zinc-950 border border-zinc-800 text-white rounded-full font-bold hover:bg-zinc-900 hover:border-zinc-700 hover:scale-[1.02] active:scale-[0.98] transition-all w-full md:w-auto text-center shadow-xl shadow-black/20">
+              <a href="research.html" class="px-8 py-3.5 bg-zinc-950 border border-zinc-800 text-white rounded-full font-bold hover:bg-zinc-900 hover:border-zinc-700 hover:scale-[1.02] active:scale-[0.98] transition-all w-full sm:w-auto text-center shadow-xl shadow-black/20 text-sm">
                 View Portfolio
               </a>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-      </div>
     </main>
-    
+
     <!-- Footer -->
-    <footer class="border-t border-zinc-800/50 bg-black/50 backdrop-blur-md py-12 mt-auto relative z-10">
+    <footer class="border-t border-zinc-800/50 bg-black/50 backdrop-blur-md py-12 mt-auto relative z-10 w-full">
       <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 text-left">
           <!-- Brand & Bio -->
           <div class="col-span-1 md:col-span-2 space-y-6">
             <div class="flex items-center gap-3">
               <span class="tracking-tight text-xl live-name uppercase flex items-baseline gap-2 font-brand">
-                <span class="font-black">SYED</span>
-                <span class="font-black">IRFAN</span>
+                <span class="font-black text-white">SYED</span>
+                <span class="font-black text-white">IRFAN</span>
               </span>
             </div>
             <p class="text-zinc-500 text-sm leading-relaxed max-w-xs">
@@ -407,11 +470,11 @@
           <div class="space-y-6">
             <h4 class="text-xs font-bold text-white uppercase tracking-widest">Get in Touch</h4>
             <ul class="space-y-3 text-sm text-zinc-500">
-              <li class="flex items-center gap-2">
+              <li class="flex items-center gap-2 justify-start">
                 <i data-lucide="mail" class="w-4 h-4"></i>
                 <a href="mailto:syedirfaanx@outlook.com" class="hover:text-white transition-colors">syedirfaanx@outlook.com</a>
               </li>
-              <li class="flex items-center gap-2">
+              <li class="flex items-center gap-2 justify-start">
                 <i data-lucide="map-pin" class="w-4 h-4"></i>
                 <span>Dhaka, Bangladesh</span>
               </li>
@@ -426,6 +489,14 @@
         </div>
       </div>
     </footer>
+
+    <!-- Floating Slide Indicator on desktop -->
+    <div class="fixed right-8 top-1/2 -translate-y-1/2 flex flex-col gap-4 z-40 hidden lg:flex">
+      <button onclick="scrollToSlideId('slide-welcome')" class="slide-dot w-2 h-2 rounded-full bg-white transition-all duration-300" title="Welcome" id="dot-slide-welcome"></button>
+      <button onclick="scrollToSlideId('slide-focus')" class="slide-dot w-2 h-2 rounded-full bg-zinc-800 transition-all duration-300" title="Focus Areas" id="dot-slide-focus"></button>
+      <button onclick="scrollToSlideId('slide-highlights')" class="slide-dot w-2 h-2 rounded-full bg-zinc-800 transition-all duration-300" title="Recent Highlights" id="dot-slide-highlights"></button>
+      <button onclick="scrollToSlideId('slide-projects')" class="slide-dot w-2 h-2 rounded-full bg-zinc-800 transition-all duration-300" title="Projects & Contact" id="dot-slide-projects"></button>
+    </div>
 
     <!-- Project Modal -->
     <div id="project-modal" class="fixed inset-0 z-[100] hidden overflow-y-auto">
