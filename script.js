@@ -46,7 +46,8 @@ function initSlideObserver() {
     'slide-welcome': document.getElementById('dot-slide-welcome'),
     'slide-focus': document.getElementById('dot-slide-focus'),
     'slide-highlights': document.getElementById('dot-slide-highlights'),
-    'slide-projects': document.getElementById('dot-slide-projects')
+    'slide-projects': document.getElementById('dot-slide-projects'),
+    'slide-contact': document.getElementById('dot-slide-contact')
   };
 
   // Only run if welcome slide actually exists (homepage-specific)
@@ -83,7 +84,7 @@ function initSlideObserver() {
     });
   }, observerOptions);
 
-  ['slide-welcome', 'slide-focus', 'slide-highlights', 'slide-projects'].forEach(id => {
+  ['slide-welcome', 'slide-focus', 'slide-highlights', 'slide-projects', 'slide-contact'].forEach(id => {
     const el = document.getElementById(id);
     if (el) observer.observe(el);
   });
@@ -372,27 +373,39 @@ function initNebulaCanvas() {
     animationFrameId = requestAnimationFrame(animate);
   }
 
-  parent.addEventListener('mousemove', (e) => {
+  window.addEventListener('mousemove', (e) => {
     const rect = canvas.getBoundingClientRect();
-    mouse.x = e.clientX - rect.left;
-    mouse.y = e.clientY - rect.top;
-    mouse.active = true;
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    if (e.clientY >= rect.top && e.clientY <= rect.bottom) {
+      mouse.x = x;
+      mouse.y = y;
+      mouse.active = true;
+    } else {
+      mouse.active = false;
+    }
   });
 
-  parent.addEventListener('mouseleave', () => {
+  window.addEventListener('mouseleave', () => {
     mouse.active = false;
   });
 
-  parent.addEventListener('touchmove', (e) => {
+  window.addEventListener('touchmove', (e) => {
     if (e.touches.length > 0) {
       const rect = canvas.getBoundingClientRect();
-      mouse.x = e.touches[0].clientX - rect.left;
-      mouse.y = e.touches[0].clientY - rect.top;
-      mouse.active = true;
+      const x = e.touches[0].clientX - rect.left;
+      const y = e.touches[0].clientY - rect.top;
+      if (e.touches[0].clientY >= rect.top && e.touches[0].clientY <= rect.bottom) {
+        mouse.x = x;
+        mouse.y = y;
+        mouse.active = true;
+      } else {
+        mouse.active = false;
+      }
     }
   }, { passive: true });
 
-  parent.addEventListener('touchend', () => {
+  window.addEventListener('touchend', () => {
     mouse.active = false;
   });
 

@@ -503,3 +503,32 @@ body {
 .animate-milky-flow {
   animation: milkywy-flow 25s linear infinite;
 }
+
+@keyframes scroll-dot {
+  0% { transform: translateY(0); opacity: 0; }
+  20% { opacity: 1; }
+  60% { transform: translateY(10px); opacity: 0; }
+  100% { transform: translateY(10px); opacity: 0; }
+}
+
+.animate-scroll-dot {
+  animation: scroll-dot 2s cubic-bezier(0.15, 0.41, 0.69, 0.94) infinite;
+}
+
+@keyframes spin-reverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+.animate-spin-reverse {
+  animation: spin-reverse 35s linear infinite;
+}
+
+@keyframes orbit-pulse {
+  0%, 100% { opacity: 0.35; stroke-width: 1.5px; }
+  50% { opacity: 0.75; stroke-width: 2.5px; }
+}
+
+.animate-orbit-pulse {
+  animation: orbit-pulse 4s ease-in-out infinite;
+}
