@@ -18,73 +18,43 @@ window.openVideoIntro = openVideoIntro;
 window.closeVideoIntro = closeVideoIntro;
 window.scrollToSlideId = scrollToSlideId;
 
-// Smooth slide navigation
+// Smooth section navigation for buttons/links
 function scrollToSlideId(id) {
   const el = document.getElementById(id);
   if (el) {
-    const isDesktopSnap = window.matchMedia('(min-width: 1024px) and (min-height: 750px)').matches;
-    if (isDesktopSnap) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    } else {
-      const header = document.querySelector('header');
-      const headerHeight = header ? header.offsetHeight : 64;
-      const elementPosition = el.getBoundingClientRect().top + window.pageYOffset;
-      // Subtract the header height + a 24px aesthetic buffer to ensure perfect, comfortable alignment
-      const offsetPosition = elementPosition - headerHeight - 24;
-      
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
+    const header = document.querySelector('header');
+    const headerHeight = header ? header.offsetHeight : 64;
+    const elementPosition = el.getBoundingClientRect().top + window.pageYOffset;
+    const offsetPosition = elementPosition - headerHeight - 20;
+    
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth'
+    });
   }
 }
 
-// Dynamic indicator dots observer
+// Scroll reveal observer for homepage sections
 function initSlideObserver() {
-  const dots = {
-    'slide-welcome': document.getElementById('dot-slide-welcome'),
-    'slide-focus': document.getElementById('dot-slide-focus'),
-    'slide-highlights': document.getElementById('dot-slide-highlights'),
-    'slide-projects': document.getElementById('dot-slide-projects'),
-    'slide-contact': document.getElementById('dot-slide-contact')
-  };
-
-  // Only run if welcome slide actually exists (homepage-specific)
-  if (!dots['slide-welcome']) return;
+  const sections = ['slide-welcome', 'slide-focus', 'slide-highlights', 'slide-projects', 'slide-contact'];
+  const hasSections = sections.some(id => document.getElementById(id));
+  if (!hasSections) return;
 
   const observerOptions = {
     root: null,
-    rootMargin: '-30% 0px -30% 0px',
-    threshold: 0.1
+    rootMargin: '0px 0px -10% 0px',
+    threshold: 0.05
   };
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('slide-active');
-        const id = entry.target.id;
-        Object.entries(dots).forEach(([key, dot]) => {
-          if (dot) {
-            dot.classList.remove('bg-white', 'scale-125');
-            dot.classList.add('bg-zinc-800');
-          }
-        });
-        const activeDot = dots[id];
-        if (activeDot) {
-          activeDot.classList.remove('bg-zinc-800');
-          activeDot.classList.add('bg-white', 'scale-125');
-        }
-      } else {
-        const isDesktopSnap = window.matchMedia('(min-width: 1024px) and (min-height: 750px)').matches;
-        if (isDesktopSnap) {
-          entry.target.classList.remove('slide-active');
-        }
       }
     });
   }, observerOptions);
 
-  ['slide-welcome', 'slide-focus', 'slide-highlights', 'slide-projects', 'slide-contact'].forEach(id => {
+  sections.forEach(id => {
     const el = document.getElementById(id);
     if (el) observer.observe(el);
   });
@@ -148,20 +118,15 @@ function initNebulaCanvas() {
   const ctx = canvas.getContext('2d');
   let particles = [];
   let animationFrameId = null;
-  const mouse = { x: null, y: null, radius: 220, active: false };
-
-  const parent = canvas.parentElement;
+  const mouse = { x: null, y: null, radius: 260, active: false };
   
   function resize() {
     canvas.width = window.innerWidth;
-    canvas.height = parent.clientHeight;
+    canvas.height = window.innerHeight;
     initParticles();
   }
 
-  const resizeObserver = new ResizeObserver(() => {
-    resize();
-  });
-  resizeObserver.observe(parent);
+  window.addEventListener('resize', resize);
 
   class Particle {
     constructor() {
@@ -169,8 +134,8 @@ function initNebulaCanvas() {
       this.y = Math.random() * canvas.height;
       this.vx = (Math.random() - 0.5) * 0.18; // elegant slow drift
       this.vy = (Math.random() - 0.5) * 0.18;
-      this.radius = Math.random() * 1.5 + 0.6;
-      this.baseAlpha = Math.random() * 0.2 + 0.12;
+      this.radius = Math.random() * 1.6 + 0.7;
+      this.baseAlpha = Math.random() * 0.35 + 0.2;
       this.alpha = this.baseAlpha;
     }
 
@@ -190,7 +155,7 @@ function initNebulaCanvas() {
           // Soft magnetic pull towards mouse cursor
           this.x += dx * force * 0.008;
           this.y += dy * force * 0.008;
-          this.alpha = Math.min(0.7, this.baseAlpha + force * 0.35);
+          this.alpha = Math.min(0.85, this.baseAlpha + force * 0.45);
         } else {
           if (this.alpha > this.baseAlpha) {
             this.alpha -= 0.005;
@@ -214,7 +179,7 @@ function initNebulaCanvas() {
   function initParticles() {
     particles = [];
     const area = canvas.width * canvas.height;
-    const density = Math.min(100, Math.floor(area / 12000));
+    const density = Math.min(130, Math.floor(area / 9000));
     for (let i = 0; i < density; i++) {
       particles.push(new Particle());
     }
@@ -235,7 +200,7 @@ function initNebulaCanvas() {
       const dx = x - mouse.x;
       const dy = y - mouse.y;
       const dist = Math.hypot(dx, dy);
-      const warpRadius = 240;
+      const warpRadius = 260;
       
       if (dist < warpRadius) {
         const force = (warpRadius - dist) / warpRadius;
@@ -264,8 +229,8 @@ function initNebulaCanvas() {
           ctx.lineTo(pt.x, pt.y);
         }
       }
-      ctx.strokeStyle = 'rgba(56, 189, 248, 0.04)'; // base subtle cyber layout line
-      ctx.lineWidth = 0.45;
+      ctx.strokeStyle = 'rgba(56, 189, 248, 0.08)'; // base subtle cyber layout line
+      ctx.lineWidth = 0.5;
       ctx.stroke();
     }
 
@@ -282,17 +247,17 @@ function initNebulaCanvas() {
           ctx.lineTo(pt.x, pt.y);
         }
       }
-      ctx.strokeStyle = 'rgba(56, 189, 248, 0.04)';
-      ctx.lineWidth = 0.45;
+      ctx.strokeStyle = 'rgba(56, 189, 248, 0.08)';
+      ctx.lineWidth = 0.5;
       ctx.stroke();
     }
 
     // Highlight active nodes at grid intersections near mouse
     if (mouse.active && mouse.x !== null && mouse.y !== null) {
-      const startC = Math.max(0, Math.floor((mouse.x - 240 + padding) / gridSpacing));
-      const endC = Math.min(cols, Math.ceil((mouse.x + 240 + padding) / gridSpacing));
-      const startR = Math.max(0, Math.floor((mouse.y - 240 + padding) / gridSpacing));
-      const endR = Math.min(rows, Math.ceil((mouse.y + 240 + padding) / gridSpacing));
+      const startC = Math.max(0, Math.floor((mouse.x - 260 + padding) / gridSpacing));
+      const endC = Math.min(cols, Math.ceil((mouse.x + 260 + padding) / gridSpacing));
+      const startR = Math.max(0, Math.floor((mouse.y - 260 + padding) / gridSpacing));
+      const endR = Math.min(rows, Math.ceil((mouse.y + 260 + padding) / gridSpacing));
 
       for (let c = startC; c < endC; c++) {
         for (let r = startR; r < endR; r++) {
@@ -302,8 +267,8 @@ function initNebulaCanvas() {
           if (pt.glow > 0.1) {
             // Draw a subtle high-tech dot at warped intersection
             ctx.beginPath();
-            ctx.arc(pt.x, pt.y, 1.35 * pt.glow, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(14, 165, 233, ${pt.glow * 0.18})`;
+            ctx.arc(pt.x, pt.y, 1.6 * pt.glow, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(14, 165, 233, ${pt.glow * 0.35})`;
             ctx.fill();
           }
         }
@@ -312,7 +277,7 @@ function initNebulaCanvas() {
   }
 
   function connectParticles() {
-    const maxDist = 120;
+    const maxDist = 130;
     for (let i = 0; i < particles.length; i++) {
       for (let j = i + 1; j < particles.length; j++) {
         const dx = particles[i].x - particles[j].x;
@@ -320,19 +285,19 @@ function initNebulaCanvas() {
         const dist = Math.hypot(dx, dy);
 
         if (dist < maxDist) {
-          let alpha = (1 - dist / maxDist) * 0.1;
+          let alpha = (1 - dist / maxDist) * 0.15;
           if (mouse.active && mouse.x !== null && mouse.y !== null) {
             const mDist = Math.hypot(mouse.x - particles[i].x, mouse.y - particles[i].y);
             if (mDist < mouse.radius) {
               const boost = (1 - mDist / mouse.radius);
-              alpha *= (1.5 + boost * 1.5);
+              alpha *= (1.6 + boost * 1.8);
             }
           }
           ctx.beginPath();
           ctx.moveTo(particles[i].x, particles[i].y);
           ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = `rgba(14, 165, 233, ${Math.min(0.35, alpha)})`;
-          ctx.lineWidth = 0.55;
+          ctx.strokeStyle = `rgba(14, 165, 233, ${Math.min(0.48, alpha)})`;
+          ctx.lineWidth = 0.6;
           ctx.stroke();
         }
       }
@@ -346,14 +311,14 @@ function initNebulaCanvas() {
     if (mouse.active && mouse.x !== null && mouse.y !== null) {
       const gradient = ctx.createRadialGradient(
         mouse.x, mouse.y, 0,
-        mouse.x, mouse.y, 240
+        mouse.x, mouse.y, 280
       );
-      gradient.addColorStop(0, 'rgba(14, 165, 233, 0.06)'); // sky cyan spotlight core
-      gradient.addColorStop(0.5, 'rgba(14, 165, 233, 0.02)'); // soft glow bloom
+      gradient.addColorStop(0, 'rgba(14, 165, 233, 0.14)'); // sky cyan spotlight core
+      gradient.addColorStop(0.5, 'rgba(14, 165, 233, 0.05)'); // soft glow bloom
       gradient.addColorStop(1, 'rgba(0, 0, 0, 0)'); // fade out
       
       ctx.beginPath();
-      ctx.arc(mouse.x, mouse.y, 240, 0, Math.PI * 2);
+      ctx.arc(mouse.x, mouse.y, 280, 0, Math.PI * 2);
       ctx.fillStyle = gradient;
       ctx.fill();
     }
@@ -374,16 +339,15 @@ function initNebulaCanvas() {
   }
 
   window.addEventListener('mousemove', (e) => {
-    const rect = canvas.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    if (e.clientY >= rect.top && e.clientY <= rect.bottom) {
-      mouse.x = x;
-      mouse.y = y;
-      mouse.active = true;
-    } else {
-      mouse.active = false;
-    }
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+    mouse.active = true;
+  });
+
+  window.addEventListener('mouseenter', (e) => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+    mouse.active = true;
   });
 
   window.addEventListener('mouseleave', () => {
@@ -392,16 +356,9 @@ function initNebulaCanvas() {
 
   window.addEventListener('touchmove', (e) => {
     if (e.touches.length > 0) {
-      const rect = canvas.getBoundingClientRect();
-      const x = e.touches[0].clientX - rect.left;
-      const y = e.touches[0].clientY - rect.top;
-      if (e.touches[0].clientY >= rect.top && e.touches[0].clientY <= rect.bottom) {
-        mouse.x = x;
-        mouse.y = y;
-        mouse.active = true;
-      } else {
-        mouse.active = false;
-      }
+      mouse.x = e.touches[0].clientX;
+      mouse.y = e.touches[0].clientY;
+      mouse.active = true;
     }
   }, { passive: true });
 
@@ -1053,6 +1010,40 @@ const projectsData = {
     github: 'https://github.com/syedirfanx/swarm-intelligence',
     document: 'private',
     tags: ['Feature Engineering', 'Swarm Intelligence', 'Optimization']
+  },
+  'lifestyle-os': {
+    title: 'Lifestyle OS',
+    category: 'Personal Project',
+    overview: `
+      <div class="space-y-4">
+        <p class="text-zinc-300 text-sm sm:text-base leading-relaxed">
+          Exploring an AI-powered platform that helps people plan, organize, budget, and achieve their ideal lifestyle.
+        </p>
+        
+        <p class="text-zinc-400 text-sm leading-relaxed">
+          This is <strong>NOT</strong> a budgeting app or a to-do list. Imagine one place where you can plan your dream home, wardrobe, travel, technology purchases, fitness goals, and every other aspect of your lifestyle, build greater self-awareness, track your personal growth, estimate how much your desired lifestyle would actually cost, and create a realistic roadmap to achieve it.
+        </p>
+
+        <div class="p-4 rounded-xl bg-cyan-950/30 border border-cyan-500/20 text-zinc-300 text-sm space-y-3 mt-4">
+          <p class="leading-relaxed">
+            Help shape the future of Lifestyle OS. I'm conducting a short user research survey to better understand how people plan their ideal lifestyle. Takes ~5 minutes.
+          </p>
+          <div class="text-xs font-semibold text-cyan-400/90">
+            Survey Deadline: August 15, 2026
+          </div>
+          <div>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfpDCwbDvV8q2mEfsJv7LDPVEGXxWwHqyYzmXxhAKxy3PMIsA/viewform" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-cyan-500 text-black font-bold hover:bg-cyan-400 transition-colors text-xs uppercase tracking-wider shadow-[0_0_15px_rgba(34,211,238,0.2)]">
+              Take the Survey
+              <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    `,
+    collaborators: ['<span class="text-white font-bold">Syed Irfan</span> (Lead Developer &amp; Architect)'],
+    github: 'closed',
+    document: 'private',
+    tags: ['Generative AI', 'Personal Project', 'Personal Growth', 'Productivity', 'LLMs']
   },
   'starpals-ai': {
     title: 'StarPals AI: Revolutionizing Talent Casting with Artificial Intelligence',
