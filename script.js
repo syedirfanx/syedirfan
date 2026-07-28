@@ -2269,7 +2269,7 @@ window.addEventListener('popstate', (event) => {
   closeMobileMenu(true);
   closeVideoIntro(true);
   
-  // Also handle gallery modal if it exists (defined in favorites.html)
+  // Also handle gallery modal if it exists (defined in the-odyssey.html)
   if (typeof closeGallery === 'function') {
     closeGallery(true);
   }
