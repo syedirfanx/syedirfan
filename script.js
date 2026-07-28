@@ -1043,7 +1043,7 @@ const projectsData = {
     collaborators: ['<span class="text-white font-bold">Syed Irfan</span> (Lead Developer &amp; Architect)'],
     github: 'closed',
     document: 'private',
-    tags: ['Generative AI', 'Personal Project', 'Personal Growth', 'Productivity', 'LLMs']
+    tags: ['Generative AI', 'Lifestyle']
   },
   'starpals-ai': {
     title: 'StarPals AI: Revolutionizing Talent Casting with Artificial Intelligence',
@@ -1938,12 +1938,12 @@ const projectsData = {
     `
   },
   'collab-nsu-ece': {
-    title: 'NSU ECE Department Iftar',
-    category: 'Organizer • Dhaka, Bangladesh',
+    title: 'NSU ECE Department',
+    category: 'Event Organizer • Dhaka, Bangladesh',
     tags: ['Organization', 'Logistics', 'Leadership'],
     overview: `
       <div class="space-y-4">
-        <p class="text-zinc-400 text-sm leading-relaxed">Successfully organized and managed the departmental Iftar event, coordinating logistics and team efforts for a large-scale gathering.</p>
+        <p class="text-zinc-300 text-sm leading-relaxed">Coordinated large-scale departmental community event, managing planning, logistics, and volunteer teams to ensure a seamless experience for attendees.</p>
       </div>
     `
   }
@@ -2002,16 +2002,16 @@ function renderProjects() {
     
     card.innerHTML = `
       <div class="flex justify-between items-start mb-6">
-        <span class="text-[10px] font-bold text-zinc-500 uppercase tracking-widest">${project.category}</span>
+        <span class="text-[11px] font-extrabold text-zinc-300 uppercase tracking-widest">${project.category}</span>
       </div>
-      <h3 class="text-xl font-bold mb-3">${project.title}</h3>
-      <div class="flex items-center gap-1.5 text-[10px] font-bold text-zinc-600 group-hover:text-zinc-400 transition-colors mb-6 uppercase tracking-widest">
+      <h3 class="text-xl font-bold mb-3 text-white group-hover:text-zinc-200 transition-colors">${project.title}</h3>
+      <div class="flex items-center gap-1.5 text-[11px] font-bold text-zinc-400 group-hover:text-zinc-200 transition-colors mb-6 uppercase tracking-widest">
         <span>See details</span>
         <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
       </div>
       <div class="mt-auto flex flex-wrap gap-2">
         ${project.tags.slice(0, 2).map(tag => `
-          <span class="px-3 py-1 rounded-full bg-zinc-800/50 text-zinc-400 text-[10px] uppercase tracking-widest border border-zinc-800">${tag}</span>
+          <span class="px-3 py-1 rounded-full bg-zinc-800/80 text-zinc-300 text-[10px] uppercase tracking-widest">${tag}</span>
         `).join('')}
       </div>
     `;
@@ -2214,7 +2214,7 @@ function openProjectModal(projectId) {
     if (project.tags && project.tags.length > 0) {
       tagsContainer.classList.remove('hidden');
       tagsContainer.innerHTML = project.tags.map(tag => `
-        <span class="px-3 py-1 rounded-full bg-zinc-800/50 text-zinc-400 text-[10px] uppercase tracking-widest border border-zinc-800">${tag}</span>
+        <span class="px-3 py-1 rounded-full bg-zinc-800/50 text-zinc-400 text-[10px] uppercase tracking-widest">${tag}</span>
       `).join('');
     } else {
       tagsContainer.classList.add('hidden');

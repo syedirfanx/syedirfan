@@ -261,17 +261,47 @@ body {
 
 .grok-card {
   position: relative;
-  background: rgba(9, 9, 11, 0.4);
-  border: 1px solid rgba(39, 39, 42, 0.4);
-  backdrop-filter: blur(8px);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: none !important;
+  box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.5);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .grok-card:hover {
-  background: rgba(24, 24, 27, 0.6);
-  border-color: rgba(63, 63, 70, 0.8);
-  transform: translateY(-2px);
-  box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.65);
+  border: none !important;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.7);
+}
+
+.grok-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Enhanced Text Legibility for Cards */
+.grok-card h1, .grok-card h2, .grok-card h3, .grok-card h4 {
+  color: #ffffff;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.95);
+}
+
+.grok-card p, .grok-card span, .grok-card li, .grok-card div {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+/* Ensure top-left category headers & tags on cards are crisp, bright and easy to read */
+.grok-card .text-zinc-500,
+.grok-card .text-zinc-600 {
+  color: #d4d4d8 !important; /* High contrast zinc-300 */
+  font-weight: 700 !important;
+}
+
+.grok-card:hover .text-zinc-500,
+.grok-card:hover .text-zinc-600 {
+  color: #f4f4f5 !important; /* Zinc-100 on card hover */
 }
 
 @keyframes glow-pulse {
@@ -486,4 +516,14 @@ body {
 
 .animate-orbit-pulse {
   animation: orbit-pulse 4s ease-in-out infinite;
+}
+
+/* Remove borders from all buttons site-wide */
+button,
+.btn,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+  border: none !important;
+  outline: none;
 }
