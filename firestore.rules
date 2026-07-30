@@ -34,6 +34,13 @@ service cloud.firestore {
         && data.createdAt is timestamp;
     }
 
+    function isValidMessage(data) {
+      return data.name is string && data.name.size() > 0
+        && data.email is string && data.email.size() > 0
+        && data.message is string && data.message.size() > 0
+        && data.createdAt is timestamp;
+    }
+
     // --- Posts ---
     match /posts/{postId} {
       allow read: if true;
@@ -45,6 +52,12 @@ service cloud.firestore {
     match /posts/{postId}/comments/{commentId} {
       allow read: if true;
       allow create: if isValidComment(incoming());
+    }
+
+    // --- Messages ---
+    match /messages/{messageId} {
+      allow read: if true;
+      allow create: if isValidMessage(incoming());
     }
   }
 }

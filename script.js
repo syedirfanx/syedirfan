@@ -12,10 +12,10 @@ window.resetFilters = resetFilters;
 window.filterByCategory = filterByCategory;
 window.filterByStack = filterByStack;
 window.updateResetButton = updateResetButton;
+window.setViewMode = setViewMode;
 window.generateProjectPortfolioPDF = generateProjectPortfolioPDF;
 window.generateCVPDF = generateCVPDF;
-window.openVideoIntro = openVideoIntro;
-window.closeVideoIntro = closeVideoIntro;
+
 window.scrollToSlideId = scrollToSlideId;
 
 // Smooth section navigation for buttons/links
@@ -1952,12 +1952,40 @@ const projectsData = {
 let currentCategory = 'all';
 let currentStack = 'all';
 let searchQuery = '';
+let currentViewMode = 'thumbnail';
+
+function setViewMode(mode) {
+  currentViewMode = mode;
+  const thumbBtn = document.getElementById('view-thumbnail-btn');
+  const listBtn = document.getElementById('view-list-btn');
+
+  if (thumbBtn && listBtn) {
+    if (mode === 'thumbnail') {
+      thumbBtn.className = 'p-2 rounded-lg text-white bg-zinc-800 transition-all cursor-pointer';
+      listBtn.className = 'p-2 rounded-lg text-zinc-500 hover:text-white transition-all cursor-pointer';
+    } else {
+      thumbBtn.className = 'p-2 rounded-lg text-zinc-500 hover:text-white transition-all cursor-pointer';
+      listBtn.className = 'p-2 rounded-lg text-white bg-zinc-800 transition-all cursor-pointer';
+    }
+  }
+
+  renderProjects();
+}
 
 function renderProjects() {
   const grid = document.getElementById('projects-grid');
   if (!grid) return;
 
   grid.innerHTML = '';
+
+  const isMobile = window.innerWidth < 640;
+  const effectiveViewMode = isMobile ? 'thumbnail' : currentViewMode;
+
+  if (effectiveViewMode === 'thumbnail') {
+    grid.className = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6';
+  } else {
+    grid.className = 'flex flex-col gap-3';
+  }
 
   const filteredProjects = Object.entries(projectsData).filter(([id, project]) => {
     // Skip academic background, professional experience, and collaboration items in the research grid
@@ -1995,26 +2023,55 @@ function renderProjects() {
     return;
   }
 
-  filteredProjects.forEach(([id, project]) => {
+  filteredProjects.forEach(([id, project], index) => {
     const card = document.createElement('div');
-    card.className = 'grok-card p-8 rounded-2xl flex flex-col group hover:border-zinc-700 transition-all cursor-pointer';
     card.onclick = () => openProjectModal(id);
+    const itemNum = String(index + 1).padStart(2, '0');
     
-    card.innerHTML = `
-      <div class="flex justify-between items-start mb-6">
-        <span class="text-[11px] font-extrabold text-zinc-300 uppercase tracking-widest">${project.category}</span>
-      </div>
-      <h3 class="text-xl font-bold mb-3 text-white group-hover:text-zinc-200 transition-colors">${project.title}</h3>
-      <div class="flex items-center gap-1.5 text-[11px] font-bold text-zinc-400 group-hover:text-zinc-200 transition-colors mb-6 uppercase tracking-widest">
-        <span>See details</span>
-        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-      </div>
-      <div class="mt-auto flex flex-wrap gap-2">
-        ${project.tags.slice(0, 2).map(tag => `
-          <span class="px-3 py-1 rounded-full bg-zinc-800/80 text-zinc-300 text-[10px] uppercase tracking-widest">${tag}</span>
-        `).join('')}
-      </div>
-    `;
+    if (effectiveViewMode === 'thumbnail') {
+      card.className = 'grok-card p-8 rounded-2xl flex flex-col group hover:border-zinc-700 transition-all cursor-pointer';
+      card.innerHTML = `
+        <div class="flex justify-between items-start mb-6">
+          <span class="text-[11px] font-extrabold text-zinc-300 uppercase tracking-widest">${project.category}</span>
+        </div>
+        <h3 class="text-xl font-bold mb-3 text-white group-hover:text-zinc-200 transition-colors">${project.title}</h3>
+        <div class="flex items-center gap-1.5 text-[11px] font-bold text-zinc-400 group-hover:text-zinc-200 transition-colors mb-6 uppercase tracking-widest">
+          <span>See details</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </div>
+        <div class="mt-auto flex flex-wrap gap-2">
+          ${project.tags.slice(0, 2).map(tag => `
+            <span class="px-3 py-1 rounded-full bg-zinc-800/80 text-zinc-300 text-[10px] uppercase tracking-widest">${tag}</span>
+          `).join('')}
+        </div>
+      `;
+    } else {
+      card.className = 'grok-card p-4.5 sm:p-5 rounded-2xl flex flex-row items-center gap-4 sm:gap-5 group hover:border-zinc-700 transition-all cursor-pointer';
+      card.innerHTML = `
+        <div class="text-xl sm:text-2xl font-mono font-bold text-zinc-500 group-hover:text-zinc-300 transition-colors shrink-0 w-7 sm:w-9 text-center select-none">
+          ${itemNum}
+        </div>
+        <div class="w-px h-8 bg-zinc-800/80 shrink-0"></div>
+        <div class="flex-1 min-w-0 space-y-2">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div class="flex items-center gap-2.5 flex-wrap">
+              <h3 class="text-base sm:text-lg font-bold text-white group-hover:text-zinc-200 transition-colors">${project.title}</h3>
+              <span class="px-2.5 py-0.5 rounded bg-zinc-800/80 text-zinc-200 text-[10px] font-bold uppercase tracking-wider">${project.category}</span>
+            </div>
+            <div class="flex items-center gap-1.5 text-[11px] font-bold text-zinc-400 group-hover:text-white transition-colors uppercase tracking-widest shrink-0">
+              <span>See details</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform"><path d="m9 18 6-6-6-6"/></svg>
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            ${project.tags.slice(0, 2).map(tag => `
+              <span class="px-2.5 py-0.5 rounded-full bg-zinc-800/80 text-zinc-300 text-[10px] uppercase tracking-widest">${tag}</span>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }
+    
     grid.appendChild(card);
   });
 }
@@ -2026,8 +2083,10 @@ function filterByCategory(category) {
 
 function selectCategory(category, label) {
   currentCategory = category;
-  document.getElementById('category-label').innerText = `Category: ${label}`;
-  document.getElementById('category-menu').classList.add('hidden');
+  const catLabel = document.getElementById('category-label');
+  if (catLabel) catLabel.innerText = `Category: ${label}`;
+  const catMenu = document.getElementById('category-menu');
+  if (catMenu && catMenu.classList) catMenu.classList.add('hidden');
   updateResetButton();
   renderProjects();
 }
@@ -2039,18 +2098,23 @@ function filterByStack(stack) {
 
 function selectStack(stack, label) {
   currentStack = stack;
-  document.getElementById('stack-label').innerText = `Stack: ${label}`;
-  document.getElementById('stack-menu').classList.add('hidden');
+  const stackLabel = document.getElementById('stack-label');
+  if (stackLabel) stackLabel.innerText = `Stack: ${label}`;
+  const stackMenu = document.getElementById('stack-menu');
+  if (stackMenu && stackMenu.classList) stackMenu.classList.add('hidden');
   updateResetButton();
   renderProjects();
 }
 
 function toggleDropdown(id) {
   const menu = document.getElementById(id);
+  if (!menu || !menu.classList) return;
   const isHidden = menu.classList.contains('hidden');
   
   // Close all other dropdowns
-  document.querySelectorAll('[id$="-menu"]').forEach(m => m.classList.add('hidden'));
+  document.querySelectorAll('[id$="-menu"]').forEach(m => {
+    if (m && m.classList) m.classList.add('hidden');
+  });
   
   if (isHidden) {
     menu.classList.remove('hidden');
@@ -2059,6 +2123,7 @@ function toggleDropdown(id) {
 
 function updateResetButton() {
   const btn = document.getElementById('reset-filters-btn');
+  if (!btn || !btn.classList) return;
   if (currentCategory !== 'all' || currentStack !== 'all' || searchQuery !== '') {
     btn.classList.remove('hidden');
     btn.classList.add('flex');
@@ -2076,8 +2141,11 @@ function resetFilters() {
   const searchInput = document.getElementById('project-search');
   if (searchInput) searchInput.value = '';
   
-  document.getElementById('category-label').innerText = 'Category: All';
-  document.getElementById('stack-label').innerText = 'Stack: All';
+  const catLabel = document.getElementById('category-label');
+  if (catLabel) catLabel.innerText = 'Category: All';
+  
+  const stackLabel = document.getElementById('stack-label');
+  if (stackLabel) stackLabel.innerText = 'Stack: All';
   
   updateResetButton();
   renderProjects();
@@ -2267,7 +2335,6 @@ window.addEventListener('popstate', (event) => {
   // Close any open modals or menus when back button is pressed
   closeProjectModal(true);
   closeMobileMenu(true);
-  closeVideoIntro(true);
   
   // Also handle gallery modal if it exists (defined in the-odyssey.html)
   if (typeof closeGallery === 'function') {
@@ -2275,112 +2342,7 @@ window.addEventListener('popstate', (event) => {
   }
 });
 
-let videoAutoCloseTimeout = null;
 
-/**
- * Video Intro Modal Logic
- */
-function openVideoIntro() {
-  const modal = document.getElementById('video-modal');
-  const content = document.getElementById('video-modal-content');
-  const video = document.getElementById('intro-video');
-  const overlay = document.getElementById('video-neural-overlay');
-  
-  if (!modal || !content || !video) return;
-
-  // Clear any existing timeout
-  if (videoAutoCloseTimeout) {
-    clearTimeout(videoAutoCloseTimeout);
-    videoAutoCloseTimeout = null;
-  }
-
-  modal.classList.remove('hidden');
-  modal.style.display = 'block';
-  document.body.style.overflow = 'hidden';
-
-  // Handle Lucide Icons within the modal
-  if (typeof lucide !== 'undefined') {
-    lucide.createIcons();
-  }
-
-  // Reset overlay
-  if (overlay) {
-    overlay.style.opacity = '1';
-    overlay.classList.remove('hidden');
-  }
-
-  // Animate in
-  setTimeout(() => {
-    content.classList.remove('scale-95', 'opacity-0');
-    content.classList.add('scale-100', 'opacity-100');
-  }, 10);
-
-  // Play video with intro delay
-  video.currentTime = 0;
-  
-  const startVideo = () => {
-    setTimeout(() => {
-      if (overlay) overlay.style.opacity = '0';
-      video.play().catch(e => {
-        console.warn('Auto-play blocked or failed:', e);
-        video.controls = true;
-      });
-      setTimeout(() => {
-        if (overlay) overlay.classList.add('hidden');
-      }, 1000);
-    }, 1500); // 1.5s delay for futuristic feel
-  };
-
-  // Add listener for auto-close
-  video.onended = () => {
-    videoAutoCloseTimeout = setTimeout(() => {
-      closeVideoIntro();
-    }, 5000);
-  };
-
-  // Wait for enough data to play or just timeout
-  if (video.readyState >= 3) {
-    startVideo();
-  } else {
-    video.addEventListener('canplay', startVideo, { once: true });
-  }
-
-  // Push state
-  if (!history.state || history.state.modal !== 'video') {
-    history.pushState({ modal: 'video' }, '');
-  }
-}
-
-function closeVideoIntro(fromPopState = false) {
-  const modal = document.getElementById('video-modal');
-  const content = document.getElementById('video-modal-content');
-  const video = document.getElementById('intro-video');
-  
-  if (!modal || !content || !video) return;
-
-  // Clear auto-close timeout if exists
-  if (videoAutoCloseTimeout) {
-    clearTimeout(videoAutoCloseTimeout);
-    videoAutoCloseTimeout = null;
-  }
-
-  // Pause video
-  video.pause();
-  video.onended = null; // Remove listener
-
-  content.classList.remove('scale-100', 'opacity-100');
-  content.classList.add('scale-95', 'opacity-0');
-
-  setTimeout(() => {
-    modal.classList.add('hidden');
-    modal.style.display = 'none';
-    document.body.style.overflow = '';
-  }, 300);
-
-  if (!fromPopState && history.state && history.state.modal === 'video') {
-    history.back();
-  }
-}
 
 // Wishes Spot Logic
 async function initWishes() {

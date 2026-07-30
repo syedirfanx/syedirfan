@@ -42,28 +42,19 @@
     <link rel="preload" as="image" href="pictures/IMG20220401160123.jpg">
     <script>
       async function onThumbnailLoad(img) {
-        if (!img.complete) return;
-        
+        if (!img || !img.classList) return;
         try {
-          // decode() ensures the image is fully downloaded and decoded into memory
-          // This prevents the "half-loaded" or "progressive scan" look
-          await img.decode();
-          
+          if (img.complete) {
+            await img.decode().catch(() => {});
+          }
+        } catch (err) {}
+        if (img && img.classList) {
           img.classList.remove('invisible', 'opacity-0');
           img.classList.add('loaded');
-          
-          const container = img.closest('.skeleton');
-          if (container) {
-            // Delay skeleton removal slightly to mask any final paint frame
-            setTimeout(() => {
-              container.classList.remove('skeleton');
-            }, 100);
-          }
-        } catch (err) {
-          // Fallback for older browsers or broken decodes
-          if (img.complete && img.naturalWidth > 0) {
-            img.classList.remove('invisible', 'opacity-0');
-          }
+        }
+        const container = img.closest ? (img.closest('.skeleton') || img.parentElement) : img.parentElement;
+        if (container && container.classList) {
+          container.classList.remove('skeleton');
         }
       }
     </script>
@@ -825,28 +816,34 @@
       }
 
       async function onThumbnailLoad(img) {
-        if (!img.complete) return;
-        
+        if (!img || !img.classList) return;
         try {
-          await img.decode();
+          if (img.complete) {
+            await img.decode().catch(() => {});
+          }
+        } catch (err) {}
+        if (img && img.classList) {
           img.classList.remove('invisible', 'opacity-0');
           img.classList.add('loaded');
-          const container = img.closest('.skeleton');
-          if (container) {
-            setTimeout(() => {
-              container.classList.remove('skeleton');
-            }, 100);
-          }
-        } catch (err) {
-          if (img.complete && img.naturalWidth > 0) {
-            img.classList.remove('invisible', 'opacity-0');
-          }
+        }
+        const container = img.closest ? (img.closest('.skeleton') || img.parentElement) : img.parentElement;
+        if (container && container.classList) {
+          container.classList.remove('skeleton');
         }
       }
 
+      document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('img').forEach(img => {
+          if (img.complete) {
+            onThumbnailLoad(img);
+          }
+        });
+      });
+
       // Keyboard navigation
       document.addEventListener('keydown', (e) => {
-        if (document.getElementById('galleryModal').classList.contains('hidden')) return;
+        const modal = document.getElementById('galleryModal');
+        if (!modal || modal.classList.contains('hidden')) return;
         
         if (e.key === 'Escape') closeGallery();
         if (e.key === 'ArrowRight') nextImage();

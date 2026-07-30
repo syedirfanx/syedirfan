@@ -34,22 +34,28 @@
     <link rel="stylesheet" href="style.css">
     <script>
       async function onThumbnailLoad(img) {
-        if (!img.complete) return;
+        if (!img || !img.classList) return;
         try {
-          await img.decode();
+          if (img.complete) {
+            await img.decode().catch(() => {});
+          }
+        } catch (err) {}
+        if (img && img.classList) {
           img.classList.remove('invisible', 'opacity-0');
-          const container = img.closest('.skeleton') || img.parentElement;
-          if (container && container.classList.contains('skeleton')) {
-            setTimeout(() => {
-              container.classList.remove('skeleton');
-            }, 100);
-          }
-        } catch (err) {
-          if (img.complete && img.naturalWidth > 0) {
-            img.classList.remove('invisible', 'opacity-0');
-          }
+        }
+        const container = img.closest ? (img.closest('.skeleton') || img.parentElement) : img.parentElement;
+        if (container && container.classList) {
+          container.classList.remove('skeleton');
         }
       }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('img').forEach(img => {
+          if (img.complete) {
+            onThumbnailLoad(img);
+          }
+        });
+      });
     </script>
   </head>
   <body class="min-h-screen flex flex-col selection:bg-zinc-800 selection:text-white">
@@ -555,7 +561,7 @@
                 </div>
 
                 <!-- Comment List -->
-                <div class="space-y-0 divide-y divide-zinc-900" id="comments-container">
+                <div class="space-y-4 pt-4" id="comments-container">
                   <!-- Dynamically Populated -->
                 </div>
 
@@ -787,11 +793,23 @@
           const viewMoreContainer = document.getElementById('view-more-container');
           const viewMoreBtn = document.getElementById('view-more-btn');
 
+          function escapeHtml(str) {
+            return String(str || '')
+              .replace(/&/g, '&amp;')
+              .replace(/</g, '&lt;')
+              .replace(/>/g, '&gt;')
+              .replace(/"/g, '&quot;');
+          }
+
           const renderComments = () => {
             if (!commentsContainer) return;
             
             if (allComments.length === 0) {
-              commentsContainer.innerHTML = '<div class="text-center py-20 text-zinc-800 text-xs font-bold uppercase tracking-widest">BE THE FIRST TO COMMENT</div>';
+              commentsContainer.innerHTML = `
+                <div class="text-center py-10 p-6 rounded-2xl bg-zinc-900/40 border border-zinc-800/60 text-zinc-400 text-xs font-semibold uppercase tracking-wider">
+                  No comments yet. Be the first to share your thoughts!
+                </div>
+              `;
               if (viewMoreContainer) viewMoreContainer.classList.add('hidden');
               return;
             }
@@ -800,28 +818,35 @@
             
             commentsContainer.innerHTML = visibleComments.map(docSnap => {
               const data = docSnap.data();
-              let dateStr = 'Processing...';
+              let dateStr = 'Just now';
               if (data.createdAt) {
                 try {
                   const d = data.createdAt.toDate ? data.createdAt.toDate() : new Date(data.createdAt);
-                  dateStr = d.toLocaleDateString();
+                  const dateFormatted = d.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
+                  const timeFormatted = d.toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' });
+                  dateStr = `${dateFormatted} • ${timeFormatted}`;
                 } catch (err) {}
               }
               const isPending = docSnap.metadata.hasPendingWrites;
               const authorName = String(data.authorName || 'Explorer');
+              const initials = authorName.substring(0, 2).toUpperCase();
               
               return `
-                <div class="flex gap-6 group py-4 first:pt-0 animate-fade-in relative ${isPending ? 'opacity-50 grayscale' : ''}">
-                  <div class="w-10 h-10 rounded-md bg-zinc-950 border border-zinc-800 flex items-center justify-center shrink-0 shadow-2xl relative z-10 group-hover:border-zinc-600 transition-colors">
-                    <span class="text-[10px] font-black text-zinc-600 group-hover:text-zinc-400 uppercase tracking-tighter transition-colors">${authorName.substring(0, 2).toUpperCase()}</span>
+                <div class="flex items-start gap-3 group animate-fade-in ${isPending ? 'opacity-60' : ''}">
+                  <div class="w-9 h-9 rounded-full bg-zinc-800/90 border border-zinc-700/60 text-cyan-400 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
+                    ${escapeHtml(initials)}
                   </div>
-                  <div class="space-y-1.5 flex-1">
-                    <header class="flex items-center gap-4">
-                      <span class="text-sm font-black text-white uppercase tracking-wider">${authorName}</span>
-                      <span class="w-1 h-1 rounded-full bg-zinc-800"></span>
-                      <span class="text-[10px] text-zinc-700 font-bold uppercase tracking-widest">${dateStr}</span>
-                    </header>
-                    <p class="text-sm text-zinc-500 font-medium leading-relaxed max-w-2xl">${data.content || ''}</p>
+                  <div class="flex flex-col max-w-[88%] md:max-w-[90%] space-y-1">
+                    <div class="bg-zinc-900/90 border border-zinc-800/80 rounded-2xl px-4 py-2.5 space-y-1 inline-block">
+                      <div class="flex items-center justify-between gap-4">
+                        <span class="text-sm font-semibold text-white">${escapeHtml(authorName)}</span>
+                        ${isPending ? '<span class="text-[10px] text-amber-400 font-mono">Posting...</span>' : ''}
+                      </div>
+                      <p class="text-sm text-zinc-200 leading-relaxed font-normal whitespace-pre-wrap">${escapeHtml(data.content || '')}</p>
+                    </div>
+                    <div class="flex items-center gap-2 pl-3 text-xs text-zinc-400 font-normal">
+                      <span>${escapeHtml(dateStr)}</span>
+                    </div>
                   </div>
                 </div>
               `;

@@ -32,6 +32,18 @@
         }
       },
       "required": ["authorName", "content", "createdAt"]
+    },
+    "Message": {
+      "title": "Direct Message",
+      "description": "A direct message sent from the contact form.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "message": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "email", "message", "createdAt"]
     }
   },
   "firestore": {
@@ -42,6 +54,10 @@
     "posts/{postId}/comments": {
       "schema": "Comment",
       "description": "A subcollection of broadcasts for a specific post."
+    },
+    "messages/{messageId}": {
+      "schema": "Message",
+      "description": "Direct contact form submissions."
     }
   }
 }
