@@ -49,8 +49,11 @@
         <div class="loader-ring"></div>
         <div class="loader-ring"></div>
         <div class="loader-core"></div>
+        <div class="loader-text font-brand">
+          <span class="font-black">SYED</span>
+          <span class="font-black">IRFAN</span>
+        </div>
       </div>
-      <div class="loader-text">Synchronizing Neural Nebula</div>
     </div>
 
     <!-- Galaxy & Tech Background -->
@@ -116,14 +119,27 @@
           <!-- Left side content (text info and calls to action) -->
           <div class="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left space-y-5 md:space-y-6">
             <div class="space-y-3">
-              <!-- Wishes Spot in place of Workspace V2 -->
-              <div id="wishes-spot" class="hidden w-full flex justify-center lg:justify-start lg:pl-1">
-                <div class="relative cursor-default py-1">
-                  <!-- Particles Container -->
-                  <div id="particles-container" class="absolute inset-0 pointer-events-none"></div>
+              <!-- Wishes Spot -->
+              <div id="wishes-spot" class="hidden w-full flex justify-center lg:justify-start">
+                <div class="relative group cursor-default inline-flex">
+                  <!-- Ambient Glow Background (Gloomy Dark Purple) -->
+                  <div class="absolute -inset-0.5 bg-gradient-to-r from-purple-900/40 via-violet-950/30 to-purple-900/40 rounded-full blur-md opacity-70 group-hover:opacity-100 transition-opacity duration-500"></div>
 
-                  <div class="relative z-10 flex items-center justify-center lg:justify-start min-h-[24px]">
-                    <span id="decode-text" class="text-zinc-300 font-sans font-light whitespace-nowrap uppercase tracking-[0.25em] leading-none text-[10px] sm:text-xs"></span>
+                  <!-- Badge Pill Container (Gloomy Dark Base, No Border) -->
+                  <div class="relative z-10 flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-zinc-950/90 backdrop-blur-md shadow-xl shadow-black/80">
+                    <!-- Pulsing Status Dot (Gloomy Purple - Desktop Only) -->
+                    <span class="relative hidden lg:flex h-2 w-2 shrink-0">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-500 opacity-60"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.8)]"></span>
+                    </span>
+
+                    <!-- Particles Container for Sparkles -->
+                    <div id="particles-container" class="absolute inset-0 pointer-events-none overflow-hidden rounded-full"></div>
+
+                    <!-- Slide Text Container -->
+                    <div class="relative z-10 flex items-center h-5 overflow-hidden">
+                      <span id="decode-text" class="inline-block text-xs sm:text-sm font-sans font-semibold tracking-wide text-zinc-100 uppercase whitespace-nowrap"></span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -143,6 +159,8 @@
               </div>
 
               <div class="w-12 h-[1px] bg-zinc-800 mx-auto lg:mx-0 mt-4 md:mt-5"></div>
+
+
             </div>
             
 
@@ -258,7 +276,7 @@
                 <div class="text-[11px] font-extrabold text-zinc-300 uppercase tracking-widest">
                   Academic
                 </div>
-                <span class="px-2 py-1 rounded-md bg-zinc-800/80 text-[11px] font-bold text-zinc-200 uppercase tracking-widest border border-zinc-700">Graduated</span>
+                <span class="px-2 py-1 rounded-md bg-zinc-800/80 text-[11px] font-bold text-zinc-200 uppercase tracking-widest">Graduated</span>
               </div>
               <div class="space-y-2 flex-1">
                 <h3 class="font-bold text-xl lg:text-2xl leading-tight tracking-tight text-white hover:text-zinc-300 transition-colors">MSc in Data Science</h3>
@@ -284,7 +302,7 @@
                 <div class="text-[11px] font-extrabold text-zinc-300 uppercase tracking-widest">
                   Personal Project
                 </div>
-                <span class="px-2 py-1 rounded-md bg-emerald-950/70 text-[11px] font-bold text-emerald-300 uppercase tracking-widest border border-emerald-700/60">In Progress</span>
+                <span class="px-2 py-1 rounded-md bg-emerald-950/70 text-[11px] font-bold text-emerald-300 uppercase tracking-widest">In Progress</span>
               </div>
               <div class="space-y-2 flex-1">
                 <h3 class="font-bold text-xl lg:text-2xl leading-tight tracking-tight text-white hover:text-zinc-300 transition-colors cursor-pointer" onclick="openProjectModal('lifestyle-os')">Lifestyle OS</h3>
@@ -314,7 +332,7 @@
                   </span>
                   <span class="font-cursive text-zinc-300 text-base lowercase leading-none">journal</span>
                 </div>
-                <span class="px-2 py-1 rounded-md bg-zinc-800/50 text-[11px] font-bold text-zinc-400 uppercase tracking-widest border border-zinc-800">Featured</span>
+                <span class="px-2 py-1 rounded-md bg-zinc-800/50 text-[11px] font-bold text-zinc-400 uppercase tracking-widest">Featured</span>
               </div>
               <div class="space-y-2 flex-1">
                 <h3 class="font-bold text-xl lg:text-2xl leading-tight tracking-tight text-white hover:text-zinc-300 transition-colors">From Zero to RAG: Building LLM Apps From Scratch</h3>

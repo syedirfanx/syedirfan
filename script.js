@@ -2357,46 +2357,45 @@ async function initWishes() {
   const day = now.getDate();
   const dayOfWeek = now.getDay();
 
-  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#&$%§*+=-";
+  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#&$%*+=<>_-";
 
-  const solveText = async (targetText) => {
+  const slideInText = async (targetText) => {
     const isBangla = /[\u0980-\u09FF]/.test(targetText);
-    if (isBangla) decodeText.classList.add('font-bangla');
-    else decodeText.classList.remove('font-bangla');
-
-    let currentText = "";
-    
-    // Initial scramble
-    for (let i = 0; i < targetText.length; i++) {
-      currentText += chars[Math.floor(Math.random() * chars.length)];
+    if (isBangla) {
+      decodeText.classList.add('font-bangla');
+      decodeText.classList.remove('font-sans', 'font-mono', 'uppercase', 'tracking-wide', 'tracking-widest');
+      decodeText.classList.add('font-semibold', 'tracking-normal');
+    } else {
+      decodeText.classList.remove('font-bangla', 'font-mono', 'tracking-widest');
+      decodeText.classList.add('font-sans', 'font-semibold', 'uppercase', 'tracking-wide');
     }
-    decodeText.textContent = currentText;
 
-    // Solve character by character
-    for (let i = 0; i < targetText.length; i++) {
-      for (let j = 0; j < 3; j++) {
-        let scrambled = targetText.substring(0, i);
-        for (let k = i; k < targetText.length; k++) {
-          scrambled += chars[Math.floor(Math.random() * chars.length)];
-        }
-        decodeText.textContent = scrambled;
-        await new Promise(r => setTimeout(r, 40));
-      }
-      decodeText.textContent = targetText.substring(0, i + 1) + currentText.substring(i + 1);
-    }
+    // Set starting position at top (-100% Y)
+    decodeText.style.transition = 'none';
+    decodeText.style.transform = 'translateY(-100%)';
+    decodeText.style.opacity = '0';
     decodeText.textContent = targetText;
+
+    // Force reflow
+    void decodeText.offsetHeight;
+
+    // Animate sliding down into view
+    decodeText.style.transition = 'transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease-out';
+    decodeText.style.transform = 'translateY(0)';
+    decodeText.style.opacity = '1';
+
+    await new Promise(r => setTimeout(r, 450));
   };
 
-  const clearText = async () => {
-    const originalText = decodeText.textContent;
-    for (let i = originalText.length; i >= 0; i--) {
-      let scrambled = "";
-      for (let j = 0; j < i; j++) {
-        scrambled += chars[Math.floor(Math.random() * chars.length)];
-      }
-      decodeText.textContent = scrambled;
-      await new Promise(r => setTimeout(r, 20));
-    }
+  const slideOutText = async () => {
+    if (!decodeText.textContent) return;
+
+    // Animate sliding down out of view
+    decodeText.style.transition = 'transform 0.45s cubic-bezier(0.7, 0, 0.84, 0), opacity 0.4s ease-in';
+    decodeText.style.transform = 'translateY(100%)';
+    decodeText.style.opacity = '0';
+
+    await new Promise(r => setTimeout(r, 450));
     decodeText.textContent = "";
   };
 
@@ -2404,34 +2403,33 @@ async function initWishes() {
     if (!phrases || phrases.length === 0) return;
     wishesSpot.classList.remove('hidden');
 
-    if (particlesContainer) {
+    if (particlesContainer && !particlesContainer.dataset.initialized) {
+      particlesContainer.dataset.initialized = 'true';
       setInterval(() => {
         if (!decodeText.textContent.trim()) return;
         const particle = document.createElement('div');
         particle.className = 'particle';
-        const size = Math.random() * 1.5 + 0.5;
-        const duration = 1.5 + Math.random() * 1.5;
+        const size = Math.random() * 2 + 1;
+        const duration = 1.2 + Math.random() * 1.5;
         particle.style.left = `${Math.random() * 100}%`;
         particle.style.width = `${size}px`;
         particle.style.height = `${size}px`;
         particle.style.setProperty('--duration', `${duration}s`);
-        particle.style.setProperty('--x-drift', `${(Math.random() - 0.5) * 30}px`);
-        const brightness = 200 + Math.floor(Math.random() * 55); // beautiful soft translucent silver-white sparkle
-        const color = `rgba(${brightness}, ${brightness}, ${brightness}, ${0.4 + Math.random() * 0.4})`;
+        particle.style.setProperty('--x-drift', `${(Math.random() - 0.5) * 25}px`);
+        const color = `rgba(168, 85, 247, ${0.4 + Math.random() * 0.5})`;
         particle.style.background = color;
-        particle.style.color = color;
-        particle.style.boxShadow = `0 0 4px rgba(255, 255, 255, 0.2)`;
+        particle.style.boxShadow = `0 0 6px rgba(168, 85, 247, 0.6)`;
         particlesContainer.appendChild(particle);
         setTimeout(() => particle.remove(), duration * 1000);
-      }, 600);
+      }, 500);
     }
 
     let index = 0;
     while (true) {
-      await solveText(phrases[index]);
+      await slideInText(phrases[index]);
       await new Promise(r => setTimeout(r, 4500)); // Visible duration
-      await clearText();
-      await new Promise(r => setTimeout(r, 800)); // Gap before next entry
+      await slideOutText();
+      await new Promise(r => setTimeout(r, 200)); // Pause before next enters from top
       index = (index + 1) % phrases.length;
     }
   };
@@ -2459,6 +2457,14 @@ async function initWishes() {
     {
       month: 4,
       day: 13,
+      phrases: [
+        "শুভ নববর্ষ!",
+        "সবাইকে বাংলা নববর্ষের শুভেচ্ছা"
+      ]
+    },
+    {
+      month: 4,
+      day: 14,
       phrases: [
         "শুভ নববর্ষ!",
         "সবাইকে বাংলা নববর্ষের শুভেচ্ছা"
@@ -2517,8 +2523,26 @@ async function initWishes() {
     return;
   }
 
-  // 4. If nothing else is active, make sure the spot is hidden
-  wishesSpot.classList.add('hidden');
+  // 4. Dynamic Time-of-Day Wish & Welcome Greeting
+  const hour = now.getHours();
+  let timeGreeting = "GOOD DAY";
+  if (hour >= 5 && hour < 12) {
+    timeGreeting = "GOOD MORNING";
+  } else if (hour >= 12 && hour < 17) {
+    timeGreeting = "GOOD AFTERNOON";
+  } else if (hour >= 17 && hour < 22) {
+    timeGreeting = "GOOD EVENING";
+  } else {
+    timeGreeting = "GOOD NIGHT";
+  }
+
+  const defaultPhrases = [
+    `${timeGreeting} • WELCOME TO MY PORTFOLIO`,
+    "CRAFTING INTELLIGENT SOLUTIONS FOR A SMARTER FUTURE",
+    "EXPLORING DATA SCIENCE, MACHINE LEARNING & AI"
+  ];
+
+  await startCycling(defaultPhrases);
 }
 
 /**
