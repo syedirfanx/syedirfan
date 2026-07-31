@@ -2345,6 +2345,7 @@ window.addEventListener('popstate', (event) => {
 
 
 // Wishes Spot Logic
+// Wishes Spot Logic
 async function initWishes() {
   const wishesSpot = document.getElementById('wishes-spot');
   const decodeText = document.getElementById('decode-text');
@@ -2523,27 +2524,10 @@ async function initWishes() {
     return;
   }
 
-  // 4. Dynamic Time-of-Day Wish & Welcome Greeting
-  const hour = now.getHours();
-  let timeGreeting = "GOOD DAY";
-  if (hour >= 5 && hour < 12) {
-    timeGreeting = "GOOD MORNING";
-  } else if (hour >= 12 && hour < 17) {
-    timeGreeting = "GOOD AFTERNOON";
-  } else if (hour >= 17 && hour < 22) {
-    timeGreeting = "GOOD EVENING";
-  } else {
-    timeGreeting = "GOOD NIGHT";
-  }
-
-  const defaultPhrases = [
-    `${timeGreeting} • WELCOME TO MY PORTFOLIO`,
-    "CRAFTING INTELLIGENT SOLUTIONS FOR A SMARTER FUTURE",
-    "EXPLORING DATA SCIENCE, MACHINE LEARNING & AI"
-  ];
-
-  await startCycling(defaultPhrases);
+  // If no wish applies for today, ensure wishes spot remains hidden
+  wishesSpot.classList.add('hidden');
 }
+
 
 /**
  * Generates a dynamic PDF of all projects using jsPDF
