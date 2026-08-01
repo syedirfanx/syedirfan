@@ -9,7 +9,7 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@900&family=JetBrains+Mono:wght@400;500&family=Hind+Siliguri:wght@400;500;600;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800&family=Outfit:wght@900&family=JetBrains+Mono:wght@400;500&family=Hind+Siliguri:wght@400;500;600;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
         theme: {
@@ -17,6 +17,7 @@
             fontFamily: {
               sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
               display: ['Space Grotesk', 'sans-serif'],
+              serif: ['Playfair Display', 'Georgia', 'serif'],
               brand: ['Outfit', 'sans-serif'],
               mono: ['JetBrains Mono', 'monospace'],
               cursive: ['Dancing Script', 'cursive'],
@@ -41,7 +42,7 @@
     <link rel="preload" as="image" href="pictures/IMG20250102175550.jpg">
     <link rel="preload" as="image" href="pictures/IMG20220401160123.jpg">
     <script>
-      async function onThumbnailLoad(img) {
+      window.onThumbnailLoad = async function(img) {
         if (!img || !img.classList) return;
         try {
           if (img.complete) {
@@ -56,7 +57,8 @@
         if (container && container.classList) {
           container.classList.remove('skeleton');
         }
-      }
+      };
+      var onThumbnailLoad = window.onThumbnailLoad;
     </script>
   </head>
   <body class="min-h-screen flex flex-col selection:bg-zinc-800 selection:text-white overflow-x-hidden">
@@ -386,76 +388,132 @@
             </div>
           </div>
 
-          <div id="galleryGrid" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-4">
-            <!-- Images are now managed by index to handle responsive counts -->
-            <div class="aspect-[3/4] rounded-xl overflow-hidden bg-zinc-900 group cursor-pointer skeleton theme-photo-shade" data-gallery-index="0" onclick="openGallery(0)">
-              <img src="pictures/IMG20250102175550.jpg" alt="Gallery 1" class="w-full h-full object-cover group-hover:scale-105 opacity-0 invisible transition-transform duration-300" fetchpriority="high" referrerPolicy="no-referrer" onload="onThumbnailLoad(this)">
-            </div>
-            <div class="aspect-[3/4] rounded-xl overflow-hidden bg-zinc-900 group cursor-pointer skeleton theme-photo-shade" data-gallery-index="1" onclick="openGallery(1)">
-              <img src="pictures/IMG20220401160123.jpg" alt="Gallery 2" class="w-full h-full object-cover group-hover:scale-105 opacity-0 invisible transition-transform duration-300" fetchpriority="high" referrerPolicy="no-referrer" onload="onThumbnailLoad(this)">
-            </div>
-            <div class="aspect-[3/4] rounded-xl overflow-hidden bg-zinc-900 group cursor-pointer skeleton theme-photo-shade" data-gallery-index="2" onclick="openGallery(2)">
-              <img src="pictures/9c150393-428e-433d-a2a2-87eb7267d379.jpg" alt="Gallery 3" class="w-full h-full object-cover group-hover:scale-105 opacity-0 invisible transition-transform duration-300" fetchpriority="high" referrerPolicy="no-referrer" onload="onThumbnailLoad(this)">
-            </div>
-            <div class="aspect-[3/4] rounded-xl overflow-hidden bg-zinc-900 group cursor-pointer skeleton theme-photo-shade" data-gallery-index="3" onclick="openGallery(3)">
-              <img src="pictures/37c11e17-a0ae-44f3-8b23-326a8793fcf9.jpg" alt="Gallery 4" class="w-full h-full object-cover group-hover:scale-105 opacity-0 invisible transition-transform duration-300" loading="lazy" referrerPolicy="no-referrer" onload="onThumbnailLoad(this)">
-            </div>
-            <div class="aspect-[3/4] rounded-xl overflow-hidden bg-zinc-900 group cursor-pointer hidden skeleton theme-photo-shade" data-gallery-index="4" onclick="openGallery(4)">
-              <img src="pictures/1ad9725b-0604-437f-a886-815632e78192.jpg" alt="Gallery 5" class="w-full h-full object-cover group-hover:scale-105 opacity-0 invisible transition-transform duration-300" loading="lazy" referrerPolicy="no-referrer" onload="onThumbnailLoad(this)">
-            </div>
+          <!-- Interactive Album Cards Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             
-            <div class="aspect-[3/4] rounded-xl overflow-hidden bg-zinc-900 group cursor-pointer hidden skeleton theme-photo-shade" data-gallery-index="5" onclick="openGallery(5)">
-              <img src="pictures/50656507-34cb-4921-ab62-d47d68071f7c.jpg" alt="Gallery 6" class="w-full h-full object-cover group-hover:scale-105 opacity-0 invisible transition-transform duration-300" loading="lazy" referrerPolicy="no-referrer" onload="onThumbnailLoad(this)">
-            </div>
-            <div class="aspect-[3/4] rounded-xl overflow-hidden bg-zinc-900 group cursor-pointer hidden skeleton theme-photo-shade" data-gallery-index="6" onclick="openGallery(6)">
-              <img src="pictures/b3594dfd-1cba-4800-b7a8-3f4253b855e9.jpg" alt="Gallery 7" class="w-full h-full object-cover group-hover:scale-105 opacity-0 invisible transition-transform duration-300" loading="lazy" referrerPolicy="no-referrer" onload="onThumbnailLoad(this)">
-            </div>
-            <div class="aspect-[3/4] rounded-xl overflow-hidden bg-zinc-900 group cursor-pointer hidden skeleton theme-photo-shade" data-gallery-index="7" onclick="openGallery(7)">
-              <img src="pictures/10929d4a-d18a-4e4d-92bd-bb59c0de4fba.jpg" alt="Gallery 8" class="w-full h-full object-cover group-hover:scale-105 opacity-0 invisible transition-transform duration-300" loading="lazy" referrerPolicy="no-referrer" onload="onThumbnailLoad(this)">
-            </div>
-            <div class="aspect-[3/4] rounded-xl overflow-hidden bg-zinc-900 group cursor-pointer hidden skeleton theme-photo-shade" data-gallery-index="8" onclick="openGallery(8)">
-              <img src="pictures/640e74df-5d3e-477a-a9cf-6deca11e1441.jpg" alt="Gallery 9" class="w-full h-full object-cover group-hover:scale-105 opacity-0 invisible transition-transform duration-300" loading="lazy" referrerPolicy="no-referrer" onload="onThumbnailLoad(this)">
-            </div>
-            <div class="aspect-[3/4] rounded-xl overflow-hidden bg-zinc-900 group cursor-pointer hidden skeleton theme-photo-shade" data-gallery-index="9" onclick="openGallery(9)">
-              <img src="pictures/625e4fbb-6da9-483f-abdd-1c94a2fcd2a4.jpg" alt="Gallery 10" class="w-full h-full object-cover group-hover:scale-105 opacity-0 invisible transition-transform duration-300" loading="lazy" referrerPolicy="no-referrer" onload="onThumbnailLoad(this)">
-            </div>
-            <div class="aspect-[3/4] rounded-xl overflow-hidden bg-zinc-900 group cursor-pointer hidden skeleton theme-photo-shade" data-gallery-index="10" onclick="openGallery(10)">
-              <img src="pictures/11.jpg" alt="Gallery 11" class="w-full h-full object-cover group-hover:scale-105 opacity-0 invisible transition-transform duration-300" loading="lazy" referrerPolicy="no-referrer" onload="onThumbnailLoad(this)">
-            </div>
-            <div class="aspect-[3/4] rounded-xl overflow-hidden bg-zinc-900 group cursor-pointer hidden skeleton theme-photo-shade" data-gallery-index="11" onclick="openGallery(11)">
-              <img src="pictures/12.jpg" alt="Gallery 12" class="w-full h-full object-cover group-hover:scale-105 opacity-0 invisible transition-transform duration-300" loading="lazy" referrerPolicy="no-referrer" onload="onThumbnailLoad(this)">
-            </div>
-            <div class="aspect-[3/4] rounded-xl overflow-hidden bg-zinc-900 group cursor-pointer hidden skeleton theme-photo-shade" data-gallery-index="12" onclick="openGallery(12)">
-              <img src="pictures/13.jpg" alt="Gallery 13" class="w-full h-full object-cover group-hover:scale-105 opacity-0 invisible transition-transform duration-300" loading="lazy" referrerPolicy="no-referrer" onload="onThumbnailLoad(this)">
-            </div>
-            <div class="aspect-[3/4] rounded-xl overflow-hidden bg-zinc-900 group cursor-pointer hidden skeleton theme-photo-shade" data-gallery-index="13" onclick="openGallery(13)">
-              <img src="pictures/14.jpg" alt="Gallery 14" class="w-full h-full object-cover group-hover:scale-105 opacity-0 invisible transition-transform duration-300" loading="lazy" referrerPolicy="no-referrer" onload="onThumbnailLoad(this)">
-            </div>
-            <div class="aspect-[3/4] rounded-xl overflow-hidden bg-zinc-900 group cursor-pointer hidden skeleton theme-photo-shade" data-gallery-index="14" onclick="openGallery(14)">
-              <img src="pictures/15.jpg" alt="Gallery 15" class="w-full h-full object-cover group-hover:scale-105 opacity-0 invisible transition-transform duration-300" loading="lazy" referrerPolicy="no-referrer" onload="onThumbnailLoad(this)">
-            </div>
- 
-            <div class="aspect-[3/4] rounded-xl overflow-hidden bg-zinc-900 group cursor-pointer hidden skeleton theme-photo-shade" data-gallery-index="15" onclick="openGallery(15)">
-              <img src="pictures/16.jpg" alt="Gallery 16" class="w-full h-full object-cover group-hover:scale-105 opacity-0 invisible transition-transform duration-300" loading="lazy" referrerPolicy="no-referrer" onload="onThumbnailLoad(this)">
-            </div>
-            <div class="aspect-[3/4] rounded-xl overflow-hidden bg-zinc-900 group cursor-pointer hidden skeleton theme-photo-shade" data-gallery-index="16" onclick="openGallery(16)">
-              <img src="pictures/17.jpg" alt="Gallery 17" class="w-full h-full object-cover group-hover:scale-105 opacity-0 invisible transition-transform duration-300" loading="lazy" referrerPolicy="no-referrer" onload="onThumbnailLoad(this)">
-            </div>
-            <div class="aspect-[3/4] rounded-xl overflow-hidden bg-zinc-900 group cursor-pointer hidden skeleton theme-photo-shade" data-gallery-index="17" onclick="openGallery(17)">
-              <img src="pictures/18.jpg" alt="Gallery 18" class="w-full h-full object-cover group-hover:scale-105 opacity-0 invisible transition-transform duration-300" loading="lazy" referrerPolicy="no-referrer" onload="onThumbnailLoad(this)">
-            </div>
-            <div class="aspect-[3/4] rounded-xl overflow-hidden bg-zinc-900 group cursor-pointer hidden skeleton theme-photo-shade" data-gallery-index="18" onclick="openGallery(18)">
-              <img src="pictures/19.jpg" alt="Gallery 19" class="w-full h-full object-cover group-hover:scale-105 opacity-0 invisible transition-transform duration-300" loading="lazy" referrerPolicy="no-referrer" onload="onThumbnailLoad(this)">
-            </div>
-            <div class="aspect-[3/4] rounded-xl overflow-hidden bg-zinc-900 group cursor-pointer hidden skeleton theme-photo-shade" data-gallery-index="19" onclick="openGallery(19)">
-              <img src="pictures/20.JPG" alt="Gallery 20" class="w-full h-full object-cover group-hover:scale-105 opacity-0 invisible transition-transform duration-300" loading="lazy" referrerPolicy="no-referrer" onload="onThumbnailLoad(this)">
-            </div>
-          </div>
+            <!-- London Album Card -->
+            <div onclick="openAlbumModal('london')" class="group relative overflow-hidden rounded-2xl bg-gradient-to-b from-zinc-950/90 via-zinc-900/50 to-zinc-950/90 p-6 sm:p-8 cursor-pointer transition-all duration-300 shadow-xl hover:shadow-2xl">
+              <!-- Ambient subtle background glow on hover -->
+              <div class="absolute -right-16 -top-16 w-64 h-64 bg-zinc-800/10 rounded-full blur-3xl group-hover:bg-zinc-700/20 transition-all duration-500 pointer-events-none"></div>
 
-          <div class="flex justify-center mt-8">
-            <button id="viewMoreBtn" onclick="expandGallery()" class="px-7 py-3 rounded-xl bg-zinc-900 text-zinc-200 text-sm font-semibold uppercase tracking-wider hover:bg-zinc-800 hover:text-white transition-all duration-200">
-              View More Moments
-            </button>
+              <div class="flex flex-col sm:flex-row items-start justify-between gap-6 relative z-10">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+                  <!-- Stacked Thumbnail Cover -->
+                  <div class="relative w-28 h-36 sm:w-32 sm:h-40 flex-shrink-0">
+                    <div class="absolute inset-0 rotate-6 translate-x-3 translate-y-1 rounded-xl overflow-hidden bg-zinc-900 shadow-md opacity-40 group-hover:rotate-12 group-hover:translate-x-5 transition-transform duration-300">
+                      <img src="pictures/9c150393-428e-433d-a2a2-87eb7267d379.jpg" alt="Preview 3" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute inset-0 -rotate-3 translate-x-1.5 translate-y-0.5 rounded-xl overflow-hidden bg-zinc-900 shadow-md opacity-70 group-hover:-rotate-6 group-hover:-translate-x-2 transition-transform duration-300">
+                      <img src="pictures/IMG20220401160123.jpg" alt="Preview 2" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute inset-0 rounded-xl overflow-hidden bg-zinc-900 shadow-lg group-hover:scale-102 transition-transform duration-300">
+                      <img src="pictures/IMG20250102175550.jpg" alt="London Chronicles Cover" class="w-full h-full object-cover">
+                      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                    </div>
+                  </div>
+
+                  <!-- Album Details -->
+                  <div class="space-y-2.5">
+                    <div>
+                      <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-zinc-900 border border-zinc-800/80 text-xs text-zinc-300 font-medium">
+                        <i data-lucide="map-pin" class="w-3 h-3 text-rose-400 shrink-0"></i> London, UK
+                      </span>
+                    </div>
+
+                    <h3 class="text-2xl sm:text-3xl font-bold tracking-tight text-white group-hover:text-zinc-200 transition-colors">
+                      When London Was Home
+                    </h3>
+
+                    <div class="pt-1 flex items-center gap-3 text-xs text-zinc-400">
+                      <span class="px-2.5 py-1 rounded-md bg-zinc-900/90 text-zinc-300 font-medium">22 Photographs</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Swansea Wales Album Card -->
+            <div onclick="openAlbumModal('swansea')" class="group relative overflow-hidden rounded-2xl bg-gradient-to-b from-zinc-950/90 via-zinc-900/50 to-zinc-950/90 p-6 sm:p-8 cursor-pointer transition-all duration-300 shadow-xl hover:shadow-2xl">
+              <!-- Ambient subtle background glow on hover -->
+              <div class="absolute -right-16 -top-16 w-64 h-64 bg-zinc-800/10 rounded-full blur-3xl group-hover:bg-zinc-700/20 transition-all duration-500 pointer-events-none"></div>
+
+              <div class="flex flex-col sm:flex-row items-start justify-between gap-6 relative z-10">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+                  <!-- Stacked Thumbnail Cover -->
+                  <div class="relative w-28 h-36 sm:w-32 sm:h-40 flex-shrink-0">
+                    <div class="absolute inset-0 rotate-6 translate-x-3 translate-y-1 rounded-xl overflow-hidden bg-zinc-900 shadow-md opacity-40 group-hover:rotate-12 group-hover:translate-x-5 transition-transform duration-300">
+                      <img src="pictures/103.jpg" alt="Swansea Preview 3" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute inset-0 -rotate-3 translate-x-1.5 translate-y-0.5 rounded-xl overflow-hidden bg-zinc-900 shadow-md opacity-70 group-hover:-rotate-6 group-hover:-translate-x-2 transition-transform duration-300">
+                      <img src="pictures/102.jpg" alt="Swansea Preview 2" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute inset-0 rounded-xl overflow-hidden bg-zinc-900 shadow-lg group-hover:scale-102 transition-transform duration-300">
+                      <img src="pictures/101.jpg" alt="Swansea Wales Cover" class="w-full h-full object-cover">
+                      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                    </div>
+                  </div>
+
+                  <!-- Album Details -->
+                  <div class="space-y-2.5">
+                    <div>
+                      <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-zinc-900 border border-zinc-800/80 text-xs text-zinc-300 font-medium">
+                        <i data-lucide="map-pin" class="w-3 h-3 text-rose-400 shrink-0"></i> Swansea, Wales
+                      </span>
+                    </div>
+
+                    <h3 class="text-2xl sm:text-3xl font-bold tracking-tight text-white group-hover:text-zinc-200 transition-colors">
+                      The Swansea Chapter
+                    </h3>
+
+                    <div class="pt-1 flex items-center gap-3 text-xs text-zinc-400">
+                      <span class="px-2.5 py-1 rounded-md bg-zinc-900/90 text-zinc-300 font-medium">5 Photographs</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- NSU Life Unscripted Album Card -->
+            <div onclick="openAlbumModal('nsu')" class="group relative overflow-hidden rounded-2xl bg-gradient-to-b from-zinc-950/90 via-zinc-900/50 to-zinc-950/90 p-6 sm:p-8 cursor-pointer transition-all duration-300 shadow-xl hover:shadow-2xl">
+              <!-- Ambient subtle background glow on hover -->
+              <div class="absolute -right-16 -top-16 w-64 h-64 bg-zinc-800/10 rounded-full blur-3xl group-hover:bg-zinc-700/20 transition-all duration-500 pointer-events-none"></div>
+
+              <div class="flex flex-col sm:flex-row items-start justify-between gap-6 relative z-10">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+                  <!-- Stacked Thumbnail Cover -->
+                  <div class="relative w-28 h-36 sm:w-32 sm:h-40 flex-shrink-0">
+                    <div class="absolute inset-0 rotate-6 translate-x-3 translate-y-1 rounded-xl overflow-hidden bg-zinc-900 shadow-md opacity-40 group-hover:rotate-12 group-hover:translate-x-5 transition-transform duration-300">
+                      <img src="pictures/206 - Ayub Bacchu performing at evening at Nosrth South Unversity campus.jpg" alt="NSU Preview 3" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute inset-0 -rotate-3 translate-x-1.5 translate-y-0.5 rounded-xl overflow-hidden bg-zinc-900 shadow-md opacity-70 group-hover:-rotate-6 group-hover:-translate-x-2 transition-transform duration-300">
+                      <img src="pictures/203 - picture with friends at North South University Cafteria.jpg" alt="NSU Preview 2" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute inset-0 rounded-xl overflow-hidden bg-zinc-900 shadow-lg group-hover:scale-102 transition-transform duration-300">
+                      <img src="pictures/201 - Me at north south university campus.jpg" alt="NSU Life Unscripted Cover" class="w-full h-full object-cover">
+                      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                    </div>
+                  </div>
+
+                  <!-- Album Details -->
+                  <div class="space-y-2.5">
+                    <div>
+                      <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-zinc-900 border border-zinc-800/80 text-xs text-zinc-300 font-medium">
+                        <i data-lucide="map-pin" class="w-3 h-3 text-rose-400 shrink-0"></i> Dhaka, Bangladesh
+                      </span>
+                    </div>
+
+                    <h3 class="text-2xl sm:text-3xl font-bold tracking-tight text-white group-hover:text-zinc-200 transition-colors">
+                      NSU Life Unscripted
+                    </h3>
+
+                    <div class="pt-1 flex items-center gap-3 text-xs text-zinc-400">
+                      <span class="px-2.5 py-1 rounded-md bg-zinc-900/90 text-zinc-300 font-medium">5 Photographs</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </section>
       </div>
@@ -558,286 +616,515 @@
       </div>
     </div>
 
-    <!-- Gallery Modal -->
-    <div id="galleryModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 md:p-8">
-      <div class="absolute inset-0 bg-black/95 backdrop-blur-xl" onclick="closeGallery()"></div>
-      
-      <div class="relative z-10 w-full max-w-5xl flex flex-col items-center">
-        <!-- Close Button -->
-        <button onclick="closeGallery()" class="absolute -top-12 right-0 text-zinc-400 hover:text-white transition-colors">
-          <i data-lucide="x" class="w-8 h-8"></i>
-        </button>
+    <!-- Album Grid Pop-up Modal -->
+    <div id="albumModal" class="fixed inset-0 z-[100] hidden overflow-y-auto">
+      <div class="fixed inset-0 bg-black/90 backdrop-blur-xl transition-opacity" onclick="closeAlbumModal()"></div>
 
-        <!-- Image Container -->
-        <div class="relative group w-full max-w-md">
-          <div class="aspect-[3/4] rounded-3xl overflow-hidden bg-zinc-900 shadow-2xl relative">
-            <!-- Loading Spinner -->
-            <div id="modalLoader" class="absolute inset-0 flex items-center justify-center bg-zinc-900 z-10">
-              <div class="loading-spinner"></div>
-            </div>
-            
-            <img id="modalImage" src="" alt="Gallery Image" class="w-full h-full object-cover opacity-0 invisible transition-opacity duration-500" referrerPolicy="no-referrer" onload="onImageLoad()">
-            
-            <!-- Caption Overlay -->
-            <div class="absolute bottom-0 left-0 right-0 p-5 pb-7 bg-gradient-to-t from-black/95 via-black/40 to-transparent z-20">
-              <h4 id="modalTitle" class="text-lg md:text-xl font-bold text-white mb-1.5 text-shadow-strong"></h4>
-              <p id="modalCaption" class="text-zinc-300 text-[11px] md:text-xs max-w-2xl leading-relaxed text-shadow-strong"></p>
-              <div class="mt-3 flex items-center gap-4">
-                <span id="imageCounter" class="text-[9px] font-bold text-zinc-400 uppercase tracking-widest text-shadow-strong"></span>
+      <div class="min-h-screen px-4 py-8 md:py-12 flex items-center justify-center">
+        <div class="relative w-full max-w-6xl bg-zinc-950 rounded-2xl shadow-2xl p-5 sm:p-8 space-y-6 z-10 my-auto">
+          
+          <!-- Album Pop-up Header -->
+          <div class="flex items-start justify-between gap-4 pb-4 border-b border-zinc-900/80">
+            <div class="space-y-1.5">
+              <div>
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-zinc-900 border border-zinc-800/80 text-xs text-zinc-300 font-medium">
+                  <i data-lucide="map-pin" class="w-3 h-3 text-rose-400 shrink-0"></i> <span id="albumModalLocationText">London, United Kingdom</span>
+                </span>
               </div>
+              <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white flex items-center gap-3">
+                <span id="albumModalTitle">When London Was Home</span>
+                <span id="albumModalCount" class="text-xs font-medium text-zinc-300 px-2.5 py-1 rounded-md bg-zinc-900 border border-zinc-800/80">22 Photographs</span>
+              </h2>
             </div>
+
+            <!-- Close Button -->
+            <button onclick="closeAlbumModal()" class="p-2.5 rounded-xl bg-zinc-900 text-zinc-400 hover:text-white hover:bg-zinc-800 transition-colors flex-shrink-0 cursor-pointer" title="Close Album">
+              <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
           </div>
 
-          <!-- Navigation Buttons -->
-          <button onclick="prevImage()" class="absolute left-2 top-1/2 -translate-y-1/2 z-30 text-white/50 hover:text-white transition-colors p-2 bg-black/20 backdrop-blur-sm rounded-full md:bg-transparent md:backdrop-blur-none md:-left-16">
-            <i data-lucide="chevron-left" class="w-8 h-8 md:w-12 md:h-12"></i>
-          </button>
-          <button onclick="nextImage()" class="absolute right-2 top-1/2 -translate-y-1/2 z-30 text-white/50 hover:text-white transition-colors p-2 bg-black/20 backdrop-blur-sm rounded-full md:bg-transparent md:backdrop-blur-none md:-right-16">
-            <i data-lucide="chevron-right" class="w-8 h-8 md:w-12 md:h-12"></i>
-          </button>
+          <!-- Album Grid Container -->
+          <div id="albumGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 max-h-[70vh] overflow-y-auto pr-1">
+            <!-- Dynamically populated by renderAlbumGrid() -->
+          </div>
+
         </div>
       </div>
     </div>
 
-    <script>
-      // Gallery Data
-      const galleryImages = [
-        {
-          url: "pictures/IMG20250102175550.jpg",
-          title: "Greenwich Carousel",
-          caption: "A nostalgic merry-go-round standing gracefully beside the historic Cutty Sark in Greenwich."
+    <!-- Gallery Modal -->
+    <div id="galleryModal" class="fixed inset-0 z-[120] hidden flex flex-col justify-between p-4 sm:p-6 select-none overflow-hidden">
+      <div class="absolute inset-0 bg-black/95 backdrop-blur-2xl" onclick="closeGallery()"></div>
+      
+      <!-- Top Header Bar -->
+      <div class="relative z-20 w-full max-w-6xl mx-auto flex items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <span id="galleryAlbumBadge" class="text-xs font-semibold text-white bg-zinc-900/90 border border-zinc-800/80 px-3.5 py-1.5 rounded-full shadow-sm tracking-wide">
+            When London Was Home
+          </span>
+          <span id="imageCounter" class="text-xs font-mono text-zinc-400">
+            Photo 1 of 22
+          </span>
+        </div>
+
+        <!-- Close Button -->
+        <button onclick="closeGallery()" class="p-2.5 rounded-full bg-zinc-900/90 border border-zinc-800/80 text-zinc-400 hover:text-white hover:bg-zinc-800 transition-all cursor-pointer shadow-lg" title="Close (Esc)">
+          <i data-lucide="x" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+        </button>
+      </div>
+
+      <!-- Main Content Area: Image + Nav Controls -->
+      <div class="relative z-10 my-auto w-full max-w-6xl mx-auto flex items-center justify-center min-h-0 flex-1 py-3 sm:py-4">
+        <!-- Prev Button -->
+        <button onclick="prevImage()" class="absolute left-0 sm:left-2 lg:-left-2 top-1/2 -translate-y-1/2 z-30 p-2.5 sm:p-3 rounded-full bg-zinc-900/90 border border-zinc-800/80 text-zinc-300 hover:text-white hover:bg-zinc-800 hover:scale-105 active:scale-95 transition-all cursor-pointer shadow-2xl backdrop-blur-md" title="Previous Photo (Left Arrow)">
+          <i data-lucide="chevron-left" class="w-6 h-6 sm:w-8 sm:h-8"></i>
+        </button>
+
+        <!-- Image Container -->
+        <div id="modalImageWrapper" class="relative group w-full max-w-4xl max-h-full flex flex-col items-center justify-center transition-all duration-300">
+          <div id="modalImageFrame" class="relative rounded-2xl sm:rounded-3xl overflow-hidden bg-zinc-950 border border-zinc-800/60 shadow-2xl flex items-center justify-center transition-all duration-300 max-h-[65vh] sm:max-h-[70vh]">
+            <!-- Loading Spinner -->
+            <div id="modalLoader" class="absolute inset-0 flex items-center justify-center bg-zinc-950 z-10">
+              <div class="loading-spinner"></div>
+            </div>
+            
+            <img id="modalImage" src="" alt="Gallery Image" class="max-h-[65vh] sm:max-h-[70vh] w-auto max-w-full object-contain transition-opacity duration-300 opacity-0 invisible" referrerPolicy="no-referrer" onload="onImageLoad()">
+          </div>
+        </div>
+
+        <!-- Next Button -->
+        <button onclick="nextImage()" class="absolute right-0 sm:right-2 lg:-right-2 top-1/2 -translate-y-1/2 z-30 p-2.5 sm:p-3 rounded-full bg-zinc-900/90 border border-zinc-800/80 text-zinc-300 hover:text-white hover:bg-zinc-800 hover:scale-105 active:scale-95 transition-all cursor-pointer shadow-2xl backdrop-blur-md" title="Next Photo (Right Arrow)">
+          <i data-lucide="chevron-right" class="w-6 h-6 sm:w-8 sm:h-8"></i>
+        </button>
+      </div>
+
+      <!-- Bottom Caption Bar -->
+      <div class="relative z-20 w-full max-w-2xl mx-auto text-center px-4 pt-1 pb-1">
+        <h4 id="modalTitle" class="text-base sm:text-lg font-bold text-white tracking-tight"></h4>
+        <p id="modalCaption" class="text-xs sm:text-sm text-zinc-300 leading-relaxed mt-1 max-w-xl mx-auto line-clamp-2 sm:line-clamp-none"></p>
+      </div>
+    </div>
+         <script>
+      // Albums Data
+      var currentAlbumKey = 'london';
+
+      var albums = {
+        london: {
+          title: "When London Was Home",
+          location: "London, United Kingdom",
+          photos: [
+            {
+              url: "pictures/IMG20250102175550.jpg",
+              title: "Greenwich Carousel",
+              caption: "A nostalgic merry-go-round standing gracefully beside the historic Cutty Sark in Greenwich."
+            },
+            {
+              url: "pictures/IMG20220401160123.jpg",
+              title: "Winter Warmth",
+              caption: "A quiet moment enjoying a hot cup of coffee on a crisp, sunny winter afternoon."
+            },
+            {
+              url: "pictures/9c150393-428e-433d-a2a2-87eb7267d379.jpg",
+              title: "Transit Perspectives",
+              caption: "A fleeting view of the University of Greenwich front street, framed by the window of a passing bus."
+            },
+            {
+              url: "pictures/37c11e17-a0ae-44f3-8b23-326a8793fcf9.jpg",
+              title: "Academic Interior",
+              caption: "Capturing the architectural character and quiet atmosphere from within a University of Greenwich campus building."
+            },
+            {
+              url: "pictures/1ad9725b-0604-437f-a886-815632e78192.jpg",
+              title: "Canary Wharf Skyline",
+              caption: "A zoomed-in perspective of the towering commercial skyscrapers that define the Canary Wharf skyline."
+            },
+            {
+              url: "pictures/50656507-34cb-4921-ab62-d47d68071f7c.jpg",
+              title: "Campus Life",
+              caption: "The rhythmic flow of students moving through the historic grounds of the University of Greenwich."
+            },
+            {
+              url: "pictures/b3594dfd-1cba-4800-b7a8-3f4253b855e9.jpg",
+              title: "Nocturnal Haze",
+              caption: "City lights shimmering through a thick blanket of fog, creating a mysterious and ethereal night scene."
+            },
+            {
+              url: "pictures/10929d4a-d18a-4e4d-92bd-bb59c0de4fba.jpg",
+              title: "Al Fresco Solitude",
+              caption: "A peaceful outdoor seating area, inviting a moment of rest amidst the urban landscape."
+            },
+            {
+              url: "pictures/640e74df-5d3e-477a-a9cf-6deca11e1441.jpg",
+              title: "The Graduation Toss",
+              caption: "A milestone moment—throwing my cap into the air with the beautiful University of Greenwich campus as my backdrop."
+            },
+            {
+              url: "pictures/625e4fbb-6da9-483f-abdd-1c94a2fcd2a4.jpg",
+              title: "The Greenwich Vista",
+              caption: "A breathtaking view from the top of Greenwich Park, overlooking the university campus and the distant Canary Wharf towers."
+            },
+            {
+              url: "pictures/11.jpg",
+              title: "Canary Wharf Garden",
+              caption: "A serene flower garden in full bloom, perfectly contrasted against the towering heights of Canary Wharf's skyscrapers."
+            },
+            {
+              url: "pictures/12.jpg",
+              title: "Academic Festivity",
+              caption: "A grand Christmas tree adorned with festive lights, bringing seasonal warmth to the University of Greenwich library."
+            },
+            {
+              url: "pictures/13.jpg",
+              title: "Winter's Descent",
+              caption: "Footways and parked cars blanketed in thick snow beneath frosted trees during a quiet winter afternoon."
+            },
+            {
+              url: "pictures/14.jpg",
+              title: "The Late Commute",
+              caption: "A quiet moment of patience, waiting for the bus late at night to find the way back home."
+            },
+            {
+              url: "pictures/15.jpg",
+              title: "Urban Electric",
+              caption: "An explosion of vibrant night lights, capturing the rhythmic pulse and energy of the city evening."
+            },
+            {
+              url: "pictures/16.jpg",
+              title: "Zoo Huddle",
+              caption: "A charming group of penguins huddled together at the London Zoo, a slice of arctic life in the city heart."
+            },
+            {
+              url: "pictures/17.jpg",
+              title: "Station Solitude",
+              caption: "The steady, illuminated rhythm of London Bridge station at night during the long journey home."
+            },
+            {
+              url: "pictures/18.jpg",
+              title: "Market Gateway",
+              caption: "The iconic entrance of Greenwich Market, a historic threshold to local crafts, arts, and flavors."
+            },
+            {
+              url: "pictures/19.jpg",
+              title: "The Great Mosque",
+              caption: "The majestic East London Mosque, standing as a landmark of faith and the largest in the city."
+            },
+            {
+              url: "pictures/20.JPG",
+              title: "Campus Moonrise",
+              caption: "A luminous moon suspended over the University of Greenwich campus, casting a silvery glow over historic stonework."
+            },
+            {
+              url: "pictures/30 St Mary Axe (The Gherkin).jpg",
+              title: "The Gherkin",
+              caption: "The iconic bullet-shaped silhouette of 30 St Mary Axe rising gracefully above London's financial district."
+            },
+            {
+              url: "pictures/Carnaby Universe was the theme for Carnaby Street’s iconic Christmas light display in London’s West End during the 2023 holiday season.jpg",
+              title: "Carnaby Universe",
+              caption: "Carnaby Street's vibrant Christmas light display illuminating London's West End during the 2023 holiday season."
+            }
+          ]
         },
-        {
-          url: "pictures/IMG20220401160123.jpg",
-          title: "Winter Warmth",
-          caption: "A quiet moment enjoying a hot cup of coffee on a crisp, sunny winter afternoon."
+        swansea: {
+          title: "The Swansea Chapter",
+          location: "Swansea, Wales",
+          photos: [
+            {
+              url: "pictures/101.jpg",
+              title: "Plantasia Friends",
+              caption: "A cheerful selfie with four close friends at Plantasia Tropical Zoo in Swansea."
+            },
+            {
+              url: "pictures/102.jpg",
+              title: "Floral Streetscape",
+              caption: "A quiet Swansea street framed by vibrant flowers hanging along traditional brick walls."
+            },
+            {
+              url: "pictures/103.jpg",
+              title: "Plantasia Reptiles",
+              caption: "An up-close encounter with exotic reptile life living inside Plantasia Tropical Zoo."
+            },
+            {
+              url: "pictures/104.jpg",
+              title: "Airbnb Dining",
+              caption: "Our cozy dining arrangement in the rented Airbnb house, filled with good food and shared memories."
+            },
+            {
+              url: "pictures/105.jpg",
+              title: "Swansea Sea Horizon",
+              caption: "A serene horizontal panorama across the glittering sea and coastal skyline in Swansea.",
+              aspectRatio: "horizontal"
+            }
+          ]
         },
-        {
-          url: "pictures/9c150393-428e-433d-a2a2-87eb7267d379.jpg",
-          title: "Transit Perspectives",
-          caption: "A fleeting view of the University of Greenwich front street, framed by the window of a passing bus."
-        },
-        {
-          url: "pictures/37c11e17-a0ae-44f3-8b23-326a8793fcf9.jpg",
-          title: "Academic Interior",
-          caption: "Capturing the architectural character and quiet atmosphere from within a University of Greenwich campus building."
-        },
-        {
-          url: "pictures/1ad9725b-0604-437f-a886-815632e78192.jpg",
-          title: "Canary Wharf Skyline",
-          caption: "A zoomed-in perspective of the towering commercial skyscrapers that define the Canary Wharf skyline."
-        },
-        {
-          url: "pictures/50656507-34cb-4921-ab62-d47d68071f7c.jpg",
-          title: "Campus Life",
-          caption: "The rhythmic flow of students moving through the historic grounds of the University of Greenwich."
-        },
-        {
-          url: "pictures/b3594dfd-1cba-4800-b7a8-3f4253b855e9.jpg",
-          title: "Nocturnal Haze",
-          caption: "City lights shimmering through a thick blanket of fog, creating a mysterious and ethereal night scene."
-        },
-        {
-          url: "pictures/10929d4a-d18a-4e4d-92bd-bb59c0de4fba.jpg",
-          title: "Al Fresco Solitude",
-          caption: "A peaceful outdoor seating area, inviting a moment of rest amidst the urban landscape."
-        },
-        {
-          url: "pictures/640e74df-5d3e-477a-a9cf-6deca11e1441.jpg",
-          title: "The Graduation Toss",
-          caption: "A milestone moment—throwing my cap into the air with the beautiful University of Greenwich campus as my backdrop."
-        },
-        {
-          url: "pictures/625e4fbb-6da9-483f-abdd-1c94a2fcd2a4.jpg",
-          title: "The Greenwich Vista",
-          caption: "A breathtaking view from the top of Greenwich Park, overlooking the university campus and the distant Canary Wharf towers."
-        },
-        {
-          url: "pictures/11.jpg",
-          title: "Canary Wharf Garden",
-          caption: "A serene flower garden in full bloom, perfectly contrasted against the towering heights of Canary Wharf's skyscrapers."
-        },
-        {
-          url: "pictures/12.jpg",
-          title: "Academic Festivity",
-          caption: "A grand Christmas tree adorned with festive lights, bringing seasonal warmth to the University of Greenwich library."
-        },
-        {
-          url: "pictures/13.jpg",
-          title: "Winter's Descent",
-          caption: "Footways and parked cars blanketed in thick snow beneath frosted trees during a quiet winter afternoon."
-        },
-        {
-          url: "pictures/14.jpg",
-          title: "The Late Commute",
-          caption: "A quiet moment of patience, waiting for the bus late at night to find the way back home."
-        },
-        {
-          url: "pictures/15.jpg",
-          title: "Urban Electric",
-          caption: "An explosion of vibrant night lights, capturing the rhythmic pulse and energy of the city evening."
-        },
-        {
-          url: "pictures/16.jpg",
-          title: "Zoo Huddle",
-          caption: "A charming group of penguins huddled together at the London Zoo, a slice of arctic life in the city heart."
-        },
-        {
-          url: "pictures/17.jpg",
-          title: "Station Solitude",
-          caption: "The steady, illuminated rhythm of London Bridge station at night during the long journey home."
-        },
-        {
-          url: "pictures/18.jpg",
-          title: "Market Gateway",
-          caption: "The iconic entrance of Greenwich Market, a historic threshold to local crafts, arts, and flavors."
-        },
-        {
-          url: "pictures/19.jpg",
-          title: "The Great Mosque",
-          caption: "The majestic East London Mosque, standing as a landmark of faith and the largest in the city."
-        },
-        {
-          url: "pictures/20.JPG",
-          title: "Campus Moonrise",
-          caption: "A luminous moon suspended over the University of Greenwich campus, casting a silvery glow over historic stonework."
+        nsu: {
+          title: "NSU Life Unscripted",
+          location: "Dhaka, Bangladesh",
+          photos: [
+            {
+              url: "pictures/201 - Me at north south university campus.jpg",
+              title: "Me at NSU Campus",
+              caption: "Sitting in the middle of the North South University campus."
+            },
+            {
+              url: "pictures/202 - North South University Campus view from South Academic Building.jpg",
+              title: "Campus View from South Academic Building",
+              caption: "A view of the North South University campus from the South Academic Building."
+            },
+            {
+              url: "pictures/203 - picture with friends at North South University Cafteria.jpg",
+              title: "Friends at NSU Cafeteria",
+              caption: "Hanging out with friends at the North South University cafeteria."
+            },
+            {
+              url: "pictures/204 - Group picture of Toastmasters Club members.jpg",
+              title: "Toastmasters Club Members",
+              caption: "Group photo with fellow Toastmasters Club members on campus."
+            },
+            {
+              url: "pictures/206 - Ayub Bacchu performing at evening at Nosrth South Unversity campus.jpg",
+              title: "Ayub Bachchu Live at NSU Campus",
+              caption: "Legendary Ayub Bachchu performing live in the evening on the North South University campus."
+            }
+          ]
         }
-      ];
+      };
 
-      let currentImageIndex = 0;
-      let lastVisibleIndex = -1;
-
-      // Responsive incremental loading logic
-      function getIncrementalCount() {
-        if (window.innerWidth >= 1024) return 5; // Desktop
-        if (window.innerWidth >= 768) return 4;  // Tablet
-        return 4; // Mobile
+      function getActivePhotos() {
+        return (albums[currentAlbumKey] && albums[currentAlbumKey].photos) || albums.london.photos;
       }
 
-      function expandGallery(isInitial = false) {
-        const count = getIncrementalCount();
-        const galleryItems = document.querySelectorAll('[data-gallery-index]');
-        let revealedThisTurn = 0;
+      var currentImageIndex = 0;
 
-        for (let i = lastVisibleIndex + 1; i < galleryImages.length; i++) {
-          if (revealedThisTurn < count) {
-            const el = document.querySelector(`[data-gallery-index="${i}"]`);
-            if (el) {
-              el.classList.remove('hidden');
-              if (!isInitial) {
-                el.classList.add('animate-in', 'fade-in', 'slide-in-from-bottom-4', 'duration-700');
-              }
-              lastVisibleIndex = i;
-              revealedThisTurn++;
-            }
-          } else {
-            break;
+      function updateAlbumModalHeader() {
+        const album = albums[currentAlbumKey] || albums.london;
+        const titleEl = document.getElementById('albumModalTitle');
+        if (titleEl) titleEl.textContent = album.title;
+        const locEl = document.getElementById('albumModalLocationText');
+        if (locEl) locEl.textContent = album.location;
+        const countEl = document.getElementById('albumModalCount');
+        if (countEl) countEl.textContent = `${album.photos.length} Photographs`;
+      }
+
+      function renderAlbumGrid() {
+        const container = document.getElementById('albumGrid');
+        if (!container) return;
+        
+        const photos = getActivePhotos();
+        let html = '';
+        photos.forEach((img, idx) => {
+          html += `
+            <div class="aspect-[3/4] rounded-xl overflow-hidden bg-zinc-900 group cursor-pointer transition-all duration-300 relative shadow-lg" onclick="openGallery(${idx})">
+              <img src="${img.url}" alt="${img.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+            </div>
+          `;
+        });
+        container.innerHTML = html;
+
+        if (typeof lucide !== 'undefined') {
+          lucide.createIcons();
+        }
+      }
+
+      function handleOdysseyPopState(state) {
+        const albumModal = document.getElementById('albumModal');
+        const galleryModal = document.getElementById('galleryModal');
+        const modalType = state ? state.modal : null;
+
+        if (modalType === 'gallery') {
+          if (galleryModal) galleryModal.classList.remove('hidden');
+          if (albumModal) albumModal.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+        } else if (modalType === 'album') {
+          if (state && state.albumKey) {
+            currentAlbumKey = state.albumKey;
+            updateAlbumModalHeader();
+            renderAlbumGrid();
+          }
+          if (galleryModal) galleryModal.classList.add('hidden');
+          if (albumModal) {
+            albumModal.classList.remove('hidden');
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+          }
+          document.body.style.overflow = 'hidden';
+        } else {
+          if (galleryModal) galleryModal.classList.add('hidden');
+          if (albumModal) albumModal.classList.add('hidden');
+          document.body.style.overflow = 'auto';
+        }
+      }
+      window.handleOdysseyPopState = handleOdysseyPopState;
+
+      function openAlbumModal(key = 'london') {
+        currentAlbumKey = key;
+        updateAlbumModalHeader();
+        renderAlbumGrid();
+        const modal = document.getElementById('albumModal');
+        if (modal) {
+          modal.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+          
+          if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+          }
+
+          if (!history.state || history.state.modal !== 'album' || history.state.albumKey !== key) {
+            history.pushState({ modal: 'album', albumKey: key }, '');
           }
         }
+      }
+      window.openAlbumModal = openAlbumModal;
 
-        // Hide button if all images revealed
-        if (lastVisibleIndex >= galleryImages.length - 1) {
-          const btn = document.getElementById('viewMoreBtn');
-          if (btn) btn.parentElement.classList.add('hidden');
+      function closeAlbumModal(fromPopState = false) {
+        const albumModal = document.getElementById('albumModal');
+        const galleryModal = document.getElementById('galleryModal');
+        
+        if (galleryModal) galleryModal.classList.add('hidden');
+        if (albumModal) albumModal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+
+        if (!fromPopState) {
+          if (history.state && history.state.modal === 'gallery') {
+            history.go(-2);
+          } else if (history.state && history.state.modal === 'album') {
+            history.back();
+          }
         }
       }
-
-      // Initial setup
-      window.addEventListener('DOMContentLoaded', () => {
-        expandGallery(true);
-      });
+      window.closeAlbumModal = closeAlbumModal;
 
       function openGallery(index) {
         currentImageIndex = index;
         updateModal();
-        document.getElementById('galleryModal').classList.remove('hidden');
-        document.body.style.overflow = 'hidden'; // Prevent scrolling
-        
-        // Push state for back button support
-        if (!history.state || history.state.modal !== 'gallery') {
-          history.pushState({ modal: 'gallery' }, '');
+        const galleryModal = document.getElementById('galleryModal');
+        if (galleryModal) {
+          galleryModal.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+          
+          if (!history.state || history.state.modal !== 'gallery') {
+            history.pushState({ modal: 'gallery' }, '');
+          }
         }
       }
+      window.openGallery = openGallery;
 
       function closeGallery(fromPopState = false) {
         const modal = document.getElementById('galleryModal');
         if (!modal || modal.classList.contains('hidden')) return;
         
         modal.classList.add('hidden');
-        document.body.style.overflow = 'auto'; // Restore scrolling
         
-        // If closed via UI (not back button), and state exists, go back
+        const albumModal = document.getElementById('albumModal');
+        if (albumModal && !albumModal.classList.contains('hidden')) {
+          document.body.style.overflow = 'hidden';
+        } else {
+          document.body.style.overflow = 'auto';
+        }
+        
         if (!fromPopState && history.state && history.state.modal === 'gallery') {
           history.back();
         }
       }
+      window.closeGallery = closeGallery;
 
       function nextImage() {
-        currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+        const photos = getActivePhotos();
+        currentImageIndex = (currentImageIndex + 1) % photos.length;
         updateModal();
       }
 
       function prevImage() {
-        currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+        const photos = getActivePhotos();
+        currentImageIndex = (currentImageIndex - 1 + photos.length) % photos.length;
         updateModal();
       }
 
+      function applyImageDimensions() {
+        const modalImage = document.getElementById('modalImage');
+        const wrapper = document.getElementById('modalImageWrapper');
+        const photos = getActivePhotos();
+        const img = photos[currentImageIndex];
+
+        if (!modalImage) return;
+
+        let isHorizontal = false;
+        if (img && img.aspectRatio === 'horizontal') {
+          isHorizontal = true;
+        } else if (img && img.aspectRatio === 'vertical') {
+          isHorizontal = false;
+        } else if (modalImage.naturalWidth > 0 && modalImage.naturalHeight > 0) {
+          isHorizontal = modalImage.naturalWidth > modalImage.naturalHeight;
+        }
+
+        if (wrapper) {
+          if (isHorizontal) {
+            wrapper.className = 'relative group w-full max-w-4xl max-h-full flex flex-col items-center justify-center transition-all duration-300';
+          } else {
+            wrapper.className = 'relative group w-full max-w-xl max-h-full flex flex-col items-center justify-center transition-all duration-300';
+          }
+        }
+      }
+
       function updateModal() {
-        const img = galleryImages[currentImageIndex];
+        const photos = getActivePhotos();
+        const img = photos[currentImageIndex];
+        if (!img) return;
+
         const modalImage = document.getElementById('modalImage');
         const modalLoader = document.getElementById('modalLoader');
         
         // Reset loading state
-        modalImage.classList.add('opacity-0', 'invisible');
-        modalLoader.classList.remove('hidden');
+        if (modalImage && modalImage.classList) {
+          modalImage.classList.add('opacity-0', 'invisible');
+        }
+        if (modalLoader && modalLoader.classList) {
+          modalLoader.classList.remove('hidden');
+        }
         
-        modalImage.src = img.url;
-        document.getElementById('modalTitle').textContent = img.title;
-        document.getElementById('modalCaption').textContent = img.caption;
-        document.getElementById('imageCounter').textContent = `Photo ${currentImageIndex + 1} of ${galleryImages.length}`;
+        if (modalImage) {
+          modalImage.src = img.url;
+        }
+
+        applyImageDimensions();
+
+        const modalTitle = document.getElementById('modalTitle');
+        if (modalTitle) modalTitle.textContent = img.title || '';
+        const modalCaption = document.getElementById('modalCaption');
+        if (modalCaption) modalCaption.textContent = img.caption || '';
         
-        // Re-initialize icons if needed
+        const album = albums[currentAlbumKey] || albums.london;
+        const albumBadge = document.getElementById('galleryAlbumBadge');
+        if (albumBadge) albumBadge.textContent = album.title;
+
+        const imageCounter = document.getElementById('imageCounter');
+        if (imageCounter) imageCounter.textContent = `Photo ${currentImageIndex + 1} of ${photos.length}`;
+        
         if (typeof lucide !== 'undefined') {
           lucide.createIcons();
         }
       }
 
-      async function onImageLoad() {
+      function onImageLoad() {
         const modalImage = document.getElementById('modalImage');
         const modalLoader = document.getElementById('modalLoader');
         
-        try {
-          await modalImage.decode();
+        applyImageDimensions();
+
+        if (modalImage && modalImage.classList) {
           modalImage.classList.remove('opacity-0', 'invisible');
+        }
+        if (modalLoader && modalLoader.classList) {
           modalLoader.classList.add('hidden');
-        } catch (err) {
-          if (modalImage.complete && modalImage.naturalWidth > 0) {
-            modalImage.classList.remove('opacity-0', 'invisible');
-            modalLoader.classList.add('hidden');
-          }
         }
       }
 
-      async function onThumbnailLoad(img) {
-        if (!img || !img.classList) return;
-        try {
-          if (img.complete) {
-            await img.decode().catch(() => {});
-          }
-        } catch (err) {}
-        if (img && img.classList) {
-          img.classList.remove('invisible', 'opacity-0');
-          img.classList.add('loaded');
-        }
-        const container = img.closest ? (img.closest('.skeleton') || img.parentElement) : img.parentElement;
-        if (container && container.classList) {
-          container.classList.remove('skeleton');
-        }
+      if (typeof window.onThumbnailLoad === 'function') {
+        var onThumbnailLoad = window.onThumbnailLoad;
       }
 
       document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('img').forEach(img => {
-          if (img.complete) {
+          if (img.complete && typeof onThumbnailLoad === 'function') {
             onThumbnailLoad(img);
           }
         });
@@ -845,28 +1132,35 @@
 
       // Keyboard navigation
       document.addEventListener('keydown', (e) => {
-        const modal = document.getElementById('galleryModal');
-        if (!modal || modal.classList.contains('hidden')) return;
-        
-        if (e.key === 'Escape') closeGallery();
-        if (e.key === 'ArrowRight') nextImage();
-        if (e.key === 'ArrowLeft') prevImage();
+        const galleryModal = document.getElementById('galleryModal');
+        if (galleryModal && !galleryModal.classList.contains('hidden')) {
+          if (e.key === 'Escape') closeGallery();
+          if (e.key === 'ArrowRight') nextImage();
+          if (e.key === 'ArrowLeft') prevImage();
+          return;
+        }
+
+        const albumModal = document.getElementById('albumModal');
+        if (albumModal && !albumModal.classList.contains('hidden')) {
+          if (e.key === 'Escape') closeAlbumModal();
+        }
       });
 
       // Touch Swipe Support
-      let touchStartX = 0;
-      let touchEndX = 0;
+      var touchStartX = 0;
+      var touchEndX = 0;
       
-      const modalContainer = document.getElementById('galleryModal');
-      
-      modalContainer.addEventListener('touchstart', e => {
-        touchStartX = e.changedTouches[0].screenX;
-      }, false);
-      
-      modalContainer.addEventListener('touchend', e => {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
-      }, false);
+      var modalContainer = document.getElementById('galleryModal');
+      if (modalContainer) {
+        modalContainer.addEventListener('touchstart', e => {
+          touchStartX = e.changedTouches[0].screenX;
+        }, false);
+        
+        modalContainer.addEventListener('touchend', e => {
+          touchEndX = e.changedTouches[0].screenX;
+          handleSwipe();
+        }, false);
+      }
       
       function handleSwipe() {
         const swipeThreshold = 50;
@@ -878,23 +1172,24 @@
         }
       }
 
-      // Background Lifecycle: Pre-fetch gallery images when the main thread is idle
+      // Background Lifecycle: Pre-fetch album photos when the main thread is idle
       window.addEventListener('load', () => {
-        if ('requestIdleCallback' in window) {
-          requestIdleCallback(() => {
-            galleryImages.forEach(img => {
-              const prefetch = new Image();
-              prefetch.src = img.url;
-            });
+        const prefetchPhotos = () => {
+          Object.values(albums).forEach(album => {
+            if (album && album.photos) {
+              album.photos.forEach(img => {
+                const prefetch = new Image();
+                prefetch.src = img.url;
+              });
+            }
           });
+        };
+
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(prefetchPhotos);
         } else {
           // Fallback for Safari/Legacy
-          setTimeout(() => {
-            galleryImages.forEach(img => {
-              const prefetch = new Image();
-              prefetch.src = img.url;
-            });
-          }, 3000);
+          setTimeout(prefetchPhotos, 3000);
         }
       });
     </script>

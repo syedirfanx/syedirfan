@@ -33,7 +33,7 @@
     </script>
     <link rel="stylesheet" href="style.css">
     <script>
-      async function onThumbnailLoad(img) {
+      window.onThumbnailLoad = async function(img) {
         if (!img || !img.classList) return;
         try {
           if (img.complete) {
@@ -47,7 +47,8 @@
         if (container && container.classList) {
           container.classList.remove('skeleton');
         }
-      }
+      };
+      var onThumbnailLoad = window.onThumbnailLoad;
 
       document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('img').forEach(img => {

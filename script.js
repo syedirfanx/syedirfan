@@ -152,10 +152,7 @@ function initNebulaCanvas() {
         const dist = Math.hypot(dx, dy);
         if (dist < mouse.radius) {
           const force = (mouse.radius - dist) / mouse.radius;
-          // Soft magnetic pull towards mouse cursor
-          this.x += dx * force * 0.008;
-          this.y += dy * force * 0.008;
-          this.alpha = Math.min(0.85, this.baseAlpha + force * 0.45);
+          this.alpha = Math.min(0.75, this.baseAlpha + force * 0.25);
         } else {
           if (this.alpha > this.baseAlpha) {
             this.alpha -= 0.005;
@@ -2332,13 +2329,25 @@ window.addEventListener('popstate', (event) => {
   const loader = document.getElementById('page-loader');
   if (loader) loader.classList.add('hidden');
 
-  // Close any open modals or menus when back button is pressed
-  closeProjectModal(true);
+  const state = event.state;
+
+  // Close project modal if state is no longer 'project'
+  if (!state || state.modal !== 'project') {
+    closeProjectModal(true);
+  }
+
   closeMobileMenu(true);
   
-  // Also handle gallery modal if it exists (defined in the-odyssey.html)
-  if (typeof closeGallery === 'function') {
-    closeGallery(true);
+  // Handle gallery and album modals state-aware on Odyssey page
+  if (typeof window.handleOdysseyPopState === 'function') {
+    window.handleOdysseyPopState(state);
+  } else {
+    if (!state || state.modal !== 'gallery') {
+      if (typeof closeGallery === 'function') closeGallery(true);
+    }
+    if (!state || state.modal !== 'album') {
+      if (typeof closeAlbumModal === 'function') closeAlbumModal(true);
+    }
   }
 });
 
